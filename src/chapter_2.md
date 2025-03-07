@@ -2,7 +2,7 @@
 
 ### フォトカプラによる動作の違い  
 
-|:------:|:------:|:-----:|  
+|------|------|-----|  
 | フォトカプラ | 用途 | 画像 |  
 | [TLP621](https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a) | ディジタルの変換 | ![pic_TLP621.JPG](./resources/pic_TLP621.JPG) |  
 | [TLP521-2](https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&matchtype=&&campaignid=20858944244&gad_source=1&gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&gclsrc=aw.ds) | ディジタルの変換*2 | ![pic_TLP521-2.JPG](./resources/pic_TLP521-2.JPG) |  
