@@ -156,13 +156,17 @@
                         <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="モーターのpwm制御"><a class="header" href="#モーターのpwm制御">モーターのPWM制御</a></h1>
 <h3 id="フォトカプラによる動作の違い"><a class="header" href="#フォトカプラによる動作の違い">フォトカプラによる動作の違い</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">フォトカプラ</th><th style="text-align: center">用途</th><th style="text-align: center">画像</th></tr></thead><tbody>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center"><img src="./resources/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a></td><td style="text-align: center">ディジタルの変換*2</td><td style="text-align: center"><img src="./resources/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /></td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a></td><td style="text-align: center">PWMの変換</td><td style="text-align: center"><img src="./resources/pic_PS9513.JPG" alt="pic_PS9513.JPG" /></td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a></td><td style="text-align: center">PWMの変換</td><td style="text-align: center"><img src="./resources/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /></td></tr>
-</tbody></table>
-</div>
+<p>| フォトカプラ | 部品 | 用途 | 向き |
+|:------:|:------:|:-----:|
+| <a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a> | <img src="./resources/pic_TLP621.JPG" alt="pic_TLP621.JPG" /> | ディジタルの変換 | 左下にある◯がマイコン側 |
+| <a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a> | <img src="./resources/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /> | ディジタルの変換*2 | 左下にある◯がマイコン側または、角が削れている方がマイコン側 |
+| <a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a> | <img src="./resources/pic_PS9513.JPG" alt="pic_PS9513.JPG" /> | PWMの変換 | 左下にある◯がマイコン側 |
+| <a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a> | <img src="./resources/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /> | PWMの変換 | 左下にある◯がマイコン側または、角が削れている方がマイコン側 |</p>
+<p><strong>注意点</strong></p>
+<ul>
+<li><code>TLP521-2</code>はPWMの変換と同じような大きさだが内部の配線では<code>TLP621</code>が2個あるような配置になっている。</li>
+</ul>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
