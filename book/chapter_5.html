@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>モーターのPWM制御 - Control_General</title>
+        <title>Raspberry Pi Pico - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -152,53 +152,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="モーターのpwm制御"><a class="header" href="#モーターのpwm制御">モーターのPWM制御</a></h1>
-<h3 id="pwmとは"><a class="header" href="#pwmとは">PWMとは</a></h3>
-<p><code>PWM</code>とは、<code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>という。一定周期の中で出力が<code>HIGH</code>の長さと<code>LOW</code>の長さ比(デューティ比)で出力が決まる。</p>
-<blockquote>
-<p>出力が<code>5V</code>でデューティ比が<code>25%</code>であれば、出力は<code>1.25V</code>になる。出力電圧は以下の式で求められる。<br />
-<code>(出力電圧) = (最大電圧) × (デューティ比)</code><br />
-そのため、デューティ比が小さすぎると素子によってはデューティ比<code>0％</code>とあまり変わらない結果が得られるものもある。</p>
-</blockquote>
-<h3 id="モーターを回す"><a class="header" href="#モーターを回す">モーターを回す</a></h3>
-<p>回路的には以下のようになっている。<br />
-<img src="./resources/motor_road.drawio.png" alt="motor_road.drawio.png" /><br />
-モーターの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要がある。それをフォトカプラ基板で行っている。また、<code>PWM</code>の周期を<code>83[μs]</code>に設定する。これはモタドラICの周波数が<code>12[kHz]</code>あたりがいいらしいからだ(モタドラIC<code>HIP4081AIP</code>らしい)。<br />
-今回は、デューティ比は<code>0</code>~<code>255</code>で出力を変更する。</p>
-<h3 id="フォトカプラによる動作の違い"><a class="header" href="#フォトカプラによる動作の違い">フォトカプラによる動作の違い</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">フォトカプラ</th><th style="text-align: center">部品</th><th style="text-align: center">用途</th><th style="text-align: center">向き</th></tr></thead><tbody>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a></td><td style="text-align: center"><img src="./resources/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a></td><td style="text-align: center"><img src="./resources/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /></td><td style="text-align: center">ディジタルの変換*2</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a></td><td style="text-align: center"><img src="./resources/pic_PS9513.JPG" alt="pic_PS9513.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a></td><td style="text-align: center"><img src="./resources/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
-</tbody></table>
-</div>
-<p><strong>注意点</strong></p>
-<ul>
-<li><code>TLP521-2</code>はPWMの変換と同じような大きさだが内部の配線では<code>TLP621</code>が2個あるような配置になっている。PWMの変換には使用できないので注意。</li>
-<li><code>PS9513</code>を標準とすると<code>TLP250H</code>は出力が反転している。例えば、入力に<code>0</code>が入っている場合<code>PS9513</code>では出力が<code>0</code>だが、<code>TLP250H</code>では<code>255</code>が出力される。使用するフォトカプラに合わせてコードを書き換える必要がある。</li>
-</ul>
-<h3 id="左回りと右回り正転と反転"><a class="header" href="#左回りと右回り正転と反転">左回りと右回り(正転と反転)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">PWM側フォトカプラ</th><th style="text-align: center">Digi</th><th style="text-align: center">LOWの時のデューティ比</th><th style="text-align: center">HIGHの時のデューティ比</th><th style="text-align: center">回転方向</th><th style="text-align: center">出力波形部分</th></tr></thead><tbody>
-<tr><td style="text-align: center">PS9513</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">255</td><td style="text-align: center">左回り</td><td style="text-align: center">①</td></tr>
-<tr><td style="text-align: center">PS9513</td><td style="text-align: center">1</td><td style="text-align: center">255</td><td style="text-align: center">0</td><td style="text-align: center">右回り</td><td style="text-align: center">②</td></tr>
-<tr><td style="text-align: center">TLP250H</td><td style="text-align: center">0</td><td style="text-align: center">255</td><td style="text-align: center">0</td><td style="text-align: center">左回り</td><td style="text-align: center">②</td></tr>
-<tr><td style="text-align: center">TLP250H</td><td style="text-align: center">1</td><td style="text-align: center">0</td><td style="text-align: center">255</td><td style="text-align: center">右回り</td><td style="text-align: center">①</td></tr>
-<tr><td style="text-align: center"><code>出力波形</code></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
-<tr><td style="text-align: center"><img src="./resources/PWM_modu.png" alt="PWM_modu.png" /></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
-</tbody></table>
-</div>
+                        <h1 id="raspberry-pi-pico"><a class="header" href="#raspberry-pi-pico">Raspberry Pi Pico</a></h1>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="chapter_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="chapter_4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="chapter_3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -206,13 +169,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="chapter_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="chapter_4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="chapter_3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
