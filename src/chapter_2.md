@@ -32,4 +32,8 @@
 | TLP250H | 0 | 255 | 0 | 左回り | ② |
 | TLP250H | 1 | 0 | 255 | 右回り | ① |  
 `出力波形`  
-![PWM_modu.png](./resources/PWM_modu.png)
+![PWM_modu.png](./resources/PWM_modu.png)  
+
+#### 参考  
+* [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  
+* [STM32 HALを使ってPWM出力してみる](https://moons.link/post-632/)  

@@ -6,5 +6,5 @@
 - [通信の仕組み](./chapter_3.md)
 
 # 各マイコン・IDEの開発  
-- [STM32CubeIDE](./chapter_4.md)
+- [STMマイコン](./chapter_4.md)
 - [Raspberry Pi Pico](./chapter_5.md)
