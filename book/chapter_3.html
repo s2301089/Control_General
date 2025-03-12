@@ -174,7 +174,7 @@
 <tr><td style="text-align: center">10byte</td><td style="text-align: center">0xed</td><td style="text-align: center">終端データを表す</td></tr>
 </tbody></table>
 </div>
-<p><code>ディジタルボタンセット1</code></p>
+<h4 id="ディジタルボタンセット1"><a class="header" href="#ディジタルボタンセット1">ディジタルボタンセット1</a></h4>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
 <tr><td style="text-align: center">0bit</td><td style="text-align: center">0/1</td><td style="text-align: center">TRIANGLE</td></tr>
 <tr><td style="text-align: center">1bit</td><td style="text-align: center">0/1</td><td style="text-align: center">CIRCLE</td></tr>
@@ -186,7 +186,7 @@
 <tr><td style="text-align: center">7bit</td><td style="text-align: center">0/1</td><td style="text-align: center">LEFT</td></tr>
 </tbody></table>
 </div>
-<p><code>ディジタルボタンセット2</code></p>
+<h4 id="ディジタルボタンセット2"><a class="header" href="#ディジタルボタンセット2">ディジタルボタンセット2</a></h4>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
 <tr><td style="text-align: center">0bit</td><td style="text-align: center">0/1</td><td style="text-align: center">L1</td></tr>
 <tr><td style="text-align: center">1bit</td><td style="text-align: center">0/1</td><td style="text-align: center">L3</td></tr>
@@ -199,8 +199,10 @@
 </tbody></table>
 </div>
 <p>N/A:なし</p>
-<p><code>チェックサム用SUM</code><br />
-<code>SUM = (LアナログスティックのX座標) + (LアナログスティックのY座標) + (RアナログスティックのX座標) + (RアナログスティックのY座標) + (L2アナログボタン) + (R2アナログボタン) + (ディジタルボタンセット1) + (ディジタルボタンセット2)</code></p>
+<h4 id="チェックサム用sum"><a class="header" href="#チェックサム用sum">チェックサム用SUM</a></h4>
+<p>SUM = <code>(LアナログスティックのX座標)</code> + <code>(LアナログスティックのY座標)</code> + <code>(RアナログスティックのX座標)</code> + <code>(RアナログスティックのY座標)</code> + <code>(L2アナログボタン)</code> + <code>(R2アナログボタン)</code> + <code>(ディジタルボタンセット1)</code> + <code>(ディジタルボタンセット2)</code></p>
+<h3 id="受信側"><a class="header" href="#受信側">受信側</a></h3>
+<p><code>NUCLEO-F446RE</code>などで<code>FEP</code>を通して<code>Arduino</code>から送られてきたデータはある処理をされて使用するデータに格納される。</p>
 
                     </main>
 
