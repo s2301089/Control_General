@@ -46,6 +46,7 @@
 |5bit|0/1|OPTIONS / START|
 |6bit|0/1|PS|
 |7bit|0/1|TOUCHPAD / N/A|  
+
 N/A:なし  
 
 `チェックサム用SUM`  
