@@ -9,7 +9,7 @@
 ### 使用環境
 * Windows11 Home  
 
-### 使用マイコン一覧
+### 使用/使用予定のマイコン・マイコンボード一覧
 * [NUCLEO-F446RE](https://akizukidenshi.com/catalog/g/g110176/)  
 * [NUCLEO-F303K8](https://akizukidenshi.com/catalog/g/g110172/)  
 * [Arduino Uno Rev3](https://akizukidenshi.com/catalog/g/g107385/)  

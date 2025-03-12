@@ -153,6 +153,53 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="通信の仕組み"><a class="header" href="#通信の仕組み">通信の仕組み</a></h1>
+<h3 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h3>
+<p>現在(2025/03/12)は、双葉電子の<code>FEP02TJ</code>を主に使用している。(<a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">FEP-02</a>)<br />
+周波数帯は<code>920MHz</code>帯で無線モジュール。<code>UART</code>を用いた通信が可能。部のほとんどのものがボードレート<code>38400bit/s</code>に設定されている。</p>
+<h3 id="rxとtx"><a class="header" href="#rxとtx">RXとTX</a></h3>
+<p>マイコンボードのピン配置などで<code>UART1_RX</code>や<code>UART2_TX</code>などと書いてあるものを見たことがあると思う。<code>RX</code>は<code>Receive</code>の略で<code>TX</code>は<code>Transmit</code>の略でそれぞれ<code>受信する</code>、<code>送信する</code>という意味だ。無線モジュールを使用しない場合の多くは<code>Arduino</code>などの送信側の<code>TX</code>と<code>F446RE</code>などの受信側の<code>RX</code>をつなぎ送受信する。</p>
+<h3 id="送信側"><a class="header" href="#送信側">送信側</a></h3>
+<p>主に<code>Arduino Uno Rev3</code>に<code>USB Host Shield</code>を接続し、<code>USB Host Shield</code>に<code>DUALSHOCK4</code>などのコントローラーを接続し、<code>Arduino</code>でコントローラーのデータを読み取りそれをシリアル通信を用いて受信側に送る。受信データは以下の表の内容になって全てで<code>11byte</code>ある。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">byte数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
+<tr><td style="text-align: center">0byte</td><td style="text-align: center">0xaf</td><td style="text-align: center">先頭データを表す</td></tr>
+<tr><td style="text-align: center">1byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">LアナログスティックのX座標</td></tr>
+<tr><td style="text-align: center">2byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">LアナログスティックのY座標</td></tr>
+<tr><td style="text-align: center">3byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">RアナログスティックのX座標</td></tr>
+<tr><td style="text-align: center">4byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">RアナログスティックのY座標</td></tr>
+<tr><td style="text-align: center">5byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">L2アナログボタン</td></tr>
+<tr><td style="text-align: center">6byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">R2アナログボタン</td></tr>
+<tr><td style="text-align: center">7byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">ディジタルボタンセット1</td></tr>
+<tr><td style="text-align: center">8byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">ディジタルボタンセット2</td></tr>
+<tr><td style="text-align: center">9byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">チェックサム用SUM</td></tr>
+<tr><td style="text-align: center">10byte</td><td style="text-align: center">0xed</td><td style="text-align: center">終端データを表す</td></tr>
+</tbody></table>
+</div>
+<p><code>ディジタルボタンセット1</code></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
+<tr><td style="text-align: center">0bit</td><td style="text-align: center">0/1</td><td style="text-align: center">TRIANGLE</td></tr>
+<tr><td style="text-align: center">1bit</td><td style="text-align: center">0/1</td><td style="text-align: center">CIRCLE</td></tr>
+<tr><td style="text-align: center">2bit</td><td style="text-align: center">0/1</td><td style="text-align: center">CROSS</td></tr>
+<tr><td style="text-align: center">3bit</td><td style="text-align: center">0/1</td><td style="text-align: center">SQUARE</td></tr>
+<tr><td style="text-align: center">4bit</td><td style="text-align: center">0/1</td><td style="text-align: center">UP</td></tr>
+<tr><td style="text-align: center">5bit</td><td style="text-align: center">0/1</td><td style="text-align: center">RIGHT</td></tr>
+<tr><td style="text-align: center">6bit</td><td style="text-align: center">0/1</td><td style="text-align: center">DOWN</td></tr>
+<tr><td style="text-align: center">7bit</td><td style="text-align: center">0/1</td><td style="text-align: center">LEFT</td></tr>
+</tbody></table>
+</div>
+<p><code>ディジタルボタンセット2</code></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
+<tr><td style="text-align: center">0bit</td><td style="text-align: center">0/1</td><td style="text-align: center">L1</td></tr>
+<tr><td style="text-align: center">1bit</td><td style="text-align: center">0/1</td><td style="text-align: center">L3</td></tr>
+<tr><td style="text-align: center">2bit</td><td style="text-align: center">0/1</td><td style="text-align: center">R1</td></tr>
+<tr><td style="text-align: center">3bit</td><td style="text-align: center">0/1</td><td style="text-align: center">R3</td></tr>
+<tr><td style="text-align: center">4bit</td><td style="text-align: center">0/1</td><td style="text-align: center">SHARE / SELECT</td></tr>
+<tr><td style="text-align: center">5bit</td><td style="text-align: center">0/1</td><td style="text-align: center">OPTIONS / START</td></tr>
+<tr><td style="text-align: center">6bit</td><td style="text-align: center">0/1</td><td style="text-align: center">PS</td></tr>
+<tr><td style="text-align: center">7bit</td><td style="text-align: center">0/1</td><td style="text-align: center">TOUCHPAD / N/A</td></tr>
+</tbody></table>
+</div>
+<p><code>チェックサム用SUM</code><br />
+<code>SUM = (LアナログスティックのX座標) + (LアナログスティックのY座標) + (RアナログスティックのX座標) + (RアナログスティックのY座標) + (L2アナログボタン) + (R2アナログボタン) + (ディジタルボタンセット1) + (ディジタルボタンセット2)</code></p>
 
                     </main>
 
