@@ -199,13 +199,32 @@
 </tbody></table>
 </div>
 <p><code>N/A</code>:なし<br />
-<code>SHARE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSHOCK4</code>の場合、<code>SELECT</code>,<code>START</code>,<code>N/A</code>は<code>DUALSHOCK3</code>の場合。</p>
+<code>SHARE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSHOCK4</code>の場合、<code>SELECT</code>,<code>START</code>,<code>N/A</code>は<code>DUALSHOCK3</code>の場合。<br />
+ボタンセットはボタンが押されている時に各bitが<code>1</code>になるようにしている。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">16進数表記</th><th style="text-align: center">2進数表記</th></tr></thead><tbody>
+<tr><td style="text-align: center">0bit</td><td style="text-align: center">0x01</td><td style="text-align: center">0000 0001</td></tr>
+<tr><td style="text-align: center">1bit</td><td style="text-align: center">0x02</td><td style="text-align: center">0000 0010</td></tr>
+<tr><td style="text-align: center">2bit</td><td style="text-align: center">0x04</td><td style="text-align: center">0000 0100</td></tr>
+<tr><td style="text-align: center">3bit</td><td style="text-align: center">0x08</td><td style="text-align: center">0000 1000</td></tr>
+<tr><td style="text-align: center">4bit</td><td style="text-align: center">0x10</td><td style="text-align: center">0001 0000</td></tr>
+<tr><td style="text-align: center">5bit</td><td style="text-align: center">0x20</td><td style="text-align: center">0010 0000</td></tr>
+<tr><td style="text-align: center">6bit</td><td style="text-align: center">0x40</td><td style="text-align: center">0100 0000</td></tr>
+<tr><td style="text-align: center">7bit</td><td style="text-align: center">0x80</td><td style="text-align: center">1000 0000</td></tr>
+</tbody></table>
+</div>
 <h4 id="チェックサム用sum"><a class="header" href="#チェックサム用sum">チェックサム用SUM</a></h4>
 <p>SUM = <code>(LアナログスティックのX座標)</code> + <code>(LアナログスティックのY座標)</code> + <code>(RアナログスティックのX座標)</code> + <code>(RアナログスティックのY座標)</code> + <code>(L2アナログボタン)</code> + <code>(R2アナログボタン)</code> + <code>(ディジタルボタンセット1)</code> + <code>(ディジタルボタンセット2)</code></p>
 <h3 id="受信側"><a class="header" href="#受信側">受信側</a></h3>
 <p><code>NUCLEO-F446RE</code>などで<code>FEP</code>を通して<code>Arduino</code>から送られてきたデータはある処理をされて使用するデータに格納される。その処理はざっくり言うと以下の図のような処理になる。<br />
 <img src="./resources/txrx/rev.drawio.png" alt="rev.drawio.png" /><br />
-各環境や言語によって使われる関数などは違うがだいたいはこのような感じの処理をしている。</p>
+各環境や言語によって使われる関数などは違うがだいたいはこのような感じの処理をしている。<br />
+各環境の受信側ライブラリ(現在あるもの)</p>
+<ul>
+<li><a href="https://os.mbed.com/users/yabumi823/code/SerialCtrl/">Mbed(Keil Studio)</a></li>
+<li><a href="https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino">STM32CubeIDE(F446RE)</a></li>
+</ul>
+<h4 id="ボタンセットの値の読み取り方"><a class="header" href="#ボタンセットの値の読み取り方">ボタンセットの値の読み取り方</a></h4>
+<p>送信側ではボタンが押されたらbit論理和代入をしている。例えば<code>0x10</code>と<code>0x04</code>のボタンが押されている場合は<code>0001 0000 + 0000 0100 = 0001 0100</code>になる。そうすると送信側では、<code>0x14</code>が送信される。受信側では各ボタンの判定を行えば良く、ボタンが押されているかどうかは論理積を用いる。<code>0x10</code>の場合は<code>0x14 ・ 0x10 = 0x10</code>になる。このようにしてボタンの状態を読み取る。</p>
 
                     </main>
 
