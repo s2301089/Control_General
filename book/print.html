@@ -25,19 +25,20 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -47,8 +48,8 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -62,7 +63,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -75,8 +77,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -112,6 +114,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -299,6 +302,17 @@
 <li><a href="https://github.com/s2301089/development-Raspberry_Pi_Pico">プロジェクトリポジトリ</a></li>
 <li><a href="https://s2301089.github.io/development-Raspberry_Pi_Pico/book/">まとめ</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
+<p><code>2025B</code>は<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への以降を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">記事</a></p>
+<h3 id="platform-io"><a class="header" href="#platform-io">Platform IO</a></h3>
+<p><code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Keil Studio</code>での書き方などいろいろな書き方ができる。そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
+この拡張機能を使用して試しにコードを書き込むまでの記録。</p>
+<p><strong>学内LANでは極力ダウンロードなどはしないようにしよう</strong></p>
+<blockquote>
+<p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
+<code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
+</blockquote>
+<p><code>VSCode</code>で拡張機能のマーケットプレイスで</p>
 
                     </main>
 
@@ -317,6 +331,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

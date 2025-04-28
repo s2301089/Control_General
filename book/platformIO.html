@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>前提条件等 - Control_General</title>
+        <title>PlatformIO - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -24,19 +24,20 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -46,8 +47,8 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -61,7 +62,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -74,8 +76,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -111,6 +113,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -154,34 +157,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
-<p>制御に関するお勉強・開発のHome<br />
-基本的に<code>C言語</code>を用いる。一部<code>C++</code>などの他の言語の知識が混ざる可能性もある。<br />
-環境構築等はすでに済んでいるものとし、コードの内容のみになることがある。<br />
-各開発などのリポジトリは各ページに掲載していることもある。あくまで参考程度にしかならない。<br />
-<strong>自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
-<h3 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h3>
-<ul>
-<li>Windows11 Home</li>
-</ul>
-<h3 id="使用使用予定のマイコンマイコンボード一覧"><a class="header" href="#使用使用予定のマイコンマイコンボード一覧">使用/使用予定のマイコン・マイコンボード一覧</a></h3>
-<ul>
-<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g117215/">ATOM Matrix</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g115674/">ESP32-WROVER-E</a></li>
-</ul>
+                        <h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
+<p><code>2025B</code>は<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への以降を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">記事</a></p>
+<h3 id="platform-io"><a class="header" href="#platform-io">Platform IO</a></h3>
+<p><code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Keil Studio</code>での書き方などいろいろな書き方ができる。そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
+この拡張機能を使用して試しにコードを書き込むまでの記録。</p>
+<p><strong>学内LANでは極力ダウンロードなどはしないようにしよう</strong></p>
+<blockquote>
+<p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
+<code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
+</blockquote>
+<p><code>VSCode</code>で拡張機能のマーケットプレイスで</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-
-                            <a rel="next prefetch" href="chapter_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="deve-raspico.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -189,14 +184,30 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next prefetch" href="chapter_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="deve-raspico.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+
             </nav>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
