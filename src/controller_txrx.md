@@ -42,7 +42,7 @@
 |1bit|0/1|L3|
 |2bit|0/1|R1|
 |3bit|0/1|R3|
-|4bit|0/1|SHARE / SELECT|
+|4bit|0/1|CREATE / SHARE / SELECT|
 |5bit|0/1|OPTIONS / START|
 |6bit|0/1|PS|
 |7bit|0/1|TOUCHPAD / N/A|  
