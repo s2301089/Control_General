@@ -1,8 +1,26 @@
 #ifndef INC_GET_CONTROLLER_H_
 #define INC_GET_CONTROLLER_H_
 
-#include <stdint.h>
-#include <stdbool.h>
+#include <Arduino.h> // can use serial.print
+#include <stdint.h> // can use uint8_t
+#include <stdbool.h> // can use bool
+#include <stdio.h> // can use sprintf
+#include <SoftwareSerial.h> // can use software serial
+
+#include <PS3USB.h> // DUALSHOCK3
+#include <PS4USB.H> // DUALSHOCK4
+#include <PS5USB.h> // DUALSENSE
+
+/*
+    SoftwareSerialで通信してるからいらない説
+    SPI通信したいときにいるっぽい
+    spi4teensy3.hはTeensy3系マイコンでSPI通信するときに必要らしい
+*/ 
+// // copy from sample
+// #ifdef dobogusinclude
+// #include <spi4teensy3.h>
+// #endif
+// #include <SPI.h>
 
 enum ControllerType{
     DUALSHOCK3,
