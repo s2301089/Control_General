@@ -70,7 +70,7 @@ void loop() {
     if(DUALSHOCK4.getButtonPress(L3))        data[BS2] |= 0x02;
     if(DUALSHOCK4.getButtonPress(R1))        data[BS2] |= 0x04;
     if(DUALSHOCK4.getButtonPress(R3))        data[BS2] |= 0x08;
-    if(DUALSHOCK4.getButtonPress(CREATE))    data[BS2] |= 0x10;
+    if(DUALSHOCK4.getButtonPress(SHARE))     data[BS2] |= 0x10;
     if(DUALSHOCK4.getButtonPress(OPTIONS))   data[BS2] |= 0x20;
     if(DUALSHOCK4.getButtonPress(PS))        data[BS2] |= 0x40;
     if(DUALSHOCK4.getButtonPress(TOUCHPAD))  data[BS2] |= 0x80;
@@ -96,7 +96,7 @@ void loop() {
     if(data[BS2] & 0x02)  Serial.print("L3 ");
     if(data[BS2] & 0x04)  Serial.print("R1 ");
     if(data[BS2] & 0x08)  Serial.print("R3 ");
-    if(data[BS2] & 0x10)  Serial.print("CREATE ");
+    if(data[BS2] & 0x10)  Serial.print("SHARE ");
     if(data[BS2] & 0x20)  Serial.print("OPTIONS ");
     if(data[BS2] & 0x40)  Serial.print("PS ");
     if(data[BS2] & 0x80)  Serial.print("TOUCHPAD ");
