@@ -1,7 +1,3 @@
-/*
-getController.h
-*/
-
 #ifndef INC_GET_CONTROLLER_H_
 #define INC_GET_CONTROLLER_h_
 
