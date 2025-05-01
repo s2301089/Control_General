@@ -1,16 +1,15 @@
 #include <Arduino.h>
-
-bool getController(char *type);
+#include "getController.h"
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(38400);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-bool getController(char *type){
-
+  getController(DUALSHOCK3);
+  delay(250);
+  getController(DUALSHOCK4);
+  delay(250);
+  getController(DUALSENSE);
+  delay(250);
 }

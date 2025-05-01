@@ -1,13 +1,14 @@
 #ifndef INC_GET_CONTROLLER_H_
-#define INC_GET_CONTROLLER_h_
+#define INC_GET_CONTROLLER_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 
 enum ControllerType{
     DUALSHOCK3,
     DUALSHOCK4,
     DUALSENSE
-}
+};
 
 typedef struct{
     // analog values 0~255
@@ -49,5 +50,6 @@ typedef struct{
     bool TOUCHPAD;
 } Data;
 
+bool getController(uint8_t type);
 
 #endif /* INC_GET_CONTROLLER_H_ */
