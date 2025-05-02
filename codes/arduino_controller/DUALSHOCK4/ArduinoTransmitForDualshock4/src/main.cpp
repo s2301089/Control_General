@@ -4,10 +4,10 @@
 #include <SoftwareSerial.h>
 #include <PS4USB.h>
 
-#ifdef dobogusinclude
-#include <spi4teensy3.h>
-#include <SPI.h>
-#endif
+// #ifdef dobogusinclude
+// #include <spi4teensy3.h>
+// #include <SPI.h>
+// #endif
 
 USB usb;
 PS4USB DUALSHOCK4(&usb);
