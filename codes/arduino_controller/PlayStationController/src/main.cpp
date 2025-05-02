@@ -1,15 +1,15 @@
 #include <Arduino.h>
 #include "getController.h"
 
+SoftwareSerial outSerial(7,6);
+
 void setup() {
   Serial.begin(38400);
+  outSerial.begin(38400);
 }
 
 void loop() {
-  getController(DUALSHOCK3);
-  delay(250);
-  getController(DUALSHOCK4);
-  delay(250);
-  getController(DUALSENSE);
-  delay(250);
+  if(outSerial.available()){
+    Serial.println(outSerial.read());
+  }
 }

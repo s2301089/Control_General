@@ -13,6 +13,7 @@
 
 /*
     SoftwareSerialで通信してるからいらない説
+    USB Host Shield 2.0 側で必要な可能性もある
     SPI通信したいときにいるっぽい
     spi4teensy3.hはTeensy3系マイコンでSPI通信するときに必要らしい
 */ 
