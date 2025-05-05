@@ -75,4 +75,8 @@ typedef struct{
 
 bool getController(SoftwareSerial *Convey,uint8_t type);
 
+void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *dataStruct);
+void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *dataStruct);
+void putControllerData_DUALSENSE(PS5USB *PS5,Data *dataStruct);
+
 #endif /* INC_GET_CONTROLLER_HPP_ */
