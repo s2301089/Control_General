@@ -1,5 +1,5 @@
-#ifndef INC_GET_CONTROLLER_H_
-#define INC_GET_CONTROLLER_H_
+#ifndef INC_GET_CONTROLLER_HPP_
+#define INC_GET_CONTROLLER_HPP_
 
 #include <Arduino.h> // can use serial.print
 #include <stdint.h> // can use uint8_t
@@ -22,6 +22,10 @@
 // #include <spi4teensy3.h>
 // #endif
 // #include <SPI.h>
+
+#define BAUDRATE        38400
+#define DATA_SIZE       9
+#define TRANSMIT_DELAY  8
 
 enum ControllerType{
     DUALSHOCK3,
@@ -71,4 +75,4 @@ typedef struct{
 
 bool getController(uint8_t type);
 
-#endif /* INC_GET_CONTROLLER_H_ */
+#endif /* INC_GET_CONTROLLER_HPP_ */
