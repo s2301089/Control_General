@@ -8,7 +8,7 @@
 #include <SoftwareSerial.h> // can use software serial
 
 #include <PS3USB.h> // DUALSHOCK3
-#include <PS4USB.H> // DUALSHOCK4
+#include <PS4USB.h> // DUALSHOCK4
 #include <PS5USB.h> // DUALSENSE
 
 /*
@@ -73,6 +73,6 @@ typedef struct{
     bool TOUCHPAD;
 } Data;
 
-bool getController(uint8_t type);
+bool getController(SoftwareSerial *Convey,uint8_t type);
 
 #endif /* INC_GET_CONTROLLER_HPP_ */

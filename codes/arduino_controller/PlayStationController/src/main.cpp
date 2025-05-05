@@ -6,6 +6,7 @@ SoftwareSerial outSerial(7,6);
 void setup() {
   Serial.begin(38400);
   outSerial.begin(38400);
+  
 }
 
 void loop() {
