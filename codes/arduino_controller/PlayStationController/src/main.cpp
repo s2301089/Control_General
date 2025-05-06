@@ -2,7 +2,7 @@
 #include "getController.hpp"
 
 SoftwareSerial outSerial(7,6);
-Data ControllerData = {0};
+Data ControllerData;
 
 void setup() {
   Serial.begin(38400);

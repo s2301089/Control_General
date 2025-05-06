@@ -1,27 +1,15 @@
 #ifndef INC_GET_CONTROLLER_HPP_
 #define INC_GET_CONTROLLER_HPP_
 
-#include <Arduino.h> // can use serial.print
-#include <stdint.h> // can use uint8_t
-#include <stdbool.h> // can use bool
-#include <stdio.h> // can use sprintf
-#include <SoftwareSerial.h> // can use software serial
+#include <Arduino.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <SoftwareSerial.h>
 
 #include <PS3USB.h> // DUALSHOCK3
 #include <PS4USB.h> // DUALSHOCK4
 #include <PS5USB.h> // DUALSENSE
-
-/*
-    SoftwareSerialで通信してるからいらない説
-    USB Host Shield 2.0 側で必要な可能性もある
-    SPI通信したいときにいるっぽい
-    spi4teensy3.hはTeensy3系マイコンでSPI通信するときに必要らしい
-*/ 
-// // copy from sample
-// #ifdef dobogusinclude
-// #include <spi4teensy3.h>
-// #endif
-// #include <SPI.h>
 
 #define SUCCESS_CODE ((bool)0)
 #define FAIL_CODE ((bool)1)
@@ -80,6 +68,7 @@ bool getController(uint8_t Type,Data *DataStruct);
 void transmitController(SoftwareSerial *Convey,Data DataStruct);
 void showControllerData(HardwareSerial *Convey,Data DataStruct);
 
+void ControllerDataInit(Data *DataStruct);
 void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *DataStruct);
 void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *DataStruct);
 void putControllerData_DUALSENSE(PS5USB *PS5,Data *DataStruct);

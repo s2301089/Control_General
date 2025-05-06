@@ -1,10 +1,5 @@
 #include <getController.hpp>
 
-/*
-    getController(controller Type , Data struct)
-    if data get success : return 0 : else : return FAIL_CODE
-    user run this code in main
-*/
 bool getController(uint8_t Type,Data *DataStruct){
     static USB usb;
     static bool controller_init = false;
@@ -15,8 +10,7 @@ bool getController(uint8_t Type,Data *DataStruct){
         }
         controller_init = true;
     }
-    
-    // Data DataStruct;
+    ControllerDataInit(DataStruct);
     usb.Task();
     switch(Type){
         case ControllerType::DUALSHOCK3:{
@@ -110,7 +104,7 @@ void transmitController(SoftwareSerial *Convey,Data DataStruct){
 }
 
 void showControllerData(HardwareSerial *Convey,Data DataStruct){
-    char temporary[100] = {};
+    char temporary[64] = {};
     sprintf(temporary," LX:%3d LY:%3d RX:%3d RY:%3d L2:%3d R2:%3d ",DataStruct.LX,DataStruct.LY,DataStruct.RX,DataStruct.RY,DataStruct.L2,DataStruct.R2);
     Convey->print(temporary);
 
@@ -150,6 +144,48 @@ void showControllerData(HardwareSerial *Convey,Data DataStruct){
 
     Convey->println();
     
+    return;
+}
+
+void ControllerDataInit(Data *DataStruct){
+    // analog values 0x00(0) ~ 0xFF(255)
+    DataStruct->LX          =0x00;
+    DataStruct->LY          =0x00;
+    DataStruct->RX          =0x00;
+    DataStruct->RY          =0x00;
+    DataStruct->L2          =0x00;
+    DataStruct->R2          =0x00;
+
+    // button status 0,1
+    DataStruct->TRIANGLE    =0;
+    DataStruct->CIRCLE      =0;
+    DataStruct->CROSS       =0;
+    DataStruct->SQUARE      =0;
+    DataStruct->UP          =0;
+    DataStruct->RIGHT       =0;
+    DataStruct->DOWN        =0;
+    DataStruct->LEFT        =0;
+    DataStruct->L1          =0;
+    DataStruct->L3          =0;
+    DataStruct->R1          =0;
+    DataStruct->R3          =0;
+    DataStruct->PS          =0;
+
+    // DUALSHOCK3
+    DataStruct->SELECT      =0;
+    DataStruct->START       =0;
+
+    // DUALSHOCK4
+    DataStruct->SHARE       =0;
+
+    // DUALSENSE
+    DataStruct->CREATE      =0;
+    DataStruct->MICROPHONE  =0;
+
+    // DUALSHOCK4 and DUALSENSE
+    DataStruct->OPTIONS     =0;
+    DataStruct->TOUCHPAD    =0;
+
     return;
 }
 
