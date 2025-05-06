@@ -19,3 +19,7 @@ void loop() {
     Serial.println(" getController was failed");
   }
 }
+
+/*
+  main.cppからコントローラーの設定をできるようにするためにmain.cppでUSB usbの宣言をするようにしたい
+*/
