@@ -22,5 +22,6 @@ void loop() {
   }else{
     Serial.println("getController was failed\n");
   }
+  Serial.println(status);
 
 }
