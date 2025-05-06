@@ -76,12 +76,12 @@ typedef struct{
     bool TOUCHPAD;
 } Data;
 
-bool getController(uint8_t type,Data *dataStruct);
-void transmitController(SoftwareSerial *Convey,Data dataStruct);
-void showControllerData(HardwareSerial *Convey,uint8_t type,Data dataStruct);
+bool getController(uint8_t Type,Data *DataStruct);
+void transmitController(SoftwareSerial *Convey,Data DataStruct);
+void showControllerData(HardwareSerial *Convey,Data DataStruct);
 
-void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *dataStruct);
-void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *dataStruct);
-void putControllerData_DUALSENSE(PS5USB *PS5,Data *dataStruct);
+void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *DataStruct);
+void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *DataStruct);
+void putControllerData_DUALSENSE(PS5USB *PS5,Data *DataStruct);
 
 #endif /* INC_GET_CONTROLLER_HPP_ */

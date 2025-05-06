@@ -18,7 +18,7 @@ void loop() {
   status = getController(ControllerType::DUALSENSE,&ControllerData);
   if(status == SUCCESS_CODE){
     transmitController(&outSerial,ControllerData);
-    showControllerData(&Serial,ControllerType::DUALSENSE,ControllerData);
+    showControllerData(&Serial,ControllerData);
   }else{
     Serial.println("getController was failed\n");
   }

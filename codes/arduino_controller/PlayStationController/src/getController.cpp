@@ -1,11 +1,11 @@
 #include <getController.hpp>
 
 /*
-    getController(controller type , Data struct)
+    getController(controller Type , Data struct)
     if data get success : return 0 : else : return FAIL_CODE
     user run this code in main
 */
-bool getController(uint8_t type,Data *dataStruct){
+bool getController(uint8_t Type,Data *DataStruct){
     #ifndef CONTROLLER_INIT // CONTROLLER_INIT        
         USB usb;
 
@@ -26,14 +26,14 @@ bool getController(uint8_t type,Data *dataStruct){
         #define CONTROLLER_INIT
     #endif // CONTROLLER_INIT
     
-    // Data dataStruct;
+    // Data DataStruct;
     usb.Task();
 
-    switch(type){
+    switch(Type){
         case ControllerType::DUALSHOCK3:{
             PS3USB Controller(&usb);
             if(Controller.PS3Connected || Controller.PS3NavigationConnected){
-                putControllerData_DUALSHOCK3(&Controller,dataStruct);
+                putControllerData_DUALSHOCK3(&Controller,DataStruct);
             }else{
                 return FAIL_CODE;
             }
@@ -42,7 +42,7 @@ bool getController(uint8_t type,Data *dataStruct){
         case ControllerType::DUALSHOCK4:{
             PS4USB Controller(&usb);
             if(Controller.connected()){
-                putControllerData_DUALSHOCK4(&Controller,dataStruct);
+                putControllerData_DUALSHOCK4(&Controller,DataStruct);
             }else {
                 return FAIL_CODE;
             }
@@ -51,7 +51,7 @@ bool getController(uint8_t type,Data *dataStruct){
         default:{
             PS5USB Controller(&usb);
             if(Controller.connected()){
-                putControllerData_DUALSENSE(&Controller,dataStruct);
+                putControllerData_DUALSENSE(&Controller,DataStruct);
             }else {
                 return FAIL_CODE;
             }
@@ -61,7 +61,7 @@ bool getController(uint8_t type,Data *dataStruct){
     return SUCCESS_CODE;
 }
 
-void transmitController(SoftwareSerial *Convey,Data dataStruct){
+void transmitController(SoftwareSerial *Convey,Data DataStruct){
     #ifndef SOFTWARESERIAL_BEGIN
         Convey->begin(BAUDRATE);
 
@@ -84,30 +84,30 @@ void transmitController(SoftwareSerial *Convey,Data dataStruct){
 
     uint8_t sendArray[DATA_SIZE] = {};
 
-    sendArray[DataPosition::LX] = dataStruct.LX;
-    sendArray[DataPosition::LY] = dataStruct.LY;
-    sendArray[DataPosition::RX] = dataStruct.RX;
-    sendArray[DataPosition::RY] = dataStruct.RY;
-    sendArray[DataPosition::L2] = dataStruct.L1;
-    sendArray[DataPosition::R2] = dataStruct.R2;
+    sendArray[DataPosition::LX] = DataStruct.LX;
+    sendArray[DataPosition::LY] = DataStruct.LY;
+    sendArray[DataPosition::RX] = DataStruct.RX;
+    sendArray[DataPosition::RY] = DataStruct.RY;
+    sendArray[DataPosition::L2] = DataStruct.L1;
+    sendArray[DataPosition::R2] = DataStruct.R2;
 
-    sendArray[DataPosition::BS1] |= dataStruct.TRIANGLE << 0;
-    sendArray[DataPosition::BS1] |= dataStruct.CIRCLE   << 1;
-    sendArray[DataPosition::BS1] |= dataStruct.CROSS    << 2;
-    sendArray[DataPosition::BS1] |= dataStruct.SQUARE   << 3;
-    sendArray[DataPosition::BS1] |= dataStruct.UP       << 4;
-    sendArray[DataPosition::BS1] |= dataStruct.RIGHT    << 5;
-    sendArray[DataPosition::BS1] |= dataStruct.DOWN     << 6;
-    sendArray[DataPosition::BS1] |= dataStruct.LEFT     << 7;
+    sendArray[DataPosition::BS1] |= DataStruct.TRIANGLE << 0;
+    sendArray[DataPosition::BS1] |= DataStruct.CIRCLE   << 1;
+    sendArray[DataPosition::BS1] |= DataStruct.CROSS    << 2;
+    sendArray[DataPosition::BS1] |= DataStruct.SQUARE   << 3;
+    sendArray[DataPosition::BS1] |= DataStruct.UP       << 4;
+    sendArray[DataPosition::BS1] |= DataStruct.RIGHT    << 5;
+    sendArray[DataPosition::BS1] |= DataStruct.DOWN     << 6;
+    sendArray[DataPosition::BS1] |= DataStruct.LEFT     << 7;
 
-    sendArray[DataPosition::BS2] |= dataStruct.L1       << 0;
-    sendArray[DataPosition::BS2] |= dataStruct.L3       << 1;
-    sendArray[DataPosition::BS2] |= dataStruct.R1       << 2;
-    sendArray[DataPosition::BS2] |= dataStruct.R3       << 3;
-    sendArray[DataPosition::BS2] |= (dataStruct.SELECT  | dataStruct.SHARE      | dataStruct.CREATE)  << 4;
-    sendArray[DataPosition::BS2] |= (dataStruct.START   | dataStruct.OPTIONS    )                     << 5;
-    sendArray[DataPosition::BS2] |= dataStruct.PS       << 6;
-    sendArray[DataPosition::BS2] |= dataStruct.TOUCHPAD << 7;
+    sendArray[DataPosition::BS2] |= DataStruct.L1       << 0;
+    sendArray[DataPosition::BS2] |= DataStruct.L3       << 1;
+    sendArray[DataPosition::BS2] |= DataStruct.R1       << 2;
+    sendArray[DataPosition::BS2] |= DataStruct.R3       << 3;
+    sendArray[DataPosition::BS2] |= (DataStruct.SELECT  | DataStruct.SHARE      | DataStruct.CREATE)  << 4;
+    sendArray[DataPosition::BS2] |= (DataStruct.START   | DataStruct.OPTIONS    )                     << 5;
+    sendArray[DataPosition::BS2] |= DataStruct.PS       << 6;
+    sendArray[DataPosition::BS2] |= DataStruct.TOUCHPAD << 7;
 
     sendArray[SUM] = 0x00;
     for(int i = 0;i < (DataPosition::SUM - 1);i++){
@@ -128,140 +128,140 @@ void transmitController(SoftwareSerial *Convey,Data dataStruct){
     return;
 }
 
-void showControllerData(HardwareSerial *Convey,uint8_t type,Data dataStruct){
+void showControllerData(HardwareSerial *Convey,Data DataStruct){
     char temporary[100] = {};
-    sprintf(temporary," LX:%3d LY:%3d RX:%3d RY:%3d L2:%3d R2:%3d ",dataStruct.LX,dataStruct.LY,dataStruct.RX,dataStruct.RY,dataStruct.L2,dataStruct.R2);
+    sprintf(temporary," LX:%3d LY:%3d RX:%3d RY:%3d L2:%3d R2:%3d ",DataStruct.LX,DataStruct.LY,DataStruct.RX,DataStruct.RY,DataStruct.L2,DataStruct.R2);
     Convey->print(temporary);
 
     Convey->print("Pressed Button : ");
 
-    if(dataStruct.TRIANGLE)     Convey->print("TRIANGLE ");
-    if(dataStruct.CIRCLE)       Convey->print("CIRCLE ");
-    if(dataStruct.CROSS)        Convey->print("CROSS ");
-    if(dataStruct.SQUARE)       Convey->print("SQUARE ");
+    if(DataStruct.TRIANGLE)     Convey->print("TRIANGLE ");
+    if(DataStruct.CIRCLE)       Convey->print("CIRCLE ");
+    if(DataStruct.CROSS)        Convey->print("CROSS ");
+    if(DataStruct.SQUARE)       Convey->print("SQUARE ");
 
-    if(dataStruct.UP)           Convey->print("UP ");
-    if(dataStruct.RIGHT)        Convey->print("RIGHT ");
-    if(dataStruct.DOWN)         Convey->print("DOWN ");
-    if(dataStruct.LEFT)         Convey->print("LEFT ");
+    if(DataStruct.UP)           Convey->print("UP ");
+    if(DataStruct.RIGHT)        Convey->print("RIGHT ");
+    if(DataStruct.DOWN)         Convey->print("DOWN ");
+    if(DataStruct.LEFT)         Convey->print("LEFT ");
 
-    if(dataStruct.L1)           Convey->print("L1 ");
-    if(dataStruct.L3)           Convey->print("L3 ");
-    if(dataStruct.R1)           Convey->print("R1 ");
-    if(dataStruct.R3)           Convey->print("R3 ");
+    if(DataStruct.L1)           Convey->print("L1 ");
+    if(DataStruct.L3)           Convey->print("L3 ");
+    if(DataStruct.R1)           Convey->print("R1 ");
+    if(DataStruct.R3)           Convey->print("R3 ");
 
-    if(dataStruct.PS)           Convey->print("PS ");
+    if(DataStruct.PS)           Convey->print("PS ");
 
     // DUALSHOCK3
-    if(dataStruct.SELECT)       Convey->print("SELECT ");
-    if(dataStruct.START)        Convey->print("START ");
+    if(DataStruct.SELECT)       Convey->print("SELECT ");
+    if(DataStruct.START)        Convey->print("START ");
 
     // DUALSHOCK4
-    if(dataStruct.SHARE)        Convey->print("SHARE ");
+    if(DataStruct.SHARE)        Convey->print("SHARE ");
 
     // DUALSENSE
-    if(dataStruct.CREATE)       Convey->print("CREATE ");
-    if(dataStruct.MICROPHONE)   Convey->print("MICROPHONE ");
+    if(DataStruct.CREATE)       Convey->print("CREATE ");
+    if(DataStruct.MICROPHONE)   Convey->print("MICROPHONE ");
 
     // DUALSHOCK4 and DUALSENSE
-    if(dataStruct.OPTIONS)      Convey->print("OPTIONS ");
-    if(dataStruct.TOUCHPAD)     Convey->print("TOUCHPAD ");
+    if(DataStruct.OPTIONS)      Convey->print("OPTIONS ");
+    if(DataStruct.TOUCHPAD)     Convey->print("TOUCHPAD ");
 
     Convey->println();
     
     return;
 }
 
-void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *dataStruct){
-    dataStruct->LX          = PS3->getAnalogHat(LeftHatX);
-    dataStruct->LY          = PS3->getAnalogHat(LeftHatY);
-    dataStruct->RX          = PS3->getAnalogHat(RightHatX);
-    dataStruct->RY          = PS3->getAnalogHat(RightHatY);
-    dataStruct->L2          = PS3->getAnalogButton(L2);
-    dataStruct->R2          = PS3->getAnalogButton(R2);
+void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *DataStruct){
+    DataStruct->LX          = PS3->getAnalogHat(LeftHatX);
+    DataStruct->LY          = PS3->getAnalogHat(LeftHatY);
+    DataStruct->RX          = PS3->getAnalogHat(RightHatX);
+    DataStruct->RY          = PS3->getAnalogHat(RightHatY);
+    DataStruct->L2          = PS3->getAnalogButton(L2);
+    DataStruct->R2          = PS3->getAnalogButton(R2);
 
-    dataStruct->TRIANGLE    = PS3->getButtonPress(TRIANGLE);
-    dataStruct->CIRCLE      = PS3->getButtonPress(CIRCLE);
-    dataStruct->CROSS       = PS3->getButtonPress(CROSS);
-    dataStruct->SQUARE      = PS3->getButtonPress(SQUARE);
+    DataStruct->TRIANGLE    = PS3->getButtonPress(TRIANGLE);
+    DataStruct->CIRCLE      = PS3->getButtonPress(CIRCLE);
+    DataStruct->CROSS       = PS3->getButtonPress(CROSS);
+    DataStruct->SQUARE      = PS3->getButtonPress(SQUARE);
 
-    dataStruct->UP          = PS3->getButtonPress(UP);
-    dataStruct->RIGHT       = PS3->getButtonPress(RIGHT);
-    dataStruct->DOWN        = PS3->getButtonPress(DOWN);
-    dataStruct->LEFT        = PS3->getButtonPress(LEFT);
+    DataStruct->UP          = PS3->getButtonPress(UP);
+    DataStruct->RIGHT       = PS3->getButtonPress(RIGHT);
+    DataStruct->DOWN        = PS3->getButtonPress(DOWN);
+    DataStruct->LEFT        = PS3->getButtonPress(LEFT);
     
-    dataStruct->L1          = PS3->getButtonPress(L1);
-    dataStruct->L3          = PS3->getButtonPress(L3);
-    dataStruct->R1          = PS3->getButtonPress(R1);
-    dataStruct->R3          = PS3->getButtonPress(R3);
+    DataStruct->L1          = PS3->getButtonPress(L1);
+    DataStruct->L3          = PS3->getButtonPress(L3);
+    DataStruct->R1          = PS3->getButtonPress(R1);
+    DataStruct->R3          = PS3->getButtonPress(R3);
 
-    dataStruct->PS          = PS3->getButtonPress(PS);
-    dataStruct->SELECT      = PS3->getButtonPress(SELECT);
-    dataStruct->START       = PS3->getButtonPress(START);
+    DataStruct->PS          = PS3->getButtonPress(PS);
+    DataStruct->SELECT      = PS3->getButtonPress(SELECT);
+    DataStruct->START       = PS3->getButtonPress(START);
 
     return;
 }
 
-void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *dataStruct){
-    dataStruct->LX          = PS4->getAnalogHat(LeftHatX);
-    dataStruct->LY          = PS4->getAnalogHat(LeftHatY);
-    dataStruct->RX          = PS4->getAnalogHat(RightHatX);
-    dataStruct->RY          = PS4->getAnalogHat(RightHatY);
-    dataStruct->L2          = PS4->getAnalogButton(L2);
-    dataStruct->R2          = PS4->getAnalogButton(R2);
+void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *DataStruct){
+    DataStruct->LX          = PS4->getAnalogHat(LeftHatX);
+    DataStruct->LY          = PS4->getAnalogHat(LeftHatY);
+    DataStruct->RX          = PS4->getAnalogHat(RightHatX);
+    DataStruct->RY          = PS4->getAnalogHat(RightHatY);
+    DataStruct->L2          = PS4->getAnalogButton(L2);
+    DataStruct->R2          = PS4->getAnalogButton(R2);
 
-    dataStruct->TRIANGLE    = PS4->getButtonPress(TRIANGLE);
-    dataStruct->CIRCLE      = PS4->getButtonPress(CIRCLE);
-    dataStruct->CROSS       = PS4->getButtonPress(CROSS);
-    dataStruct->SQUARE      = PS4->getButtonPress(SQUARE);
+    DataStruct->TRIANGLE    = PS4->getButtonPress(TRIANGLE);
+    DataStruct->CIRCLE      = PS4->getButtonPress(CIRCLE);
+    DataStruct->CROSS       = PS4->getButtonPress(CROSS);
+    DataStruct->SQUARE      = PS4->getButtonPress(SQUARE);
 
-    dataStruct->UP          = PS4->getButtonPress(UP);
-    dataStruct->RIGHT       = PS4->getButtonPress(RIGHT);
-    dataStruct->DOWN        = PS4->getButtonPress(DOWN);
-    dataStruct->LEFT        = PS4->getButtonPress(LEFT);
+    DataStruct->UP          = PS4->getButtonPress(UP);
+    DataStruct->RIGHT       = PS4->getButtonPress(RIGHT);
+    DataStruct->DOWN        = PS4->getButtonPress(DOWN);
+    DataStruct->LEFT        = PS4->getButtonPress(LEFT);
     
-    dataStruct->L1          = PS4->getButtonPress(L1);
-    dataStruct->L3          = PS4->getButtonPress(L3);
-    dataStruct->R1          = PS4->getButtonPress(R1);
-    dataStruct->R3          = PS4->getButtonPress(R3);
+    DataStruct->L1          = PS4->getButtonPress(L1);
+    DataStruct->L3          = PS4->getButtonPress(L3);
+    DataStruct->R1          = PS4->getButtonPress(R1);
+    DataStruct->R3          = PS4->getButtonPress(R3);
 
-    dataStruct->PS          = PS4->getButtonPress(PS);
-    dataStruct->SHARE       = PS4->getButtonPress(SHARE);
-    dataStruct->OPTIONS     = PS4->getButtonPress(OPTIONS);
-    dataStruct->TOUCHPAD    = PS4->getButtonPress(TOUCHPAD);
+    DataStruct->PS          = PS4->getButtonPress(PS);
+    DataStruct->SHARE       = PS4->getButtonPress(SHARE);
+    DataStruct->OPTIONS     = PS4->getButtonPress(OPTIONS);
+    DataStruct->TOUCHPAD    = PS4->getButtonPress(TOUCHPAD);
 
     return;
 }
 
-void putControllerData_DUALSENSE(PS5USB *PS5,Data *dataStruct){
-    dataStruct->LX          = PS5->getAnalogHat(LeftHatX);
-    dataStruct->LY          = PS5->getAnalogHat(LeftHatY);
-    dataStruct->RX          = PS5->getAnalogHat(RightHatX);
-    dataStruct->RY          = PS5->getAnalogHat(RightHatY);
-    dataStruct->L2          = PS5->getAnalogButton(L2);
-    dataStruct->R2          = PS5->getAnalogButton(R2);
+void putControllerData_DUALSENSE(PS5USB *PS5,Data *DataStruct){
+    DataStruct->LX          = PS5->getAnalogHat(LeftHatX);
+    DataStruct->LY          = PS5->getAnalogHat(LeftHatY);
+    DataStruct->RX          = PS5->getAnalogHat(RightHatX);
+    DataStruct->RY          = PS5->getAnalogHat(RightHatY);
+    DataStruct->L2          = PS5->getAnalogButton(L2);
+    DataStruct->R2          = PS5->getAnalogButton(R2);
 
-    dataStruct->TRIANGLE    = PS5->getButtonPress(TRIANGLE);
-    dataStruct->CIRCLE      = PS5->getButtonPress(CIRCLE);
-    dataStruct->CROSS       = PS5->getButtonPress(CROSS);
-    dataStruct->SQUARE      = PS5->getButtonPress(SQUARE);
+    DataStruct->TRIANGLE    = PS5->getButtonPress(TRIANGLE);
+    DataStruct->CIRCLE      = PS5->getButtonPress(CIRCLE);
+    DataStruct->CROSS       = PS5->getButtonPress(CROSS);
+    DataStruct->SQUARE      = PS5->getButtonPress(SQUARE);
 
-    dataStruct->UP          = PS5->getButtonPress(UP);
-    dataStruct->RIGHT       = PS5->getButtonPress(RIGHT);
-    dataStruct->DOWN        = PS5->getButtonPress(DOWN);
-    dataStruct->LEFT        = PS5->getButtonPress(LEFT);
+    DataStruct->UP          = PS5->getButtonPress(UP);
+    DataStruct->RIGHT       = PS5->getButtonPress(RIGHT);
+    DataStruct->DOWN        = PS5->getButtonPress(DOWN);
+    DataStruct->LEFT        = PS5->getButtonPress(LEFT);
     
-    dataStruct->L1          = PS5->getButtonPress(L1);
-    dataStruct->L3          = PS5->getButtonPress(L3);
-    dataStruct->R1          = PS5->getButtonPress(R1);
-    dataStruct->R3          = PS5->getButtonPress(R3);
+    DataStruct->L1          = PS5->getButtonPress(L1);
+    DataStruct->L3          = PS5->getButtonPress(L3);
+    DataStruct->R1          = PS5->getButtonPress(R1);
+    DataStruct->R3          = PS5->getButtonPress(R3);
 
-    dataStruct->PS          = PS5->getButtonPress(PS);
-    dataStruct->CREATE      = PS5->getButtonPress(CREATE);
-    dataStruct->OPTIONS     = PS5->getButtonPress(OPTIONS);
-    dataStruct->TOUCHPAD    = PS5->getButtonPress(TOUCHPAD);
+    DataStruct->PS          = PS5->getButtonPress(PS);
+    DataStruct->CREATE      = PS5->getButtonPress(CREATE);
+    DataStruct->OPTIONS     = PS5->getButtonPress(OPTIONS);
+    DataStruct->TOUCHPAD    = PS5->getButtonPress(TOUCHPAD);
 
-    dataStruct->MICROPHONE  = PS5->getButtonPress(MICROPHONE);
+    DataStruct->MICROPHONE  = PS5->getButtonPress(MICROPHONE);
 
     return;
 }
