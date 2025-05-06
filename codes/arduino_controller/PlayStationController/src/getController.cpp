@@ -2,17 +2,12 @@
 
 /*
     getController(controller type , Data struct)
-    if data get success : return 0 : else : return 1
+    if data get success : return 0 : else : return FAIL_CODE
     user run this code in main
 */
-bool getController(SoftwareSerial *Convey,uint8_t type){
-    #ifndef CONTROLLER_INIT // CONTROLLER_INIT
-        Serial.println(type);
-        
+bool getController(uint8_t type,Data *dataStruct){
+    #ifndef CONTROLLER_INIT // CONTROLLER_INIT        
         USB usb;
-
-        Serial.begin(BAUDRATE);
-        Convey->begin(BAUDRATE);
 
         /*
             Serialが安定するまで待つとかっぽい
@@ -33,27 +28,148 @@ bool getController(SoftwareSerial *Convey,uint8_t type){
     
     // Data dataStruct;
     usb.Task();
-    
-    Data ControllerData = {0};
 
     switch(type){
         case ControllerType::DUALSHOCK3:{
             PS3USB Controller(&usb);
-            putControllerData_DUALSHOCK3(&Controller,&ControllerData);
+            if(Controller.PS3Connected || Controller.PS3NavigationConnected){
+                putControllerData_DUALSHOCK3(&Controller,dataStruct);
+            }else{
+                return FAIL_CODE;
+            }
             break;
         }
         case ControllerType::DUALSHOCK4:{
             PS4USB Controller(&usb);
-            putControllerData_DUALSHOCK4(&Controller,&ControllerData);
+            if(Controller.connected()){
+                putControllerData_DUALSHOCK4(&Controller,dataStruct);
+            }else {
+                return FAIL_CODE;
+            }
             break;
         }
         default:{
             PS5USB Controller(&usb);
-            putControllerData_DUALSENSE(&Controller,&ControllerData);
+            if(Controller.connected()){
+                putControllerData_DUALSENSE(&Controller,dataStruct);
+            }else {
+                return FAIL_CODE;
+            }
         }
     }
     
-    return 0;
+    return SUCCESS_CODE;
+}
+
+void transmitController(SoftwareSerial *Convey,Data dataStruct){
+    #ifndef SOFTWARESERIAL_BEGIN
+        Convey->begin(BAUDRATE);
+
+        // 設定完了までの遅延
+        delay(TRANSMIT_DELAY);
+        #define SOFTWARESERIAL_BEGIN
+    #endif
+
+    enum DataPosition{
+        LX,
+        LY,
+        RX,
+        RY,
+        L2,
+        R2,
+        BS1,
+        BS2,
+        SUM
+    };
+
+    uint8_t sendArray[DATA_SIZE] = {};
+
+    sendArray[DataPosition::LX] = dataStruct.LX;
+    sendArray[DataPosition::LY] = dataStruct.LY;
+    sendArray[DataPosition::RX] = dataStruct.RX;
+    sendArray[DataPosition::RY] = dataStruct.RY;
+    sendArray[DataPosition::L2] = dataStruct.L1;
+    sendArray[DataPosition::R2] = dataStruct.R2;
+
+    sendArray[DataPosition::BS1] |= dataStruct.TRIANGLE << 0;
+    sendArray[DataPosition::BS1] |= dataStruct.CIRCLE   << 1;
+    sendArray[DataPosition::BS1] |= dataStruct.CROSS    << 2;
+    sendArray[DataPosition::BS1] |= dataStruct.SQUARE   << 3;
+    sendArray[DataPosition::BS1] |= dataStruct.UP       << 4;
+    sendArray[DataPosition::BS1] |= dataStruct.RIGHT    << 5;
+    sendArray[DataPosition::BS1] |= dataStruct.DOWN     << 6;
+    sendArray[DataPosition::BS1] |= dataStruct.LEFT     << 7;
+
+    sendArray[DataPosition::BS2] |= dataStruct.L1       << 0;
+    sendArray[DataPosition::BS2] |= dataStruct.L3       << 1;
+    sendArray[DataPosition::BS2] |= dataStruct.R1       << 2;
+    sendArray[DataPosition::BS2] |= dataStruct.R3       << 3;
+    sendArray[DataPosition::BS2] |= (dataStruct.SELECT  | dataStruct.SHARE      | dataStruct.CREATE)  << 4;
+    sendArray[DataPosition::BS2] |= (dataStruct.START   | dataStruct.OPTIONS    )                     << 5;
+    sendArray[DataPosition::BS2] |= dataStruct.PS       << 6;
+    sendArray[DataPosition::BS2] |= dataStruct.TOUCHPAD << 7;
+
+    sendArray[SUM] = 0x00;
+    for(int i = 0;i < (DataPosition::SUM - 1);i++){
+        sendArray[SUM] += sendArray[i];
+    }
+
+    Convey->write(0xAF); // 先頭データ
+    for(int i = 0;i < DATA_SIZE;i++){
+        Convey->write(sendArray[i]);
+    }
+    Convey->write(0xed); // 末尾データ
+    Convey->write('\r'); // 復帰コード CR
+    Convey->write('\n'); // 改行コード LF
+
+    // 送信バッファの圧迫防止用遅延
+    delay(TRANSMIT_DELAY);
+
+    return;
+}
+
+void showControllerData(HardwareSerial *Convey,uint8_t type,Data dataStruct){
+    char temporary[100] = {};
+    sprintf(temporary," LX:%3d LY:%3d RX:%3d RY:%3d L2:%3d R2:%3d ",dataStruct.LX,dataStruct.LY,dataStruct.RX,dataStruct.RY,dataStruct.L2,dataStruct.R2);
+    Convey->print(temporary);
+
+    Convey->print("Pressed Button : ");
+
+    if(dataStruct.TRIANGLE)     Convey->print("TRIANGLE ");
+    if(dataStruct.CIRCLE)       Convey->print("CIRCLE ");
+    if(dataStruct.CROSS)        Convey->print("CROSS ");
+    if(dataStruct.SQUARE)       Convey->print("SQUARE ");
+
+    if(dataStruct.UP)           Convey->print("UP ");
+    if(dataStruct.RIGHT)        Convey->print("RIGHT ");
+    if(dataStruct.DOWN)         Convey->print("DOWN ");
+    if(dataStruct.LEFT)         Convey->print("LEFT ");
+
+    if(dataStruct.L1)           Convey->print("L1 ");
+    if(dataStruct.L3)           Convey->print("L3 ");
+    if(dataStruct.R1)           Convey->print("R1 ");
+    if(dataStruct.R3)           Convey->print("R3 ");
+
+    if(dataStruct.PS)           Convey->print("PS ");
+
+    // DUALSHOCK3
+    if(dataStruct.SELECT)       Convey->print("SELECT ");
+    if(dataStruct.START)        Convey->print("START ");
+
+    // DUALSHOCK4
+    if(dataStruct.SHARE)        Convey->print("SHARE ");
+
+    // DUALSENSE
+    if(dataStruct.CREATE)       Convey->print("CREATE ");
+    if(dataStruct.MICROPHONE)   Convey->print("MICROPHONE ");
+
+    // DUALSHOCK4 and DUALSENSE
+    if(dataStruct.OPTIONS)      Convey->print("OPTIONS ");
+    if(dataStruct.TOUCHPAD)     Convey->print("TOUCHPAD ");
+
+    Convey->println();
+    
+    return;
 }
 
 void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *dataStruct){
@@ -82,6 +198,8 @@ void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *dataStruct){
     dataStruct->PS          = PS3->getButtonPress(PS);
     dataStruct->SELECT      = PS3->getButtonPress(SELECT);
     dataStruct->START       = PS3->getButtonPress(START);
+
+    return;
 }
 
 void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *dataStruct){
@@ -111,6 +229,8 @@ void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *dataStruct){
     dataStruct->SHARE       = PS4->getButtonPress(SHARE);
     dataStruct->OPTIONS     = PS4->getButtonPress(OPTIONS);
     dataStruct->TOUCHPAD    = PS4->getButtonPress(TOUCHPAD);
+
+    return;
 }
 
 void putControllerData_DUALSENSE(PS5USB *PS5,Data *dataStruct){
@@ -142,4 +262,6 @@ void putControllerData_DUALSENSE(PS5USB *PS5,Data *dataStruct){
     dataStruct->TOUCHPAD    = PS5->getButtonPress(TOUCHPAD);
 
     dataStruct->MICROPHONE  = PS5->getButtonPress(MICROPHONE);
+
+    return;
 }

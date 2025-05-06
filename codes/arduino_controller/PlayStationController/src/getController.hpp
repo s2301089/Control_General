@@ -23,6 +23,9 @@
 // #endif
 // #include <SPI.h>
 
+#define SUCCESS_CODE 0
+#define FAIL_CODE 1
+
 #define BAUDRATE        38400
 #define DATA_SIZE       9
 #define TRANSMIT_DELAY  8
@@ -68,12 +71,14 @@ typedef struct{
     bool CREATE;
     bool MICROPHONE; // 送信データ割当場所不足により不使用中
 
-    // DUALSHOCK4 & DUALSENSE
+    // DUALSHOCK4 and DUALSENSE
     bool OPTIONS;
     bool TOUCHPAD;
 } Data;
 
-bool getController(SoftwareSerial *Convey,uint8_t type);
+bool getController(uint8_t type,Data *dataStruct);
+void transmitController(SoftwareSerial *Convey,Data dataStruct);
+void showControllerData(HardwareSerial *Convey,uint8_t type,Data dataStruct);
 
 void putControllerData_DUALSHOCK3(PS3USB *PS3,Data *dataStruct);
 void putControllerData_DUALSHOCK4(PS4USB *PS4,Data *dataStruct);
