@@ -23,8 +23,8 @@
 // #endif
 // #include <SPI.h>
 
-#define SUCCESS_CODE 0
-#define FAIL_CODE 1
+#define SUCCESS_CODE ((bool)0)
+#define FAIL_CODE ((bool)1)
 
 #define BAUDRATE        38400
 #define DATA_SIZE       9

@@ -7,21 +7,15 @@ Data ControllerData = {0};
 void setup() {
   Serial.begin(38400);
   outSerial.begin(38400);
-  
 }
 
 void loop() {
-  // if(outSerial.available()){
-  //   Serial.println(outSerial.read());
-  // }
   bool status;
   status = getController(ControllerType::DUALSENSE,&ControllerData);
   if(status == SUCCESS_CODE){
     transmitController(&outSerial,ControllerData);
     showControllerData(&Serial,ControllerData);
-  }else{
-    Serial.println("getController was failed\n");
+}else{
+    Serial.println(" getController was failed");
   }
-  Serial.println(status);
-
 }

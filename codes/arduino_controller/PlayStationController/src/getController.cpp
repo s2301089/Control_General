@@ -6,32 +6,21 @@
     user run this code in main
 */
 bool getController(uint8_t Type,Data *DataStruct){
-    #ifndef CONTROLLER_INIT // CONTROLLER_INIT        
-        USB usb;
+    static USB usb;
+    static bool controller_init = false;
 
-        /*
-            Serialが安定するまで待つとかっぽい
-            Arduino Uno R3では関係ないらしい
-        */
-        // #ifndef __MIPSEL__
-        //     while(!Serial)
-        // #endif
-
-        // 設定完了までの遅延
-        delay(TRANSMIT_DELAY);
-
+    if(controller_init == false){
         if(usb.Init() == -1){
             while(1);
         }
-        #define CONTROLLER_INIT
-    #endif // CONTROLLER_INIT
+        controller_init = true;
+    }
     
     // Data DataStruct;
     usb.Task();
-
     switch(Type){
         case ControllerType::DUALSHOCK3:{
-            PS3USB Controller(&usb);
+            static PS3USB Controller(&usb);
             if(Controller.PS3Connected || Controller.PS3NavigationConnected){
                 putControllerData_DUALSHOCK3(&Controller,DataStruct);
             }else{
@@ -40,7 +29,7 @@ bool getController(uint8_t Type,Data *DataStruct){
             break;
         }
         case ControllerType::DUALSHOCK4:{
-            PS4USB Controller(&usb);
+            static PS4USB Controller(&usb);
             if(Controller.connected()){
                 putControllerData_DUALSHOCK4(&Controller,DataStruct);
             }else {
@@ -49,7 +38,7 @@ bool getController(uint8_t Type,Data *DataStruct){
             break;
         }
         default:{
-            PS5USB Controller(&usb);
+            static PS5USB Controller(&usb);
             if(Controller.connected()){
                 putControllerData_DUALSENSE(&Controller,DataStruct);
             }else {
@@ -62,14 +51,6 @@ bool getController(uint8_t Type,Data *DataStruct){
 }
 
 void transmitController(SoftwareSerial *Convey,Data DataStruct){
-    #ifndef SOFTWARESERIAL_BEGIN
-        Convey->begin(BAUDRATE);
-
-        // 設定完了までの遅延
-        delay(TRANSMIT_DELAY);
-        #define SOFTWARESERIAL_BEGIN
-    #endif
-
     enum DataPosition{
         LX,
         LY,
