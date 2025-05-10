@@ -35,7 +35,7 @@ void transmitController(SoftwareSerial *Convey,Data DataStruct){
     sendArray[DataPosition::LY] = DataStruct.LY;
     sendArray[DataPosition::RX] = DataStruct.RX;
     sendArray[DataPosition::RY] = DataStruct.RY;
-    sendArray[DataPosition::L2] = DataStruct.L1;
+    sendArray[DataPosition::L2] = DataStruct.L2;
     sendArray[DataPosition::R2] = DataStruct.R2;
 
     sendArray[DataPosition::BS1] |= DataStruct.TRIANGLE << 0;
@@ -57,7 +57,7 @@ void transmitController(SoftwareSerial *Convey,Data DataStruct){
     sendArray[DataPosition::BS2] |= DataStruct.TOUCHPAD << 7;
 
     sendArray[SUM] = 0x00;
-    for(int i = 0;i < (DataPosition::SUM - 1);i++){
+    for(int i = 0;i < (DataPosition::SUM);i++){
         sendArray[SUM] += sendArray[i];
     }
 
