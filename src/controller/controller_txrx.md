@@ -11,7 +11,7 @@
 主に`Arduino Uno Rev3`に`USB Host Shield`を接続し、`USB Host Shield`に`DUALSHOCK4`などのコントローラーを接続し、`Arduino`でコントローラーのデータを読み取りそれをシリアル通信を用いて受信側に送る。受信データは以下の表の内容になって全てで`11byte`ある。  
 |byte数|data|説明|
 |:---:|:---:|:---:|
-| 0byte|0xaf|先頭データを表す|
+| 0byte|0ｈxaf|先頭データを表す|
 | 1byte|unsigned char|LアナログスティックのX座標|
 | 2byte|unsigned char|LアナログスティックのY座標|
 | 3byte|unsigned char|RアナログスティックのX座標|

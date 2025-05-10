@@ -177,6 +177,14 @@
 <li><a href="https://akizukidenshi.com/catalog/g/g117215/">ATOM Matrix</a></li>
 <li><a href="https://akizukidenshi.com/catalog/g/g115674/">ESP32-WROVER-E</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gitコマンドの使い方"><a class="header" href="#gitコマンドの使い方">gitコマンドの使い方</a></h1>
+<p>バージョン管理ツール<code>git</code>の簡易的な使用方法をメモ。導入部分は省く。</p>
+<h4 id="tagを作成してみよう"><a class="header" href="#tagを作成してみよう">tagを作成してみよう</a></h4>
+<p><code>git tag -a [タグ名] -m "タグメッセージ"</code><br />
+<code>git push origin [タグ名]</code></p>
+<pre><code>git tag -d [タグ名]
+git push origin --delete [タグ名]
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="モーターのpwm制御"><a class="header" href="#モーターのpwm制御">モーターのPWM制御</a></h1>
 <h3 id="pwmとは"><a class="header" href="#pwmとは">PWMとは</a></h3>
 <p><code>PWM</code>とは、<code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>という。一定周期の中で出力が<code>HIGH</code>の長さと<code>LOW</code>の長さ比(デューティ比)で出力が決まる。</p>
@@ -226,7 +234,7 @@
 <h3 id="送信側"><a class="header" href="#送信側">送信側</a></h3>
 <p>主に<code>Arduino Uno Rev3</code>に<code>USB Host Shield</code>を接続し、<code>USB Host Shield</code>に<code>DUALSHOCK4</code>などのコントローラーを接続し、<code>Arduino</code>でコントローラーのデータを読み取りそれをシリアル通信を用いて受信側に送る。受信データは以下の表の内容になって全てで<code>11byte</code>ある。</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">byte数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
-<tr><td style="text-align: center">0byte</td><td style="text-align: center">0xaf</td><td style="text-align: center">先頭データを表す</td></tr>
+<tr><td style="text-align: center">0byte</td><td style="text-align: center">0ｈxaf</td><td style="text-align: center">先頭データを表す</td></tr>
 <tr><td style="text-align: center">1byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">LアナログスティックのX座標</td></tr>
 <tr><td style="text-align: center">2byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">LアナログスティックのY座標</td></tr>
 <tr><td style="text-align: center">3byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">RアナログスティックのX座標</td></tr>
@@ -281,7 +289,7 @@
 <p>SUM = <code>(LアナログスティックのX座標)</code> + <code>(LアナログスティックのY座標)</code> + <code>(RアナログスティックのX座標)</code> + <code>(RアナログスティックのY座標)</code> + <code>(L2アナログボタン)</code> + <code>(R2アナログボタン)</code> + <code>(ディジタルボタンセット1)</code> + <code>(ディジタルボタンセット2)</code></p>
 <h3 id="受信側"><a class="header" href="#受信側">受信側</a></h3>
 <p><code>NUCLEO-F446RE</code>などで<code>FEP</code>を通して<code>Arduino</code>から送られてきたデータはある処理をされて使用するデータに格納される。その処理はざっくり言うと以下の図のような処理になる。<br />
-<img src="./resources/txrx/rev.drawio.png" alt="rev.drawio.png" /><br />
+<img src="controller/./resources/txrx/rev.drawio.png" alt="rev.drawio.png" /><br />
 各環境や言語によって使われる関数などは違うがだいたいはこのような感じの処理をしている。<br />
 各環境の受信側ライブラリ(現在あるもの)</p>
 <ul>
@@ -392,6 +400,26 @@ void loop() {
 <li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
 <li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="arduino-uno-r3-送信側"><a class="header" href="#arduino-uno-r3-送信側">Arduino Uno R3 (送信側)</a></h1>
+<h2 id="仕組み過去バージョン"><a class="header" href="#仕組み過去バージョン">仕組み(過去バージョン)</a></h2>
+<p>このソースコードを作成する前までに使用していた通信の仕組みは<a href="controller/./controller_txrx.html">この</a>記事にまとめてある。</p>
+<p>今回、作成したソースファイルとヘッダファイルに含まれている関数などの説明とこのプログラムファイルの使用方法などを簡易的に説明する。</p>
+<h2 id="概要"><a class="header" href="#概要">概要</a></h2>
+<h4 id="環境等"><a class="header" href="#環境等">環境等</a></h4>
+<ul>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li><a href="controller/../platformIO.html">PlatformIO IDE</a></li>
+<li><a href="https://docs.arduino.cc/hardware/uno-rev3/">Arduino Uno R3</a></li>
+<li><a href="https://github.com/felis/USB_Host_Shield_2.0">USB Host Sheield 2.0</a></li>
+</ul>
+<h4 id="対応コントローラー"><a class="header" href="#対応コントローラー">対応コントローラー</a></h4>
+<ul>
+<li><a href="https://www.sony.com/ja/SonyInfo/design/gallery/CECH-ZC2/">DUAKSHOCK3(PlayStation3用コントローラー)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualshock-4-wireless-controller/">DUALSHOCK4(PlayStation4用コントローラー)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(PlayStation5用コントローラー)</a></li>
+</ul>
+<h4 id="ソースファイルヘッダファイル"><a class="header" href="#ソースファイルヘッダファイル">ソースファイル・ヘッダファイル</a></h4>
+<p>ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは<code>ver.1.1.0</code>であり<a href="https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src">ここ</a>にある。</p>
 
                     </main>
 
