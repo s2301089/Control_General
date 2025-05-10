@@ -8,9 +8,9 @@ class MDBookSidebarScrollbox extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded affix "><a href="zentei.html">前提条件等</a></li><li class="chapter-item expanded affix "><a href="how_to_use_git.html">gitコマンド(簡単)</a></li><li class="chapter-item expanded affix "><li class="part-title">基本の制御</li><li class="chapter-item expanded "><a href="motor_pwm.html"><strong aria-hidden="true">1.</strong> モーターのPWM制御</a></li><li class="chapter-item expanded "><a href="controller/controller_txrx.html"><strong aria-hidden="true">2.</strong> 通信の仕組み</a></li><li class="chapter-item expanded affix "><li class="part-title">各マイコン・IDEの開発</li><li class="chapter-item expanded "><a href="deve_stm.html"><strong aria-hidden="true">3.</strong> STMマイコン</a></li><li class="chapter-item expanded "><a href="deve-raspico.html"><strong aria-hidden="true">4.</strong> Raspberry Pi Pico</a></li><li class="chapter-item expanded "><a href="platformIO.html"><strong aria-hidden="true">5.</strong> PlatformIO</a></li><li class="chapter-item expanded affix "><li class="part-title">自作ライブラリ等</li><li class="chapter-item expanded "><a href="controller/controller_arduino.html"><strong aria-hidden="true">6.</strong> Arduino Uno R3 (送信側)</a></li></ol>';
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded affix "><a href="ControllGeneralHome.html">前提条件等</a></li><li class="chapter-item expanded affix "><li class="part-title">基本的なこと</li><li class="chapter-item expanded "><a href="BasicContents/BasicContentsHome.html"><strong aria-hidden="true">1.</strong> 一覧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="BasicContents/git_GitHub.html"><strong aria-hidden="true">1.1.</strong> git / GitHub</a></li><li class="chapter-item expanded "><a href="BasicContents/motor.html"><strong aria-hidden="true">1.2.</strong> モーター</a></li></ol></li></ol>';
         // Set the current, active page, and reveal it if it's hidden
-        let current_page = document.location.href.toString().split("#")[0].split("?")[0];
+        let current_page = document.location.href.toString().split("#")[0];
         if (current_page.endsWith("/")) {
             current_page += "index.html";
         }

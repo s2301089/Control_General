@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Control_General</title>
-        <meta name="robots" content="noindex">
+        <title>モーター - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -13,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,12 +35,12 @@
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -94,7 +93,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -129,7 +128,7 @@
                     <h1 class="menu-title">Control_General</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -158,41 +157,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
-<p>制御に関するお勉強・開発のHome<br />
-基本的に<code>C言語</code>を用いる。一部<code>C++</code>などの他の言語の知識が混ざる可能性もある。環境構築等はすでに済んでいるものとし、コードの内容のみになることがある。<br />
-各開発などのリポジトリは各ページに掲載していることもある。あくまで参考程度にしかならない。<br />
-一部に自作のヘッダファイルなどを使用する場合がある。その場合は、そのファイルの中身などを簡単に説明する記事を作るように心掛ける。</p>
-<p><strong>結局は自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
-<h3 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h3>
-<ul>
-<li>Windows 11 Home</li>
-<li>Ubuntu 22.04 LTS</li>
-</ul>
-<h3 id="使用使用予定のマイコンマイコンボード一覧"><a class="header" href="#使用使用予定のマイコンマイコンボード一覧">使用/使用予定のマイコン・マイコンボード一覧</a></h3>
-<ul>
-<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g117215/">ATOM Matrix</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g115674/">ESP32-WROVER-E</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="基本的なこと"><a class="header" href="#基本的なこと">基本的なこと</a></h1>
-<p>この章ではプログラムを作成するにあたって必要になってくる知識を軽く解説。</p>
-<ul>
-<li><a href="BasicContents/./git_GitHub.html"><code>git</code>と<code>GitHub</code>の簡単な使い方について</a></li>
-<li><a href="BasicContents/./motor.html">モーターの回転方向などの制御プログラムについて</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="gitコマンドの使い方"><a class="header" href="#gitコマンドの使い方">gitコマンドの使い方</a></h1>
-<p>バージョン管理ツール<code>git</code>の簡易的な使用方法をメモ。導入部分は省く。</p>
-<h4 id="tagを作成してみよう"><a class="header" href="#tagを作成してみよう">tagを作成してみよう</a></h4>
-<p><code>git tag -a [タグ名] -m "タグメッセージ"</code><br />
-<code>git push origin [タグ名]</code></p>
-<pre><code>git tag -d [タグ名]
-git push origin --delete [タグ名]
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="モーターのpwm制御"><a class="header" href="#モーターのpwm制御">モーターのPWM制御</a></h1>
+                        <h1 id="モーターのpwm制御"><a class="header" href="#モーターのpwm制御">モーターのPWM制御</a></h1>
 <h3 id="pwmとは"><a class="header" href="#pwmとは">PWMとは</a></h3>
 <p><code>PWM</code>とは、<code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>という。一定周期の中で出力が<code>HIGH</code>の長さと<code>LOW</code>の長さ比(デューティ比)で出力が決まる。</p>
 <blockquote>
@@ -202,14 +167,14 @@ git push origin --delete [タグ名]
 </blockquote>
 <h3 id="モーターを回す"><a class="header" href="#モーターを回す">モーターを回す</a></h3>
 <p>回路的には以下のようになっている。<br />
-<img src="BasicContents/./resources/motor/motor_road.drawio.png" alt="motor_road.drawio.png" /><br />
+<img src="./resources/motor/motor_road.drawio.png" alt="motor_road.drawio.png" /><br />
 モーターの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要がある。それをフォトカプラ基板で信号のやり取りを行っている。また、<code>PWM</code>の周期を<code>83[μs]</code>に設定する。これはモタドラICの周波数が<code>12[kHz]</code>あたりがいいらしいからだ(モタドラIC<code>HIP4081AIPZ</code>)。</p>
 <h3 id="フォトカプラによる動作の違い"><a class="header" href="#フォトカプラによる動作の違い">フォトカプラによる動作の違い</a></h3>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">フォトカプラ</th><th style="text-align: center">部品</th><th style="text-align: center">用途</th><th style="text-align: center">向き</th></tr></thead><tbody>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a></td><td style="text-align: center"><img src="BasicContents/./resources/motor/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a></td><td style="text-align: center"><img src="BasicContents/./resources/motor/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /></td><td style="text-align: center">ディジタルの変換×2</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a></td><td style="text-align: center"><img src="BasicContents/./resources/motor/pic_PS9513.JPG" alt="pic_PS9513.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a></td><td style="text-align: center"><img src="BasicContents/./resources/motor/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a></td><td style="text-align: center"><img src="./resources/motor/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a></td><td style="text-align: center"><img src="./resources/motor/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /></td><td style="text-align: center">ディジタルの変換×2</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a></td><td style="text-align: center"><img src="./resources/motor/pic_PS9513.JPG" alt="pic_PS9513.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a></td><td style="text-align: center"><img src="./resources/motor/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
 </tbody></table>
 </div>
 <p><strong>注意点</strong></p>
@@ -226,7 +191,7 @@ git push origin --delete [タグ名]
 </tbody></table>
 </div>
 <p><code>出力波形</code><br />
-<img src="BasicContents/./resources/motor/PWM_modu.png" alt="PWM_modu.png" /></p>
+<img src="./resources/motor/PWM_modu.png" alt="PWM_modu.png" /></p>
 <h4 id="参考"><a class="header" href="#参考">参考</a></h4>
 <ul>
 <li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
@@ -237,6 +202,9 @@ git push origin --delete [タグ名]
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../BasicContents/git_GitHub.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -245,6 +213,9 @@ git push origin --delete [タグ名]
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../BasicContents/git_GitHub.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
@@ -258,23 +229,16 @@ git push origin --delete [タグ名]
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            MathJax.Hub.Register.StartupHook('End', function() {
-                window.setTimeout(window.print, 100);
-            });
-        });
-        </script>
 
     </div>
     </body>

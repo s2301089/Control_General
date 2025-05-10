@@ -159,13 +159,14 @@
                     <main>
                         <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
 <p>制御に関するお勉強・開発のHome<br />
-基本的に<code>C言語</code>を用いる。一部<code>C++</code>などの他の言語の知識が混ざる可能性もある。<br />
-環境構築等はすでに済んでいるものとし、コードの内容のみになることがある。<br />
+基本的に<code>C言語</code>を用いる。一部<code>C++</code>などの他の言語の知識が混ざる可能性もある。環境構築等はすでに済んでいるものとし、コードの内容のみになることがある。<br />
 各開発などのリポジトリは各ページに掲載していることもある。あくまで参考程度にしかならない。<br />
-<strong>自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
+一部に自作のヘッダファイルなどを使用する場合がある。その場合は、そのファイルの中身などを簡単に説明する記事を作るように心掛ける。</p>
+<p><strong>結局は自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
 <h3 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h3>
 <ul>
-<li>Windows11 Home</li>
+<li>Windows 11 Home</li>
+<li>Ubuntu 22.04 LTS</li>
 </ul>
 <h3 id="使用使用予定のマイコンマイコンボード一覧"><a class="header" href="#使用使用予定のマイコンマイコンボード一覧">使用/使用予定のマイコン・マイコンボード一覧</a></h3>
 <ul>
@@ -182,7 +183,7 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next prefetch" href="how_to_use_git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="BasicContents/BasicContentsHome.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -193,29 +194,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next prefetch" href="how_to_use_git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="BasicContents/BasicContentsHome.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
