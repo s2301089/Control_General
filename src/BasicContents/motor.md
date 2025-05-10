@@ -8,16 +8,16 @@
 
 ### モーターを回す  
 回路的には以下のようになっている。  
-![motor_road.drawio.png](./resources/motor/motor_road.drawio.png)  
+![motor_road.drawio.png](../resources/BasicContents/motor/motor_road.drawio.png)  
 モーターの動作電圧が`12V`でマイコンからの信号の電圧が`5V`か`3.3V`なので電圧を上げる必要がある。それをフォトカプラ基板で信号のやり取りを行っている。また、`PWM`の周期を`83[μs]`に設定する。これはモタドラICの周波数が`12[kHz]`あたりがいいらしいからだ(モタドラIC`HIP4081AIPZ`)。  
 
 ### フォトカプラによる動作の違い  
 | フォトカプラ | 部品 | 用途 | 向き |  
 |:-------:|:------:|:------:|:-----:|  
-| [TLP621](https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a) | ![pic_TLP621.JPG](./resources/motor/pic_TLP621.JPG) | ディジタルの変換 | 左下にある◯がマイコン側 |  
-| [TLP521-2](https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&matchtype=&&campaignid=20858944244&gad_source=1&gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&gclsrc=aw.ds) | ![pic_TLP521-2.JPG](./resources/motor/pic_TLP521-2.JPG) | ディジタルの変換×2 | 左下にある◯がマイコン側または、角が削れている方がマイコン側 |  
-| [PS9513](https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm) | ![pic_PS9513.JPG](./resources/motor/pic_PS9513.JPG) | PWMの変換 | 左下にある◯がマイコン側 |  
-| [TLP250H](https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd) | ![pic_TLP250H.JPG](./resources/motor/pic_TLP250H.JPG) | PWMの変換 | 左下にある◯がマイコン側または、角が削れている方がマイコン側 |  
+| [TLP621](https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a) | ![pic_TLP621.JPG](../resources//BasicContents/motor/pic_TLP621.JPG) | ディジタルの変換 | 左下にある◯がマイコン側 |  
+| [TLP521-2](https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&matchtype=&&campaignid=20858944244&gad_source=1&gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&gclsrc=aw.ds) | ![pic_TLP521-2.JPG](../resources/BasicContents/motor/pic_TLP521-2.JPG) | ディジタルの変換×2 | 左下にある◯がマイコン側または、角が削れている方がマイコン側 |  
+| [PS9513](https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm) | ![pic_PS9513.JPG](../resources/BasicContents/motor/pic_PS9513.JPG) | PWMの変換 | 左下にある◯がマイコン側 |  
+| [TLP250H](https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd) | ![pic_TLP250H.JPG](../resources/BasicContents/motor/pic_TLP250H.JPG) | PWMの変換 | 左下にある◯がマイコン側または、角が削れている方がマイコン側 |  
 
 **注意点**  
 * `TLP521-2`はPWMの変換と同じような大きさだが内部の配線では`TLP621`が2個あるような配置になっている。PWMの変換には使用できないので注意。  
@@ -32,7 +32,7 @@
 | TLP250H | 1 | 0 | 255 | 右回り | ① |  
 
 `出力波形`  
-![PWM_modu.png](./resources/motor/PWM_modu.png)  
+![PWM_modu.png](../resources/BasicContents/motor/PWM_modu.png)  
 
 #### 参考  
 * [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  

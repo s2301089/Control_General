@@ -167,14 +167,14 @@
 </blockquote>
 <h3 id="モーターを回す"><a class="header" href="#モーターを回す">モーターを回す</a></h3>
 <p>回路的には以下のようになっている。<br />
-<img src="./resources/motor/motor_road.drawio.png" alt="motor_road.drawio.png" /><br />
+<img src="../resources/BasicContents/motor/motor_road.drawio.png" alt="motor_road.drawio.png" /><br />
 モーターの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要がある。それをフォトカプラ基板で信号のやり取りを行っている。また、<code>PWM</code>の周期を<code>83[μs]</code>に設定する。これはモタドラICの周波数が<code>12[kHz]</code>あたりがいいらしいからだ(モタドラIC<code>HIP4081AIPZ</code>)。</p>
 <h3 id="フォトカプラによる動作の違い"><a class="header" href="#フォトカプラによる動作の違い">フォトカプラによる動作の違い</a></h3>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">フォトカプラ</th><th style="text-align: center">部品</th><th style="text-align: center">用途</th><th style="text-align: center">向き</th></tr></thead><tbody>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a></td><td style="text-align: center"><img src="./resources/motor/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a></td><td style="text-align: center"><img src="./resources/motor/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /></td><td style="text-align: center">ディジタルの変換×2</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a></td><td style="text-align: center"><img src="./resources/motor/pic_PS9513.JPG" alt="pic_PS9513.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
-<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a></td><td style="text-align: center"><img src="./resources/motor/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">TLP621</a></td><td style="text-align: center"><img src="../resources//BasicContents/motor/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1718031?cm_mmc=JP-PLA-DS3A-_-google-_-PLA_JP_JP_ePmax_Prio1-_--_-&amp;matchtype=&amp;&amp;campaignid=20858944244&amp;gad_source=1&amp;gclid=CjwKCAiArKW-BhAzEiwAZhWsIC59PvjUU27b9lFqq5lPOYafc83XY63O_NRmTJ4k13gT-4t-ofMuexoCSNoQAvD_BwE&amp;gclsrc=aw.ds">TLP521-2</a></td><td style="text-align: center"><img src="../resources/BasicContents/motor/pic_TLP521-2.JPG" alt="pic_TLP521-2.JPG" /></td><td style="text-align: center">ディジタルの変換×2</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/2347111?srsltid=AfmBOop1mbTNh_2S3L3LVPv-URRDD3y03iuBuspMm1w5xkRcWY2EgoUm">PS9513</a></td><td style="text-align: center"><img src="../resources/BasicContents/motor/pic_PS9513.JPG" alt="pic_PS9513.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
+<tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/8851279?srsltid=AfmBOoqXYwz-_Yaf1EzdvjIdm6IBj3ft_dYQmsY4QKocpl6aMEDGDWGd">TLP250H</a></td><td style="text-align: center"><img src="../resources/BasicContents/motor/pic_TLP250H.JPG" alt="pic_TLP250H.JPG" /></td><td style="text-align: center">PWMの変換</td><td style="text-align: center">左下にある◯がマイコン側または、角が削れている方がマイコン側</td></tr>
 </tbody></table>
 </div>
 <p><strong>注意点</strong></p>
@@ -191,7 +191,7 @@
 </tbody></table>
 </div>
 <p><code>出力波形</code><br />
-<img src="./resources/motor/PWM_modu.png" alt="PWM_modu.png" /></p>
+<img src="../resources/BasicContents/motor/PWM_modu.png" alt="PWM_modu.png" /></p>
 <h4 id="参考"><a class="header" href="#参考">参考</a></h4>
 <ul>
 <li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
@@ -221,6 +221,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
