@@ -4,24 +4,27 @@
 SoftwareSerial outSerial(7,6);
 Data ControllerData;
 
-USB bsu;
-PS3USB ps3(&bsu);
-PS4USB ps4(&bsu);
+USB usb;
+PS3USB ps3(&usb);
+PS4USB ps4(&usb);
+PS5USB ps5(&usb);
 
 void setup() {
-  Serial.begin(38400);
-  outSerial.begin(38400);
-  bsu.Init();
+  Serial.begin(BAUDRATE);
+  outSerial.begin(BAUDRATE);
+  if(usb.Init() == -1){
+    while(1);
+  }
 }
 
 void loop() {
-  bsu.Task();
-  if(ps3.PS3Connected || ps3.PS3NavigationConnected){
-    Serial.println("PS3 Controller is Connected.");
-  }else if(ps4.connected()){
-    Serial.println("PS4 Controller is Connected.");
+  bool status;
+  status = getController(&usb,&ps3,&ps4,&ps5,&ControllerData);
+  if(status == SUCCESS_CODE){
+    transmitController(&outSerial,ControllerData);
+    showControllerData(&Serial,ControllerData);
   }else {
-    Serial.println("Controller is not Connected.");
+    Serial.println("getController was failed");
   }
 }
 

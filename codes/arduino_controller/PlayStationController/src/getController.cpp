@@ -1,44 +1,16 @@
 #include <getController.hpp>
 
-bool getController(uint8_t Type,Data *DataStruct){
-    static USB usb;
-    static bool controller_init = false;
-
-    if(controller_init == false){
-        if(usb.Init() == -1){
-            while(1);
-        }
-        controller_init = true;
-    }
+bool getController(USB *USB,PS3USB *PS3,PS4USB *PS4,PS5USB *PS5,Data *DataStruct){
     ControllerDataInit(DataStruct);
-    usb.Task();
-    switch(Type){
-        case ControllerType::DUALSHOCK3:{
-            static PS3USB Controller(&usb);
-            if(Controller.PS3Connected || Controller.PS3NavigationConnected){
-                putControllerData_DUALSHOCK3(&Controller,DataStruct);
-            }else{
-                return FAIL_CODE;
-            }
-            break;
-        }
-        case ControllerType::DUALSHOCK4:{
-            static PS4USB Controller(&usb);
-            if(Controller.connected()){
-                putControllerData_DUALSHOCK4(&Controller,DataStruct);
-            }else {
-                return FAIL_CODE;
-            }
-            break;
-        }
-        default:{
-            static PS5USB Controller(&usb);
-            if(Controller.connected()){
-                putControllerData_DUALSENSE(&Controller,DataStruct);
-            }else {
-                return FAIL_CODE;
-            }
-        }
+    USB->Task();
+    if(PS3->PS3Connected || PS3->PS3NavigationConnected){
+        putControllerData_DUALSHOCK3(PS3,DataStruct);
+    }else if(PS4->connected()){
+        putControllerData_DUALSHOCK4(PS4,DataStruct);
+    }else if(PS5->connected()){
+        putControllerData_DUALSENSE(PS5,DataStruct);
+    }else {
+        return FAIL_CODE;
     }
     
     return SUCCESS_CODE;
@@ -282,3 +254,4 @@ void putControllerData_DUALSENSE(PS5USB *PS5,Data *DataStruct){
 
     return;
 }
+

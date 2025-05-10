@@ -18,12 +18,6 @@
 #define DATA_SIZE       9
 #define TRANSMIT_DELAY  8
 
-enum ControllerType{
-    DUALSHOCK3,
-    DUALSHOCK4,
-    DUALSENSE
-};
-
 typedef struct{
     // analog values 0~255
     uint8_t LX;
@@ -64,7 +58,7 @@ typedef struct{
     bool TOUCHPAD;
 } Data;
 
-bool getController(uint8_t Type,Data *DataStruct);
+bool getController(USB *USB,PS3USB *PS3,PS4USB *PS4,PS5USB *PS5,Data *DataStruct);
 void transmitController(SoftwareSerial *Convey,Data DataStruct);
 void showControllerData(HardwareSerial *Convey,Data DataStruct);
 
