@@ -1,6 +1,14 @@
-# STMマイコン
+# STM32CubeIDEでの開発
 
-基本的に`NUCLEO-F446RE`を用いた。また、開発環境には`STM32CubeIDE`を使用した。開発環境には他にも`Keil Studio`や`PlatformIO`などもあるが未着手または、継続不可の可能性があるものである。  
+基本的に`NUCLEO-F446RE`を用いた。2024年度春休みに`Keil Studio`でない開発環境を使用するために使用してみた。その時の記録。  
 
-* [プロジェクトリポジトリ](https://github.com/s2301089/development-F446RE)  
-* [まとめ](https://s2301089.github.io/development-CubeIDE/book/)  
+**コンテンツ一覧**  
+
+- [はじめにやっておくと便利になること](./BasicContents/BasicContentsHome.md)
+  - [~~変数などを表示するために~~](./BasicContents/printf.md)
+  - [変数などを簡単に表示するために](./BasicContents/printfLibrary.md)
+  - [ピンの名前などを簡単に入力するために](./BasicContents/manydef.md)
+
+## 開発を始める前に
+
+- [`STM32CubeIDE`の導入](https://qiita.com/usashirou/items/65be086c28f7a6feac7d)

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>一覧 - Control_General</title>
+        <title>変数値などの表示 - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -157,28 +157,56 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
-<p><code>PlatformIO</code>に移行する前まで主に<code>Arduino Uno Rev3</code>や<code>Raspberry Pi Pico</code>などのマイコンボードの開発に使用してきた。しかし、2025年度ではすべてのプログラムの作成を<code>PlatformIO</code>で行うことに統一し<code>ArduinoIDE</code>は使用しないように方向転換している。<br />
-しかし、<code>PlatformIO</code>で<code>Arduino</code>のプログラムを作成するためにframeworkに<code>Arduino</code>を選択することになる。その場合は、<code>ArduinoIDE</code>で書いてきたような関数を使用する。そのためには、<code>ArduinoIDE</code>で書いてきたプログラムの基礎知識が必要になってくる。その簡単な関数などを軽く紹介する。</p>
-<p><strong>コンテンツ一覧</strong></p>
-<ul>
-<li><a href="./DigitalInOut/digitalOut.html">ディジタル出力をする</a></li>
-<li><a href="./SerialPrint.html">変数などの値を見れるようにする</a></li>
-</ul>
-<h2 id="開発を始める前に"><a class="header" href="#開発を始める前に">開発を始める前に</a></h2>
-<ul>
-<li><a href="https://karakuri-musha.com/inside-technology/arduino-raspberrypi-pico-helloworld01/"><code>Raspberry Pi Pico</code>を使用するために</a></li>
-</ul>
+                        <h1 id="変数値などの表示"><a class="header" href="#変数値などの表示">変数値などの表示</a></h1>
+<h2 id="printfみたいなことをする"><a class="header" href="#printfみたいなことをする">printfみたいなことをする</a></h2>
+<p>変数の値などを表示させたいときなどにシリアルモニタに値を出力する。<code>Raspberry Pi Pico</code>とパソコンでシリアル通信を用いてデータをやり取りしている。<br />
+<code>printf01.ino</code></p>
+<pre><code class="language-cpp">int x = 0;
+
+void setup(){
+    Serial.begin(38400);
+}
+
+void loop(){
+    if(x &gt; 100){
+        x = 0;
+    }
+    Serial.println(x);
+    x++;
+    delay(100);
+}
+</code></pre>
+<p>これは<code>0~100</code>までの値を<code>0.1s</code>ごとに<code>1</code>ずつ値を増やし表示する。</p>
+<p><code>Serial.print</code>,<code>Serial.println</code>は一つの変数または、一つの文字列しかその関数では表示できない。<code>printf</code>関数みたいに表示形式を指定するためには<code>sprintf</code>関数を使用する。(使用するボードによっては<code>Serial.printf</code>関数も使用できるっぽい。これは<code>printf</code>みたいな関数)<br />
+<code>printf02.ino</code></p>
+<pre><code class="language-cpp">int x = 33;
+
+void setup(){
+  Serial.begin(38400);
+}
+
+void loop(){
+  if(x &gt; 126){
+    x = 33;
+  }
+  char buf[100] = {};
+  sprintf(buf,"%3d 0x%02X %c \n",x,x,x);
+  Serial.print(buf);
+  x++;
+  delay(100);
+}
+</code></pre>
+<p>これはASCIIコードの33番(<code>!</code>)~126番(<code>~</code>)までを<code>0.1s</code>ごとに表示するプログラム。表示形式は(xを整数3桁 0x(xを大文字の16進数2桁空白0埋め) xの値に対応する文字)で出力される。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../DevelopmentArduinoIDE/DigitalInOut/digitalOut.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../DevelopmentArduinoIDE/DigitalInOut/digitalOut.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../DevelopmentSTM32CubeIDE/DevelopmentSTM32CubeIDEHome.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -188,11 +216,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../DevelopmentArduinoIDE/DigitalInOut/digitalOut.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../DevelopmentArduinoIDE/DigitalInOut/digitalOut.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../DevelopmentSTM32CubeIDE/DevelopmentSTM32CubeIDEHome.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="ja" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -333,12 +333,6 @@ git push origin --delete [タグ名]
 <h3 id="ソースファイルヘッダファイル"><a class="header" href="#ソースファイルヘッダファイル">ソースファイル・ヘッダファイル</a></h3>
 <p>ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは<code>ver.1.1.0</code>であり<a href="https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src">ここ</a>にある。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="受信側receive--rx"><a class="header" href="#受信側receive--rx">受信側(Receive / RX)</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
-<p>開発環境には<code>ArduinoIDE</code>を用いた。</p>
-<ul>
-<li><a href="https://github.com/s2301089/development-Raspberry_Pi_Pico">プロジェクトリポジトリ</a></li>
-<li><a href="https://s2301089.github.io/development-Raspberry_Pi_Pico/book/">まとめ</a></li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
 <p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への以降を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">記事</a></p>
 <h2 id="platform-ioを入れる"><a class="header" href="#platform-ioを入れる">Platform IOを入れる</a></h2>
@@ -429,11 +423,353 @@ void loop() {
 <li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
 <li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="stmマイコン"><a class="header" href="#stmマイコン">STMマイコン</a></h1>
-<p>基本的に<code>NUCLEO-F446RE</code>を用いた。また、開発環境には<code>STM32CubeIDE</code>を使用した。開発環境には他にも<code>Keil Studio</code>や<code>PlatformIO</code>などもあるが未着手または、継続不可の可能性があるものである。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
+<p><code>PlatformIO</code>に移行する前まで主に<code>Arduino Uno Rev3</code>や<code>Raspberry Pi Pico</code>などのマイコンボードの開発に使用してきた。しかし、2025年度ではすべてのプログラムの作成を<code>PlatformIO</code>で行うことに統一し<code>ArduinoIDE</code>は使用しないように方向転換している。<br />
+しかし、<code>PlatformIO</code>で<code>Arduino</code>のプログラムを作成するためにframeworkに<code>Arduino</code>を選択することになる。その場合は、<code>ArduinoIDE</code>で書いてきたような関数を使用する。そのためには、<code>ArduinoIDE</code>で書いてきたプログラムの基礎知識が必要になってくる。その簡単な関数などを軽く紹介する。</p>
+<p><strong>コンテンツ一覧</strong></p>
 <ul>
-<li><a href="https://github.com/s2301089/development-F446RE">プロジェクトリポジトリ</a></li>
-<li><a href="https://s2301089.github.io/development-CubeIDE/book/">まとめ</a></li>
+<li><a href="DevelopmentArduinoIDE/./DigitalInOut/digitalOut.html">ディジタル出力をする</a></li>
+<li><a href="DevelopmentArduinoIDE/./SerialPrint.html">変数などの値を見れるようにする</a></li>
+</ul>
+<h2 id="開発を始める前に"><a class="header" href="#開発を始める前に">開発を始める前に</a></h2>
+<ul>
+<li><a href="https://karakuri-musha.com/inside-technology/arduino-raspberrypi-pico-helloworld01/"><code>Raspberry Pi Pico</code>を使用するために</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ディジタル出力"><a class="header" href="#ディジタル出力">ディジタル出力</a></h1>
+<h2 id="ディジタル出力をしてlチカをする"><a class="header" href="#ディジタル出力をしてlチカをする">ディジタル出力をしてLチカをする</a></h2>
+<p><code>Raspberry Pi Pico</code>のLチカ(LEDをチカチカさせる)コードを作成。<br />
+どのピンを使用するかどうかは<a href="https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf">これ</a>を参考にした。<br />
+<code>digiout.ino</code></p>
+<pre><code class="language-cpp">#define LED 2
+int x = 0;
+
+void setup(){
+    pinMode(LED,OUTPUT);
+}
+
+void loop(){
+    digitalWrite(LED,x);
+    x = !x;
+    delay(500);
+}
+</code></pre>
+<p><code>500ms</code>ごとにLEDが点灯消灯を繰り返すプログラム。<code>GP2</code>のピンで出力が行われる。おそらくピンの宣言では<code>GP◯</code>の◯の数字を<code>pinMode(ピン名,用途)</code>のピン名に入れればいいだろう。</p>
+<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
+<ul>
+<li><a href="https://deviceplus.jp/arduino/arduino_f03/">Arduino（アルディーノ）電子工作の基本③ デジタル出力でLEDを点灯制御しよう</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="変数値などの表示"><a class="header" href="#変数値などの表示">変数値などの表示</a></h1>
+<h2 id="printfみたいなことをする"><a class="header" href="#printfみたいなことをする">printfみたいなことをする</a></h2>
+<p>変数の値などを表示させたいときなどにシリアルモニタに値を出力する。<code>Raspberry Pi Pico</code>とパソコンでシリアル通信を用いてデータをやり取りしている。<br />
+<code>printf01.ino</code></p>
+<pre><code class="language-cpp">int x = 0;
+
+void setup(){
+    Serial.begin(38400);
+}
+
+void loop(){
+    if(x &gt; 100){
+        x = 0;
+    }
+    Serial.println(x);
+    x++;
+    delay(100);
+}
+</code></pre>
+<p>これは<code>0~100</code>までの値を<code>0.1s</code>ごとに<code>1</code>ずつ値を増やし表示する。</p>
+<p><code>Serial.print</code>,<code>Serial.println</code>は一つの変数または、一つの文字列しかその関数では表示できない。<code>printf</code>関数みたいに表示形式を指定するためには<code>sprintf</code>関数を使用する。(使用するボードによっては<code>Serial.printf</code>関数も使用できるっぽい。これは<code>printf</code>みたいな関数)<br />
+<code>printf02.ino</code></p>
+<pre><code class="language-cpp">int x = 33;
+
+void setup(){
+  Serial.begin(38400);
+}
+
+void loop(){
+  if(x &gt; 126){
+    x = 33;
+  }
+  char buf[100] = {};
+  sprintf(buf,"%3d 0x%02X %c \n",x,x,x);
+  Serial.print(buf);
+  x++;
+  delay(100);
+}
+</code></pre>
+<p>これはASCIIコードの33番(<code>!</code>)~126番(<code>~</code>)までを<code>0.1s</code>ごとに表示するプログラム。表示形式は(xを整数3桁 0x(xを大文字の16進数2桁空白0埋め) xの値に対応する文字)で出力される。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stm32cubeideでの開発"><a class="header" href="#stm32cubeideでの開発">STM32CubeIDEでの開発</a></h1>
+<p>基本的に<code>NUCLEO-F446RE</code>を用いた。2024年度春休みに<code>Keil Studio</code>でない開発環境を使用するために使用してみた。その時の記録。</p>
+<p><strong>コンテンツ一覧</strong></p>
+<ul>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/BasicContentsHome.html">はじめにやっておくと便利になること</a>
+<ul>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/printf.html"><del>変数などを表示するために</del></a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/printfLibrary.html">変数などを簡単に表示するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/manydef.html">ピンの名前などを簡単に入力するために</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="開発を始める前に-1"><a class="header" href="#開発を始める前に-1">開発を始める前に</a></h2>
+<ul>
+<li><a href="https://qiita.com/usashirou/items/65be086c28f7a6feac7d"><code>STM32CubeIDE</code>の導入</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="基本的なこと-1"><a class="header" href="#基本的なこと-1">基本的なこと</a></h1>
+<p>ここではプロジェクトを作成した後にやっておくと便利なことを軽く解説。</p>
+<p><strong>コンテンツ一覧</strong></p>
+<ul>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html"><del>変数などを表示するために</del></a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printfLibrary.html">変数などを簡単に表示するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./manydef.html">ピンの名前などを簡単に入力するために</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="変数などを表示するために"><a class="header" href="#変数などを表示するために">変数などを表示するために</a></h1>
+<h2 id="printfを使って変数の値などを見れるようにする"><a class="header" href="#printfを使って変数の値などを見れるようにする">printfを使って変数の値などを見れるようにする</a></h2>
+<p>マイコンとパソコンとの間で<code>UART</code>を用いて通信を行う。パソコン側では<code>TeraTerm</code>を用いてシリアルポートを監視する。</p>
+<h2 id="cubeideの設定"><a class="header" href="#cubeideの設定">CubeIDEの設定</a></h2>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">/* USER CODE BEGIN Includes */
+#include &lt;stdio.h&gt;
+/* USER CODE END Includes */
+
+/* USER CODE BEGIN 1 */
+setbuf(stdout,NULL);
+/* USER CODE END 1 */
+
+/* USER CODE BEGIN 3 */
+    printf("Hello World\r\n");
+    HAL_Delay(250);
+}
+/* USER CODE END 3 */
+
+/* USER CODE BEGIN 4 */
+int _write(int file,char *ptr,int len){
+    HAL_UART_Transmit(&amp;huart2, (uint8_t *)ptr, len, 10);
+    return len;
+}
+/* USER CODE END 4 */
+</code></pre>
+<h2 id="teratermの設定"><a class="header" href="#teratermの設定">TeraTermの設定</a></h2>
+<p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
+<h3 id="参考-3"><a class="header" href="#参考-3">参考</a></h3>
+<ul>
+<li><a href="https://yukblog.net/stm32cubeide-printf-uart/">【便利】STM32CubeIDEでprintf【UART編】</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="変数などを簡単に表示するために"><a class="header" href="#変数などを簡単に表示するために">変数などを簡単に表示するために</a></h1>
+<p><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">変数などを表示するために</a>で<code>printf</code>する方法を紹介したが、いちいち<code>int _write</code>とか書くのがめんどくさくなったので処理をまとめた。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">/* USER CODE BEGIN Includes */
+#include &lt;stdio.h&gt;
+#include "STprintf.h"
+/* USER CODE END Includes */
+
+/* USER CODE BEGIN 2 */
+STprintf(&amp;huart2);
+uint8_t Out[8] = {0};
+/* USER CODE END 2 */
+
+/* USER CODE BEGIN 3 */
+    printf("Hello World\r\n");
+    HAL_Delay(250);
+}
+/* USER CODE END 3 */
+
+</code></pre>
+<p><code>STprintf</code>関数の引数にUARTのポインタを渡すだけで<code>printf</code>が使えるようになる。</p>
+<h2 id="teratermの設定-1"><a class="header" href="#teratermの設定-1">TeraTermの設定</a></h2>
+<p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
+<h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
+<ul>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">変数などを表示するために</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="名前を楽するlib"><a class="header" href="#名前を楽するlib">名前を楽する(lib)</a></h1>
+<p><code>GPIOA</code>とか<code>GPIO_PIN_1</code>とか<code>TIM_Channel_3</code>とか書くのがめんどくなったので楽にした。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">もともと</th><th style="text-align: center">いま</th></tr></thead><tbody>
+<tr><td style="text-align: center">GPIO_PIN_0</td><td style="text-align: center">P0</td></tr>
+<tr><td style="text-align: center">中略</td><td style="text-align: center">中略</td></tr>
+<tr><td style="text-align: center">GPIO_PIN_15</td><td style="text-align: center">P15</td></tr>
+<tr><td style="text-align: center">GPIO_PIN_ALL</td><td style="text-align: center">Pall</td></tr>
+<tr><td style="text-align: center">GPIO_PIN_0</td><td style="text-align: center">GPIO_Pin_0</td></tr>
+<tr><td style="text-align: center">中略</td><td style="text-align: center">中略</td></tr>
+<tr><td style="text-align: center">GPIO_PIN_15</td><td style="text-align: center">GPIO_Pin_15</td></tr>
+<tr><td style="text-align: center">GPIO_PIN_ALL</td><td style="text-align: center">GPIO_Pin_ALL</td></tr>
+<tr><td style="text-align: center">GPIOA</td><td style="text-align: center">PA</td></tr>
+<tr><td style="text-align: center">中略</td><td style="text-align: center">中略</td></tr>
+<tr><td style="text-align: center">GPIOH</td><td style="text-align: center">PH</td></tr>
+<tr><td style="text-align: center">TIM_CHANNEL_1</td><td style="text-align: center">TIMCH_1</td></tr>
+<tr><td style="text-align: center">中略</td><td style="text-align: center">中略</td></tr>
+<tr><td style="text-align: center">TIM_CHANNEL_4</td><td style="text-align: center">TIMCH_4</td></tr>
+<tr><td style="text-align: center">TIM_CHANNWL_ALL</td><td style="text-align: center">TIMCH_ALL</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="入出力"><a class="header" href="#入出力">入出力</a></h1>
+<p>ディジタルやアナログの入出力に関して軽く解説。</p>
+<p><strong>コンテンツ一覧</strong></p>
+<ul>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./digitalInOut.html">ディジタル入出力をする</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">タイマー割り込みを使用したLチカ</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./OutPWM.html">PWM出力をする(タイマー)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./InVariableResistance.html">可変抵抗の値を読む(アナログ入力・タイマー)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./InRotaryEncoder.html">ロータリーエンコーダーを読む(タイマー)</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ディジタル入出力"><a class="header" href="#ディジタル入出力">ディジタル入出力</a></h1>
+<h2 id="ledを点灯させたりプッシュスイッチの値を読み込んだりする"><a class="header" href="#ledを点灯させたりプッシュスイッチの値を読み込んだりする">LEDを点灯させたり、プッシュスイッチの値を読み込んだりする</a></h2>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_1</code>を<code>GPIO_Input</code>、<code>PA_0</code>を<code>GPIO_Output</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">NUCLEO-F446RE</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">/* USER CODE BEGIN 2 */
+int psw1;
+/* USER CODE END 2 */
+
+/* USER CODE BEGIN 3 */
+    psw1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1); // ディジタル入力
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, psw1); // ディジタル出力
+}
+/* USER CODE END 3 */
+</code></pre>
+<p>使用する回路によって動作は異なるがプルアップ抵抗を用いたプッシュスイッチの回路であれば、スイッチを押すとLEDは消灯し、離すとLEDは点灯するだろう。</p>
+<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
+<ul>
+<li><a href="https://qiita.com/usashirou/items/30e522589db9f7dc8fe4">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(4) スイッチを使ってみよう</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="タイマー割り込みによるlチカ"><a class="header" href="#タイマー割り込みによるlチカ">タイマー割り込みによるLチカ</a></h1>
+<h2 id="hal_delayを使わないでlチカをする"><a class="header" href="#hal_delayを使わないでlチカをする">HAL_Delay()を使わないでLチカをする</a></h2>
+<p>今までLチカは以下のようなコードでしていた。</p>
+<pre><code class="language-c">HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
+HAL_Delay(1000);
+</code></pre>
+<p>これは毎秒Lチカするプログラムである。このコードでは次にLEDの状態を変えるまで処理をすべて止めている。そのため、他の処理をしようとしてもできなかった。そんなときにタイマー割り込みを使用すれば他の処理を止めることなく、一定の周期である処理を実行することができる。<br />
+<code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM2</code>-<code>Mode</code>-<code>Clock Source</code>を<code>Internal Clock</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<code>15</code>、<code>Counter Period</code>を<code>999999</code>に、<code>Configuration</code>-<code>NVIC Setting</code>-<code>TIM2 global interrupt</code>を<code>Enable</code>に設定。今回は<code>TIM2</code>を使用した。<br />
+<code>main.c</code></p>
+<pre><code class="language-c">/* USER CODE BEGIN 2 */
+HAL_TIM_Base_Start_IT(&amp;htim2);
+/* USER CODE END 2 */
+
+/* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
+    HAL_GPIO_TogglePin(GPIOxA, GPIO_Pin_0);
+}
+/* USER CODE END 4 */
+</code></pre>
+<p><code>HAL_TIM_PeriodElapsedCallback</code>関数は割り込みをした時に実行される関数であるため、そこにLチカのコードを書く。<br />
+割り込み周期は設定した<code>Prescaler</code>と<code>Counter Period</code>、内部クロック周波数で決まる。内部クロック周波数はデフォルトでは<code>16MHz</code>だが変更したいまたは。確認したい場合は<code>ioc</code>ファイルの<code>Clock Configuration</code>-<code>APB1 Timer clocks(MHz)</code>で確認する(たぶん)。割り込み周期は以下の式で求められる。<br />
+$$f = \frac{(内部クロック周波数)}{(Prescaler + 1) \times (Counter \space Period + 1)}$$<br />
+また、周期は周波数の逆数なので周期から求めると、<br />
+$$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(内部クロック周波数)} $$<br />
+となる。おすすめとしては<code>Prescaler</code>を<code>15</code>として<code>Counter Period</code>の値を変更するとわかりやすいかもしれない。<br />
+上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br />
+$$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
+となり、毎秒Lチカするプログラムになっている。</p>
+<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
+<ul>
+<li><a href="https://qiita.com/usashirou/items/e02b798b4bf1b92a4546">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (15) TimerでLチカしよう</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pwm出力"><a class="header" href="#pwm出力">PWM出力</a></h1>
+<h2 id="ledの明るさを変更したりモーターの回転速度を変更したりする"><a class="header" href="#ledの明るさを変更したりモーターの回転速度を変更したりする">LEDの明るさを変更したり、モーターの回転速度を変更したりする</a></h2>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Channel3</code>を<code>PWM Generation CH3</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<del><code>83</code></del><code>4</code>、<code>Counter Period</code>を<del><code>999</code></del><code>255</code>、<code>PWM Generation Channel3</code>-<code>Output compare preload</code>を<code>Disable</code>に設定。今回は<code>TIM3</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">/* USER CODE BEGIN WHILE */
+while (1)
+{
+    HAL_TIM_PWM_Start(&amp;htim3, TIM_CHANNEL_3);
+/* USER CODE END WHILE */
+
+/* USER CODE BEGIN 3 */
+    __HAL_TIM_SET_COMPARE(&amp;htim3,TIM_CHANNEL_3,100);
+}
+/* USER CODE END 3 */
+</code></pre>
+<p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br />
+範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">ここ</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
+<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
+<ul>
+<li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="アナログ入力"><a class="header" href="#アナログ入力">アナログ入力</a></h1>
+<h2 id="可変抵抗の値を読み取ったりセンサの値を読み取ったりする"><a class="header" href="#可変抵抗の値を読み取ったりセンサの値を読み取ったりする">可変抵抗の値を読み取ったり、センサの値を読み取ったりする</a></h2>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_4</code>を<code>ADC1_IN4</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">NUCLEO-F446RE</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">/* USER CODE BEGIN 2 */
+float resi1;
+/* USER CODE END 2 */
+
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+    HAL_ADC_Start(&amp;hadc1);
+/* USER CODE END WHILE */
+
+/* USER CODE BEGIN 3 */
+    HAL_ADC_PollForConversion(&amp;hadc1, 100);
+    resi1 = HAL_ADC_GetValue(&amp;hadc1);
+    printf("%f\r\n",resi1);
+    HAL_Delay(250);
+}
+/* USER CODE END 3 */
+</code></pre>
+<p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br />
+今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="DevelopmentSTM32CubeIDE/InOut/../BasicContents/printfLibrary.html">これ</a>を参考にした。</p>
+<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
+<ul>
+<li><a href="https://qiita.com/usashirou/items/e6b5d0529524a140ebaf">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (12) ADCを使ってみよう</a></li>
+<li><a href="https://yukblog.net/stm32cubeide-printf-float/">STM32CubeIDEのprintfでfloatが使えない件の対処方法</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ロータリーエンコーダを読む"><a class="header" href="#ロータリーエンコーダを読む">ロータリーエンコーダを読む</a></h1>
+<p>エンコーダは<a href="https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&amp;&amp;utm_adgroup=&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&amp;utm_term=&amp;productid=827015&amp;utm_content=&amp;utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gad_source=1&amp;gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gclsrc=aw.ds">AMT102-V</a>を使用した。</p>
+<p>エンコーダを読むことで移動距離などを計算できる。エンコーダにはA相とB相を用いて回転方向と回転量をアナログ値として読み取ることができるらしい。<br />
+マイコンのピンの<code>SPI◯_MISO</code>と<code>SPI◯_MOSI</code>の機能を使用していると予想。タイマーのエンコーダモードを使用する。<br />
+<code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Combined Channels</code>を<code>Encoder Mode</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Counter Period</code>を<code>8192</code>、<code>Encoder</code>-<code>Encoder Mode</code>を<code>Encoder Mode TI1 and TIT2</code>に設定。今回は<code>TIM3</code>を使用した。<br />
+<code>printf</code>を使用する。<br />
+<code>main.c</code></p>
+<pre><code class="language-c">/* USER CODE BEGIN 0 */
+int over;
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
+    if(htim-&gt;Instance == TIM3){
+        __HAL_TIM_CLEAR_FLAG(&amp;htim3,TIM_IT_UPDATE);
+        if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&amp;htim3)){
+            over--;
+        }else{
+            over++;
+        }
+    }
+}
+/* USER CODE END 0 */
+
+/* USER CODE BEGIN 2 */
+STprintf(&amp;huart2);
+HAL_TIM_Encoder_Start(&amp;htim3, TIMCH_ALL);
+HAL_TIM_Base_Start_IT(&amp;htim3);
+int count;
+over = 0;
+/* USER CODE END 2 */
+
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+    // count = TIM3 -&gt; CNT;
+    count = (long)(over * 8192) + (long)TIM3 -&gt; CNT;
+    printf("%d\r\n",count);
+    HAL_Delay(100);
+/* USER CODE END WHILE */
+</code></pre>
+<p>エンコーダの回転量を<code>TIM3 -&gt; CNT</code>でゲットし表示する。ただ<code>8192</code>を上回るまたは<code>0</code>を下回ると<code>8192</code>から<code>0</code>にまたは<code>0</code>から<code>8192</code>に飛ぶ。<br />
+それを解決するためにオーバーフローを検知しその回数を記録し<code>count</code>に反映させる。<code>HAL_TIM_PeriodElapsedCallback</code>関数はオーバーフローが起こった時に実行される関数であるため、そこにオーバーフローの回数を記録する。一回転が<code>8192</code>であるから<code>over * 8192</code>で増分を増やす。一回転が<code>8192</code>であるのはエンコーダのデータシートに記載されていて内部のディップスイッチが<code>1</code>~<code>4</code>までが全て<code>0</code>になっている場合、一回転は<code>2048 * 4</code>の<code>8192</code>になると書かれている。</p>
+<p style="text-align:center"><img src="DevelopmentSTM32CubeIDE/InOut/../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/encoder_inside.JPG" alt="encoder_inside.JPG" width="400"></p>  
+<h2 id="角度を求めてみる"><a class="header" href="#角度を求めてみる">角度を求めてみる</a></h2>
+<p>回転量から回転回数や基準からの角度などを求められる。<code>((float)count / 8192) * 360</code>で1周<code>360°</code>になる。ただし<code>count</code>はもともと<code>int</code>型なので計算結果を少数にするために<code>float</code>型にキャスト変換する。また、以下のコードで角度を<code>0°</code>~<code>360°</code>にすることで何周しても同じ角度になるようにすることができる。<br />
+<code>以下のコード</code></p>
+<pre><code class="language-c">while(deg &gt; 360){
+    deg = deg - 360;
+}
+while(deg &lt; 0){
+    deg = deg + 360;
+}
+</code></pre>
+<p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。</p>
+<p style="text-align:center"><img src="DevelopmentSTM32CubeIDE/InOut/../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png" alt="deg.png" width="250"></p>  
+<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
+<ul>
+<li><a href="https://www.shujima.work/entry/2019/05/28/221629">【Nucleo入門】Nucleo-F401でエンコーダ読み取り(STM32CubeIDE、macOS版)</a></li>
 </ul>
 
                     </main>

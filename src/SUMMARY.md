@@ -1,21 +1,3 @@
-<!-- # はじめに
-[前提条件等](./zentei.md)
-[gitコマンド(簡単)](./how_to_use_git.md)
-
-# 基本の制御
-- [モーターのPWM制御](./motor_pwm.md)
-- [通信の仕組み](./controller/controller_txrx.md)
-
-# 各マイコン・IDEの開発  
-- [Raspberry Pi Pico](./deve-raspico.md)
-- [PlatformIO](./platformIO.md)  
-
-# STM32CubeIDEでの開発記録  
-- [STMマイコン](./deve_stm.md)  
-  - [a]()
-
-# 自作ライブラリ等  
-- [Arduino Uno R3 (送信側)](./controller/controller_arduino.md)   -->
 
 # はじめに  
 
@@ -26,18 +8,33 @@
 - [一覧](./BasicContents/BasicContentsHome.md)
   - [git / GitHub](./BasicContents/git_GitHub.md)  
   - [モーター](./BasicContents/motor.md)  
-  - [コントローラーで送受信するデータ](./BasicContents/ControllerData/controllerHome.md)
+  - [ｺﾝﾄﾛｰﾗｰで送受信するデータ](./BasicContents/ControllerData/controllerHome.md)
     - [送信側(Transmit / TX)](./BasicContents/ControllerData/controllerTransmit.md)
     - [受信側(Receive / RX)](./BasicContents/ControllerData/controllerReceive.md)
-
-# ArduinoIDEでの開発
-
-- [一覧](./DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.md)  
 
 # PlatformIOでの開発
 
 - [一覧](./DevelopmentPlatformIO/DevelopmentPlatformIOHome.md)
 
+# ArduinoIDEでの開発
+
+- [一覧](./DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.md)  
+
+  - [ディジタル出力](./DevelopmentArduinoIDE/DigitalInOut/digitalOut.md)
+  - [変数値などの表示](./DevelopmentArduinoIDE/SerialPrint.md)
+
 # STM32CubeIDEでの開発
 
 - [一覧](./DevelopmentSTM32CubeIDE/DevelopmentSTM32CubeIDEHome.md)
+
+  - [はじめにやること](./DevelopmentSTM32CubeIDE/BasicContents/BasicContentsHome.md)
+    - [変数値などの表示](./DevelopmentSTM32CubeIDE/BasicContents/printf.md)
+    - [簡単に変数値などの表示](./DevelopmentSTM32CubeIDE/BasicContents/printfLibrary.md)
+    - [ピン名などを短く](./DevelopmentSTM32CubeIDE/BasicContents/manydef.md)
+
+  - [入出力](./DevelopmentSTM32CubeIDE/InOut/InOutHome.md)
+    - [ディジタル入出力をする](./DevelopmentSTM32CubeIDE/InOut/digitalInOut.md)
+    - [タイマー割り込みでLチカ](./DevelopmentSTM32CubeIDE/InOut/OutTimerLED.md)
+    - [PWM出力をする](./DevelopmentSTM32CubeIDE/InOut/OutPWM.md)
+    - [可変抵抗の値を読む](./DevelopmentSTM32CubeIDE/InOut/InVariableResistance.md)
+    - [ﾛｰﾀﾘｰｴﾝｺｰﾀﾞｰを読む](./DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder.md)

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>一覧 - Control_General</title>
+        <title>ディジタル出力 - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -12,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,12 +35,12 @@
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../";
+            const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc.js"></script>
+        <script src="../../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -93,7 +93,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -128,7 +128,7 @@
                     <h1 class="menu-title">Control_General</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -157,28 +157,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
-<p><code>PlatformIO</code>に移行する前まで主に<code>Arduino Uno Rev3</code>や<code>Raspberry Pi Pico</code>などのマイコンボードの開発に使用してきた。しかし、2025年度ではすべてのプログラムの作成を<code>PlatformIO</code>で行うことに統一し<code>ArduinoIDE</code>は使用しないように方向転換している。<br />
-しかし、<code>PlatformIO</code>で<code>Arduino</code>のプログラムを作成するためにframeworkに<code>Arduino</code>を選択することになる。その場合は、<code>ArduinoIDE</code>で書いてきたような関数を使用する。そのためには、<code>ArduinoIDE</code>で書いてきたプログラムの基礎知識が必要になってくる。その簡単な関数などを軽く紹介する。</p>
-<p><strong>コンテンツ一覧</strong></p>
+                        <h1 id="ディジタル出力"><a class="header" href="#ディジタル出力">ディジタル出力</a></h1>
+<h2 id="ディジタル出力をしてlチカをする"><a class="header" href="#ディジタル出力をしてlチカをする">ディジタル出力をしてLチカをする</a></h2>
+<p><code>Raspberry Pi Pico</code>のLチカ(LEDをチカチカさせる)コードを作成。<br />
+どのピンを使用するかどうかは<a href="https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf">これ</a>を参考にした。<br />
+<code>digiout.ino</code></p>
+<pre><code class="language-cpp">#define LED 2
+int x = 0;
+
+void setup(){
+    pinMode(LED,OUTPUT);
+}
+
+void loop(){
+    digitalWrite(LED,x);
+    x = !x;
+    delay(500);
+}
+</code></pre>
+<p><code>500ms</code>ごとにLEDが点灯消灯を繰り返すプログラム。<code>GP2</code>のピンで出力が行われる。おそらくピンの宣言では<code>GP◯</code>の◯の数字を<code>pinMode(ピン名,用途)</code>のピン名に入れればいいだろう。</p>
+<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
 <ul>
-<li><a href="./DigitalInOut/digitalOut.html">ディジタル出力をする</a></li>
-<li><a href="./SerialPrint.html">変数などの値を見れるようにする</a></li>
-</ul>
-<h2 id="開発を始める前に"><a class="header" href="#開発を始める前に">開発を始める前に</a></h2>
-<ul>
-<li><a href="https://karakuri-musha.com/inside-technology/arduino-raspberrypi-pico-helloworld01/"><code>Raspberry Pi Pico</code>を使用するために</a></li>
+<li><a href="https://deviceplus.jp/arduino/arduino_f03/">Arduino（アルディーノ）電子工作の基本③ デジタル出力でLEDを点灯制御しよう</a></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../DevelopmentArduinoIDE/DigitalInOut/digitalOut.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../DevelopmentArduinoIDE/SerialPrint.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -188,11 +199,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../DevelopmentArduinoIDE/DigitalInOut/digitalOut.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../DevelopmentArduinoIDE/SerialPrint.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -207,13 +218,13 @@
         </script>
 
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 
