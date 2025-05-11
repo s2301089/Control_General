@@ -1,1 +1,3 @@
-./codes/arduino_controller/PlayStationController/.pio
+# ./codes/arduino_controller/PlayStationController/.pio
+
+*/.pio
