@@ -75,7 +75,7 @@ SUM = `(LアナログスティックのX座標)` + `(Lアナログスティッ�
 ## 受信側  
 
 `NUCLEO-F446RE`などで`FEP`を通して`Arduino`から送られてきたデータはある処理をされて使用するデータに格納される。その処理はざっくり言うと以下の図のような処理になる。  
-![rev.drawio.png](./resources/txrx/rev.drawio.png)  
+![rev.drawio.png](../../resources/BasicContents/ControllerData/controllerHome/rev.drawio.png)  
 各環境や言語によって使われる関数などは違うがだいたいはこのような感じの処理をしている。  
 各環境の受信側ライブラリ(現在あるもの)  
 

@@ -1,4 +1,4 @@
-# Raspberry Pi Pico
+# ArduinoIDEでの開発
 
 開発環境には`ArduinoIDE`を用いた。
 
