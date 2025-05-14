@@ -38,3 +38,8 @@
     - [PWM出力をする](./DevelopmentSTM32CubeIDE/InOut/OutPWM.md)
     - [可変抵抗の値を読む](./DevelopmentSTM32CubeIDE/InOut/InVariableResistance.md)
     - [ﾛｰﾀﾘｰｴﾝｺｰﾀﾞｰを読む](./DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder.md)
+
+  - [通信](./DevelopmentSTM32CubeIDE/Connectability/ConnectabilityHome.md)
+    - [UART通信(受信)](./DevelopmentSTM32CubeIDE/Connectability/uartReceive.md)
+    - [UART通信(送信)](./DevelopmentSTM32CubeIDE/Connectability/uartTransmit.md)
+    - [Arduinoとの通信](./DevelopmentSTM32CubeIDE/Connectability/ConnectArduino.md)
