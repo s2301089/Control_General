@@ -7,3 +7,4 @@
 - [~~変数などを表示するために~~](./printf.md)
 - [変数などを簡単に表示するために](./printfLibrary.md)
 - [ピンの名前などを簡単に入力するために](./manydef.md)
+- [バイナリファイル(.bin)の生成](./generateBinaryFile.md)

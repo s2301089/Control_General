@@ -158,6 +158,32 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="uart通信送信"><a class="header" href="#uart通信送信">UART通信(送信)</a></h1>
+<h2 id="arduinoなどにデータをuartを使用して送る"><a class="header" href="#arduinoなどにデータをuartを使用して送る">ArduinoなどにデータをUARTを使用して送る</a></h2>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">STprintf(&amp;huart2);
+uint8_t i = 0;
+
+/* USER CODE END 2 */
+
+/* Infinite loop */
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+    HAL_UART_Transmit(&amp;huart1, &amp;i, 1, 10);
+    printf("%d\r\n",i);
+    HAL_Delay(250);
+    i++;
+}
+</code></pre>
+<p><code>HAL_UART_Transmit</code>でUARTを使用して<code>1Byte</code>のデータを送信する。<code>printf</code>で<code>i</code>の値を画面上に出力している。</p>
+<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
+<ul>
+<li><a href="https://qiita.com/usashirou/items/76c812d35642a3c29aea">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(5) 　UARTを使ってみよう</a></li>
+</ul>
 
                     </main>
 

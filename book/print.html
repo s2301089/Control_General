@@ -521,6 +521,7 @@ void loop(){
 <li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html"><del>変数などを表示するために</del></a></li>
 <li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printfLibrary.html">変数などを簡単に表示するために</a></li>
 <li><a href="DevelopmentSTM32CubeIDE/BasicContents/./manydef.html">ピンの名前などを簡単に入力するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./generateBinaryFile.html">バイナリファイル(.bin)の生成</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="変数などを表示するために"><a class="header" href="#変数などを表示するために">変数などを表示するために</a></h1>
 <h2 id="printfを使って変数の値などを見れるようにする"><a class="header" href="#printfを使って変数の値などを見れるようにする">printfを使って変数の値などを見れるようにする</a></h2>
@@ -602,7 +603,17 @@ uint8_t Out[8] = {0};
 <tr><td style="text-align: center">TIM_CHANNEL_4</td><td style="text-align: center">TIMCH_4</td></tr>
 <tr><td style="text-align: center">TIM_CHANNWL_ALL</td><td style="text-align: center">TIMCH_ALL</td></tr>
 </tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="入出力"><a class="header" href="#入出力">入出力</a></h1>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="バイナリファイルbinの生成"><a class="header" href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></h1>
+<h2 id="エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する"><a class="header" href="#エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する">エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する</a></h2>
+<p><code>CubeIDE</code>では<code>binファイル</code>は実行時やデバッグ時に自動で生成され、実行時、デバッグ時毎に上書き保存される。設定を変更するだけで生成されるようになる。<br />
+<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。
+<code>binファイル</code>の他にも<code>HEXファイル</code>や<code>SRECファイル</code>などの他のファイル形式のファイルも設定すれば、生成できる。<br />
+<code>binファイル</code>は生成されるとプロジェクトの中の<code>Debugフォルダ</code>に<code>[プロジェクト名].bin</code>という名前で生成される。</p>
+<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
+<ul>
+<li><a href="https://yukblog.net/stm32cubeide-hex/">STM32CubeIDEでHEXファイルを作成する方法</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="入出力"><a class="header" href="#入出力">入出力</a></h1>
 <p>ディジタルやアナログの入出力に関して軽く解説。</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
@@ -627,7 +638,7 @@ int psw1;
 /* USER CODE END 3 */
 </code></pre>
 <p>使用する回路によって動作は異なるがプルアップ抵抗を用いたプッシュスイッチの回路であれば、スイッチを押すとLEDは消灯し、離すとLEDは点灯するだろう。</p>
-<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
+<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/30e522589db9f7dc8fe4">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(4) スイッチを使ってみよう</a></li>
 </ul>
@@ -659,7 +670,7 @@ $$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(
 上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br />
 $$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
 となり、毎秒Lチカするプログラムになっている。</p>
-<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
+<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e02b798b4bf1b92a4546">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (15) TimerでLチカしよう</a></li>
 </ul>
@@ -680,7 +691,7 @@ while (1)
 </code></pre>
 <p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br />
 範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">ここ</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
-<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
+<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
 <ul>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
 </ul>
@@ -708,7 +719,7 @@ while (1)
 </code></pre>
 <p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br />
 今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="DevelopmentSTM32CubeIDE/InOut/../BasicContents/printfLibrary.html">これ</a>を参考にした。</p>
-<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
+<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e6b5d0529524a140ebaf">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (12) ADCを使ってみよう</a></li>
 <li><a href="https://yukblog.net/stm32cubeide-printf-float/">STM32CubeIDEのprintfでfloatが使えない件の対処方法</a></li>
@@ -767,7 +778,7 @@ while(deg &lt; 0){
 </code></pre>
 <p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。</p>
 <p style="text-align:center"><img src="DevelopmentSTM32CubeIDE/InOut/../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png" alt="deg.png" width="250"></p>  
-<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
+<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
 <ul>
 <li><a href="https://www.shujima.work/entry/2019/05/28/221629">【Nucleo入門】Nucleo-F401でエンコーダ読み取り(STM32CubeIDE、macOS版)</a></li>
 </ul>
@@ -802,11 +813,37 @@ while (1)
 /* USER CODE END 3 */
 </code></pre>
 <p>受け取ったデータを<code>printf</code>する。たとえば<code>Arduino</code>側でスイッチの値を送るとしたら<code>TeraTerm</code>の画面にはそのスイッチの値が表示されるだろう。</p>
-<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
+<h3 id="参考-11"><a class="header" href="#参考-11">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/5a2c9e4fd35c261c4f3a">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(6) 　UARTを使ってみよう(2)</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="uart通信送信"><a class="header" href="#uart通信送信">UART通信(送信)</a></h1>
+<h2 id="arduinoなどにデータをuartを使用して送る"><a class="header" href="#arduinoなどにデータをuartを使用して送る">ArduinoなどにデータをUARTを使用して送る</a></h2>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<pre><code class="language-c">STprintf(&amp;huart2);
+uint8_t i = 0;
+
+/* USER CODE END 2 */
+
+/* Infinite loop */
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+    HAL_UART_Transmit(&amp;huart1, &amp;i, 1, 10);
+    printf("%d\r\n",i);
+    HAL_Delay(250);
+    i++;
+}
+</code></pre>
+<p><code>HAL_UART_Transmit</code>でUARTを使用して<code>1Byte</code>のデータを送信する。<code>printf</code>で<code>i</code>の値を画面上に出力している。</p>
+<h3 id="参考-12"><a class="header" href="#参考-12">参考</a></h3>
+<ul>
+<li><a href="https://qiita.com/usashirou/items/76c812d35642a3c29aea">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(5) 　UARTを使ってみよう</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="arduinoとの通信lib"><a class="header" href="#arduinoとの通信lib">Arduinoとの通信(lib)</a></h1>
 <h2 id="keil-studioのserialctrlのようなライブラリの使用方法"><a class="header" href="#keil-studioのserialctrlのようなライブラリの使用方法">Keil StudioのSerialCtrlのようなライブラリの使用方法</a></h2>
 <ol>
