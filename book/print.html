@@ -192,13 +192,77 @@
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gitコマンドの使い方"><a class="header" href="#gitコマンドの使い方">gitコマンドの使い方</a></h1>
-<p>バージョン管理ツール<code>git</code>の簡易的な使用方法をメモ。導入部分は省く。</p>
-<h2 id="tagを作成してみよう"><a class="header" href="#tagを作成してみよう">tagを作成してみよう</a></h2>
-<p><code>git tag -a [タグ名] -m "タグメッセージ"</code><br />
-<code>git push origin [タグ名]</code></p>
-<pre><code class="language-bash">git tag -d [タグ名]
-git push origin --delete [タグ名]
-</code></pre>
+<p>バージョン管理ツール<code>git</code>の簡易的な使用方法をメモ。導入部分は省く。<br />
+リモートとの通信には<code>ssh</code>を使用する。</p>
+<ul>
+<li><a href="BasicContents/git_GitHub.html#clone">clone</a></li>
+<li><a href="BasicContents/git_GitHub.html#add">add</a></li>
+<li><a href="BasicContents/git_GitHub.html#commit">commit</a></li>
+<li><a href="BasicContents/git_GitHub.html#push">push</a></li>
+<li><a href="BasicContents/git_GitHub.html#branch%E3%82%92%E5%88%86%E3%81%91%E3%82%8B">branch</a></li>
+<li><a href="BasicContents/git_GitHub.html#tag">tag</a></li>
+</ul>
+<h2 id="基本"><a class="header" href="#基本">基本</a></h2>
+<h3 id="clone"><a class="header" href="#clone">clone</a></h3>
+<p>リモート(<code>GitHub</code>のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。<br />
+<code>git clone [remote URL]</code>でカレントディレクトリにそのリポジトリのディレクトリが複製される。<code>[remote URL]</code>は<code>GitHub</code>から確認する。<br />
+<a href="https://github.com/">GitHub</a>に行きcloneしたいリポジトリのページまで移動する。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーする。</p>
+<h3 id="add"><a class="header" href="#add">add</a></h3>
+<p>ローカルで変更したファイルなどをリモートにあげるファイルを選択する。<br />
+<code>git add [ファイル名1] [ファイル名2] …</code></p>
+<h3 id="commit"><a class="header" href="#commit">commit</a></h3>
+<p>コミットを作成しリモートに<code>push</code>する。<code>add</code>したファイルをひとまとまりにする。<br />
+<code>git commit -m "[コミットメッセージ]"</code><br />
+コミットメッセージには何を更新したのかなどの内容を書いておくとよい。</p>
+<h3 id="push"><a class="header" href="#push">push</a></h3>
+<p>作成したコミットをリモートにあげる。<code>git push</code>でリモートを更新する。</p>
+<h3 id="更新されたファイルなどがあるか確認"><a class="header" href="#更新されたファイルなどがあるか確認">更新されたファイルなどがあるか確認</a></h3>
+<p><code>git status</code>で現在のリポジトリで更新されたファイルがあるかどうか、確認できる。</p>
+<h3 id="リモートの変更をもってくる"><a class="header" href="#リモートの変更をもってくる">リモートの変更をもってくる</a></h3>
+<p>他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのはめんどくさい。<code>git pull</code>を使用するとリモートの変更を反映させることができる。これは<code>git pull origin main</code>と同じことをしていて、リモートのmainブランチから<code>fetch</code>(変更をもってくるだけ
+)と<code>merge</code>(変更を反映させる)を同時に行う。<code>merge</code>するときにローカルにリモートにはない変更があった場合は、手動でmerge作業を行う必要がある。</p>
+<h2 id="branchを分ける"><a class="header" href="#branchを分ける">branchを分ける</a></h2>
+<p>ふだんはおそらくmainブランチ、または、masterブランチを使用していると思われるが、開発用のブランチmainと更新用(リリースごと)のブランチreleaseに分けておきたいとする。mainブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともある。ブランチは分けずにタグを作成して、そのときのコミットに戻れるという機能もあるがそれはbranchの次に紹介する。</p>
+<h3 id="ブランチを作成"><a class="header" href="#ブランチを作成">ブランチを作成</a></h3>
+<p>まずはブランチを作成する。<br />
+<code>git branch release</code><br />
+<code>release</code>という名前のブランチがローカルに作成された。<code>git branch</code>を実行すると現在ローカルにあるブランチの一覧を表示できる。</p>
+<h3 id="ブランチに移動する"><a class="header" href="#ブランチに移動する">ブランチに移動する</a></h3>
+<p>ブランチを作成したらそのブランチに移動する。<br />
+<code>git checkout [ブランチ名]</code><br />
+新しいブランチを作成していない場合は、<code>git checkout -b [ブランチ名]</code>で新しいブランチを作成しそのブランチに移動することができる。</p>
+<h3 id="addしたりcommitしたり"><a class="header" href="#addしたりcommitしたり">addしたりcommitしたり</a></h3>
+<p>あとは変更したファイルをaddしたりcommitしたりしても問題ない。<code>push</code>するときは<code>git push origin [ブランチ名]</code>とすると安心感がある。</p>
+<h3 id="ブランチを他のブランチと同じバージョンまで持ってくる"><a class="header" href="#ブランチを他のブランチと同じバージョンまで持ってくる">ブランチを他のブランチと同じバージョンまで持ってくる</a></h3>
+<p>mainブランチだけ先に進み、releaseブランチが遅れている場合、releaseブランチにmainブランチの状態にしたいなどということもあると思われる。そんなときにいちいちmainブランチからreleaseブランチにコピペするのは面倒くさい。そんなときに<code>merge</code>を使用する。<br />
+進めたいブランチに<code>checkout</code>し、<code>git merge [進んでいるブランチ名]</code>を実行する。releaseブランチをmainブランチと同じ状態にしたい場合は、<code>git checkout release</code>、<code>git merge main</code>を実行することでreleaseブランチにmainブランチの変更を反映させることができる。<br />
+このあとにreleaseブランチにpushし、リモートにも反映させる。</p>
+<h3 id="ブランチの削除"><a class="header" href="#ブランチの削除">ブランチの削除</a></h3>
+<p>ブランチが要らなくなったときに削除できるように。<br />
+<code>git branch -d [ブランチ名]</code>でブランチを削除できる。これでローカルのブランチが削除された。<br />
+<code>git push origin --delete [ブランチ名]</code>でリモートのブランチも削除することができる。</p>
+<h3 id="確認"><a class="header" href="#確認">確認</a></h3>
+<p>現在ローカルにあるブランチを確認するには<code>git branch</code>を使用する。<br />
+リモートにあるブランチも確認するには<code>git branch -r</code>を使用する。</p>
+<h2 id="tag"><a class="header" href="#tag">tag</a></h2>
+<p>特定のバージョンに戻りたい(リリースバージョンとか)というときにリリースを作成するという事もできるがそれでは検索などに引っかかってしまう。それが嫌だという場合はtagを作成し、そのタグに戻ればよい。</p>
+<h3 id="tagの作成とpush"><a class="header" href="#tagの作成とpush">tagの作成とpush</a></h3>
+<p>タグを作成する前に変更などはすべてリモートに反映させておくとよい。<br />
+<code>git tag -a [タグ名] -m "[タグのメッセージ]"</code><br />
+これでローカルにtagを作成する。ローカルのcommitにtagがつけられる(と思われる)。<br />
+<code>git push origin [タグ名]</code><br />
+これにより、タグを作成し、作成したタグをリモートに反映することができる。</p>
+<h3 id="tagの確認"><a class="header" href="#tagの確認">tagの確認</a></h3>
+<p><code>git tag</code>でローカルにあるタグを確認できる。</p>
+<h3 id="tagの削除"><a class="header" href="#tagの削除">tagの削除</a></h3>
+<p><code>git tag -d [タグ名]</code>でローカルにあるタグを削除する。<code>git push origin --delete [タグ名]</code>でリモートにあるタグを削除する。</p>
+<h4 id="参考"><a class="header" href="#参考">参考</a></h4>
+<ul>
+<li>授業・講座</li>
+<li><a href="https://backlog.com/ja/git-tutorial/">サル先生のGit入門</a></li>
+<li><a href="https://youtu.be/LDOR5HfI_sQ?si=grgKMmUMKT4dgnn-">【Git入門】Git + Github使い方入門講座🐒Gitの仕組みや使い方を完全解説！パーフェクトGit入門！</a></li>
+<li><a href="https://youtu.be/2mehreEA7yc?si=5BQeVtQgHnAOc_l_">GitHubの使い方を解説！ファイルの作成方法、ブランチの使い方が分かる！</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="モーターのpwm制御"><a class="header" href="#モーターのpwm制御">モーターのPWM制御</a></h1>
 <h2 id="pwmとは"><a class="header" href="#pwmとは">PWMとは</a></h2>
 <p><code>PWM</code>とは、<code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>という。一定周期の中で出力が<code>HIGH</code>の長さと<code>LOW</code>の長さ比(デューティ比)で出力が決まる。</p>
@@ -234,7 +298,7 @@ git push origin --delete [タグ名]
 </div>
 <p><code>出力波形</code><br />
 <img src="BasicContents/../resources/BasicContents/motor/PWM_modu.png" alt="PWM_modu.png" /></p>
-<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
+<h3 id="参考-1"><a class="header" href="#参考-1">参考</a></h3>
 <ul>
 <li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
@@ -417,7 +481,7 @@ void loop() {
 </code></pre>
 <p>ターミナルがあるバーにシリアルモニターっていう項目があると思うからそこから見る。監視の開始を押すと見れると思う。試してみたら更新がカクカクしてて見づらかったから<code>Tera Term</code>とかで見ることをおすすめする。<code>Tera Term</code>で見ようとしたらシリアルモニターの方で監視の停止をしないと見れないだろうからそこには注意する。</p>
 <p>以上！</p>
-<h3 id="参考-1"><a class="header" href="#参考-1">参考</a></h3>
+<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
 <ul>
 <li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
 <li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
@@ -454,7 +518,7 @@ void loop(){
 }
 </code></pre>
 <p><code>500ms</code>ごとにLEDが点灯消灯を繰り返すプログラム。<code>GP2</code>のピンで出力が行われる。おそらくピンの宣言では<code>GP◯</code>の◯の数字を<code>pinMode(ピン名,用途)</code>のピン名に入れればいいだろう。</p>
-<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
+<h3 id="参考-3"><a class="header" href="#参考-3">参考</a></h3>
 <ul>
 <li><a href="https://deviceplus.jp/arduino/arduino_f03/">Arduino（アルディーノ）電子工作の基本③ デジタル出力でLEDを点灯制御しよう</a></li>
 </ul>
@@ -552,7 +616,7 @@ int _write(int file,char *ptr,int len){
 </code></pre>
 <h2 id="teratermの設定"><a class="header" href="#teratermの設定">TeraTermの設定</a></h2>
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
-<h3 id="参考-3"><a class="header" href="#参考-3">参考</a></h3>
+<h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-printf-uart/">【便利】STM32CubeIDEでprintf【UART編】</a></li>
 </ul>
@@ -580,7 +644,7 @@ uint8_t Out[8] = {0};
 <p><code>STprintf</code>関数の引数にUARTのポインタを渡すだけで<code>printf</code>が使えるようになる。</p>
 <h2 id="teratermの設定-1"><a class="header" href="#teratermの設定-1">TeraTermの設定</a></h2>
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
-<h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
+<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
 <ul>
 <li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">変数などを表示するために</a></li>
 </ul>
@@ -609,7 +673,7 @@ uint8_t Out[8] = {0};
 <code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。
 <code>binファイル</code>の他にも<code>HEXファイル</code>や<code>SRECファイル</code>などの他のファイル形式のファイルも設定すれば、生成できる。<br />
 <code>binファイル</code>は生成されるとプロジェクトの中の<code>Debugフォルダ</code>に<code>[プロジェクト名].bin</code>という名前で生成される。</p>
-<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
+<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-hex/">STM32CubeIDEでHEXファイルを作成する方法</a></li>
 </ul>
@@ -638,7 +702,7 @@ int psw1;
 /* USER CODE END 3 */
 </code></pre>
 <p>使用する回路によって動作は異なるがプルアップ抵抗を用いたプッシュスイッチの回路であれば、スイッチを押すとLEDは消灯し、離すとLEDは点灯するだろう。</p>
-<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
+<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/30e522589db9f7dc8fe4">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(4) スイッチを使ってみよう</a></li>
 </ul>
@@ -670,7 +734,7 @@ $$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(
 上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br />
 $$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
 となり、毎秒Lチカするプログラムになっている。</p>
-<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
+<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e02b798b4bf1b92a4546">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (15) TimerでLチカしよう</a></li>
 </ul>
@@ -691,7 +755,7 @@ while (1)
 </code></pre>
 <p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br />
 範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">ここ</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
-<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
+<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
 <ul>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
 </ul>
@@ -719,7 +783,7 @@ while (1)
 </code></pre>
 <p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br />
 今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="DevelopmentSTM32CubeIDE/InOut/../BasicContents/printfLibrary.html">これ</a>を参考にした。</p>
-<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
+<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e6b5d0529524a140ebaf">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (12) ADCを使ってみよう</a></li>
 <li><a href="https://yukblog.net/stm32cubeide-printf-float/">STM32CubeIDEのprintfでfloatが使えない件の対処方法</a></li>
@@ -778,7 +842,7 @@ while(deg &lt; 0){
 </code></pre>
 <p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。</p>
 <p style="text-align:center"><img src="DevelopmentSTM32CubeIDE/InOut/../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png" alt="deg.png" width="250"></p>  
-<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
+<h3 id="参考-11"><a class="header" href="#参考-11">参考</a></h3>
 <ul>
 <li><a href="https://www.shujima.work/entry/2019/05/28/221629">【Nucleo入門】Nucleo-F401でエンコーダ読み取り(STM32CubeIDE、macOS版)</a></li>
 </ul>
@@ -813,7 +877,7 @@ while (1)
 /* USER CODE END 3 */
 </code></pre>
 <p>受け取ったデータを<code>printf</code>する。たとえば<code>Arduino</code>側でスイッチの値を送るとしたら<code>TeraTerm</code>の画面にはそのスイッチの値が表示されるだろう。</p>
-<h3 id="参考-11"><a class="header" href="#参考-11">参考</a></h3>
+<h3 id="参考-12"><a class="header" href="#参考-12">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/5a2c9e4fd35c261c4f3a">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(6) 　UARTを使ってみよう(2)</a></li>
 </ul>
@@ -840,7 +904,7 @@ while (1)
 }
 </code></pre>
 <p><code>HAL_UART_Transmit</code>でUARTを使用して<code>1Byte</code>のデータを送信する。<code>printf</code>で<code>i</code>の値を画面上に出力している。</p>
-<h3 id="参考-12"><a class="header" href="#参考-12">参考</a></h3>
+<h3 id="参考-13"><a class="header" href="#参考-13">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/76c812d35642a3c29aea">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(5) 　UARTを使ってみよう</a></li>
 </ul>
