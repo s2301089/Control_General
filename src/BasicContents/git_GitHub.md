@@ -102,6 +102,7 @@ mainブランチだけ先に進み、releaseブランチが遅れている場合
 #### 参考
 
 * 授業・講座
+* [git branch コマンド](https://qiita.com/chihiro/items/e178e45a7fd5a2fb4599#git-branch---no-color)
 * [サル先生のGit入門](https://backlog.com/ja/git-tutorial/)
 * [【Git入門】Git + Github使い方入門講座🐒Gitの仕組みや使い方を完全解説！パーフェクトGit入門！](https://youtu.be/LDOR5HfI_sQ?si=grgKMmUMKT4dgnn-)
 * [GitHubの使い方を解説！ファイルの作成方法、ブランチの使い方が分かる！](https://youtu.be/2mehreEA7yc?si=5BQeVtQgHnAOc_l_)
