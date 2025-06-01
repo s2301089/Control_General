@@ -12,7 +12,7 @@
 > 学内LANで`PlatformIO`のセッティングを行うためには`VSCode`自体のプロキシ設定が必要になる。  
 > `Ctrl + ,`で設定を開き、設定の検索バーで`proxy`と入力。`Http: Proxy(すべてのプロファイルに適用)`を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(`http://サーバーアドレス:ポート番号`)を入力し、保存し終わったら`VSCode`の再起動を行う。  
 
-`VSCode`で拡張機能のマーケットプレイスで、`PlatformIO IDE`をインストールする。`platformio.platformio-ide`これを検索バーに入力するか、`platform`とか検索する。[link](https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide)  
+`VSCode`で拡張機能のマーケットプレイスで、`PlatformIO IDE`をインストールする。`platformio.platformio-ide`これを検索バーに入力するか、`platform`とか検索する。[Marketplace](https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide)  
 
 インストール中に`PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode`こんな表示がでてくるかもしれない。これは`Python 3.6`以上が見つかりませんって言われているだけ。`Python`をインストールしていない人は`Install Python`を押して[サイト](https://www.python.org/downloads/)からWindows用をダウンロードする。もうインストールしてある人は`I have Python`てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。  
 

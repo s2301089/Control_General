@@ -8,4 +8,4 @@
 - [モーターの回転方向などの制御プログラムについて](./motor.md)
 - [コントローラーのデータのやり取りについて](./ControllerData/controllerHome.md)
   - [コントローラーのデータの送信側について](./ControllerData/controllerTransmit.md)
-  - [コントローラーのデータの受信側について](./ControllerData/controllerTransmit.md)
+  - [コントローラーのデータの受信側について](./ControllerData/controllerReceive.md)

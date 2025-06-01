@@ -167,7 +167,7 @@
 <p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
 <code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
 </blockquote>
-<p><code>VSCode</code>で拡張機能のマーケットプレイスで、<code>PlatformIO IDE</code>をインストールする。<code>platformio.platformio-ide</code>これを検索バーに入力するか、<code>platform</code>とか検索する。<a href="https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide">link</a></p>
+<p><code>VSCode</code>で拡張機能のマーケットプレイスで、<code>PlatformIO IDE</code>をインストールする。<code>platformio.platformio-ide</code>これを検索バーに入力するか、<code>platform</code>とか検索する。<a href="https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide">Marketplace</a></p>
 <p>インストール中に<code>PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode</code>こんな表示がでてくるかもしれない。これは<code>Python 3.6</code>以上が見つかりませんって言われているだけ。<code>Python</code>をインストールしていない人は<code>Install Python</code>を押して<a href="https://www.python.org/downloads/">サイト</a>からWindows用をダウンロードする。もうインストールしてある人は<code>I have Python</code>てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。</p>
 <p><code>Python</code>のインストーラーをダウンロードしたら、Pythonのインストーラーを実行。下のチェックボックス欄の<code>Add Python.exe to PATH</code>にチェックを入れる。<code>Use admin privileges when installing py.exe</code>のチェックは管理者権限ですべてのユーザーにインストールするみたいな項目だから、チェックしてなくて問題ない。チェックが終わったら<code>Install Now</code>を押してインストールする。<br />
 <code>Setup was Successful</code>がでたら<code>Close</code>を押してもよいけど、<code>Disable path length limit</code>っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。幼くても別に問題はないかも。(僕は押した)<br />
