@@ -2,7 +2,7 @@
 
 ## 通信モジュール  
 
-現在(2025/03/12)は、双葉電子の`FEP02TJ`を主に使用している。([FEP-02](https://www.futaba.co.jp/product/industry/industry_module/fep02))  
+現在(2025/03/12)は、双葉電子の`FEP02TJ`を主に使用している。(['FEP-02'](https://www.futaba.co.jp/product/industry/industry_module/fep02))  
 周波数帯は`920MHz`帯で無線モジュール。`UART`を用いた通信が可能。部のほとんどのものがボードレート`38400[Symbol/sec(bit/s)]`に設定されている。  
 
 ## RXとTX  

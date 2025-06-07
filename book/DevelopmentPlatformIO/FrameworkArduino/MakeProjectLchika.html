@@ -207,27 +207,6 @@ src\main.cpp:8:1: error: expected ';' before '}' token
  ^
 *** [.pio\build\uno\src\main.cpp.o] Error 1
 </code></pre>
-<p><code>x</code>の値をシリアルモニターに出力したい(画面に出力したい)と思ったら、以下のようにコードを追記する。<br />
-<code>main.cpp</code></p>
-<pre><code class="language-cpp">#include &lt;Arduino.h&gt;
-
-bool x = 0;
-
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(38400);
-  pinMode(13,OUTPUT);
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(13,x);
-  Serial.println(x);
-  delay(250);
-  x = x ^ 1;
-}
-</code></pre>
-<p>ターミナルがあるバーにシリアルモニターっていう項目があると思うからそこから見る。監視の開始を押すと見れると思う。試してみたら更新がカクカクしてて見づらかったから<code>Tera Term</code>とかで見ることをおすすめする。<code>Tera Term</code>で見ようとしたらシリアルモニターの方で監視の停止をしないと見れないだろうからそこには注意する。</p>
 
                     </main>
 
@@ -258,22 +237,6 @@ void loop() {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

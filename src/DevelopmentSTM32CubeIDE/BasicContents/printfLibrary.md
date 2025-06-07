@@ -1,6 +1,6 @@
 # 変数などを簡単に表示するために
 
-[変数などを表示するために](./printf.md)で`printf`する方法を紹介したが、いちいち`int _write`とか書くのがめんどくさくなったので処理をまとめた。  
+['変数などを表示するために'](./printf.md)で`printf`する方法を紹介したが、いちいち`int _write`とか書くのがめんどくさくなったので処理をまとめた。  
 
 `[プロジェクト名].ioc`-`Pinout & Configuration`-`Connectivity`-`USART2`-`Mode`を`Asynchronous`、`Configuration`-`Parameter Settings`-`Basic Parameters`-`Baud Rate`を`38400`に設定。今回は`USART2`を使用した。  
 保存しコードを作成。`main.c`に処理を追記。  

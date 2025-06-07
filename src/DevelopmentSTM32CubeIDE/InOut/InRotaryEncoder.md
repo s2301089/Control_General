@@ -1,6 +1,6 @@
 # ロータリーエンコーダを読む
 
-エンコーダは[AMT102-V](https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&&utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&utm_term=&productid=827015&utm_content=&utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&gad_source=1&gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&gclsrc=aw.ds)を使用した。  
+エンコーダは['AMT102-V'](https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&&utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&utm_term=&productid=827015&utm_content=&utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&gad_source=1&gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&gclsrc=aw.ds)を使用した。  
 
 エンコーダを読むことで移動距離などを計算できる。エンコーダにはA相とB相を用いて回転方向と回転量をアナログ値として読み取ることができるらしい。  
 マイコンのピンの`SPI◯_MISO`と`SPI◯_MOSI`の機能を使用していると予想。タイマーのエンコーダモードを使用する。  

@@ -2,7 +2,7 @@
 
 ## 可変抵抗の値を読み取ったり、センサの値を読み取ったりする
 
-`[プロジェクト名].ioc`-`Pinout & Configuration`-`Pinout view`から使いたいピンを選択する。今回は`PA_4`を`ADC1_IN4`に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは[NUCLEO-F446RE](https://os.mbed.com/platforms/ST-Nucleo-F446RE/))の`Morpho headers`を見ながら選ぶといいかもしれない。  
+`[プロジェクト名].ioc`-`Pinout & Configuration`-`Pinout view`から使いたいピンを選択する。今回は`PA_4`を`ADC1_IN4`に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは['NUCLEO-F446RE'](https://os.mbed.com/platforms/ST-Nucleo-F446RE/))の`Morpho headers`を見ながら選ぶといいかもしれない。  
 保存しコードを作成。`main.c`に処理を追記。  
 
 ```c
@@ -26,7 +26,7 @@ while (1)
 ```  
 
 `float`型を`printf`するために、設定を変更する。`[プロジェクト名]`を右クリック、`プロパティ`-`C/C++ ビルド`-`設定`-`ツール設定`-`MCU/MPU Settings`の`Use float with printf from newlib-nano`の項目にチェックを入れ、適用して閉じる。  
-今回は可変抵抗を用いてアナログ入力値の変化を出力した。`printf`を使えるようにするためには、他の設定やコードが必要。[これ](../BasicContents/printfLibrary.md)を参考にした。  
+今回は可変抵抗を用いてアナログ入力値の変化を出力した。`printf`を使えるようにするためには、他の設定やコードが必要。['これ'](../BasicContents/printfLibrary.md)を参考にした。  
 
 ### 参考
 

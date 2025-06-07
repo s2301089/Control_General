@@ -163,7 +163,7 @@
                         <h1 id="ディジタル出力"><a class="header" href="#ディジタル出力">ディジタル出力</a></h1>
 <h2 id="ディジタル出力をしてlチカをする"><a class="header" href="#ディジタル出力をしてlチカをする">ディジタル出力をしてLチカをする</a></h2>
 <p><code>Raspberry Pi Pico</code>のLチカ(LEDをチカチカさせる)コードを作成。<br />
-どのピンを使用するかどうかは<a href="https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf">これ</a>を参考にした。<br />
+どのピンを使用するかどうかは<a href="https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf">'これ'</a>を参考にした。<br />
 <code>digiout.ino</code></p>
 <pre><code class="language-cpp">#define LED 2
 int x = 0;
@@ -213,22 +213,6 @@ void loop(){
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

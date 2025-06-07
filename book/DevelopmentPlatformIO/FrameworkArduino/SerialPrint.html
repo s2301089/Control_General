@@ -160,7 +160,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <h1 id="変数などの表示"><a class="header" href="#変数などの表示">変数などの表示</a></h1>
+<p><code>x</code>の値をシリアルモニターに出力したい(画面に出力したい)と思ったら、以下のようにコードを追記する。</p>
+<blockquote>
+<p><a href="./MakeProjectLchika.html">'これ'</a>の続きです。</p>
+</blockquote>
+<p><code>main.cpp</code></p>
+<pre><code class="language-cpp">#include &lt;Arduino.h&gt;
+
+bool x = 0;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(38400); // 追記部分
+  pinMode(13,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(13,x);
+  Serial.println(x); // 追記部分
+  delay(250);
+  x = x ^ 1;
+}
+</code></pre>
+<p>ターミナルがあるバーにシリアルモニターっていう項目があると思うからそこから見る。監視の開始を押すと見れると思う。試してみたら更新がカクカクしてて見づらかったから<code>Tera Term</code>とかで見ることをおすすめする。<code>Tera Term</code>で見ようとしたらシリアルモニターの方で監視の停止をしないと見れないだろうからそこには注意する。</p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -190,22 +215,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

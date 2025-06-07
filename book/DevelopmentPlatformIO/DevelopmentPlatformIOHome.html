@@ -161,7 +161,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="platformioの導入"><a class="header" href="#platformioの導入">PlatformIOの導入</a></h1>
-<p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への移行を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">記事</a><br />
+<p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への移行を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">'記事'</a><br />
 <code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Mbed OS</code>での書き方などいろいろな書き方ができる。</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
@@ -203,22 +203,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

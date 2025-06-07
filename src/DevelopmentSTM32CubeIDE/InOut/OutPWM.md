@@ -19,7 +19,7 @@ while (1)
 ```  
 
 `100`がパルス幅にあたる部分であり、範囲は`0`~`255`にする。  
-範囲やPWM周期などは`Prescaler`や`Counter Period`などから求められる。式については[ここ](./OutTimerLED.md)に記載している。`Counter Period`が`範囲の個数-1`であるということだけは覚えていて欲しい。  
+範囲やPWM周期などは`Prescaler`や`Counter Period`などから求められる。式については['ここ'](./OutTimerLED.md)に記載している。`Counter Period`が`範囲の個数-1`であるということだけは覚えていて欲しい。  
 
 ### 参考
 

@@ -162,7 +162,7 @@
                     <main>
                         <h1 id="コントローラーで送受信するデータ"><a class="header" href="#コントローラーで送受信するデータ">コントローラーで送受信するデータ</a></h1>
 <h2 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h2>
-<p>現在(2025/03/12)は、双葉電子の<code>FEP02TJ</code>を主に使用している。(<a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">FEP-02</a>)<br />
+<p>現在(2025/03/12)は、双葉電子の<code>FEP02TJ</code>を主に使用している。(<a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">'FEP-02'</a>)<br />
 周波数帯は<code>920MHz</code>帯で無線モジュール。<code>UART</code>を用いた通信が可能。部のほとんどのものがボードレート<code>38400[Symbol/sec(bit/s)]</code>に設定されている。</p>
 <h2 id="rxとtx"><a class="header" href="#rxとtx">RXとTX</a></h2>
 <p>マイコンボードのピン配置などで<code>UART1_RX</code>や<code>UART2_TX</code>などと書いてあるものを見たことがあると思う。<code>RX</code>は<code>Receive</code>の略で<code>TX</code>は<code>Transmit</code>の略でそれぞれ<code>受信する</code>、<code>送信する</code>という意味だ。無線モジュールを使用しない場合の多くは<code>Arduino</code>などの送信側の<code>TX</code>と<code>F446RE</code>などの受信側の<code>RX</code>をつなぎ送受信する。</p>
@@ -263,22 +263,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

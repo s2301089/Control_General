@@ -183,7 +183,7 @@
 </li>
 </ol>
 <blockquote>
-<p>中には<code>printf</code>を使用する関数も含まれているため、<code>printf</code>を<code>UART通信</code>で使用できるようにしておく。<a href="../BasicContents/printfLibrary.html">参考</a></p>
+<p>中には<code>printf</code>を使用する関数も含まれているため、<code>printf</code>を<code>UART通信</code>で使用できるようにしておく。<a href="../BasicContents/printfLibrary.html">'参考'</a></p>
 </blockquote>
 <p><strong>使用例1</strong><br />
 <code>main.c</code></p>
@@ -288,7 +288,7 @@
 <li>引数に<code>getdata</code>をもつ。構造体変数<code>getdata</code>を渡す。</li>
 <li><code>AllShow(data);</code></li>
 <li>戻り値はなく、構造体の中身を表示する関数。表示形式はアナログ値をもつスティックなどは整数3桁(空白埋め)で、ディジタル値をもつボタンなどは<code>0/1</code>で表示する。</li>
-<li><code>printf</code>関数を使用するため、<code>printf</code>を使用するためのコードが必要になる。<a href="../BasicContents/printfLibrary.html">参考</a></li>
+<li><code>printf</code>関数を使用するため、<code>printf</code>を使用するためのコードが必要になる。<a href="../BasicContents/printfLibrary.html">'参考'</a></li>
 </ul>
 </li>
 <li>AllShowP関数
@@ -373,22 +373,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

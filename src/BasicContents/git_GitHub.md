@@ -16,7 +16,7 @@
 
 リモート(`GitHub`のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。  
 `git clone [remote URL]`でカレントディレクトリにそのリポジトリのディレクトリが複製される。`[remote URL]`は`GitHub`から確認する。  
-[GitHub](https://github.com/)に行きcloneしたいリポジトリのページまで移動する。緑色の`<>Code`を押し`Local`の`Clone`の`SSH`からコピーする。
+['GitHub'](https://github.com/)に行きcloneしたいリポジトリのページまで移動する。緑色の`<>Code`を押し`Local`の`Clone`の`SSH`からコピーする。
 
 ### add
 

@@ -162,7 +162,7 @@
                     <main>
                         <h1 id="ディジタル入出力"><a class="header" href="#ディジタル入出力">ディジタル入出力</a></h1>
 <h2 id="ledを点灯させたりプッシュスイッチの値を読み込んだりする"><a class="header" href="#ledを点灯させたりプッシュスイッチの値を読み込んだりする">LEDを点灯させたり、プッシュスイッチの値を読み込んだりする</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_1</code>を<code>GPIO_Input</code>、<code>PA_0</code>を<code>GPIO_Output</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">NUCLEO-F446RE</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_1</code>を<code>GPIO_Input</code>、<code>PA_0</code>を<code>GPIO_Output</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">'NUCLEO-F446RE'</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
 保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c">/* USER CODE BEGIN 2 */
 int psw1;
@@ -209,22 +209,6 @@ int psw1;
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

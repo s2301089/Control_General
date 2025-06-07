@@ -3,7 +3,7 @@
 ## ディジタル出力をしてLチカをする  
 
 `Raspberry Pi Pico`のLチカ(LEDをチカチカさせる)コードを作成。  
-どのピンを使用するかどうかは[これ](https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf)を参考にした。  
+どのピンを使用するかどうかは['これ'](https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf)を参考にした。  
 `digiout.ino`  
 
 ```cpp

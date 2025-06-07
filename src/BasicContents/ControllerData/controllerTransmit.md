@@ -2,7 +2,7 @@
 
 ## 仕組み(過去バージョン)  
 
-このソースコードを作成する前までに使用していた通信の仕組みは[この](./controllerHome.md)記事にまとめてある。  
+このソースコードを作成する前までに使用していた通信の仕組みは['この'](./controllerHome.md)記事にまとめてある。  
 
 今回、作成したソースファイルとヘッダファイルに含まれている関数などの説明とこのプログラムファイルの使用方法などを簡易的に説明する。  
 
@@ -23,4 +23,4 @@
 
 ### ソースファイル・ヘッダファイル  
 
-ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは`ver.1.1.0`であり[ここ](https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src)にある。  
+ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは`ver.1.1.0`であり['ここ'](https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src)にある。  

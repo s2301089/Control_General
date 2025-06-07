@@ -2,7 +2,7 @@
 
 ## LEDを点灯させたり、プッシュスイッチの値を読み込んだりする
 
-`[プロジェクト名].ioc`-`Pinout & Configuration`-`Pinout view`から使いたいピンを選択する。今回は`PA_1`を`GPIO_Input`、`PA_0`を`GPIO_Output`に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは[NUCLEO-F446RE](https://os.mbed.com/platforms/ST-Nucleo-F446RE/))の`Morpho headers`を見ながら選ぶといいかもしれない。  
+`[プロジェクト名].ioc`-`Pinout & Configuration`-`Pinout view`から使いたいピンを選択する。今回は`PA_1`を`GPIO_Input`、`PA_0`を`GPIO_Output`に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは['NUCLEO-F446RE'](https://os.mbed.com/platforms/ST-Nucleo-F446RE/))の`Morpho headers`を見ながら選ぶといいかもしれない。  
 保存しコードを作成。`main.c`に処理を追記。  
 
 ```c
