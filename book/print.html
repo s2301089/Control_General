@@ -401,12 +401,23 @@
 <h3 id="ソースファイルヘッダファイル"><a class="header" href="#ソースファイルヘッダファイル">ソースファイル・ヘッダファイル</a></h3>
 <p>ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは<code>ver.1.1.0</code>であり<a href="https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src">ここ</a>にある。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="受信側receive--rx"><a class="header" href="#受信側receive--rx">受信側(Receive / RX)</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
-<p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への以降を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">記事</a></p>
-<h2 id="platform-ioを入れる"><a class="header" href="#platform-ioを入れる">Platform IOを入れる</a></h2>
-<p><code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Keil Studio</code>での書き方などいろいろな書き方ができる。そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platformioの導入"><a class="header" href="#platformioの導入">PlatformIOの導入</a></h1>
+<p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への移行を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">記事</a><br />
+<code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Mbed OS</code>での書き方などいろいろな書き方ができる。</p>
+<p><strong>コンテンツ一覧</strong></p>
+<ul>
+<li><a href="DevelopmentPlatformIO/./InstallPlatformIO.html">PlatformIOの入れ方</a></li>
+<li><a href="DevelopmentPlatformIO/./FrameworkArduino/FrameworkArduinoHome.html">Arduinoで書く</a>
+<ul>
+<li><a href="DevelopmentPlatformIO/./FrameworkArduino/MakeProjectLchika.html">プロジェクトの作成とLチカ</a></li>
+<li><a href="DevelopmentPlatformIO/./FrameworkArduino/SerialPrint.html">シリアルモニタに出力</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platform-ioを入れる"><a class="header" href="#platform-ioを入れる">Platform IOを入れる</a></h1>
+<p>そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
 この拡張機能を使用して試しにコードを書き込むまでの記録。</p>
-<h3 id="学内lanでは極力ダウンロードなどはしないようにしよう"><a class="header" href="#学内lanでは極力ダウンロードなどはしないようにしよう">学内LANでは極力ダウンロードなどはしないようにしよう</a></h3>
+<h2 id="学内lanでは極力ダウンロードなどはしないようにしよう"><a class="header" href="#学内lanでは極力ダウンロードなどはしないようにしよう">学内LANでは極力ダウンロードなどはしないようにしよう</a></h2>
 <blockquote>
 <p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
 <code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
@@ -414,9 +425,15 @@
 <p><code>VSCode</code>で拡張機能のマーケットプレイスで、<code>PlatformIO IDE</code>をインストールする。<code>platformio.platformio-ide</code>これを検索バーに入力するか、<code>platform</code>とか検索する。<a href="https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide">Marketplace</a></p>
 <p>インストール中に<code>PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode</code>こんな表示がでてくるかもしれない。これは<code>Python 3.6</code>以上が見つかりませんって言われているだけ。<code>Python</code>をインストールしていない人は<code>Install Python</code>を押して<a href="https://www.python.org/downloads/">サイト</a>からWindows用をダウンロードする。もうインストールしてある人は<code>I have Python</code>てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。</p>
 <p><code>Python</code>のインストーラーをダウンロードしたら、Pythonのインストーラーを実行。下のチェックボックス欄の<code>Add Python.exe to PATH</code>にチェックを入れる。<code>Use admin privileges when installing py.exe</code>のチェックは管理者権限ですべてのユーザーにインストールするみたいな項目だから、チェックしてなくて問題ない。チェックが終わったら<code>Install Now</code>を押してインストールする。<br />
-<code>Setup was Successful</code>がでたら<code>Close</code>を押してもよいけど、<code>Disable path length limit</code>っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。幼くても別に問題はないかも。(僕は押した)<br />
+<code>Setup was Successful</code>がでたら<code>Close</code>を押してもよいけど、<code>Disable path length limit</code>っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。押さなくても別に問題はないかも。(僕は押した)<br />
 そしたら<code>VSCode</code>を再起動してほかのインストールが終わるのを待つ。</p>
-<h2 id="platformioを使う"><a class="header" href="#platformioを使う">PlatformIOを使う</a></h2>
+<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
+<ul>
+<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
+<li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
+<li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="platformioを使う"><a class="header" href="#platformioを使う">PlatformIOを使う</a></h1>
 <p><code>VSCode</code>のバーのところから蜂のようなアイコンを探す。で、<code>Create New Project</code>を押して新規作成する。<code>PIO Home</code>が開くと思うから<code>Quick Access</code>のところから<code>New Project</code>を押してプロジェクトを新規作成する。<br />
 Name:はプロジェクトの名前をつける。個人的にはスペース、日本語を含まない半角英数字のみで名前を決めるのがいい(なんかそれしか使えないっぽいけど)。Board:は使用するボードの選択。今回は<code>Arduino Uno R3</code>を使用するので<code>Arduino Uno</code>を選択した。Framework:は使う書き方てきな感じだと思われ。<code>Arduino</code>を選択(これしかなかった)した。Location:はプロジェクトを保存する場所を選ぶ。デフォルトの場所はどこかわからないけど自分でわかりやすいところに置くべきだと思う。場所を指定するときは<code>Use default location</code>のチェックを外すと選べる画面がでてくるからそこから選ぶ。何回もその場所を使用したいと思うときは☆マークをつけれるところがあるからそこにつけておくとたぶん<code>Favorites</code>のところに次回からも表示されると思う。フォルダを選択したら下の<code>Finish</code>を押す。一番最初に作成するときは結構時間がかかるかもしれない。気長に待とう。作成が終わったら勝手に<code>platformio.ini</code>ってのが開くと思う。フォルダツリーの<code>src</code>ってところに<code>main.cpp</code>があるからそこがメインとなるファイル。基本そこに記述していけば問題ないかも。<br />
 <code>#include</code>のところに波線が引いていたりしたら正しくライブラリを読み込めてないから<code>PIO Home</code>を開いて(蜂マーク選べばたぶん開く)<code>Open Project</code>からプロジェクトフォルダを選択する。<br />
@@ -484,12 +501,21 @@ void loop() {
 }
 </code></pre>
 <p>ターミナルがあるバーにシリアルモニターっていう項目があると思うからそこから見る。監視の開始を押すと見れると思う。試してみたら更新がカクカクしてて見づらかったから<code>Tera Term</code>とかで見ることをおすすめする。<code>Tera Term</code>で見ようとしたらシリアルモニターの方で監視の停止をしないと見れないだろうからそこには注意する。</p>
-<p>以上！</p>
-<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="platformioで書き込めませんでした記録"><a class="header" href="#platformioで書き込めませんでした記録">PlatformIOで書き込めませんでした記録</a></h1>
+<pre><code class="language-shell">/.pio/build/nucleo_f446re/stm32f446xe.ld.link_script.ld: Invalid argument
+collect2.exe: error: ld returned 1 exit status
+*** [.pio\build\nucleo_f446re\firmware.elf] Error 1
+</code></pre>
+<p>このようなエラーが書き込み時、ビルド時にでてきて書き込み等ができませんでした。解決した方法をメモとして記録しておきます。</p>
+<h2 id="言われたこと"><a class="header" href="#言われたこと">言われたこと</a></h2>
+<p><strong>もしかしたら<code>main.cpp</code>(メインとなるソースファイル)がプロジェクト内に複数あるかも</strong><br />
+プロジェクトの最上位層(<code>.pio</code>が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。<br />
+<code>ls -laR . | grep main</code><br />
+実行結果<br />
+<code>-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp</code><br />
+を得た。これによりこの階層以下に<code>main</code>を含むファイルが1つしかないことが分かる。</p>
 <ul>
-<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
-<li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
-<li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
+<li>参照しているライブラリ等と同じ名前のファイルが存在してるかも</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
 <p><code>PlatformIO</code>に移行する前まで主に<code>Arduino Uno Rev3</code>や<code>Raspberry Pi Pico</code>などのマイコンボードの開発に使用してきた。しかし、2025年度ではすべてのプログラムの作成を<code>PlatformIO</code>で行うことに統一し<code>ArduinoIDE</code>は使用しないように方向転換している。<br />
@@ -1136,6 +1162,22 @@ while (1)
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

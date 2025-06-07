@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>送信側(Transmit / TX) - Control_General</title>
+        <title>書き込めなかったときの記録 - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -12,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../../favicon.svg">
-        <link rel="shortcut icon" href="../../favicon.png">
-        <link rel="stylesheet" href="../../css/variables.css">
-        <link rel="stylesheet" href="../../css/general.css">
-        <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,12 +35,12 @@
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../../";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -93,7 +93,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -128,7 +128,7 @@
                     <h1 class="menu-title">Control_General</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
@@ -160,36 +160,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="送信側transmit--tx"><a class="header" href="#送信側transmit--tx">送信側(Transmit / TX)</a></h1>
-<h2 id="仕組み過去バージョン"><a class="header" href="#仕組み過去バージョン">仕組み(過去バージョン)</a></h2>
-<p>このソースコードを作成する前までに使用していた通信の仕組みは<a href="./controllerHome.html">この</a>記事にまとめてある。</p>
-<p>今回、作成したソースファイルとヘッダファイルに含まれている関数などの説明とこのプログラムファイルの使用方法などを簡易的に説明する。</p>
-<h2 id="概要"><a class="header" href="#概要">概要</a></h2>
-<h3 id="環境等"><a class="header" href="#環境等">環境等</a></h3>
+                        <h1 id="platformioで書き込めませんでした記録"><a class="header" href="#platformioで書き込めませんでした記録">PlatformIOで書き込めませんでした記録</a></h1>
+<pre><code class="language-shell">/.pio/build/nucleo_f446re/stm32f446xe.ld.link_script.ld: Invalid argument
+collect2.exe: error: ld returned 1 exit status
+*** [.pio\build\nucleo_f446re\firmware.elf] Error 1
+</code></pre>
+<p>このようなエラーが書き込み時、ビルド時にでてきて書き込み等ができませんでした。解決した方法をメモとして記録しておきます。</p>
+<h2 id="言われたこと"><a class="header" href="#言われたこと">言われたこと</a></h2>
+<p><strong>もしかしたら<code>main.cpp</code>(メインとなるソースファイル)がプロジェクト内に複数あるかも</strong><br />
+プロジェクトの最上位層(<code>.pio</code>が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。<br />
+<code>ls -laR . | grep main</code><br />
+実行結果<br />
+<code>-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp</code><br />
+を得た。これによりこの階層以下に<code>main</code>を含むファイルが1つしかないことが分かる。</p>
 <ul>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li><a href="../platformIO.html">PlatformIO IDE</a></li>
-<li><a href="https://docs.arduino.cc/hardware/uno-rev3/">Arduino Uno R3</a></li>
-<li><a href="https://github.com/felis/USB_Host_Shield_2.0">USB Host Sheield 2.0</a></li>
+<li>参照しているライブラリ等と同じ名前のファイルが存在してるかも</li>
 </ul>
-<h3 id="対応コントローラー"><a class="header" href="#対応コントローラー">対応コントローラー</a></h3>
-<ul>
-<li><a href="https://www.sony.com/ja/SonyInfo/design/gallery/CECH-ZC2/">DUAKSHOCK3(PlayStation3用コントローラー)</a></li>
-<li><a href="https://www.playstation.com/ja-jp/accessories/dualshock-4-wireless-controller/">DUALSHOCK4(PlayStation4用コントローラー)</a></li>
-<li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(PlayStation5用コントローラー)</a></li>
-</ul>
-<h3 id="ソースファイルヘッダファイル"><a class="header" href="#ソースファイルヘッダファイル">ソースファイル・ヘッダファイル</a></h3>
-<p>ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは<code>ver.1.1.0</code>であり<a href="https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src">ここ</a>にある。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../BasicContents/ControllerData/controllerHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../DevelopmentPlatformIO/FrameworkArduino/SerialPrint.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../BasicContents/ControllerData/controllerReceive.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -199,11 +195,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../BasicContents/ControllerData/controllerHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../DevelopmentPlatformIO/FrameworkArduino/SerialPrint.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../BasicContents/ControllerData/controllerReceive.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -234,13 +230,13 @@
         </script>
 
 
-        <script src="../../elasticlunr.min.js"></script>
-        <script src="../../mark.min.js"></script>
-        <script src="../../searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../../clipboard.min.js"></script>
-        <script src="../../highlight.js"></script>
-        <script src="../../book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

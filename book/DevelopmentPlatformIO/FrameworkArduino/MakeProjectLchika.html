@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>送信側(Transmit / TX) - Control_General</title>
+        <title>プロジェクト作成からLチカ - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -160,36 +160,84 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="送信側transmit--tx"><a class="header" href="#送信側transmit--tx">送信側(Transmit / TX)</a></h1>
-<h2 id="仕組み過去バージョン"><a class="header" href="#仕組み過去バージョン">仕組み(過去バージョン)</a></h2>
-<p>このソースコードを作成する前までに使用していた通信の仕組みは<a href="./controllerHome.html">この</a>記事にまとめてある。</p>
-<p>今回、作成したソースファイルとヘッダファイルに含まれている関数などの説明とこのプログラムファイルの使用方法などを簡易的に説明する。</p>
-<h2 id="概要"><a class="header" href="#概要">概要</a></h2>
-<h3 id="環境等"><a class="header" href="#環境等">環境等</a></h3>
-<ul>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li><a href="../platformIO.html">PlatformIO IDE</a></li>
-<li><a href="https://docs.arduino.cc/hardware/uno-rev3/">Arduino Uno R3</a></li>
-<li><a href="https://github.com/felis/USB_Host_Shield_2.0">USB Host Sheield 2.0</a></li>
-</ul>
-<h3 id="対応コントローラー"><a class="header" href="#対応コントローラー">対応コントローラー</a></h3>
-<ul>
-<li><a href="https://www.sony.com/ja/SonyInfo/design/gallery/CECH-ZC2/">DUAKSHOCK3(PlayStation3用コントローラー)</a></li>
-<li><a href="https://www.playstation.com/ja-jp/accessories/dualshock-4-wireless-controller/">DUALSHOCK4(PlayStation4用コントローラー)</a></li>
-<li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(PlayStation5用コントローラー)</a></li>
-</ul>
-<h3 id="ソースファイルヘッダファイル"><a class="header" href="#ソースファイルヘッダファイル">ソースファイル・ヘッダファイル</a></h3>
-<p>ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは<code>ver.1.1.0</code>であり<a href="https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src">ここ</a>にある。</p>
+                        <h1 id="platformioを使う"><a class="header" href="#platformioを使う">PlatformIOを使う</a></h1>
+<p><code>VSCode</code>のバーのところから蜂のようなアイコンを探す。で、<code>Create New Project</code>を押して新規作成する。<code>PIO Home</code>が開くと思うから<code>Quick Access</code>のところから<code>New Project</code>を押してプロジェクトを新規作成する。<br />
+Name:はプロジェクトの名前をつける。個人的にはスペース、日本語を含まない半角英数字のみで名前を決めるのがいい(なんかそれしか使えないっぽいけど)。Board:は使用するボードの選択。今回は<code>Arduino Uno R3</code>を使用するので<code>Arduino Uno</code>を選択した。Framework:は使う書き方てきな感じだと思われ。<code>Arduino</code>を選択(これしかなかった)した。Location:はプロジェクトを保存する場所を選ぶ。デフォルトの場所はどこかわからないけど自分でわかりやすいところに置くべきだと思う。場所を指定するときは<code>Use default location</code>のチェックを外すと選べる画面がでてくるからそこから選ぶ。何回もその場所を使用したいと思うときは☆マークをつけれるところがあるからそこにつけておくとたぶん<code>Favorites</code>のところに次回からも表示されると思う。フォルダを選択したら下の<code>Finish</code>を押す。一番最初に作成するときは結構時間がかかるかもしれない。気長に待とう。作成が終わったら勝手に<code>platformio.ini</code>ってのが開くと思う。フォルダツリーの<code>src</code>ってところに<code>main.cpp</code>があるからそこがメインとなるファイル。基本そこに記述していけば問題ないかも。<br />
+<code>#include</code>のところに波線が引いていたりしたら正しくライブラリを読み込めてないから<code>PIO Home</code>を開いて(蜂マーク選べばたぶん開く)<code>Open Project</code>からプロジェクトフォルダを選択する。<br />
+ためしにLチカのコードを書いてみる。<br />
+<code>main.cpp</code></p>
+<pre><code class="language-cpp">#include &lt;Arduino.h&gt;
+
+bool x = 0;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(13,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(13,x);
+  delay(250);
+  x = x ^ 1;
+}
+</code></pre>
+<p>これは<code>250ms</code>間隔でボードに付いているLEDを点滅させるプログラム。パソコンにボードをつなげて、右上の三角ボタンの下矢印から<code>Upload</code>を選択して書き込みをする。SUCCESSってでたら書き込み完了。<br />
+<code>main.cpp</code></p>
+<pre><code class="language-cpp">#include &lt;Arduino.h&gt;
+
+bool x = 0;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(13,OUTPUT)
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(13,x);
+  delay(250);
+  x = x ^ 1;
+}
+</code></pre>
+<p>このコードでは以下のようなエラーが出ると思う。これは<code>pinMode</code>の後に<code>;</code>がないからコンパイルエラーとしてでている。<code>;</code>をつけ直せばきちんとコンパイルが通り書き込まれるだろう。</p>
+<pre><code class="language-bash">src\main.cpp: In function 'void setup()':
+src\main.cpp:8:1: error: expected ';' before '}' token
+ }
+ ^
+*** [.pio\build\uno\src\main.cpp.o] Error 1
+</code></pre>
+<p><code>x</code>の値をシリアルモニターに出力したい(画面に出力したい)と思ったら、以下のようにコードを追記する。<br />
+<code>main.cpp</code></p>
+<pre><code class="language-cpp">#include &lt;Arduino.h&gt;
+
+bool x = 0;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(38400);
+  pinMode(13,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(13,x);
+  Serial.println(x);
+  delay(250);
+  x = x ^ 1;
+}
+</code></pre>
+<p>ターミナルがあるバーにシリアルモニターっていう項目があると思うからそこから見る。監視の開始を押すと見れると思う。試してみたら更新がカクカクしてて見づらかったから<code>Tera Term</code>とかで見ることをおすすめする。<code>Tera Term</code>で見ようとしたらシリアルモニターの方で監視の停止をしないと見れないだろうからそこには注意する。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../BasicContents/ControllerData/controllerHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../DevelopmentPlatformIO/FrameworkArduino/FrameworkArduinoHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../BasicContents/ControllerData/controllerReceive.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../DevelopmentPlatformIO/FrameworkArduino/SerialPrint.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -199,11 +247,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../BasicContents/ControllerData/controllerHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../DevelopmentPlatformIO/FrameworkArduino/FrameworkArduinoHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../BasicContents/ControllerData/controllerReceive.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../DevelopmentPlatformIO/FrameworkArduino/SerialPrint.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
