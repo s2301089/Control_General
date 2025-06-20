@@ -15,7 +15,7 @@
 
 |byte数|data|説明|
 |:---:|:---:|:---:|
-| 0byte|0ｈxaf|先頭データを表す|
+| 0byte|0xaf|先頭データを表す|
 | 1byte|unsigned char|LアナログスティックのX座標|
 | 2byte|unsigned char|LアナログスティックのY座標|
 | 3byte|unsigned char|RアナログスティックのX座標|

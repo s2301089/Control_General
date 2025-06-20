@@ -169,7 +169,7 @@
 <h2 id="送信側"><a class="header" href="#送信側">送信側</a></h2>
 <p>主に<code>Arduino Uno Rev3</code>に<code>USB Host Shield</code>を接続し、<code>USB Host Shield</code>に<code>DUALSHOCK4</code>などのコントローラーを接続し、<code>Arduino</code>でコントローラーのデータを読み取りそれをシリアル通信を用いて受信側に送る。受信データは以下の表の内容になって全てで<code>11byte</code>ある。</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">byte数</th><th style="text-align: center">data</th><th style="text-align: center">説明</th></tr></thead><tbody>
-<tr><td style="text-align: center">0byte</td><td style="text-align: center">0ｈxaf</td><td style="text-align: center">先頭データを表す</td></tr>
+<tr><td style="text-align: center">0byte</td><td style="text-align: center">0xaf</td><td style="text-align: center">先頭データを表す</td></tr>
 <tr><td style="text-align: center">1byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">LアナログスティックのX座標</td></tr>
 <tr><td style="text-align: center">2byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">LアナログスティックのY座標</td></tr>
 <tr><td style="text-align: center">3byte</td><td style="text-align: center">unsigned char</td><td style="text-align: center">RアナログスティックのX座標</td></tr>
