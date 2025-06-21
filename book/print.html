@@ -208,7 +208,7 @@
 </ul>
 <h2 id="基本"><a class="header" href="#基本">基本</a></h2>
 <h3 id="clone"><a class="header" href="#clone">clone</a></h3>
-<p>リモート(<code>GitHub</code>のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。<br />
+<p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。<br />
 <code>git clone [remote URL]</code>でカレントディレクトリにそのリポジトリのディレクトリが複製される。<code>[remote URL]</code>は<code>GitHub</code>から確認する。<br />
 <a href="https://github.com/">'GitHub'</a>に行きcloneしたいリポジトリのページまで移動する。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーする。</p>
 <h3 id="add"><a class="header" href="#add">add</a></h3>
@@ -279,7 +279,7 @@
 <h2 id="モーターを回す"><a class="header" href="#モーターを回す">モーターを回す</a></h2>
 <p>回路的には以下のようになっている。<br />
 <img src="BasicContents/../resources/BasicContents/motor/motor_road.drawio.png" alt="motor_road.drawio.png" /><br />
-モーターの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要がある。それをフォトカプラ基板で信号のやり取りを行っている。また、<code>PWM</code>の周期を<code>83[μs]</code>に設定する。これはモタドラICの周波数が<code>12[kHz]</code>あたりがいいらしいからだ(モタドラIC<code>HIP4081AIPZ</code>)。</p>
+モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要がある。それをフォトカプラ基板で信号のやり取りを行っている。また、<code>PWM</code>の周期を<code>83[μs]</code>に設定する。これはモタドラICの周波数が<code>12[kHz]</code>あたりがいいらしいからだ(モタドラIC<code>HIP4081AIPZ</code>)。</p>
 <h2 id="フォトカプラによる動作の違い"><a class="header" href="#フォトカプラによる動作の違い">フォトカプラによる動作の違い</a></h2>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">フォトカプラ</th><th style="text-align: center">部品</th><th style="text-align: center">用途</th><th style="text-align: center">向き</th></tr></thead><tbody>
 <tr><td style="text-align: center"><a href="https://jp.rs-online.com/web/p/optocouplers/1611038?gb=a">'TLP621'</a></td><td style="text-align: center"><img src="BasicContents/../resources//BasicContents/motor/pic_TLP621.JPG" alt="pic_TLP621.JPG" /></td><td style="text-align: center">ディジタルの変換</td><td style="text-align: center">左下にある◯がマイコン側</td></tr>
@@ -355,8 +355,8 @@
 </tbody></table>
 </div>
 <p><code>N/A</code>:なし<br />
-<code>SHARE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSHOCK4</code>の場合、<code>SELECT</code>,<code>START</code>,<code>N/A</code>は<code>DUALSHOCK3</code>の場合。<br />
-ボタンセットはボタンが押されている時に各bitが<code>1</code>になるようにしている。</p>
+<code>CREATE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSENSE</code>の場合、<code>SHARE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSHOCK4</code>の場合、<code>SELECT</code>,<code>START</code>,<code>N/A</code>は<code>DUALSHOCK3</code>の場合。<br />
+ボタンセットはボタンが押されている時に対応する各bitが<code>1</code>になるようにしている。</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">16進数表記</th><th style="text-align: center">2進数表記</th></tr></thead><tbody>
 <tr><td style="text-align: center">0bit</td><td style="text-align: center">0x01</td><td style="text-align: center">0000 0001</td></tr>
 <tr><td style="text-align: center">1bit</td><td style="text-align: center">0x02</td><td style="text-align: center">0000 0010</td></tr>
@@ -377,8 +377,8 @@
 各環境の受信側ライブラリ(現在あるもの)</p>
 <ul>
 <li><a href="https://os.mbed.com/users/yabumi823/code/SerialCtrl/">Mbed(Keil Studio)</a></li>
-<li><a href="https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino">STM32CubeIDE(F446RE)</a></li>
 </ul>
+<!-- * [STM32CubeIDE(F446RE)](https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino)   -->
 <h3 id="ボタンセットの値の読み取り方"><a class="header" href="#ボタンセットの値の読み取り方">ボタンセットの値の読み取り方</a></h3>
 <p>送信側ではボタンが押されたらbit論理和代入をしている。例えば<code>0x10</code>と<code>0x04</code>のボタンが押されている場合は<code>0001 0000 + 0000 0100 = 0001 0100</code>になる。そうすると送信側では、<code>0x14</code>が送信される。受信側では各ボタンの判定を行えば良く、ボタンが押されているかどうかは論理積を用いる。<code>0x10</code>の場合は<code>0x14 ・ 0x10 = 0x10</code>になる。このようにしてボタンの状態を読み取る。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="送信側transmit--tx"><a class="header" href="#送信側transmit--tx">送信側(Transmit / TX)</a></h1>
@@ -400,7 +400,8 @@
 <li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(PlayStation5用コントローラー)</a></li>
 </ul>
 <h3 id="ソースファイルヘッダファイル"><a class="header" href="#ソースファイルヘッダファイル">ソースファイル・ヘッダファイル</a></h3>
-<p>ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは<code>ver.1.1.0</code>であり<a href="https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src">'ここ'</a>にある。</p>
+<p>ソースファイル等はgitにてバージョン管理を行っている。</p>
+<!-- 現在(2025/05/10)時点での最新バージョンは`ver.1.1.0`であり['ここ'](https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src)にある。   -->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="受信側receive--rx"><a class="header" href="#受信側receive--rx">受信側(Receive / RX)</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="platformioの導入"><a class="header" href="#platformioの導入">PlatformIOの導入</a></h1>
 <p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への移行を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">'記事'</a><br />

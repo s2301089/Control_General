@@ -54,8 +54,8 @@
 |7bit|0/1|TOUCHPAD / N/A|  
 
 `N/A`:なし  
-`SHARE`,`OPTIONS`,`TOUCHPAD`は`DUALSHOCK4`の場合、`SELECT`,`START`,`N/A`は`DUALSHOCK3`の場合。  
-ボタンセットはボタンが押されている時に各bitが`1`になるようにしている。  
+`CREATE`,`OPTIONS`,`TOUCHPAD`は`DUALSENSE`の場合、`SHARE`,`OPTIONS`,`TOUCHPAD`は`DUALSHOCK4`の場合、`SELECT`,`START`,`N/A`は`DUALSHOCK3`の場合。  
+ボタンセットはボタンが押されている時に対応する各bitが`1`になるようにしている。  
 
 |bit数|16進数表記|2進数表記|
 |:---:|:---:|:---:|
@@ -80,7 +80,7 @@ SUM = `(LアナログスティックのX座標)` + `(Lアナログスティッ�
 各環境の受信側ライブラリ(現在あるもの)  
 
 * [Mbed(Keil Studio)](https://os.mbed.com/users/yabumi823/code/SerialCtrl/)  
-* [STM32CubeIDE(F446RE)](https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino)  
+<!-- * [STM32CubeIDE(F446RE)](https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino)   -->
 
 ### ボタンセットの値の読み取り方  
 

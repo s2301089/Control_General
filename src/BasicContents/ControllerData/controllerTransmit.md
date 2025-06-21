@@ -23,4 +23,5 @@
 
 ### ソースファイル・ヘッダファイル  
 
-ソースファイル等はgitにてバージョン管理を行っている。現在(2025/05/10)時点での最新バージョンは`ver.1.1.0`であり['ここ'](https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src)にある。  
+ソースファイル等はgitにてバージョン管理を行っている。
+<!-- 現在(2025/05/10)時点での最新バージョンは`ver.1.1.0`であり['ここ'](https://github.com/s2301089/Control_General/tree/ver.1.1.0/codes/arduino_controller/PlayStationController/src)にある。   -->

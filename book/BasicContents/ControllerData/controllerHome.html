@@ -207,8 +207,8 @@
 </tbody></table>
 </div>
 <p><code>N/A</code>:なし<br />
-<code>SHARE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSHOCK4</code>の場合、<code>SELECT</code>,<code>START</code>,<code>N/A</code>は<code>DUALSHOCK3</code>の場合。<br />
-ボタンセットはボタンが押されている時に各bitが<code>1</code>になるようにしている。</p>
+<code>CREATE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSENSE</code>の場合、<code>SHARE</code>,<code>OPTIONS</code>,<code>TOUCHPAD</code>は<code>DUALSHOCK4</code>の場合、<code>SELECT</code>,<code>START</code>,<code>N/A</code>は<code>DUALSHOCK3</code>の場合。<br />
+ボタンセットはボタンが押されている時に対応する各bitが<code>1</code>になるようにしている。</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: center">bit数</th><th style="text-align: center">16進数表記</th><th style="text-align: center">2進数表記</th></tr></thead><tbody>
 <tr><td style="text-align: center">0bit</td><td style="text-align: center">0x01</td><td style="text-align: center">0000 0001</td></tr>
 <tr><td style="text-align: center">1bit</td><td style="text-align: center">0x02</td><td style="text-align: center">0000 0010</td></tr>
@@ -229,8 +229,8 @@
 各環境の受信側ライブラリ(現在あるもの)</p>
 <ul>
 <li><a href="https://os.mbed.com/users/yabumi823/code/SerialCtrl/">Mbed(Keil Studio)</a></li>
-<li><a href="https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino">STM32CubeIDE(F446RE)</a></li>
 </ul>
+<!-- * [STM32CubeIDE(F446RE)](https://github.com/s2301089/development-F446RE/tree/main/lib/UART_Arduino)   -->
 <h3 id="ボタンセットの値の読み取り方"><a class="header" href="#ボタンセットの値の読み取り方">ボタンセットの値の読み取り方</a></h3>
 <p>送信側ではボタンが押されたらbit論理和代入をしている。例えば<code>0x10</code>と<code>0x04</code>のボタンが押されている場合は<code>0001 0000 + 0000 0100 = 0001 0100</code>になる。そうすると送信側では、<code>0x14</code>が送信される。受信側では各ボタンの判定を行えば良く、ボタンが押されているかどうかは論理積を用いる。<code>0x10</code>の場合は<code>0x14 ・ 0x10 = 0x10</code>になる。このようにしてボタンの状態を読み取る。</p>
 
