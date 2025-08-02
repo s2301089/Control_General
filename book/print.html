@@ -436,7 +436,7 @@
 <li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="frameworkでarduinoを選択した時"><a class="header" href="#frameworkでarduinoを選択した時">FrameworkでArduinoを選択した時</a></h1>
-<p>基本的には<code>ArduinoIDE</code>と同じ</p>
+<p>基本的には<a href="DevelopmentPlatformIO/FrameworkArduino/../../DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.html"><code>ArduinoIDE</code></a>と同じ</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
 <li><a href="DevelopmentPlatformIO/FrameworkArduino/./MakeProjectLchika.html">プロジェクトの作成とLチカ</a></li>
@@ -523,6 +523,172 @@ void loop() {
 <li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./readAnalogResi.html">可変抵抗の値を読む</a></li>
 <li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./canUsePrintFloat.html">%fできるようにする</a></li>
 </ul>
+<h2 id="関数"><a class="header" href="#関数">関数</a></h2>
+<h3 id="名前空間mbed"><a class="header" href="#名前空間mbed">名前空間<code>mbed</code></a></h3>
+<h4 id="mbedprintf"><a class="header" href="#mbedprintf"><code>mbed::printf(...)</code></a></h4>
+<ul>
+<li>シリアル通信で文字列などを送信する関数</li>
+<li>デフォルトでは<code>PC</code>とボーレート<code>9600[bps]</code>で通信を行う</li>
+<li><code>stdio.h</code>の<code>printf()</code>である</li>
+</ul>
+<h4 id="mbeddigitaloutクラス"><a class="header" href="#mbeddigitaloutクラス"><code>mbed::DigitalOut</code>クラス</a></h4>
+<h5 id="mbeddigitaloutpin"><a class="header" href="#mbeddigitaloutpin"><code>mbed::DigitalOut::(pin)</code></a></h5>
+<ul>
+<li>ディジタル出力を行うクラス</li>
+<li>使用する<code>GPIO</code>ピンを指定する</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// PA_0 を出力ピンとしてインスタンスを作成
+DigitalOut led(PA_0);
+</code></pre>
+<h5 id="mbeddigitaloutwritevalue"><a class="header" href="#mbeddigitaloutwritevalue"><code>mbed::DigitalOut::write(value)</code></a></h5>
+<ul>
+<li>ディジタル出力を行う関数</li>
+<li>引数
+<ul>
+<li><code>value</code> (<code>1</code>/<code>0</code>)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// ledのピンを1(HIGH)に指定
+led.write(1);
+</code></pre>
+<h5 id="mbeddigitaloutreadvoid"><a class="header" href="#mbeddigitaloutreadvoid"><code>mbed::DigitalOut::read(void)</code></a></h5>
+<ul>
+<li>現在のディジタル値を取得する関数</li>
+<li>引数
+<ul>
+<li>なし</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>ディジタル値 (<code>1</code>/<code>0</code>)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// ledの値をled_valueに代入
+bool led_value = led.read();
+</code></pre>
+<h4 id="mbeddigitalinクラス"><a class="header" href="#mbeddigitalinクラス"><code>mbed::DigitalIn</code>クラス</a></h4>
+<h5 id="mbeddigitalinpin"><a class="header" href="#mbeddigitalinpin"><code>mbed::DigitalIn::(pin)</code></a></h5>
+<ul>
+<li>ディジタル入力を行うクラス</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// PA_1 を入力ピンとしてインスタンスを作成
+DigitalIn sw(PA_1);
+</code></pre>
+<h5 id="mbeddigitalinreadvoid"><a class="header" href="#mbeddigitalinreadvoid"><code>mbed::DigitalIn::read(void)</code></a></h5>
+<ul>
+<li>ディジタル値を取得する関数</li>
+<li>引数
+<ul>
+<li>なし</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>ディジタル値 (<code>1</code>/<code>0</code>)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// swの値を変数sw_valueに代入
+bool sw_value = sw.read();
+</code></pre>
+<h4 id="mbedpwmoutクラス"><a class="header" href="#mbedpwmoutクラス"><code>mbed::PwmOut</code>クラス</a></h4>
+<h5 id="mbedpwmoutpin"><a class="header" href="#mbedpwmoutpin"><code>mbed::PwmOut::(pin)</code></a></h5>
+<ul>
+<li><code>PWM</code>波形の出力を行うクラス</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// PB_0 をPWM出力ピンとしてインスタンスを作成
+PWMOut moter(PB_0);
+</code></pre>
+<h5 id="mbedpwmoutperiod_ustime"><a class="header" href="#mbedpwmoutperiod_ustime"><code>mbed::PwmOut::period_us(time)</code></a></h5>
+<ul>
+<li><code>PWM</code>の周期を設定する関数</li>
+<li>引数
+<ul>
+<li><code>time</code></li>
+<li>単位は<code>[us]</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// moterのPWM周期を83[us]に設定
+moter.period(83);
+</code></pre>
+<h5 id="mbedpwmoutwritevalue"><a class="header" href="#mbedpwmoutwritevalue"><code>mbed::PwmOut::write(value)</code></a></h5>
+<ul>
+<li><code>PWM</code>波形を出力する関数</li>
+<li>引数
+<ul>
+<li><code>value</code>
+<ul>
+<li>範囲は<code>0</code>~<code>1</code>(少数)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// Duty比25％に指定
+moter.write(0.25);
+</code></pre>
+<h4 id="mbedanaloginクラス"><a class="header" href="#mbedanaloginクラス"><code>mbed::AnalogIn</code>クラス</a></h4>
+<h5 id="mbedanaloginpin"><a class="header" href="#mbedanaloginpin"><code>mbed::AnalogIn::(pin)</code></a></h5>
+<ul>
+<li>アナログ入力を行うクラス</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// PA_4 をアナログ入力ピンとしてインスタンスを作成
+AnalogIn variable_resister(PA_4);
+</code></pre>
+<h5 id="mbedanaloginreadvoid"><a class="header" href="#mbedanaloginreadvoid"><code>mbed::AnalogIn::read(void)</code></a></h5>
+<ul>
+<li><code>AD</code>値を取得する関数</li>
+<li>戻り値
+<ul>
+<li><code>AD</code>値</li>
+<li>範囲は<code>0</code>~<code>1</code>(少数)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// variable_resisterのAD値を取得する
+double variable_resister_value = variable_resister.read();
+</code></pre>
+<h3 id="名前空間mbedthisthread"><a class="header" href="#名前空間mbedthisthread">名前空間<code>mbed::ThisThread</code></a></h3>
+<h4 id="mbedthisthreadsleep_fortimems"><a class="header" href="#mbedthisthreadsleep_fortimems"><code>mbed::ThisThread::sleep_for(timems)</code></a></h4>
+<ul>
+<li>指定した時間処理を停止する関数</li>
+<li>引数
+<ul>
+<li><code>timems</code>
+<ul>
+<li><code>ms</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// 250[ms]間処理を停止する
+sleep_for(250ms);
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lチカと変数の表示"><a class="header" href="#lチカと変数の表示">Lチカと変数の表示</a></h1>
 <p>プロジェクトの作成は省略する。FrameworkでMbedOSを選択すれば問題ない。<br />
 <code>main.cpp</code></p>
@@ -672,6 +838,177 @@ OneDriveの中にローカルリポジトリを置くなんて頭悪いことし
 <ul>
 <li><a href="https://karakuri-musha.com/inside-technology/arduino-raspberrypi-pico-helloworld01/"><code>Raspberry Pi Pico</code>を使用するために</a></li>
 </ul>
+<h2 id="関数-1"><a class="header" href="#関数-1">関数</a></h2>
+<h3 id="pinmodepinmode"><a class="header" href="#pinmodepinmode"><code>pinMode(pin,mode)</code></a></h3>
+<ul>
+<li>GPIOの入出力を設定する関数</li>
+<li>引数
+<ul>
+<li><code>pin</code>
+<ul>
+<li><code>GPIO</code>ピン</li>
+<li>各マイコンによって異なる</li>
+</ul>
+</li>
+<li><code>mode</code>
+<ul>
+<li>入力
+<ul>
+<li><code>INPUT</code></li>
+<li><code>INPUT_PULLUP</code> (内部プルアップ抵抗を有効にする)</li>
+<li><code>INPUT_PULLDOWN</code> (内部プルダウン抵抗を有効にする)</li>
+</ul>
+</li>
+<li>出力
+<ul>
+<li><code>OUTPUT</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// 2番ピンを入力に指定
+pinMode(2,INPUT);
+// 3番ピンを出力に指定
+pinMode(3,OUTPUT);
+</code></pre>
+<h3 id="digitalwritepinvalue"><a class="header" href="#digitalwritepinvalue"><code>digitalWrite(pin,value)</code></a></h3>
+<ul>
+<li>ディジタル出力を行う関数</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+<li><code>value</code> (<code>HIGH</code>/<code>LOW</code>)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// 3番ピンをHIGHに指定
+digitalWrite(3,HIGH);
+// 3番ピンをLOWに指定
+digitalWrite(3,0);
+</code></pre>
+<h3 id="digitalreadpin"><a class="header" href="#digitalreadpin"><code>digitalRead(pin)</code></a></h3>
+<ul>
+<li>ディジタル入力を行う関数</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>ディジタル値 (<code>HIGH</code>/<code>LOW</code>)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// 2番ピンの値を変数sw_valueに代入
+bool sw_value = digitalRead(2);
+</code></pre>
+<h3 id="analogwritepinvalue"><a class="header" href="#analogwritepinvalue"><code>analogWrite(pin,value)</code></a></h3>
+<ul>
+<li>アナログ出力を行う関数</li>
+<li><code>PWM</code>波形を出力する</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+<li><code>value</code>
+<ul>
+<li><code>PWM</code>値</li>
+<li>デフォルトの範囲は<code>0</code>~<code>255</code>(整数)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// 3番ピンのDuty比を約25%に指定
+analogWrite(3,64);
+</code></pre>
+<h3 id="analogreadpin"><a class="header" href="#analogreadpin"><code>analogRead(pin)</code></a></h3>
+<ul>
+<li>アナログ入力を行う関数</li>
+<li>引数
+<ul>
+<li><code>pin</code></li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li><code>AD</code>値</li>
+<li>デフォルトの範囲は<code>0</code>~<code>1023</code>(整数)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// A0ピンのAD値を変数variable_resisterに代入
+uint8_t variable_resister = analogRead(A0);
+</code></pre>
+<h3 id="delaytime"><a class="header" href="#delaytime"><code>delay(time)</code></a></h3>
+<ul>
+<li>指定した時間処理を停止する関数</li>
+<li>引数
+<ul>
+<li><code>time</code>
+<ul>
+<li>単位は<code>[ms]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="serialhardwareserialクラス"><a class="header" href="#serialhardwareserialクラス"><code>Serial</code>(<code>HardwareSerial</code>クラス)</a></h3>
+<h4 id="hardwareserialbeginbaudrate"><a class="header" href="#hardwareserialbeginbaudrate"><code>HardwareSerial::begin(baudrate)</code></a></h4>
+<ul>
+<li>シリアル通信のボーレート(通信速度)を設定する関数</li>
+<li><code>Arduino Uno R3</code>ではデフォルトでは<code>PC</code>との通信を設定する</li>
+<li>単位は<code>bps</code></li>
+</ul>
+<pre><code class="language-cpp">// ボーレート38400bpsに設定
+Serial.begin(38400);
+</code></pre>
+<h4 id="hardwareserialprintvalue"><a class="header" href="#hardwareserialprintvalue"><code>HardwareSerial::print(value)</code></a></h4>
+<ul>
+<li>シリアル通信で文字列などを送信する関数</li>
+</ul>
+<pre><code class="language-cpp">// シリアルモニターにHelloWorld.と出力する
+Serial.print("HelloWorld.");
+</code></pre>
+<h4 id="hardwareserialprintlnvalue"><a class="header" href="#hardwareserialprintlnvalue"><code>HardwareSerial::println(value)</code></a></h4>
+<ul>
+<li><code>Serial.print()</code>のと同じ機能+改行を行う関数</li>
+</ul>
+<pre><code class="language-cpp">// Serial.print("HelloWorld.\n"); と同じこと
+Serial.println("HelloWorld.");
+</code></pre>
+<h3 id="softwareserialクラス"><a class="header" href="#softwareserialクラス"><code>SoftwareSerial</code>クラス</a></h3>
+<h4 id="softwareserialreceive_pintransmit_pin"><a class="header" href="#softwareserialreceive_pintransmit_pin"><code>SoftwareSerial::(receive_pin,transmit_pin)</code></a></h4>
+<ul>
+<li>使用する<code>GPIO</code>ピンを指定する</li>
+<li>引数
+<ul>
+<li><code>receive_pin</code> (受信)</li>
+<li><code>transmit_pin</code> (送信)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">// RXに7番ピン、TXに6番ピンを指定
+SoftwareSerial fep(7,6);
+</code></pre>
+<h4 id="softwareserialbeginbaudrate"><a class="header" href="#softwareserialbeginbaudrate"><code>SoftwareSerial::begin(baudrate)</code></a></h4>
+<ul>
+<li>シリアル通信のボーレート(通信速度)を設定する関数</li>
+<li>単位は<code>bps</code></li>
+</ul>
+<pre><code class="language-cpp">// ボーレート38400bpsに設定
+fep.begin(38400);
+</code></pre>
+<h4 id="softwareserialwritevalue"><a class="header" href="#softwareserialwritevalue"><code>SoftwareSerial::write(value)</code></a></h4>
+<ul>
+<li><code>UART</code>で<code>1[Byte]</code>のデータを送信する関数</li>
+</ul>
+<pre><code class="language-cpp">// '\n'を送信する
+fep.write('\n');
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ディジタル出力"><a class="header" href="#ディジタル出力">ディジタル出力</a></h1>
 <h2 id="ディジタル出力をしてlチカをする"><a class="header" href="#ディジタル出力をしてlチカをする">ディジタル出力をしてLチカをする</a></h2>
 <p><code>Raspberry Pi Pico</code>のLチカ(LEDをチカチカさせる)コードを作成。<br />

@@ -1,6 +1,6 @@
 # FrameworkでArduinoを選択した時
 
-基本的には`ArduinoIDE`と同じ  
+基本的には[`ArduinoIDE`](../../DevelopmentArduinoIDE/DevelopmentArduinoIDEHome.md)と同じ  
 
 **コンテンツ一覧**  
 
