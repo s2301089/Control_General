@@ -5,9 +5,8 @@
 ## 設定ファイルを作成する
 
 `platformIO`のプロジェクトのディレクトリ(`platformio.ini`がある階層)に`mbed_app.json`を作成する。  
-`mbed_app.json`  
 
-```json
+```json : mbed_app.json
 {
     "target_overrides":{
         "*":{

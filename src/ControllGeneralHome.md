@@ -10,7 +10,6 @@
 
 - Windows 11 Home  
 - Ubuntu 22.04 LTS  
-- (Kali Linux(WSL))
 
 ## 使用中(使用予定)のマイコン一覧  
 

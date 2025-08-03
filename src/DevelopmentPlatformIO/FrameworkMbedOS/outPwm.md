@@ -2,9 +2,7 @@
 
 LEDの明るさを`0`と`1`以外にする。`DigitalOut`ではLEDは最大で点灯か消灯の2パターンしかない。ほんのり光るなどということをするためにPWM波形を出力する。  
 
-`main.cpp`  
-
-```cpp
+```cpp : main.cpp
 #include <mbed.h>
 
 using namespace ThisThread;

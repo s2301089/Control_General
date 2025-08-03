@@ -3,9 +3,7 @@
 `x`の値をシリアルモニターに出力したい(画面に出力したい)と思ったら、以下のようにコードを追記する。  
 > ['これ'](./MakeProjectLchika.md)の続きです。
 
-`main.cpp`  
-
-```cpp
+```cpp : main.cpp
 #include <Arduino.h>
 
 bool x = 0;

@@ -6,9 +6,8 @@
 マイコンのピンの`SPI◯_MISO`と`SPI◯_MOSI`の機能を使用していると予想。タイマーのエンコーダモードを使用する。  
 `[プロジェクト名].ioc`-`Pinout & Configuration`-`Timers`-`TIM3`-`Mode`-`Combined Channels`を`Encoder Mode`、`Configuration`-`Parameter Settings`-`Counter Settings`-`Counter Period`を`8192`、`Encoder`-`Encoder Mode`を`Encoder Mode TI1 and TIT2`に設定。今回は`TIM3`を使用した。  
 `printf`を使用する。  
-`main.c`  
 
-```c
+```c : main.c
 /* USER CODE BEGIN 0 */
 int over;
 
@@ -49,9 +48,8 @@ while (1)
 ## 角度を求めてみる  
 
 回転量から回転回数や基準からの角度などを求められる。`((float)count / 8192) * 360`で1周`360°`になる。ただし`count`はもともと`int`型なので計算結果を少数にするために`float`型にキャスト変換する。また、以下のコードで角度を`0°`~`360°`にすることで何周しても同じ角度になるようにすることができる。  
-`以下のコード`  
 
-```c
+```c : main.c
 while(deg > 360){
     deg = deg - 360;
 }

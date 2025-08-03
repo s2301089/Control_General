@@ -160,9 +160,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="可変抵抗を読む"><a class="header" href="#可変抵抗を読む">可変抵抗を読む</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="可変抵抗を読む"><a class="header" href="#可変抵抗を読む">可変抵抗を読む</a></h1>
 <p>可変抵抗の値を読みPWMとして出力する。</p>
-<p><code>main.cpp</code></p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;mbed.h&gt;
 
 using namespace ThisThread;
@@ -181,7 +194,7 @@ int main(void){
 }
 </code></pre>
 <p>可変抵抗を<code>resi</code>で読み取りそれを<code>led</code>に横流しする。</p>
-<p>以上</p>
+<p>以上。</p>
 
                     </main>
 

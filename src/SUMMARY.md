@@ -3,7 +3,7 @@
 
 [前提条件等](./ControllGeneralHome.md)  
 
-# 基本的なこと  
+# 基本的なこと
 
 - [一覧](./BasicContents/BasicContentsHome.md)
   - [git / GitHub](./BasicContents/git_GitHub.md)  

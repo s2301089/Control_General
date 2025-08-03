@@ -12,9 +12,7 @@
 
 - [`Raspberry Pi Pico`を使用するために](https://karakuri-musha.com/inside-technology/arduino-raspberrypi-pico-helloworld01/)
 
-## 関数
-
-### `pinMode(pin,mode)`
+## `pinMode(pin,mode)`
 
 - GPIOの入出力を設定する関数
 - 引数
@@ -29,28 +27,28 @@
     - 出力
       - `OUTPUT`
 
-```cpp
+```cpp : gpio.ino
 // 2番ピンを入力に指定
 pinMode(2,INPUT);
 // 3番ピンを出力に指定
 pinMode(3,OUTPUT);
 ```
 
-### `digitalWrite(pin,value)`
+## `digitalWrite(pin,value)`
 
 - ディジタル出力を行う関数
 - 引数
   - `pin`
   - `value` (`HIGH`/`LOW`)
 
-```cpp
+```cpp : gpio.ino
 // 3番ピンをHIGHに指定
 digitalWrite(3,HIGH);
 // 3番ピンをLOWに指定
 digitalWrite(3,0);
 ```
 
-### `digitalRead(pin)`
+## `digitalRead(pin)`
 
 - ディジタル入力を行う関数
 - 引数
@@ -58,12 +56,12 @@ digitalWrite(3,0);
 - 戻り値
   - ディジタル値 (`HIGH`/`LOW`)
 
-```cpp
+```cpp : gpio.ino
 // 2番ピンの値を変数sw_valueに代入
 bool sw_value = digitalRead(2);
 ```
 
-### `analogWrite(pin,value)`
+## `analogWrite(pin,value)`
 
 - アナログ出力を行う関数
 - `PWM`波形を出力する
@@ -73,12 +71,12 @@ bool sw_value = digitalRead(2);
     - `PWM`値
     - デフォルトの範囲は`0`~`255`(整数)
 
-```cpp
+```cpp : gpio.ino
 // 3番ピンのDuty比を約25%に指定
 analogWrite(3,64);
 ```
 
-### `analogRead(pin)`
+## `analogRead(pin)`
 
 - アナログ入力を行う関数
 - 引数
@@ -87,78 +85,83 @@ analogWrite(3,64);
   - `AD`値
   - デフォルトの範囲は`0`~`1023`(整数)
 
-```cpp
+```cpp : gpio.ino
 // A0ピンのAD値を変数variable_resisterに代入
 uint8_t variable_resister = analogRead(A0);
 ```
 
-### `delay(time)`
+## `delay(time)`
 
 - 指定した時間処理を停止する関数
 - 引数
   - `time`
     - 単位は`[ms]`
 
-### `Serial`(`HardwareSerial`クラス)
+```cpp : delay.ino
+// 250[ms]間処理を停止する
+delay(250);
+```
 
-#### `HardwareSerial::begin(baudrate)`
+## `Serial`(`HardwareSerial`クラス)
+
+### `HardwareSerial::begin(baudrate)`
 
 - シリアル通信のボーレート(通信速度)を設定する関数
 - `Arduino Uno R3`ではデフォルトでは`PC`との通信を設定する
 - 単位は`bps`
 
-```cpp
+```cpp : HardwareSerial.ino
 // ボーレート38400bpsに設定
 Serial.begin(38400);
 ```
 
-#### `HardwareSerial::print(value)`
+### `HardwareSerial::print(value)`
 
 - シリアル通信で文字列などを送信する関数
 
-```cpp
+```cpp : HardwareSerial.ino
 // シリアルモニターにHelloWorld.と出力する
 Serial.print("HelloWorld.");
 ```
 
-#### `HardwareSerial::println(value)`
+### `HardwareSerial::println(value)`
 
 - `Serial.print()`のと同じ機能+改行を行う関数
 
-```cpp
+```cpp : HardwareSerial.ino
 // Serial.print("HelloWorld.\n"); と同じこと
 Serial.println("HelloWorld.");
 ```
 
-### `SoftwareSerial`クラス
+## `SoftwareSerial`クラス
 
-#### `SoftwareSerial::(receive_pin,transmit_pin)`
+### `SoftwareSerial::(receive_pin,transmit_pin)`
 
 - 使用する`GPIO`ピンを指定する
 - 引数
   - `receive_pin` (受信)
   - `transmit_pin` (送信)
 
-```cpp
+```cpp : SoftwareSerial.ino
 // RXに7番ピン、TXに6番ピンを指定
 SoftwareSerial fep(7,6);
 ```
 
-#### `SoftwareSerial::begin(baudrate)`
+### `SoftwareSerial::begin(baudrate)`
 
 - シリアル通信のボーレート(通信速度)を設定する関数
 - 単位は`bps`
 
-```cpp
+```cpp : SoftwareSerial.ino
 // ボーレート38400bpsに設定
 fep.begin(38400);
 ```
 
-#### `SoftwareSerial::write(value)`
+### `SoftwareSerial::write(value)`
 
 - `UART`で`1[Byte]`のデータを送信する関数
 
-```cpp
+```cpp : SoftwareSerial.ino
 // '\n'を送信する
 fep.write('\n');
 ```

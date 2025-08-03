@@ -4,16 +4,15 @@
 
 今までLチカは以下のようなコードでしていた。  
 
-```c
+```c : main.c
 HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
 HAL_Delay(1000);
 ```  
 
 これは毎秒Lチカするプログラムである。このコードでは次にLEDの状態を変えるまで処理をすべて止めている。そのため、他の処理をしようとしてもできなかった。そんなときにタイマー割り込みを使用すれば他の処理を止めることなく、一定の周期である処理を実行することができる。  
-`[プロジェクト名].ioc`-`Pinout & Configuration`-`Timers`-`TIM2`-`Mode`-`Clock Source`を`Internal Clock`、`Configuration`-`Parameter Settings`-`Counter Settings`-`Prescaler`を`15`、`Counter Period`を`999999`に、`Configuration`-`NVIC Setting`-`TIM2 global interrupt`を`Enable`に設定。今回は`TIM2`を使用した。  
-`main.c`  
+`[プロジェクト名].ioc`-`Pinout & Configuration`-`Timers`-`TIM2`-`Mode`-`Clock Source`を`Internal Clock`、`Configuration`-`Parameter Settings`-`Counter Settings`-`Prescaler`を`15`、`Counter Period`を`999999`に、`Configuration`-`NVIC Setting`-`TIM2 global interrupt`を`Enable`に設定。今回は`TIM2`を使用した。
 
-```c
+```c : main.c
 /* USER CODE BEGIN 2 */
 HAL_TIM_Base_Start_IT(&htim2);
 /* USER CODE END 2 */

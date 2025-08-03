@@ -160,9 +160,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="lチカと変数の表示"><a class="header" href="#lチカと変数の表示">Lチカと変数の表示</a></h1>
-<p>プロジェクトの作成は省略する。FrameworkでMbedOSを選択すれば問題ない。<br />
-<code>main.cpp</code></p>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="lチカと変数の表示"><a class="header" href="#lチカと変数の表示">Lチカと変数の表示</a></h1>
+<p>プロジェクトの作成は省略する。FrameworkでMbedOSを選択すれば問題ない。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;mbed.h&gt;
 
 int main(void){
@@ -173,7 +186,7 @@ int main(void){
 }
 </code></pre>
 <p>これは<code>500ms</code>ごとに<code>HelloWorld!</code>と出力するプログラム。<code>OS6</code>から<code>Serial</code>クラスがなくなり、<code>PC</code>へはそのまま<code>printf</code>で出力できるようになった。しかし、ボードレートは<code>9600</code>である。</p>
-<p><code>main.cpp</code></p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;mbed.h&gt;
 
 DigitalOut led(PA_1);
@@ -189,7 +202,7 @@ int main(void){
 }
 </code></pre>
 <p>これは<code>500ms</code>ごとにLEDを点滅させその値を出力するプログラム。</p>
-<p><code>main.cpp</code></p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;mbed.h&gt;
 
 DigitalOut led(PA_1);

@@ -5,7 +5,7 @@
 `[プロジェクト名].ioc`-`Pinout & Configuration`-`Connectivity`-`USART1`-`Mode`を`Asynchronous`、`Configuration`-`Parameter Settings`-`Basic Parameters`-`Baud Rate`を`38400`に設定。今回は`USART1`を使用した。  
 保存しコードを作成。`main.c`に処理を追記。  
 
-```c
+```c : main.c
 STprintf(&huart2);
 uint8_t i = 0;
 

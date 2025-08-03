@@ -18,9 +18,8 @@
 > 中には`printf`を使用する関数も含まれているため、`printf`を`UART通信`で使用できるようにしておく。['参考'](../BasicContents/printfLibrary.md)  
 
 **使用例1**  
-`main.c`  
 
-```c
+```c : main.c
 // 略
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
@@ -58,9 +57,8 @@
 上記の使用例では、`printf`を`USART2`で使用できるようにし、`Arduino`との`UART通信`に`USART1`を使用している。また、`getdata`型の`DATA`という名前の構造体変数を宣言し、`getData関数`に引数として`DATA`のアドレスを渡している。  
 
 **使用例2**  
-`main.c`  
 
-```c
+```c : main.c
 // 略
 /* USER CODE BEGIN Includes */
 #include <stdio.h>

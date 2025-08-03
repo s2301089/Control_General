@@ -4,9 +4,8 @@
 
 `Raspberry Pi Pico`のLチカ(LEDをチカチカさせる)コードを作成。  
 どのピンを使用するかどうかは['これ'](https://akizukidenshi.com/goodsaffix/Pico-R3-A4-Pinout.pdf)を参考にした。  
-`digiout.ino`  
 
-```cpp
+```cpp : digiout.ino
 #define LED 2
 int x = 0;
 

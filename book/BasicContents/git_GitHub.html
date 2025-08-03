@@ -160,9 +160,130 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="gitコマンドの使い方"><a class="header" href="#gitコマンドの使い方">gitコマンドの使い方</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="gitコマンドの使い方"><a class="header" href="#gitコマンドの使い方">gitコマンドの使い方</a></h1>
 <p>バージョン管理ツール<code>git</code>の簡易的な使用方法をメモ。導入部分は省く。<br />
 リモートとの通信には<code>ssh</code>を使用する。</p>
+<details>
+<summary>SSHの設定(学内)</summary>
+<div>
+<ul>
+<li>
+<p>学内では<code>SSH</code>認証を使用しないと<code>git</code>のサーバーと通信を行えません。</p>
+</li>
+<li>
+<p><code>ssh</code>鍵を作成する</p>
+<ul>
+<li>
+<p><code>Git Bash</code>などで<code>~/.ssh/</code>を確認する。ない場合は作成し移動する。</p>
+<pre><code class="language-bash : Git Bash">mkdir ~/.ssh
+cd ~/.ssh
+</code></pre>
+</li>
+<li>
+<p><code>ssh-keygen</code>によって作成する</p>
+<pre><code class="language-bash : Git Bash">ssh-keygen -t rsa -C email@email.com -f id_rsa_email
+</code></pre>
+</li>
+<li>
+<p><code>email@email.com</code>は<code>git</code>に登録してある自分のメールアドレスに変更</p>
+</li>
+<li>
+<p><code>id_rsa_email</code>は<code>ssh</code>鍵のファイル名(自由に設定)</p>
+</li>
+<li>
+<p><code>Enter passphrase (empty for no passphrase):</code>は<code>ssh</code>鍵のパスワードを設定する(<code>Enter</code>を押すとパスワードなし)</p>
+</li>
+<li>
+<p><code>Enter same passphrase again:</code>はパスワードの再入力(先ほど<code>Enter</code>だった場合はここも<code>Enter</code>)</p>
+</li>
+<li>
+<p><code>ssh</code>鍵が生成される</p>
+</li>
+<li>
+<p>公開鍵と秘密鍵の両方が生成されていることを確認</p>
+<pre><code class="language-bash : Git Bash">ls
+</code></pre>
+</li>
+<li>
+<p><code>id_rsa_email</code>と<code>id_rsa_email.pub</code>があることを確認</p>
+</li>
+<li>
+<p><code>id_rsa_email.pub</code>の内容をコピーする。クリップボードにコピーする。</p>
+<pre><code class="language-bash : Git Bash">cat id_rsa_email.pub | clip
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>GitHub</code>に登録する</p>
+<ul>
+<li><a href="https://github.com/"><code>GitHub</code></a>にアクセス</li>
+<li><code>アイコン</code> - <code>Settings</code> - <code>Access</code> - <code>SSH and GPG keys</code> - <code>SSH Keys</code></li>
+<li><code>New SSH key</code>を押して
+<ul>
+<li><code>Title</code>は鍵の名前を設定する。パソコン名や学校名などにしておくとわかりやすい</li>
+<li><code>Key type</code>は<code>Authentication Key</code>に設定</li>
+<li><code>Key</code>に先ほどコピーした鍵をペースト</li>
+</ul>
+</li>
+<li><code>Add SSH key</code>を押して登録する</li>
+</ul>
+</li>
+<li>
+<p><code>SSH</code>の設定</p>
+<ul>
+<li>
+<p><code>~/.ssh/config</code>を開く(なければ作成する)</p>
+<pre><code class="language-bash : Git Bash">code config
+</code></pre>
+</li>
+<li>
+<p>アカウントと<code>SSH</code>鍵を紐づける設定</p>
+<pre><code class="language-config : config">Host github.com
+    HostName github.com
+    IdentityFile /C/Users/user_name/.ssh/id_rsa_email
+    User git
+    Port 22
+    TCPKeepAlive yes
+    IdentitiesOnly yes
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>SSH</code>の確認</p>
+<ul>
+<li>
+<p>通信ができるかどうか確認する</p>
+<pre><code class="language-bash : Git Bash">ssh -T github.com
+</code></pre>
+</li>
+<li>
+<p><code>github.com</code>の部分は<code>config</code>の<code>Host</code>に設定したものを使用する。</p>
+</li>
+<li>
+<p>次のような出力を確認できれば成功</p>
+<pre><code class="language-bash : Git Bash">Hi user_name! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
 <ul>
 <li><a href="#clone">clone</a></li>
 <li><a href="#add">add</a></li>
@@ -173,58 +294,132 @@
 </ul>
 <h2 id="基本"><a class="header" href="#基本">基本</a></h2>
 <h3 id="clone"><a class="header" href="#clone">clone</a></h3>
-<p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。<br />
-<code>git clone [remote URL]</code>でカレントディレクトリにそのリポジトリのディレクトリが複製される。<code>[remote URL]</code>は<code>GitHub</code>から確認する。<br />
+<p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git clone [remote URL]
+</code></pre>
+<p>でカレントディレクトリにそのリポジトリのディレクトリが複製される。<code>[remote URL]</code>は<code>GitHub</code>から確認する。<br />
 <a href="https://github.com/">'GitHub'</a>に行きcloneしたいリポジトリのページまで移動する。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーする。</p>
 <h3 id="add"><a class="header" href="#add">add</a></h3>
-<p>ローカルで変更したファイルなどをリモートにあげるファイルを選択する。<br />
-<code>git add [ファイル名1] [ファイル名2] …</code></p>
+<p>ローカルで変更したファイルなどをリモートにあげるファイルを選択する。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git add [ファイル名1] [ファイル名2] …
+</code></pre>
 <h3 id="commit"><a class="header" href="#commit">commit</a></h3>
-<p>コミットを作成しリモートに<code>push</code>する。<code>add</code>したファイルをひとまとまりにする。<br />
-<code>git commit -m "[コミットメッセージ]"</code><br />
-コミットメッセージには何を更新したのかなどの内容を書いておくとよい。</p>
+<p>コミットを作成しリモートに<code>push</code>する。<code>add</code>したファイルをひとまとまりにする。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git commit -m "[コミットメッセージ]"
+</code></pre>
+<p>コミットメッセージには何を更新したのかなどの内容を書いておくとよい。</p>
 <h3 id="push"><a class="header" href="#push">push</a></h3>
-<p>作成したコミットをリモートにあげる。<code>git push</code>でリモートを更新する。</p>
+<p>作成したコミットをリモートにあげる。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git push
+</code></pre>
+<p>でリモートを更新する。</p>
 <h3 id="更新されたファイルなどがあるか確認"><a class="header" href="#更新されたファイルなどがあるか確認">更新されたファイルなどがあるか確認</a></h3>
-<p><code>git status</code>で現在のリポジトリで更新されたファイルがあるかどうか、確認できる。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>で現在のリポジトリで更新されたファイルがあるかどうか、確認できる。</p>
 <h3 id="リモートの変更をもってくる"><a class="header" href="#リモートの変更をもってくる">リモートの変更をもってくる</a></h3>
-<p>他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのはめんどくさい。<code>git pull</code>を使用するとリモートの変更を反映させることができる。これは<code>git pull origin main</code>と同じことをしていて、リモートのmainブランチから<code>fetch</code>(変更をもってくるだけ
-)と<code>merge</code>(変更を反映させる)を同時に行う。<code>merge</code>するときにローカルにリモートにはない変更があった場合は、手動でmerge作業を行う必要がある。</p>
+<p>他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのはめんどくさい。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git pull
+</code></pre>
+<p>を使用するとリモートの変更を反映させることができる。これは</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git pull origin main
+</code></pre>
+<p>と同じことをしていて、リモートのmainブランチから<code>fetch</code>(変更をもってくるだけ)と<code>merge</code>(変更を反映させる)を同時に行う。<code>merge</code>するときにローカルにリモートにはない変更があった場合は、手動で<code>merge</code>作業を行う必要がある。</p>
 <h2 id="branchを分ける"><a class="header" href="#branchを分ける">branchを分ける</a></h2>
 <p>ふだんはおそらくmainブランチ、または、masterブランチを使用していると思われるが、開発用のブランチmainと更新用(リリースごと)のブランチreleaseに分けておきたいとする。mainブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともある。ブランチは分けずにタグを作成して、そのときのコミットに戻れるという機能もあるがそれはbranchの次に紹介する。</p>
 <h3 id="ブランチを作成"><a class="header" href="#ブランチを作成">ブランチを作成</a></h3>
-<p>まずはブランチを作成する。<br />
-<code>git branch release</code><br />
-<code>release</code>という名前のブランチがローカルに作成された。<code>git branch</code>を実行すると現在ローカルにあるブランチの一覧を表示できる。</p>
+<p>まずはブランチを作成する。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git branch release
+</code></pre>
+<p><code>release</code>という名前のブランチがローカルに作成された。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git branch
+</code></pre>
+<p>を実行すると現在ローカルにあるブランチの一覧を表示できる。</p>
 <h3 id="ブランチに移動する"><a class="header" href="#ブランチに移動する">ブランチに移動する</a></h3>
-<p>ブランチを作成したらそのブランチに移動する。<br />
-<code>git checkout [ブランチ名]</code><br />
-新しいブランチを作成していない場合は、<code>git checkout -b [ブランチ名]</code>で新しいブランチを作成しそのブランチに移動することができる。</p>
+<p>ブランチを作成したらそのブランチに移動する。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git checkout [ブランチ名]
+</code></pre>
+<p>新しいブランチを作成していない場合は、</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git checkout -b [ブランチ名]
+</code></pre>
+<p>で新しいブランチを作成しそのブランチに移動することができる。</p>
 <h3 id="addしたりcommitしたり"><a class="header" href="#addしたりcommitしたり">addしたりcommitしたり</a></h3>
-<p>あとは変更したファイルをaddしたりcommitしたりしても問題ない。<code>push</code>するときは<code>git push origin [ブランチ名]</code>とすると安心感がある。</p>
+<p>あとは変更したファイルをaddしたりcommitしたりしても問題ない。<code>push</code>するときは</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git push origin [ブランチ名]
+</code></pre>
+<p>とすると安心感がある。</p>
 <h3 id="ブランチを他のブランチと同じバージョンまで持ってくる"><a class="header" href="#ブランチを他のブランチと同じバージョンまで持ってくる">ブランチを他のブランチと同じバージョンまで持ってくる</a></h3>
 <p>mainブランチだけ先に進み、releaseブランチが遅れている場合、releaseブランチにmainブランチの状態にしたいなどということもあると思われる。そんなときにいちいちmainブランチからreleaseブランチにコピペするのは面倒くさい。そんなときに<code>merge</code>を使用する。<br />
-進めたいブランチに<code>checkout</code>し、<code>git merge [進んでいるブランチ名]</code>を実行する。releaseブランチをmainブランチと同じ状態にしたい場合は、<code>git checkout release</code>、<code>git merge main</code>を実行することでreleaseブランチにmainブランチの変更を反映させることができる。<br />
+進めたいブランチに<code>checkout</code>し、</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git merge [進んでいるブランチ名]
+</code></pre>
+<p>を実行する。releaseブランチをmainブランチと同じ状態にしたい場合は、</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git checkout release
+git merge main
+</code></pre>
+<p>を実行することでreleaseブランチにmainブランチの変更を反映させることができる。<br />
 このあとにreleaseブランチにpushし、リモートにも反映させる。</p>
 <h3 id="ブランチの削除"><a class="header" href="#ブランチの削除">ブランチの削除</a></h3>
-<p>ブランチが要らなくなったときに削除できるように。<br />
-<code>git branch -d [ブランチ名]</code>でブランチを削除できる。これでローカルのブランチが削除された。<br />
-<code>git push origin --delete [ブランチ名]</code>でリモートのブランチも削除することができる。</p>
+<p>ブランチが要らなくなったときに削除できるように。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git branch -d [ブランチ名]
+</code></pre>
+<p>でブランチを削除できる。これでローカルのブランチが削除された。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git push origin --delete [ブランチ名]
+</code></pre>
+<p>でリモートのブランチも削除することができる。</p>
 <h3 id="確認"><a class="header" href="#確認">確認</a></h3>
-<p>現在ローカルにあるブランチを確認するには<code>git branch</code>を使用する。<br />
-リモートにあるブランチも確認するには<code>git branch -r</code>を使用する。</p>
+<p>現在ローカルにあるブランチを確認するには</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git branch
+</code></pre>
+<p>を使用する。<br />
+リモートにあるブランチも確認するには</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git branch -r
+</code></pre>
+<p>を使用する。</p>
 <h2 id="tag"><a class="header" href="#tag">tag</a></h2>
 <p>特定のバージョンに戻りたい(リリースバージョンとか)というときにリリースを作成するという事もできるがそれでは検索などに引っかかってしまう。それが嫌だという場合はtagを作成し、そのタグに戻ればよい。</p>
 <h3 id="tagの作成とpush"><a class="header" href="#tagの作成とpush">tagの作成とpush</a></h3>
-<p>タグを作成する前に変更などはすべてリモートに反映させておくとよい。<br />
-<code>git tag -a [タグ名] -m "[タグのメッセージ]"</code><br />
-これでローカルにtagを作成する。ローカルのcommitにtagがつけられる(と思われる)。<br />
-<code>git push origin [タグ名]</code><br />
-これにより、タグを作成し、作成したタグをリモートに反映することができる。</p>
+<p>タグを作成する前に変更などはすべてリモートに反映させておくとよい。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git tag -a [タグ名] -m "[タグのメッセージ]"
+</code></pre>
+<p>これでローカルにtagを作成する。ローカルのcommitにtagがつけられる(と思われる)。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git push origin [タグ名]
+</code></pre>
+<p>これにより、タグを作成し、作成したタグをリモートに反映することができる。</p>
 <h3 id="tagの確認"><a class="header" href="#tagの確認">tagの確認</a></h3>
-<p><code>git tag</code>でローカルにあるタグを確認できる。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git tag
+</code></pre>
+<p>でローカルにあるタグを確認できる。</p>
 <h3 id="tagの削除"><a class="header" href="#tagの削除">tagの削除</a></h3>
-<p><code>git tag -d [タグ名]</code>でローカルにあるタグを削除する。<code>git push origin --delete [タグ名]</code>でリモートにあるタグを削除する。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git tag -d [タグ名]
+</code></pre>
+<p>でローカルにあるタグを削除する。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Git Bash</span></div>
+<pre><code class="language-bash">git push origin --delete [タグ名]
+</code></pre>
+<p>でリモートにあるタグを削除する。</p>
 <h4 id="参考"><a class="header" href="#参考">参考</a></h4>
 <ul>
 <li>授業・講座</li>

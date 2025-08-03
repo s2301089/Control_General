@@ -160,7 +160,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="バイナリファイルbinの生成"><a class="header" href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="バイナリファイルbinの生成"><a class="header" href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></h1>
 <h2 id="エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する"><a class="header" href="#エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する">エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する</a></h2>
 <p><code>CubeIDE</code>では<code>binファイル</code>は実行時やデバッグ時に自動で生成され、実行時、デバッグ時毎に上書き保存される。設定を変更するだけで生成されるようになる。<br />
 <code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。

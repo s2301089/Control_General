@@ -160,12 +160,25 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="platformioを使う"><a class="header" href="#platformioを使う">PlatformIOを使う</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="platformioを使う"><a class="header" href="#platformioを使う">PlatformIOを使う</a></h1>
 <p><code>VSCode</code>のバーのところから蜂のようなアイコンを探す。で、<code>Create New Project</code>を押して新規作成する。<code>PIO Home</code>が開くと思うから<code>Quick Access</code>のところから<code>New Project</code>を押してプロジェクトを新規作成する。<br />
 Name:はプロジェクトの名前をつける。個人的にはスペース、日本語を含まない半角英数字のみで名前を決めるのがいい(なんかそれしか使えないっぽいけど)。Board:は使用するボードの選択。今回は<code>Arduino Uno R3</code>を使用するので<code>Arduino Uno</code>を選択した。Framework:は使う書き方てきな感じだと思われ。<code>Arduino</code>を選択(これしかなかった)した。Location:はプロジェクトを保存する場所を選ぶ。デフォルトの場所はどこかわからないけど自分でわかりやすいところに置くべきだと思う。場所を指定するときは<code>Use default location</code>のチェックを外すと選べる画面がでてくるからそこから選ぶ。何回もその場所を使用したいと思うときは☆マークをつけれるところがあるからそこにつけておくとたぶん<code>Favorites</code>のところに次回からも表示されると思う。フォルダを選択したら下の<code>Finish</code>を押す。一番最初に作成するときは結構時間がかかるかもしれない。気長に待とう。作成が終わったら勝手に<code>platformio.ini</code>ってのが開くと思う。フォルダツリーの<code>src</code>ってところに<code>main.cpp</code>があるからそこがメインとなるファイル。基本そこに記述していけば問題ないかも。<br />
 <code>#include</code>のところに波線が引いていたりしたら正しくライブラリを読み込めてないから<code>PIO Home</code>を開いて(蜂マーク選べばたぶん開く)<code>Open Project</code>からプロジェクトフォルダを選択する。<br />
-ためしにLチカのコードを書いてみる。<br />
-<code>main.cpp</code></p>
+ためしにLチカのコードを書いてみる。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;Arduino.h&gt;
 
 bool x = 0;
@@ -182,8 +195,8 @@ void loop() {
   x = x ^ 1;
 }
 </code></pre>
-<p>これは<code>250ms</code>間隔でボードに付いているLEDを点滅させるプログラム。パソコンにボードをつなげて、右上の三角ボタンの下矢印から<code>Upload</code>を選択して書き込みをする。SUCCESSってでたら書き込み完了。<br />
-<code>main.cpp</code></p>
+<p>これは<code>250ms</code>間隔でボードに付いているLEDを点滅させるプログラム。パソコンにボードをつなげて、右上の三角ボタンの下矢印から<code>Upload</code>を選択して書き込みをする。SUCCESSってでたら書き込み完了。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;Arduino.h&gt;
 
 bool x = 0;
@@ -201,6 +214,7 @@ void loop() {
 }
 </code></pre>
 <p>このコードでは以下のようなエラーが出ると思う。これは<code>pinMode</code>の後に<code>;</code>がないからコンパイルエラーとしてでている。<code>;</code>をつけ直せばきちんとコンパイルが通り書き込まれるだろう。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ターミナル</span></div>
 <pre><code class="language-bash">src\main.cpp: In function 'void setup()':
 src\main.cpp:8:1: error: expected ';' before '}' token
  }

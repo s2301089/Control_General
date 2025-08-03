@@ -1,6 +1,6 @@
 # PlatformIOで書き込めませんでした記録
 
-```shell
+```shell : ターミナル
 /.pio/build/nucleo_f446re/stm32f446xe.ld.link_script.ld: Invalid argument
 collect2.exe: error: ld returned 1 exit status
 *** [.pio\build\nucleo_f446re\firmware.elf] Error 1
@@ -11,10 +11,16 @@ collect2.exe: error: ld returned 1 exit status
 ## 言われたこと
 
 **もしかしたら`main.cpp`(メインとなるソースファイル)がプロジェクト内に複数あるかも**  
-プロジェクトの最上位層(`.pio`が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。  
-`ls -laR . | grep main`  
-実行結果  
-`-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp`  
+プロジェクトの最上位層(`.pio`が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。
+
+```bash : terminal
+ls -laR . | grep main
+```
+
+```bash : 実行結果
+-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp
+```
+  
 を得た。これによりこの階層以下に`main`を含むファイルが1つしかないことが分かる。
 
 **参照しているライブラリ等と同じ名前のファイルが存在してるかも**  

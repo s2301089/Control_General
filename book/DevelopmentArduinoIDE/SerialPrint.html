@@ -160,10 +160,23 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="変数値などの表示"><a class="header" href="#変数値などの表示">変数値などの表示</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="変数値などの表示"><a class="header" href="#変数値などの表示">変数値などの表示</a></h1>
 <h2 id="printfみたいなことをする"><a class="header" href="#printfみたいなことをする">printfみたいなことをする</a></h2>
-<p>変数の値などを表示させたいときなどにシリアルモニタに値を出力する。<code>Raspberry Pi Pico</code>とパソコンでシリアル通信を用いてデータをやり取りしている。<br />
-<code>printf01.ino</code></p>
+<p>変数の値などを表示させたいときなどにシリアルモニタに値を出力する。<code>Raspberry Pi Pico</code>とパソコンでシリアル通信を用いてデータをやり取りしている。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf01.ino</span></div>
 <pre><code class="language-cpp">int x = 0;
 
 void setup(){
@@ -180,8 +193,8 @@ void loop(){
 }
 </code></pre>
 <p>これは<code>0~100</code>までの値を<code>0.1s</code>ごとに<code>1</code>ずつ値を増やし表示する。</p>
-<p><code>Serial.print</code>,<code>Serial.println</code>は一つの変数または、一つの文字列しかその関数では表示できない。<code>printf</code>関数みたいに表示形式を指定するためには<code>sprintf</code>関数を使用する。(使用するボードによっては<code>Serial.printf</code>関数も使用できるっぽい。これは<code>printf</code>みたいな関数)<br />
-<code>printf02.ino</code></p>
+<p><code>Serial.print</code>,<code>Serial.println</code>は一つの変数または、一つの文字列しかその関数では表示できない。<code>printf</code>関数みたいに表示形式を指定するためには<code>sprintf</code>関数を使用する。(使用するボードによっては<code>Serial.printf</code>関数も使用できるっぽい。これは<code>printf</code>みたいな関数)</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf02.ino</span></div>
 <pre><code class="language-cpp">int x = 33;
 
 void setup(){

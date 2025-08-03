@@ -160,10 +160,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="uart通信受信"><a class="header" href="#uart通信受信">UART通信(受信)</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="uart通信受信"><a class="header" href="#uart通信受信">UART通信(受信)</a></h1>
 <h2 id="arduinoなどからのデータをuartを使用して受け取る"><a class="header" href="#arduinoなどからのデータをuartを使用して受け取る">ArduinoなどからのデータをUARTを使用して受け取る</a></h2>
 <p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br />
 保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
 <pre><code class="language-c">/* USER CODE BEGIN 2 */
 char getdata;
 /* USER CODE END 2 */

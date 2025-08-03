@@ -1,9 +1,8 @@
 # Lチカと変数の表示
 
 プロジェクトの作成は省略する。FrameworkでMbedOSを選択すれば問題ない。  
-`main.cpp`  
 
-```cpp
+```cpp : main.cpp
 #include <mbed.h>
 
 int main(void){
@@ -16,9 +15,7 @@ int main(void){
 
 これは`500ms`ごとに`HelloWorld!`と出力するプログラム。`OS6`から`Serial`クラスがなくなり、`PC`へはそのまま`printf`で出力できるようになった。しかし、ボードレートは`9600`である。  
 
-`main.cpp`  
-
-```cpp
+```cpp : main.cpp
 #include <mbed.h>
 
 DigitalOut led(PA_1);
@@ -36,9 +33,7 @@ int main(void){
 
 これは`500ms`ごとにLEDを点滅させその値を出力するプログラム。
 
-`main.cpp`  
-
-```cpp
+```cpp : main.cpp
 #include <mbed.h>
 
 DigitalOut led(PA_1);

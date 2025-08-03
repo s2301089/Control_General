@@ -160,7 +160,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="frameworkでmbedosを選択したとき"><a class="header" href="#frameworkでmbedosを選択したとき">FrameworkでMbedOSを選択したとき</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="frameworkでmbedosを選択したとき"><a class="header" href="#frameworkでmbedosを選択したとき">FrameworkでMbedOSを選択したとき</a></h1>
 <p>基本的なことは<code>Keil Studio</code>と同じ。ただし、<code>MbedOS6</code>であることに注意。(おそらく普段は<code>MbedOS2</code>を使用していると思われる)</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
@@ -169,16 +182,18 @@
 <li><a href="./readAnalogResi.html">可変抵抗の値を読む</a></li>
 <li><a href="./canUsePrintFloat.html">%fできるようにする</a></li>
 </ul>
-<h2 id="関数"><a class="header" href="#関数">関数</a></h2>
-<h3 id="名前空間mbed"><a class="header" href="#名前空間mbed">名前空間<code>mbed</code></a></h3>
-<h4 id="mbedprintf"><a class="header" href="#mbedprintf"><code>mbed::printf(...)</code></a></h4>
+<h2 id="名前空間mbed"><a class="header" href="#名前空間mbed">名前空間<code>mbed</code></a></h2>
+<h3 id="mbedprintf"><a class="header" href="#mbedprintf"><code>mbed::printf(...)</code></a></h3>
 <ul>
 <li>シリアル通信で文字列などを送信する関数</li>
 <li>デフォルトでは<code>PC</code>とボーレート<code>9600[bps]</code>で通信を行う</li>
 <li><code>stdio.h</code>の<code>printf()</code>である</li>
 </ul>
-<h4 id="mbeddigitaloutクラス"><a class="header" href="#mbeddigitaloutクラス"><code>mbed::DigitalOut</code>クラス</a></h4>
-<h5 id="mbeddigitaloutpin"><a class="header" href="#mbeddigitaloutpin"><code>mbed::DigitalOut::(pin)</code></a></h5>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">printf("HelloWorld.\n");
+</code></pre>
+<h3 id="mbeddigitaloutクラス"><a class="header" href="#mbeddigitaloutクラス"><code>mbed::DigitalOut</code>クラス</a></h3>
+<h4 id="mbeddigitaloutpin"><a class="header" href="#mbeddigitaloutpin"><code>mbed::DigitalOut::(pin)</code></a></h4>
 <ul>
 <li>ディジタル出力を行うクラス</li>
 <li>使用する<code>GPIO</code>ピンを指定する</li>
@@ -188,10 +203,11 @@
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// PA_0 を出力ピンとしてインスタンスを作成
 DigitalOut led(PA_0);
 </code></pre>
-<h5 id="mbeddigitaloutwritevalue"><a class="header" href="#mbeddigitaloutwritevalue"><code>mbed::DigitalOut::write(value)</code></a></h5>
+<h4 id="mbeddigitaloutwritevalue"><a class="header" href="#mbeddigitaloutwritevalue"><code>mbed::DigitalOut::write(value)</code></a></h4>
 <ul>
 <li>ディジタル出力を行う関数</li>
 <li>引数
@@ -200,10 +216,11 @@ DigitalOut led(PA_0);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// ledのピンを1(HIGH)に指定
 led.write(1);
 </code></pre>
-<h5 id="mbeddigitaloutreadvoid"><a class="header" href="#mbeddigitaloutreadvoid"><code>mbed::DigitalOut::read(void)</code></a></h5>
+<h4 id="mbeddigitaloutreadvoid"><a class="header" href="#mbeddigitaloutreadvoid"><code>mbed::DigitalOut::read(void)</code></a></h4>
 <ul>
 <li>現在のディジタル値を取得する関数</li>
 <li>引数
@@ -217,11 +234,12 @@ led.write(1);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// ledの値をled_valueに代入
 bool led_value = led.read();
 </code></pre>
-<h4 id="mbeddigitalinクラス"><a class="header" href="#mbeddigitalinクラス"><code>mbed::DigitalIn</code>クラス</a></h4>
-<h5 id="mbeddigitalinpin"><a class="header" href="#mbeddigitalinpin"><code>mbed::DigitalIn::(pin)</code></a></h5>
+<h3 id="mbeddigitalinクラス"><a class="header" href="#mbeddigitalinクラス"><code>mbed::DigitalIn</code>クラス</a></h3>
+<h4 id="mbeddigitalinpin"><a class="header" href="#mbeddigitalinpin"><code>mbed::DigitalIn::(pin)</code></a></h4>
 <ul>
 <li>ディジタル入力を行うクラス</li>
 <li>引数
@@ -230,10 +248,11 @@ bool led_value = led.read();
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// PA_1 を入力ピンとしてインスタンスを作成
 DigitalIn sw(PA_1);
 </code></pre>
-<h5 id="mbeddigitalinreadvoid"><a class="header" href="#mbeddigitalinreadvoid"><code>mbed::DigitalIn::read(void)</code></a></h5>
+<h4 id="mbeddigitalinreadvoid"><a class="header" href="#mbeddigitalinreadvoid"><code>mbed::DigitalIn::read(void)</code></a></h4>
 <ul>
 <li>ディジタル値を取得する関数</li>
 <li>引数
@@ -247,11 +266,12 @@ DigitalIn sw(PA_1);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// swの値を変数sw_valueに代入
 bool sw_value = sw.read();
 </code></pre>
-<h4 id="mbedpwmoutクラス"><a class="header" href="#mbedpwmoutクラス"><code>mbed::PwmOut</code>クラス</a></h4>
-<h5 id="mbedpwmoutpin"><a class="header" href="#mbedpwmoutpin"><code>mbed::PwmOut::(pin)</code></a></h5>
+<h3 id="mbedpwmoutクラス"><a class="header" href="#mbedpwmoutクラス"><code>mbed::PwmOut</code>クラス</a></h3>
+<h4 id="mbedpwmoutpin"><a class="header" href="#mbedpwmoutpin"><code>mbed::PwmOut::(pin)</code></a></h4>
 <ul>
 <li><code>PWM</code>波形の出力を行うクラス</li>
 <li>引数
@@ -260,10 +280,11 @@ bool sw_value = sw.read();
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// PB_0 をPWM出力ピンとしてインスタンスを作成
 PWMOut moter(PB_0);
 </code></pre>
-<h5 id="mbedpwmoutperiod_ustime"><a class="header" href="#mbedpwmoutperiod_ustime"><code>mbed::PwmOut::period_us(time)</code></a></h5>
+<h4 id="mbedpwmoutperiod_ustime"><a class="header" href="#mbedpwmoutperiod_ustime"><code>mbed::PwmOut::period_us(time)</code></a></h4>
 <ul>
 <li><code>PWM</code>の周期を設定する関数</li>
 <li>引数
@@ -273,10 +294,11 @@ PWMOut moter(PB_0);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// moterのPWM周期を83[us]に設定
 moter.period(83);
 </code></pre>
-<h5 id="mbedpwmoutwritevalue"><a class="header" href="#mbedpwmoutwritevalue"><code>mbed::PwmOut::write(value)</code></a></h5>
+<h4 id="mbedpwmoutwritevalue"><a class="header" href="#mbedpwmoutwritevalue"><code>mbed::PwmOut::write(value)</code></a></h4>
 <ul>
 <li><code>PWM</code>波形を出力する関数</li>
 <li>引数
@@ -289,11 +311,12 @@ moter.period(83);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// Duty比25％に指定
 moter.write(0.25);
 </code></pre>
-<h4 id="mbedanaloginクラス"><a class="header" href="#mbedanaloginクラス"><code>mbed::AnalogIn</code>クラス</a></h4>
-<h5 id="mbedanaloginpin"><a class="header" href="#mbedanaloginpin"><code>mbed::AnalogIn::(pin)</code></a></h5>
+<h3 id="mbedanaloginクラス"><a class="header" href="#mbedanaloginクラス"><code>mbed::AnalogIn</code>クラス</a></h3>
+<h4 id="mbedanaloginpin"><a class="header" href="#mbedanaloginpin"><code>mbed::AnalogIn::(pin)</code></a></h4>
 <ul>
 <li>アナログ入力を行うクラス</li>
 <li>引数
@@ -302,10 +325,11 @@ moter.write(0.25);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// PA_4 をアナログ入力ピンとしてインスタンスを作成
 AnalogIn variable_resister(PA_4);
 </code></pre>
-<h5 id="mbedanaloginreadvoid"><a class="header" href="#mbedanaloginreadvoid"><code>mbed::AnalogIn::read(void)</code></a></h5>
+<h4 id="mbedanaloginreadvoid"><a class="header" href="#mbedanaloginreadvoid"><code>mbed::AnalogIn::read(void)</code></a></h4>
 <ul>
 <li><code>AD</code>値を取得する関数</li>
 <li>戻り値
@@ -315,11 +339,12 @@ AnalogIn variable_resister(PA_4);
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// variable_resisterのAD値を取得する
 double variable_resister_value = variable_resister.read();
 </code></pre>
-<h3 id="名前空間mbedthisthread"><a class="header" href="#名前空間mbedthisthread">名前空間<code>mbed::ThisThread</code></a></h3>
-<h4 id="mbedthisthreadsleep_fortimems"><a class="header" href="#mbedthisthreadsleep_fortimems"><code>mbed::ThisThread::sleep_for(timems)</code></a></h4>
+<h2 id="名前空間mbedthisthread"><a class="header" href="#名前空間mbedthisthread">名前空間<code>mbed::ThisThread</code></a></h2>
+<h3 id="mbedthisthreadsleep_fortimems"><a class="header" href="#mbedthisthreadsleep_fortimems"><code>mbed::ThisThread::sleep_for(timems)</code></a></h3>
 <ul>
 <li>指定した時間処理を停止する関数</li>
 <li>引数
@@ -332,6 +357,7 @@ double variable_resister_value = variable_resister.read();
 </ul>
 </li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">// 250[ms]間処理を停止する
 sleep_for(250ms);
 </code></pre>

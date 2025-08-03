@@ -2,9 +2,7 @@
 
 可変抵抗の値を読みPWMとして出力する。  
 
-`main.cpp`  
-
-```cpp
+```cpp : main.cpp
 #include <mbed.h>
 
 using namespace ThisThread;
@@ -25,4 +23,4 @@ int main(void){
 
 可変抵抗を`resi`で読み取りそれを`led`に横流しする。
 
-以上
+以上。

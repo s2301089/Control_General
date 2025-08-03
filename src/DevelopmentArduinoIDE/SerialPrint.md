@@ -3,9 +3,8 @@
 ## printfみたいなことをする  
 
 変数の値などを表示させたいときなどにシリアルモニタに値を出力する。`Raspberry Pi Pico`とパソコンでシリアル通信を用いてデータをやり取りしている。  
-`printf01.ino`  
 
-```cpp
+```cpp : printf01.ino
 int x = 0;
 
 void setup(){
@@ -25,9 +24,8 @@ void loop(){
 これは`0~100`までの値を`0.1s`ごとに`1`ずつ値を増やし表示する。  
 
 `Serial.print`,`Serial.println`は一つの変数または、一つの文字列しかその関数では表示できない。`printf`関数みたいに表示形式を指定するためには`sprintf`関数を使用する。(使用するボードによっては`Serial.printf`関数も使用できるっぽい。これは`printf`みたいな関数)  
-`printf02.ino`  
 
-```cpp
+```cpp : printf02.ino
 int x = 33;
 
 void setup(){

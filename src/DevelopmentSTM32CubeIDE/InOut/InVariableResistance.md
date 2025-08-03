@@ -5,7 +5,7 @@
 `[プロジェクト名].ioc`-`Pinout & Configuration`-`Pinout view`から使いたいピンを選択する。今回は`PA_4`を`ADC1_IN4`に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは['NUCLEO-F446RE'](https://os.mbed.com/platforms/ST-Nucleo-F446RE/))の`Morpho headers`を見ながら選ぶといいかもしれない。  
 保存しコードを作成。`main.c`に処理を追記。  
 
-```c
+```c : main.c
 /* USER CODE BEGIN 2 */
 float resi1;
 /* USER CODE END 2 */

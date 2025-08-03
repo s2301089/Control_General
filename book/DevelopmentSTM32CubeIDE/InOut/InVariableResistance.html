@@ -160,10 +160,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="アナログ入力"><a class="header" href="#アナログ入力">アナログ入力</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="アナログ入力"><a class="header" href="#アナログ入力">アナログ入力</a></h1>
 <h2 id="可変抵抗の値を読み取ったりセンサの値を読み取ったりする"><a class="header" href="#可変抵抗の値を読み取ったりセンサの値を読み取ったりする">可変抵抗の値を読み取ったり、センサの値を読み取ったりする</a></h2>
 <p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_4</code>を<code>ADC1_IN4</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">'NUCLEO-F446RE'</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
 保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
 <pre><code class="language-c">/* USER CODE BEGIN 2 */
 float resi1;
 /* USER CODE END 2 */
