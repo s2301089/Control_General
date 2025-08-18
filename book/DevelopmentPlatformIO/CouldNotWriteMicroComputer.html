@@ -43,6 +43,17 @@
         <script src="../toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -120,7 +131,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -160,22 +171,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="platformioで書き込めませんでした記録"><a class="header" href="#platformioで書き込めませんでした記録">PlatformIOで書き込めませんでした記録</a></h1>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ターミナル</span></div>
-<pre><code class="language-shell">/.pio/build/nucleo_f446re/stm32f446xe.ld.link_script.ld: Invalid argument
+                        <h1 id="platformioで書き込めませんでした記録"><a class="header" href="#platformioで書き込めませんでした記録">PlatformIOで書き込めませんでした記録</a></h1>
+<pre><code class="language-shell : ターミナル">/.pio/build/nucleo_f446re/stm32f446xe.ld.link_script.ld: Invalid argument
 collect2.exe: error: ld returned 1 exit status
 *** [.pio\build\nucleo_f446re\firmware.elf] Error 1
 </code></pre>
@@ -183,11 +180,9 @@ collect2.exe: error: ld returned 1 exit status
 <h2 id="言われたこと"><a class="header" href="#言われたこと">言われたこと</a></h2>
 <p><strong>もしかしたら<code>main.cpp</code>(メインとなるソースファイル)がプロジェクト内に複数あるかも</strong><br />
 プロジェクトの最上位層(<code>.pio</code>が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">terminal</span></div>
-<pre><code class="language-bash">ls -laR . | grep main
+<pre><code class="language-bash : terminal">ls -laR . | grep main
 </code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行結果</span></div>
-<pre><code class="language-bash">-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp
+<pre><code class="language-bash : 実行結果">-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp
 </code></pre>
 <p>を得た。これによりこの階層以下に<code>main</code>を含むファイルが1つしかないことが分かる。</p>
 <p><strong>参照しているライブラリ等と同じ名前のファイルが存在してるかも</strong><br />
@@ -202,7 +197,7 @@ OneDriveの中にローカルリポジトリを置くなんて頭悪いことし
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../DevelopmentPlatformIO/FrameworkMbedOS/canUsePrintFloat.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../DevelopmentPlatformIO/FrameworkMbedOS/howToUseOs6Sample.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -216,7 +211,7 @@ OneDriveの中にローカルリポジトリを置くなんて頭悪いことし
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../DevelopmentPlatformIO/FrameworkMbedOS/canUsePrintFloat.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../DevelopmentPlatformIO/FrameworkMbedOS/howToUseOs6Sample.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
@@ -227,6 +222,22 @@ OneDriveの中にローカルリポジトリを置くなんて頭悪いことし
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -24,6 +24,7 @@
     - [PWMの出力](./DevelopmentPlatformIO/FrameworkMbedOS/outPwm.md)
     - [可変抵抗を読む](./DevelopmentPlatformIO/FrameworkMbedOS/readAnalogResi.md)
     - [%fを使う](./DevelopmentPlatformIO/FrameworkMbedOS/canUsePrintFloat.md)
+    - [SerialCtrl(OS6 sample)](./DevelopmentPlatformIO/FrameworkMbedOS/howToUseOs6Sample.md)
   - [書き込めなかったときの記録](./DevelopmentPlatformIO/CouldNotWriteMicroComputer.md)
 
 # ArduinoIDEでの開発

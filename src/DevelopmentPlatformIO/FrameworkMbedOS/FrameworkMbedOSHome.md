@@ -8,6 +8,7 @@
 - [PWMを出力する](./outPwm.md)
 - [可変抵抗の値を読む](./readAnalogResi.md)
 - [%fできるようにする](./canUsePrintFloat.md)
+- [SerialCtrl(OS6 sample)](./howToUseOs6Sample.md)
 
 ## 名前空間`mbed`
 

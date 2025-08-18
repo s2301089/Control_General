@@ -43,6 +43,17 @@
         <script src="../toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -120,7 +131,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -160,24 +171,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="変数値などの表示"><a class="header" href="#変数値などの表示">変数値などの表示</a></h1>
+                        <h1 id="変数値などの表示"><a class="header" href="#変数値などの表示">変数値などの表示</a></h1>
 <h2 id="printfみたいなことをする"><a class="header" href="#printfみたいなことをする">printfみたいなことをする</a></h2>
 <p>変数の値などを表示させたいときなどにシリアルモニタに値を出力する。<code>Raspberry Pi Pico</code>とパソコンでシリアル通信を用いてデータをやり取りしている。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf01.ino</span></div>
-<pre><code class="language-cpp">int x = 0;
+<pre><code class="language-cpp : printf01.ino">int x = 0;
 
 void setup(){
     Serial.begin(38400);
@@ -194,8 +191,7 @@ void loop(){
 </code></pre>
 <p>これは<code>0~100</code>までの値を<code>0.1s</code>ごとに<code>1</code>ずつ値を増やし表示する。</p>
 <p><code>Serial.print</code>,<code>Serial.println</code>は一つの変数または、一つの文字列しかその関数では表示できない。<code>printf</code>関数みたいに表示形式を指定するためには<code>sprintf</code>関数を使用する。(使用するボードによっては<code>Serial.printf</code>関数も使用できるっぽい。これは<code>printf</code>みたいな関数)</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf02.ino</span></div>
-<pre><code class="language-cpp">int x = 33;
+<pre><code class="language-cpp : printf02.ino">int x = 33;
 
 void setup(){
   Serial.begin(38400);
@@ -243,6 +239,22 @@ void loop(){
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -43,6 +43,17 @@
         <script src="../../toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -120,7 +131,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -160,20 +171,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="frameworkでmbedosを選択したとき"><a class="header" href="#frameworkでmbedosを選択したとき">FrameworkでMbedOSを選択したとき</a></h1>
+                        <h1 id="frameworkでmbedosを選択したとき"><a class="header" href="#frameworkでmbedosを選択したとき">FrameworkでMbedOSを選択したとき</a></h1>
 <p>基本的なことは<code>Keil Studio</code>と同じ。ただし、<code>MbedOS6</code>であることに注意。(おそらく普段は<code>MbedOS2</code>を使用していると思われる)</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
@@ -181,6 +179,7 @@ span.codeblock_filename_inner {
 <li><a href="./outPwm.html">PWMを出力する</a></li>
 <li><a href="./readAnalogResi.html">可変抵抗の値を読む</a></li>
 <li><a href="./canUsePrintFloat.html">%fできるようにする</a></li>
+<li><a href="./howToUseOs6Sample.html">SerialCtrl(OS6 sample)</a></li>
 </ul>
 <h2 id="名前空間mbed"><a class="header" href="#名前空間mbed">名前空間<code>mbed</code></a></h2>
 <h3 id="mbedprintf"><a class="header" href="#mbedprintf"><code>mbed::printf(...)</code></a></h3>
@@ -189,8 +188,7 @@ span.codeblock_filename_inner {
 <li>デフォルトでは<code>PC</code>とボーレート<code>9600[bps]</code>で通信を行う</li>
 <li><code>stdio.h</code>の<code>printf()</code>である</li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">printf("HelloWorld.\n");
+<pre><code class="language-cpp : main.cpp">printf("HelloWorld.\n");
 </code></pre>
 <h3 id="mbeddigitaloutクラス"><a class="header" href="#mbeddigitaloutクラス"><code>mbed::DigitalOut</code>クラス</a></h3>
 <h4 id="mbeddigitaloutpin"><a class="header" href="#mbeddigitaloutpin"><code>mbed::DigitalOut::(pin)</code></a></h4>
@@ -203,8 +201,7 @@ span.codeblock_filename_inner {
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PA_0 を出力ピンとしてインスタンスを作成
+<pre><code class="language-cpp : main.cpp">// PA_0 を出力ピンとしてインスタンスを作成
 DigitalOut led(PA_0);
 </code></pre>
 <h4 id="mbeddigitaloutwritevalue"><a class="header" href="#mbeddigitaloutwritevalue"><code>mbed::DigitalOut::write(value)</code></a></h4>
@@ -216,8 +213,7 @@ DigitalOut led(PA_0);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// ledのピンを1(HIGH)に指定
+<pre><code class="language-cpp : main.cpp">// ledのピンを1(HIGH)に指定
 led.write(1);
 </code></pre>
 <h4 id="mbeddigitaloutreadvoid"><a class="header" href="#mbeddigitaloutreadvoid"><code>mbed::DigitalOut::read(void)</code></a></h4>
@@ -234,8 +230,7 @@ led.write(1);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// ledの値をled_valueに代入
+<pre><code class="language-cpp : main.cpp">// ledの値をled_valueに代入
 bool led_value = led.read();
 </code></pre>
 <h3 id="mbeddigitalinクラス"><a class="header" href="#mbeddigitalinクラス"><code>mbed::DigitalIn</code>クラス</a></h3>
@@ -248,8 +243,7 @@ bool led_value = led.read();
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PA_1 を入力ピンとしてインスタンスを作成
+<pre><code class="language-cpp : main.cpp">// PA_1 を入力ピンとしてインスタンスを作成
 DigitalIn sw(PA_1);
 </code></pre>
 <h4 id="mbeddigitalinreadvoid"><a class="header" href="#mbeddigitalinreadvoid"><code>mbed::DigitalIn::read(void)</code></a></h4>
@@ -266,8 +260,7 @@ DigitalIn sw(PA_1);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// swの値を変数sw_valueに代入
+<pre><code class="language-cpp : main.cpp">// swの値を変数sw_valueに代入
 bool sw_value = sw.read();
 </code></pre>
 <h3 id="mbedpwmoutクラス"><a class="header" href="#mbedpwmoutクラス"><code>mbed::PwmOut</code>クラス</a></h3>
@@ -280,8 +273,7 @@ bool sw_value = sw.read();
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PB_0 をPWM出力ピンとしてインスタンスを作成
+<pre><code class="language-cpp : main.cpp">// PB_0 をPWM出力ピンとしてインスタンスを作成
 PWMOut moter(PB_0);
 </code></pre>
 <h4 id="mbedpwmoutperiod_ustime"><a class="header" href="#mbedpwmoutperiod_ustime"><code>mbed::PwmOut::period_us(time)</code></a></h4>
@@ -294,8 +286,7 @@ PWMOut moter(PB_0);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// moterのPWM周期を83[us]に設定
+<pre><code class="language-cpp : main.cpp">// moterのPWM周期を83[us]に設定
 moter.period(83);
 </code></pre>
 <h4 id="mbedpwmoutwritevalue"><a class="header" href="#mbedpwmoutwritevalue"><code>mbed::PwmOut::write(value)</code></a></h4>
@@ -311,8 +302,7 @@ moter.period(83);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// Duty比25％に指定
+<pre><code class="language-cpp : main.cpp">// Duty比25％に指定
 moter.write(0.25);
 </code></pre>
 <h3 id="mbedanaloginクラス"><a class="header" href="#mbedanaloginクラス"><code>mbed::AnalogIn</code>クラス</a></h3>
@@ -325,8 +315,7 @@ moter.write(0.25);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PA_4 をアナログ入力ピンとしてインスタンスを作成
+<pre><code class="language-cpp : main.cpp">// PA_4 をアナログ入力ピンとしてインスタンスを作成
 AnalogIn variable_resister(PA_4);
 </code></pre>
 <h4 id="mbedanaloginreadvoid"><a class="header" href="#mbedanaloginreadvoid"><code>mbed::AnalogIn::read(void)</code></a></h4>
@@ -339,8 +328,7 @@ AnalogIn variable_resister(PA_4);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// variable_resisterのAD値を取得する
+<pre><code class="language-cpp : main.cpp">// variable_resisterのAD値を取得する
 double variable_resister_value = variable_resister.read();
 </code></pre>
 <h2 id="名前空間mbedthisthread"><a class="header" href="#名前空間mbedthisthread">名前空間<code>mbed::ThisThread</code></a></h2>
@@ -357,8 +345,7 @@ double variable_resister_value = variable_resister.read();
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// 250[ms]間処理を停止する
+<pre><code class="language-cpp : main.cpp">// 250[ms]間処理を停止する
 sleep_for(250ms);
 </code></pre>
 
@@ -391,6 +378,22 @@ sleep_for(250ms);
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

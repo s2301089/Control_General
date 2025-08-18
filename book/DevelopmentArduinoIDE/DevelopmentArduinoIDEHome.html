@@ -43,6 +43,17 @@
         <script src="../toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -120,7 +131,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -160,20 +171,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
+                        <h1 id="arduinoideでの開発"><a class="header" href="#arduinoideでの開発">ArduinoIDEでの開発</a></h1>
 <p><code>PlatformIO</code>に移行する前まで主に<code>Arduino Uno Rev3</code>や<code>Raspberry Pi Pico</code>などのマイコンボードの開発に使用してきた。しかし、2025年度ではすべてのプログラムの作成を<code>PlatformIO</code>で行うことに統一し<code>ArduinoIDE</code>は使用しないように方向転換している。<br />
 しかし、<code>PlatformIO</code>で<code>Arduino</code>のプログラムを作成するためにframeworkに<code>Arduino</code>を選択することになる。その場合は、<code>ArduinoIDE</code>で書いてきたような関数を使用する。そのためには、<code>ArduinoIDE</code>で書いてきたプログラムの基礎知識が必要になってくる。その簡単な関数などを軽く紹介する。</p>
 <p><strong>コンテンツ一覧</strong></p>
@@ -215,8 +213,7 @@ span.codeblock_filename_inner {
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">gpio.ino</span></div>
-<pre><code class="language-cpp">// 2番ピンを入力に指定
+<pre><code class="language-cpp : gpio.ino">// 2番ピンを入力に指定
 pinMode(2,INPUT);
 // 3番ピンを出力に指定
 pinMode(3,OUTPUT);
@@ -231,8 +228,7 @@ pinMode(3,OUTPUT);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">gpio.ino</span></div>
-<pre><code class="language-cpp">// 3番ピンをHIGHに指定
+<pre><code class="language-cpp : gpio.ino">// 3番ピンをHIGHに指定
 digitalWrite(3,HIGH);
 // 3番ピンをLOWに指定
 digitalWrite(3,0);
@@ -251,8 +247,7 @@ digitalWrite(3,0);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">gpio.ino</span></div>
-<pre><code class="language-cpp">// 2番ピンの値を変数sw_valueに代入
+<pre><code class="language-cpp : gpio.ino">// 2番ピンの値を変数sw_valueに代入
 bool sw_value = digitalRead(2);
 </code></pre>
 <h2 id="analogwritepinvalue"><a class="header" href="#analogwritepinvalue"><code>analogWrite(pin,value)</code></a></h2>
@@ -271,8 +266,7 @@ bool sw_value = digitalRead(2);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">gpio.ino</span></div>
-<pre><code class="language-cpp">// 3番ピンのDuty比を約25%に指定
+<pre><code class="language-cpp : gpio.ino">// 3番ピンのDuty比を約25%に指定
 analogWrite(3,64);
 </code></pre>
 <h2 id="analogreadpin"><a class="header" href="#analogreadpin"><code>analogRead(pin)</code></a></h2>
@@ -290,8 +284,7 @@ analogWrite(3,64);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">gpio.ino</span></div>
-<pre><code class="language-cpp">// A0ピンのAD値を変数variable_resisterに代入
+<pre><code class="language-cpp : gpio.ino">// A0ピンのAD値を変数variable_resisterに代入
 uint8_t variable_resister = analogRead(A0);
 </code></pre>
 <h2 id="delaytime"><a class="header" href="#delaytime"><code>delay(time)</code></a></h2>
@@ -307,8 +300,7 @@ uint8_t variable_resister = analogRead(A0);
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">delay.ino</span></div>
-<pre><code class="language-cpp">// 250[ms]間処理を停止する
+<pre><code class="language-cpp : delay.ino">// 250[ms]間処理を停止する
 delay(250);
 </code></pre>
 <h2 id="serialhardwareserialクラス"><a class="header" href="#serialhardwareserialクラス"><code>Serial</code>(<code>HardwareSerial</code>クラス)</a></h2>
@@ -318,24 +310,21 @@ delay(250);
 <li><code>Arduino Uno R3</code>ではデフォルトでは<code>PC</code>との通信を設定する</li>
 <li>単位は<code>bps</code></li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HardwareSerial.ino</span></div>
-<pre><code class="language-cpp">// ボーレート38400bpsに設定
+<pre><code class="language-cpp : HardwareSerial.ino">// ボーレート38400bpsに設定
 Serial.begin(38400);
 </code></pre>
 <h3 id="hardwareserialprintvalue"><a class="header" href="#hardwareserialprintvalue"><code>HardwareSerial::print(value)</code></a></h3>
 <ul>
 <li>シリアル通信で文字列などを送信する関数</li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HardwareSerial.ino</span></div>
-<pre><code class="language-cpp">// シリアルモニターにHelloWorld.と出力する
+<pre><code class="language-cpp : HardwareSerial.ino">// シリアルモニターにHelloWorld.と出力する
 Serial.print("HelloWorld.");
 </code></pre>
 <h3 id="hardwareserialprintlnvalue"><a class="header" href="#hardwareserialprintlnvalue"><code>HardwareSerial::println(value)</code></a></h3>
 <ul>
 <li><code>Serial.print()</code>のと同じ機能+改行を行う関数</li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HardwareSerial.ino</span></div>
-<pre><code class="language-cpp">// Serial.print("HelloWorld.\n"); と同じこと
+<pre><code class="language-cpp : HardwareSerial.ino">// Serial.print("HelloWorld.\n"); と同じこと
 Serial.println("HelloWorld.");
 </code></pre>
 <h2 id="softwareserialクラス"><a class="header" href="#softwareserialクラス"><code>SoftwareSerial</code>クラス</a></h2>
@@ -349,8 +338,7 @@ Serial.println("HelloWorld.");
 </ul>
 </li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">SoftwareSerial.ino</span></div>
-<pre><code class="language-cpp">// RXに7番ピン、TXに6番ピンを指定
+<pre><code class="language-cpp : SoftwareSerial.ino">// RXに7番ピン、TXに6番ピンを指定
 SoftwareSerial fep(7,6);
 </code></pre>
 <h3 id="softwareserialbeginbaudrate"><a class="header" href="#softwareserialbeginbaudrate"><code>SoftwareSerial::begin(baudrate)</code></a></h3>
@@ -358,16 +346,14 @@ SoftwareSerial fep(7,6);
 <li>シリアル通信のボーレート(通信速度)を設定する関数</li>
 <li>単位は<code>bps</code></li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">SoftwareSerial.ino</span></div>
-<pre><code class="language-cpp">// ボーレート38400bpsに設定
+<pre><code class="language-cpp : SoftwareSerial.ino">// ボーレート38400bpsに設定
 fep.begin(38400);
 </code></pre>
 <h3 id="softwareserialwritevalue"><a class="header" href="#softwareserialwritevalue"><code>SoftwareSerial::write(value)</code></a></h3>
 <ul>
 <li><code>UART</code>で<code>1[Byte]</code>のデータを送信する関数</li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">SoftwareSerial.ino</span></div>
-<pre><code class="language-cpp">// '\n'を送信する
+<pre><code class="language-cpp : SoftwareSerial.ino">// '\n'を送信する
 fep.write('\n');
 </code></pre>
 
@@ -400,6 +386,22 @@ fep.write('\n');
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
