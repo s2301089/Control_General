@@ -43,17 +43,6 @@
         <script src="../../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -131,7 +120,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -171,15 +160,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="タイマー割り込みによるlチカ"><a class="header" href="#タイマー割り込みによるlチカ">タイマー割り込みによるLチカ</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="タイマー割り込みによるlチカ"><a class="header" href="#タイマー割り込みによるlチカ">タイマー割り込みによるLチカ</a></h1>
 <h2 id="hal_delayを使わないでlチカをする"><a class="header" href="#hal_delayを使わないでlチカをする">HAL_Delay()を使わないでLチカをする</a></h2>
 <p>今までLチカは以下のようなコードでしていた。</p>
-<pre><code class="language-c : main.c">HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
+<pre><code class="language-c">HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
 HAL_Delay(1000);
 </code></pre>
 <p>これは毎秒Lチカするプログラムである。このコードでは次にLEDの状態を変えるまで処理をすべて止めている。そのため、他の処理をしようとしてもできなかった。そんなときにタイマー割り込みを使用すれば他の処理を止めることなく、一定の周期である処理を実行することができる。<br />
 <code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM2</code>-<code>Mode</code>-<code>Clock Source</code>を<code>Internal Clock</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<code>15</code>、<code>Counter Period</code>を<code>999999</code>に、<code>Configuration</code>-<code>NVIC Setting</code>-<code>TIM2 global interrupt</code>を<code>Enable</code>に設定。今回は<code>TIM2</code>を使用した。</p>
-<pre><code class="language-c : main.c">/* USER CODE BEGIN 2 */
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
+<pre><code class="language-c">/* USER CODE BEGIN 2 */
 HAL_TIM_Base_Start_IT(&amp;htim2);
 /* USER CODE END 2 */
 
@@ -232,22 +236,6 @@ $$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

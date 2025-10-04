@@ -43,17 +43,6 @@
         <script src="../../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -131,7 +120,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -171,7 +160,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4"><a class="header" href="#コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4">コントローラーのデータ受信サンプル(Mbed OS6)の使用方法(DUALSHOCK4)</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4"><a class="header" href="#コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4">コントローラーのデータ受信サンプル(Mbed OS6)の使用方法(DUALSHOCK4)</a></h1>
 <p>筆者は作成者ではないので正確な情報ではないがある程度はあっていると思う。<br />
 技術継承資料では<code>Mbed OS2</code>のため<code>OS6</code>では使用できない。サンプルコードは存在するのでそれについて、軽く中身の紹介</p>
 <h2 id="使い方"><a class="header" href="#使い方">使い方</a></h2>
@@ -245,22 +247,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
