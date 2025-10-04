@@ -19,6 +19,7 @@
   - [UART通信(受信)](./Connectability/uartReceive.md)
   - [UART通信(送信)](./Connectability/uartTransmit.md)
   - [Arduinoとの通信](./Connectability/ConnectArduino.md)
+  - [CAN通信(受信)](./Connectability/canReceive.md)
 
 ## 開発を始める前に
 
