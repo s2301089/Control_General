@@ -176,7 +176,7 @@ span.codeblock_filename_inner {
 <h1 id="ロータリーエンコーダを読む"><a class="header" href="#ロータリーエンコーダを読む">ロータリーエンコーダを読む</a></h1>
 <p>エンコーダは<a href="https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&amp;&amp;utm_adgroup=&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&amp;utm_term=&amp;productid=827015&amp;utm_content=&amp;utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gad_source=1&amp;gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gclsrc=aw.ds">'AMT102-V'</a>を使用した。</p>
 <p>エンコーダを読むことで移動距離などを計算できる。エンコーダにはA相とB相を用いて回転方向と回転量をアナログ値として読み取ることができるらしい。<br />
-マイコンのピンの<code>SPI◯_MISO</code>と<code>SPI◯_MOSI</code>の機能を使用していると予想。タイマーのエンコーダモードを使用する。<br />
+<code>Timer</code>のエンコーダモードを使用する。使用するピンは各<code>Timer</code>の<code>Channel1,2</code>である。<br />
 <code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Combined Channels</code>を<code>Encoder Mode</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Counter Period</code>を<code>8192</code>、<code>Encoder</code>-<code>Encoder Mode</code>を<code>Encoder Mode TI1 and TIT2</code>に設定。今回は<code>TIM3</code>を使用した。<br />
 <code>printf</code>を使用する。</p>
 <div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>

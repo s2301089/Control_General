@@ -3,7 +3,7 @@
 エンコーダは['AMT102-V'](https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&&utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&utm_term=&productid=827015&utm_content=&utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&gad_source=1&gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&gclsrc=aw.ds)を使用した。  
 
 エンコーダを読むことで移動距離などを計算できる。エンコーダにはA相とB相を用いて回転方向と回転量をアナログ値として読み取ることができるらしい。  
-マイコンのピンの`SPI◯_MISO`と`SPI◯_MOSI`の機能を使用していると予想。タイマーのエンコーダモードを使用する。  
+`Timer`のエンコーダモードを使用する。使用するピンは各`Timer`の`Channel1,2`である。  
 `[プロジェクト名].ioc`-`Pinout & Configuration`-`Timers`-`TIM3`-`Mode`-`Combined Channels`を`Encoder Mode`、`Configuration`-`Parameter Settings`-`Counter Settings`-`Counter Period`を`8192`、`Encoder`-`Encoder Mode`を`Encoder Mode TI1 and TIT2`に設定。今回は`TIM3`を使用した。  
 `printf`を使用する。  
 
