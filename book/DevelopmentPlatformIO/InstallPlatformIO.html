@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>一覧 - Control_General</title>
+        <title>PlatformIOの導入 - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -173,29 +173,39 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="platformioの導入"><a class="header" href="#platformioの導入">PlatformIOの導入</a></h1>
-<p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への移行を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">'記事'</a><br />
-<code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Mbed OS</code>での書き方などいろいろな書き方ができる。</p>
-<p><strong>コンテンツ一覧</strong></p>
+<h1 id="platform-ioを入れる"><a class="header" href="#platform-ioを入れる">Platform IOを入れる</a></h1>
+<p>そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
+この拡張機能を使用して試しにコードを書き込むまでの記録。</p>
+<h2 id="学内lanでは極力ダウンロードなどはしないようにしよう"><a class="header" href="#学内lanでは極力ダウンロードなどはしないようにしよう">学内LANでは極力ダウンロードなどはしないようにしよう</a></h2>
+<blockquote>
+<p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
+<code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
+</blockquote>
+<p><code>VSCode</code>で拡張機能のマーケットプレイスで、<code>PlatformIO IDE</code>をインストールする。<code>platformio.platformio-ide</code>これを検索バーに入力するか、<code>platform</code>とか検索する。<a href="https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide">'Marketplace'</a></p>
+<p>インストール中に<code>PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode</code>こんな表示がでてくるかもしれない。これは<code>Python 3.6</code>以上が見つかりませんって言われているだけ。<code>Python</code>をインストールしていない人は<code>Install Python</code>を押して<a href="https://www.python.org/downloads/">'site'</a>からWindows用をダウンロードする。もうインストールしてある人は<code>I have Python</code>てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。</p>
+<blockquote>
+<p>追記：<code>PlatformIO</code>は<code>Python3.11</code>以下で動作するみたい<br />
+siteから<code>python</code>をインストールする場合は<code>Python Releases for Windows</code>の下の方にある<code>Python 3.11.9 - April 2, 2024</code>などをダウンロードしてインストールしよう。</p>
+</blockquote>
+<p><code>Python</code>のインストーラーをダウンロードしたら、Pythonのインストーラーを実行。下のチェックボックス欄の<code>Add Python.exe to PATH</code>にチェックを入れる。<code>Use admin privileges when installing py.exe</code>のチェックは管理者権限ですべてのユーザーにインストールするみたいな項目だから、チェックしてなくて問題ない。チェックが終わったら<code>Install Now</code>を押してインストールする。<br />
+<code>Setup was Successful</code>がでたら<code>Close</code>を押してもよいけど、<code>Disable path length limit</code>っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。押さなくても別に問題はないかも。(僕は押した)<br />
+そしたら<code>VSCode</code>を再起動してほかのインストールが終わるのを待つ。</p>
+<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
 <ul>
-<li><a href="./InstallPlatformIO.html">PlatformIOの入れ方</a></li>
-<li><a href="./FrameworkArduino/FrameworkArduinoHome.html">Arduinoで書く</a>
-<ul>
-<li><a href="./FrameworkArduino/MakeProjectLchika.html">プロジェクトの作成とLチカ</a></li>
-<li><a href="./FrameworkArduino/SerialPrint.html">シリアルモニタに出力</a></li>
-</ul>
-</li>
+<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
+<li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
+<li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../BasicContents/ControllerData/controllerHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../DevelopmentPlatformIO/InstallPlatformIO.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../DevelopmentPlatformIO/FrameworkMbedOS/FrameworkMbedOSHome.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -205,11 +215,11 @@ span.codeblock_filename_inner {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../BasicContents/ControllerData/controllerHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../DevelopmentPlatformIO/InstallPlatformIO.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../DevelopmentPlatformIO/FrameworkMbedOS/FrameworkMbedOSHome.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

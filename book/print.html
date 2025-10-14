@@ -666,6 +666,42 @@ span.codeblock_filename_inner {
 }
 
 </style>
+<h1 id="platform-ioを入れる"><a class="header" href="#platform-ioを入れる">Platform IOを入れる</a></h1>
+<p>そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
+この拡張機能を使用して試しにコードを書き込むまでの記録。</p>
+<h2 id="学内lanでは極力ダウンロードなどはしないようにしよう"><a class="header" href="#学内lanでは極力ダウンロードなどはしないようにしよう">学内LANでは極力ダウンロードなどはしないようにしよう</a></h2>
+<blockquote>
+<p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
+<code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
+</blockquote>
+<p><code>VSCode</code>で拡張機能のマーケットプレイスで、<code>PlatformIO IDE</code>をインストールする。<code>platformio.platformio-ide</code>これを検索バーに入力するか、<code>platform</code>とか検索する。<a href="https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide">'Marketplace'</a></p>
+<p>インストール中に<code>PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode</code>こんな表示がでてくるかもしれない。これは<code>Python 3.6</code>以上が見つかりませんって言われているだけ。<code>Python</code>をインストールしていない人は<code>Install Python</code>を押して<a href="https://www.python.org/downloads/">'site'</a>からWindows用をダウンロードする。もうインストールしてある人は<code>I have Python</code>てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。</p>
+<blockquote>
+<p>追記：<code>PlatformIO</code>は<code>Python3.11</code>以下で動作するみたい<br />
+siteから<code>python</code>をインストールする場合は<code>Python Releases for Windows</code>の下の方にある<code>Python 3.11.9 - April 2, 2024</code>などをダウンロードしてインストールしよう。</p>
+</blockquote>
+<p><code>Python</code>のインストーラーをダウンロードしたら、Pythonのインストーラーを実行。下のチェックボックス欄の<code>Add Python.exe to PATH</code>にチェックを入れる。<code>Use admin privileges when installing py.exe</code>のチェックは管理者権限ですべてのユーザーにインストールするみたいな項目だから、チェックしてなくて問題ない。チェックが終わったら<code>Install Now</code>を押してインストールする。<br />
+<code>Setup was Successful</code>がでたら<code>Close</code>を押してもよいけど、<code>Disable path length limit</code>っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。押さなくても別に問題はないかも。(僕は押した)<br />
+そしたら<code>VSCode</code>を再起動してほかのインストールが終わるのを待つ。</p>
+<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
+<ul>
+<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
+<li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
+<li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
 <h1 id="frameworkでmbedosを選択したとき"><a class="header" href="#frameworkでmbedosを選択したとき">FrameworkでMbedOSを選択したとき</a></h1>
 <p>基本的なことは<code>Keil Studio</code>と同じ。ただし、<code>MbedOS6</code>であることに注意。(おそらく普段は<code>MbedOS2</code>を使用していると思われる)</p>
 <p><strong>コンテンツ一覧</strong></p>
@@ -913,7 +949,7 @@ int main(void){
 }
 </code></pre>
 <p>これはスイッチの値をLEDに出力するプログラム。LEDが<code>PA_1</code>でスイッチが<code>PB_0</code>に接続する。</p>
-<h2 id="参考-2"><a class="header" href="#参考-2">参考</a></h2>
+<h2 id="参考-3"><a class="header" href="#参考-3">参考</a></h2>
 <ul>
 <li><a href="https://jhalfmoon.com/dbc/2022/09/29/%E3%83%A2%E3%83%80%E3%83%B3os%E3%81%AE%E3%81%8A%E7%A0%82%E5%A0%B449-mbed-os6%E3%80%81%E3%80%8Cserial%E3%80%8D%E3%81%9D%E3%81%86%E3%81%84%E3%81%88%E3%81%B0%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3/">モダンOSのお砂場(49) Mbed OS6、「Serial」そういえばなくなってたのね</a></li>
 </ul>
@@ -958,7 +994,7 @@ int main(void){
 </code></pre>
 <p><code>led</code>に周期<code>83us</code>のPWM波形を出力。<code>Mbed</code>では<code>0~1</code>の間で少数でデューティー比を決める。<br />
 このプログラムではだんだん明るくなり、暗くなるを1セットとしそれを繰り返すプログラム。</p>
-<h2 id="参考-3"><a class="header" href="#参考-3">参考</a></h2>
+<h2 id="参考-4"><a class="header" href="#参考-4">参考</a></h2>
 <ul>
 <li><a href="https://os.mbed.com/users/okini3939/notebook/PwmOut_jp/">PwmOut - PWM出力</a></li>
 </ul>
@@ -1230,7 +1266,7 @@ int _write(int file,char *ptr,int len){
 </code></pre>
 <h2 id="teratermの設定"><a class="header" href="#teratermの設定">TeraTermの設定</a></h2>
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
-<h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
+<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-printf-uart/">【便利】STM32CubeIDEでprintf【UART編】</a></li>
 </ul>
@@ -1272,7 +1308,7 @@ uint8_t Out[8] = {0};
 <p><code>STprintf</code>関数の引数にUARTのポインタを渡すだけで<code>printf</code>が使えるようになる。</p>
 <h2 id="teratermの設定-1"><a class="header" href="#teratermの設定-1">TeraTermの設定</a></h2>
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
-<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
+<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
 <ul>
 <li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">変数などを表示するために</a></li>
 </ul>
@@ -1327,7 +1363,7 @@ span.codeblock_filename_inner {
 <code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。
 <code>binファイル</code>の他にも<code>HEXファイル</code>や<code>SRECファイル</code>などの他のファイル形式のファイルも設定すれば、生成できる。<br />
 <code>binファイル</code>は生成されるとプロジェクトの中の<code>Debugフォルダ</code>に<code>[プロジェクト名].bin</code>という名前で生成される。</p>
-<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
+<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-hex/">STM32CubeIDEでHEXファイルを作成する方法</a></li>
 </ul>
@@ -1383,7 +1419,7 @@ int psw1;
 /* USER CODE END 3 */
 </code></pre>
 <p>使用する回路によって動作は異なるがプルアップ抵抗を用いたプッシュスイッチの回路であれば、スイッチを押すとLEDは消灯し、離すとLEDは点灯するだろう。</p>
-<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
+<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/30e522589db9f7dc8fe4">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(4) スイッチを使ってみよう</a></li>
 </ul>
@@ -1429,7 +1465,7 @@ $$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(
 上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br />
 $$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
 となり、毎秒Lチカするプログラムになっている。</p>
-<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
+<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e02b798b4bf1b92a4546">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (15) TimerでLチカしよう</a></li>
 </ul>
@@ -1464,7 +1500,7 @@ while (1)
 </code></pre>
 <p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br />
 範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">'ここ'</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
-<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
+<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
 <ul>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
 </ul>
@@ -1506,7 +1542,7 @@ while (1)
 </code></pre>
 <p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br />
 今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="DevelopmentSTM32CubeIDE/InOut/../BasicContents/printfLibrary.html">'これ'</a>を参考にした。</p>
-<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
+<h3 id="参考-11"><a class="header" href="#参考-11">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e6b5d0529524a140ebaf">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (12) ADCを使ってみよう</a></li>
 <li><a href="https://yukblog.net/stm32cubeide-printf-float/">STM32CubeIDEのprintfでfloatが使えない件の対処方法</a></li>
@@ -1578,7 +1614,7 @@ while(deg &lt; 0){
 </code></pre>
 <p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。</p>
 <p style="text-align:center"><img src="DevelopmentSTM32CubeIDE/InOut/../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png" alt="deg.png" width="250"></p>  
-<h3 id="参考-11"><a class="header" href="#参考-11">参考</a></h3>
+<h3 id="参考-12"><a class="header" href="#参考-12">参考</a></h3>
 <ul>
 <li><a href="https://www.shujima.work/entry/2019/05/28/221629">【Nucleo入門】Nucleo-F401でエンコーダ読み取り(STM32CubeIDE、macOS版)</a></li>
 </ul>
@@ -1641,7 +1677,7 @@ while (1)
 /* USER CODE END 3 */
 </code></pre>
 <p>受け取ったデータを<code>printf</code>する。たとえば<code>Arduino</code>側でスイッチの値を送るとしたら<code>TeraTerm</code>の画面にはそのスイッチの値が表示されるだろう。</p>
-<h3 id="参考-12"><a class="header" href="#参考-12">参考</a></h3>
+<h3 id="参考-13"><a class="header" href="#参考-13">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/5a2c9e4fd35c261c4f3a">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(6) 　UARTを使ってみよう(2)</a></li>
 </ul>
@@ -1682,7 +1718,7 @@ while (1)
 }
 </code></pre>
 <p><code>HAL_UART_Transmit</code>でUARTを使用して<code>1Byte</code>のデータを送信する。<code>printf</code>で<code>i</code>の値を画面上に出力している。</p>
-<h3 id="参考-13"><a class="header" href="#参考-13">参考</a></h3>
+<h3 id="参考-14"><a class="header" href="#参考-14">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/76c812d35642a3c29aea">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(5) 　UARTを使ってみよう</a></li>
 </ul>

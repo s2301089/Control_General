@@ -12,6 +12,9 @@
 
 インストール中に`PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode`こんな表示がでてくるかもしれない。これは`Python 3.6`以上が見つかりませんって言われているだけ。`Python`をインストールしていない人は`Install Python`を押して['site'](https://www.python.org/downloads/)からWindows用をダウンロードする。もうインストールしてある人は`I have Python`てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。  
 
+> 追記：`PlatformIO`は`Python3.11`以下で動作するみたい  
+> siteから`python`をインストールする場合は`Python Releases for Windows`の下の方にある`Python 3.11.9 - April 2, 2024`などをダウンロードしてインストールしよう。  
+
 `Python`のインストーラーをダウンロードしたら、Pythonのインストーラーを実行。下のチェックボックス欄の`Add Python.exe to PATH`にチェックを入れる。`Use admin privileges when installing py.exe`のチェックは管理者権限ですべてのユーザーにインストールするみたいな項目だから、チェックしてなくて問題ない。チェックが終わったら`Install Now`を押してインストールする。  
 `Setup was Successful`がでたら`Close`を押してもよいけど、`Disable path length limit`っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。押さなくても別に問題はないかも。(僕は押した)  
 そしたら`VSCode`を再起動してほかのインストールが終わるのを待つ。  
