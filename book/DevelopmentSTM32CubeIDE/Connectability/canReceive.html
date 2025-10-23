@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
@@ -131,9 +129,6 @@
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
 
                     </div>
                 </div>
@@ -160,20 +155,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="can通信受信"><a class="header" href="#can通信受信">CAN通信(受信)</a></h1>
+                        <h1 id="can通信受信"><a class="header" href="#can通信受信">CAN通信(受信)</a></h1>
 <p><code>CAN</code>とはなにか。一旦省く。<br />
 <code>STM32 F446RET6</code>  <code>CAN1</code></p>
 <h2 id="iocの設定can"><a class="header" href="#iocの設定can"><code>ioc</code>の設定(<code>CAN</code>)</a></h2>
@@ -235,8 +217,7 @@ $$ T = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(内部クロ�
 </li>
 </ul>
 <h2 id="受信コード"><a class="header" href="#受信コード">受信コード</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
-<pre><code class="language-c">/* USER CODE BEGIN PV */
+<pre><code class="language-c : main.c">/* USER CODE BEGIN PV */
 uint32_t CAN_CO_ID = 0x010;
 
 uint8_t can_rev_buffer[8] = {0};
@@ -307,8 +288,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 /* USER CODE END 4 */
 </code></pre>
 <h2 id="使用例"><a class="header" href="#使用例">使用例</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
-<pre><code class="language-c">/* USER CODE BEGIN Includes */
+<pre><code class="language-c : main.c">/* USER CODE BEGIN Includes */
 #include "stdbool.h"
 #include "stdint.h"
 /* USER CODE END Includes */
@@ -458,6 +438,22 @@ void can_rev_init(struct CAN_DS4_struct *_struct){
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

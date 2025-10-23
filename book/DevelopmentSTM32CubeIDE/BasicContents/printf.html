@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
@@ -131,9 +129,6 @@
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
 
                     </div>
                 </div>
@@ -160,27 +155,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="変数などを表示するために"><a class="header" href="#変数などを表示するために">変数などを表示するために</a></h1>
+                        <h1 id="変数などを表示するために"><a class="header" href="#変数などを表示するために">変数などを表示するために</a></h1>
 <h2 id="printfを使って変数の値などを見れるようにする"><a class="header" href="#printfを使って変数の値などを見れるようにする">printfを使って変数の値などを見れるようにする</a></h2>
 <p>マイコンとパソコンとの間で<code>UART</code>を用いて通信を行う。パソコン側では<code>TeraTerm</code>を用いてシリアルポートを監視する。</p>
 <h2 id="cubeideの設定"><a class="header" href="#cubeideの設定">CubeIDEの設定</a></h2>
 <p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br />
 保存しコードを作成。<code>main.c</code>に処理を追記。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
-<pre><code class="language-c">/* USER CODE BEGIN Includes */
+<pre><code class="language-c : main.c">/* USER CODE BEGIN Includes */
 #include &lt;stdio.h&gt;
 /* USER CODE END Includes */
 
@@ -237,6 +218,22 @@ int _write(int file,char *ptr,int len){
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

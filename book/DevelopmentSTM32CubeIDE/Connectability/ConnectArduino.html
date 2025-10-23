@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
@@ -131,9 +129,6 @@
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
 
                     </div>
                 </div>
@@ -160,20 +155,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="arduinoとの通信lib"><a class="header" href="#arduinoとの通信lib">Arduinoとの通信(lib)</a></h1>
+                        <h1 id="arduinoとの通信lib"><a class="header" href="#arduinoとの通信lib">Arduinoとの通信(lib)</a></h1>
 <h2 id="keil-studioのserialctrlのようなライブラリの使用方法"><a class="header" href="#keil-studioのserialctrlのようなライブラリの使用方法">Keil StudioのSerialCtrlのようなライブラリの使用方法</a></h2>
 <ol>
 <li>
@@ -199,8 +181,7 @@ span.codeblock_filename_inner {
 <p>中には<code>printf</code>を使用する関数も含まれているため、<code>printf</code>を<code>UART通信</code>で使用できるようにしておく。<a href="../BasicContents/printfLibrary.html">'参考'</a></p>
 </blockquote>
 <p><strong>使用例1</strong></p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
-<pre><code class="language-c">// 略
+<pre><code class="language-c : main.c">// 略
 /* USER CODE BEGIN Includes */
 #include &lt;stdio.h&gt;
 #include "USART_Arduino.h"
@@ -235,8 +216,7 @@ span.codeblock_filename_inner {
 </code></pre>
 <p>上記の使用例では、<code>printf</code>を<code>USART2</code>で使用できるようにし、<code>Arduino</code>との<code>UART通信</code>に<code>USART1</code>を使用している。また、<code>getdata</code>型の<code>DATA</code>という名前の構造体変数を宣言し、<code>getData関数</code>に引数として<code>DATA</code>のアドレスを渡している。</p>
 <p><strong>使用例2</strong></p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.c</span></div>
-<pre><code class="language-c">// 略
+<pre><code class="language-c : main.c">// 略
 /* USER CODE BEGIN Includes */
 #include &lt;stdio.h&gt;
 #include "USART_Arduino.h"
@@ -392,6 +372,22 @@ span.codeblock_filename_inner {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

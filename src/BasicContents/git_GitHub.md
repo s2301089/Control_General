@@ -1,154 +1,202 @@
 # gitコマンドの使い方  
 
-バージョン管理ツール`git`の簡易的な使用方法をメモ。導入部分は省く。  
-リモートとの通信には`ssh`を使用する。
+`git`とはバージョン管理ツールである。誰がいつどの部分を変更したのかを細かく記録できる。プログラムなどの開発では、うまく行ったときとそうでないときの違いなどを確認しやすくなる。  
+`git`のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスが`GitHub`。`git`と`GitHub`は全くの別物である。  
 
-<details>
-<summary>SSHの設定(学内)</summary>
-<div>
+## 導入
 
-- 学内では`SSH`認証を使用しないと`git`のサーバーと通信を行えません。
-- `ssh`鍵を作成する
-  - `Git Bash`などで`~/.ssh/`を確認する。ない場合は作成し移動する。
-  
-    ```bash : Git Bash
-    mkdir ~/.ssh
-    cd ~/.ssh
-    ```
+- `git`のダウンロード
+  [Download for Windows](https://git-scm.com/downloads/win)  
+  基本的に`Click here to download`をクリックし、インストーラーをダウンロードする。
+- ダウンロードしたインストーラー`Git-x.xx.x-64-bit.exe`をクリックし、インストーラーを起動する。
+  基本的に`Next`を選択する。
+- インストールが完了したら`Git Bash`を起動する。
+  デスクトップのショートカット、あるいは、スタートから起動する。  
+- `git`のバージョンを確認し、インストールできていることを確認する。
 
-  - `ssh-keygen`によって作成する
+  ```bash : Git Bash
+  $ git --version
+  git version 2.44.0.windows.1 # 例
+  ```
 
-    ```bash : Git Bash
-    ssh-keygen -t rsa -C email@email.com -f id_rsa_email
-    ```
+- `GitHub`への登録
+  [GitHub](https://github.com/)  
+  すでに`GitHub`アカウントがある人は右上の`Sign in`を選択しログインする。  
+  アカウントがない人は`Sign up`を選択し、新規作成を行う。
+  - `Email` : メールアドレスを入力
+    学校のメールアドレスでも良いが、卒業時などに別のメールアドレスに変更しなければならない。
+  - `Password` : 15文字以上、または、数字と小文字を含む8文字以上
+  - `Username` : ユーザー名。半角英数字
+  - `Your Country/Region` : 国と地域`Japan`
+  - `Email preferemces` : お知らせメールを受け取るかどうか(自由)
+  `Create account`で作成完了(なはず)
 
-  - `email@email.com`は`git`に登録してある自分のメールアドレスに変更
-  - `id_rsa_email`は`ssh`鍵のファイル名(自由に設定)
-  - `Enter passphrase (empty for no passphrase):`は`ssh`鍵のパスワードを設定する(`Enter`を押すとパスワードなし)
-  - `Enter same passphrase again:`はパスワードの再入力(先ほど`Enter`だった場合はここも`Enter`)
-  - `ssh`鍵が生成される
-  - 公開鍵と秘密鍵の両方が生成されていることを確認
+## SSHの設定
 
-    ```bash : Git Bash
-    ls
-    ```
+学内LANなどからサーバーと通信を行うためには、`SSH`による認証を使用しなければならない。
 
-  - `id_rsa_email`と`id_rsa_email.pub`があることを確認
-  - `id_rsa_email.pub`の内容をコピーする。クリップボードにコピーする。
+- `SSH`鍵を作成する。
+- `~/.ssh/`に移動する。ない場合は作成する。
 
-    ```bash : Git Bash
-    cat id_rsa_email.pub | clip
-    ```
+  ```bash : Git Bash
+  $ ls -a ~ | grep .ssh
+  .ssh/ # ある
+  # ない場合 $ mkdir ~/.ssh
+  $ cd ~/.ssh/
+  ```
+
+- すでに`SSH`鍵が作られているか確認する。
+
+  ```bash : Git Bash
+  $ ls
+  # なにも表示されない、または、known_hostsのみならok
+  ```
+
+- `ssh-keygen.exe`で`SSH`鍵を作成する。
+
+  ```bash : Git Bash
+  $ ssh-keygen -t rsa -C [email@email.com] -f [id_rsa_username]
+  # email@email.com は GitHub に登録したメールアドレス
+  # id_rsa_username は 出力ファイル名(自由)
+  Generating public/private rsa key pair.
+  Enter passphrase (empty for no passphrase): # SSH鍵のパスワード Enterでパスワードなし
+  Enter same passphrase again: # パスワードの再入力 Enter
+  Your identification has been saved in id_rsa_username
+  Your public key has been saved in id_rsa_username.pub
+  The key fingerprint is:
+  SHA256:------ email@email.com
+  The key's randomart image is:
+  ---
+  ```
+
+- `ssh`鍵が生成される
+- 公開鍵と秘密鍵の両方が生成されていることを確認。
+
+  ```bash : Git Bash
+  $ ls
+  id_rsa_username       known_hosts
+  id_rsa_username.pub 
+  ```
+
+- `id_rsa_username.pub`の内容をコピーする。クリップボードにコピーする。
+
+  ```bash : Git Bash
+  cat id_rsa_username.pub | clip
+  ```
 
 - `GitHub`に登録する
-  - [`GitHub`](https://github.com/)にアクセス
+  [GitHub](https://github.com/)
   - `アイコン` - `Settings` - `Access` - `SSH and GPG keys` - `SSH Keys`
-  - `New SSH key`を押して
-    - `Title`は鍵の名前を設定する。パソコン名や学校名などにしておくとわかりやすい
-    - `Key type`は`Authentication Key`に設定
-    - `Key`に先ほどコピーした鍵をペースト
-  - `Add SSH key`を押して登録する
+  - `New SSH key`  
+    `Title`は鍵の名前を設定する。パソコン名や学校名などにしておくとわかりやすい。  
+    `Key type`は`Authentication Key`に設定する。  
+    `Key`に先ほどコピーした鍵をペーストする。  
+  - `Add SSH key`で`SSH`鍵を登録する。
 - `SSH`の設定
-  - `~/.ssh/config`を開く(なければ作成する)
+- `~/.ssh/config`を開く(なければ作成する)
   
-    ```bash : Git Bash
-    code config
-    ```
+  ```bash : Git Bash
+  $ ls
+  config # ある
+  # ない場合 $ touch config
+  $ code config
+  ```
 
-  - アカウントと`SSH`鍵を紐づける設定
+- アカウントと`SSH`鍵を紐づける設定
 
-    ```config : config
-    Host github.com
-        HostName github.com
-        IdentityFile /C/Users/user_name/.ssh/id_rsa_email
-        User git
-        Port 22
-        TCPKeepAlive yes
-        IdentitiesOnly yes
-    ```
+  ```config : config
+  Host github.com
+      HostName github.com
+      IdentityFile /C/Users/user_name/.ssh/id_rsa_username
+      User git
+      Port 22
+      TCPKeepAlive yes
+      IdentitiesOnly yes
+  ```
 
-- `SSH`の確認
-  - 通信ができるかどうか確認する
+- `SSH`の確認  
+  通信ができるかどうか確認する
 
-    ```bash : Git Bash
-    ssh -T github.com
-    ```
+  ```bash : Git Bash
+  $ ssh -T github.com
+  Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+  ```
 
-  - `github.com`の部分は`config`の`Host`に設定したものを使用する。
-  - 次のような出力を確認できれば成功
-
-    ```bash : Git Bash
-    Hi user_name! You've successfully authenticated, but GitHub does not provide shell access.
-    ```
-
-</div>
-</details>
-
-- [clone](#clone)
-- [add](#add)
-- [commit](#commit)
-- [push](#push)
-- [branch](#branchを分ける)
-- [tag](#tag)
-
-## 基本
+## gitコマンドの基本
 
 ### clone
 
-リモート(`Git`のサーバー)からリポジトリをローカル(自分のパソコン)に複製する。  
+リモート(`Git`のサーバー)からリポジトリをローカル(自分の作業環境)に複製する。  
 
 ```bash : Git Bash
-git clone [remote URL]
+$ git clone [remote URL]
+# 実行するディレクトリに注意
 ```
 
-でカレントディレクトリにそのリポジトリのディレクトリが複製される。`[remote URL]`は`GitHub`から確認する。  
-['GitHub'](https://github.com/)に行きcloneしたいリポジトリのページまで移動する。緑色の`<>Code`を押し`Local`の`Clone`の`SSH`からコピーする。
+実行したディレクトリにそのリポジトリが複製される。`[remote URL]`は`GitHub`から確認する。  
+[GitHub](https://github.com/)からcloneしたいリポジトリのページまで移動する。緑色の`<>Code`を押し`Local`の`Clone`の`SSH`からコピーする。
 
 ### add
 
 ローカルで変更したファイルなどをリモートにあげるファイルを選択する。  
+コミットに含めるファイルを選択する。  
 
 ```bash : Git Bash
-git add [ファイル名1] [ファイル名2] …
+$ git add [ファイル名1] [ファイル名2] …
+# ファイル名(フォルダ名)は何個でも書けるはず…
 ```
 
 ### commit
 
-コミットを作成しリモートに`push`する。`add`したファイルをひとまとまりにする。  
+コミットを作成する。`add`したファイルをひとまとまりにする。  
 
 ```bash : Git Bash
-git commit -m "[コミットメッセージ]"
+$ git commit -m "[コミットメッセージ]"
+# コミットメッセージをつける
 ```
 
-コミットメッセージには何を更新したのかなどの内容を書いておくとよい。
+コミットメッセージには何を更新したのかなどの内容を書いておくとよい。  
+> `add`：ファイルの新規作成や新規追加など  
+> `update`：ファイルの中身の更新など  
+> `fixed`、`fix`：バグの修正など  
+> `style`：動作に問題のない部分の修正、ドキュメントやインデントの修正など  
+> 例
+> "fixed #3"、"update; add to receive controller;"  
+> コミットメッセージは日本語でもよい(基本英語)。(部内であれば日本語でも大丈夫)  
 
 ### push
 
-作成したコミットをリモートにあげる。
+作成したコミットをリモートに反映させる。  
 
 ```bash : Git Bash
-git push
+$ git push origin main
+# mainブランチにpushする
 ```
-
-でリモートを更新する。
 
 ### 更新されたファイルなどがあるか確認
 
 ```bash : Git Bash
-git status
+$ git status
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+---
 ```
 
-で現在のリポジトリで更新されたファイルがあるかどうか、確認できる。
+現在のリポジトリで更新されたファイルがあるかどうか、確認できる。
 
 ### リモートの変更をもってくる
 
 他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。というときにわざわざディレクトリを削除してもう一度`clone`するのはめんどくさい。
 
 ```bash : Git Bash
-git pull
+$ git pull
+# $ git pull origin [branch名] でpullするブランチを指定できる
 ```
 
-を使用するとリモートの変更を反映させることができる。これは
+とリモートの変更を反映させることができる。
 
 ```bash : Git Bash
 git pull origin main
@@ -158,23 +206,26 @@ git pull origin main
 
 ## branchを分ける
 
-ふだんはおそらくmainブランチ、または、masterブランチを使用していると思われるが、開発用のブランチmainと更新用(リリースごと)のブランチreleaseに分けておきたいとする。mainブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともある。ブランチは分けずにタグを作成して、そのときのコミットに戻れるという機能もあるがそれはbranchの次に紹介する。  
+普段はおそらくmainブランチ、または、masterブランチを使用していると思われるが、開発用のブランチmainと更新用(リリースごと)のブランチdeveに分けておきたいとする。mainブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともある。ブランチは分けずにタグを作成して、そのときのコミットに戻れるという機能もあるがそれはbranchの次に紹介する。  
+> 開発用は`development`とかで確実に動くものは`main`に反映させるなどもあり。
 
 ### ブランチを作成
 
 まずはブランチを作成する。
 
 ```bash : Git Bash
-git branch release
+git branch deve
 ```
 
-`release`という名前のブランチがローカルに作成された。
+`deve`という名前のブランチがローカルに作成された。
 
 ```bash : Git Bash
-git branch
+$ git branch
+* main
+  deve
 ```
 
-を実行すると現在ローカルにあるブランチの一覧を表示できる。
+現在ローカルにあるブランチの一覧を表示できる。
 
 ### ブランチに移動する
 
@@ -184,42 +235,33 @@ git branch
 git checkout [ブランチ名]
 ```
 
-新しいブランチを作成していない場合は、
-
-```bash : Git Bash
-git checkout -b [ブランチ名]
-```
-
-で新しいブランチを作成しそのブランチに移動することができる。
-
 ### addしたりcommitしたり
 
-あとは変更したファイルをaddしたりcommitしたりしても問題ない。`push`するときは
+あとは変更したファイルをaddしたりcommitしたりしても問題ない。
 
 ```bash : Git Bash
-git push origin [ブランチ名]
+$ git push origin [ブランチ名]
+# origin で指定しないとpushできないことがある
 ```
-
-とすると安心感がある。
 
 ### ブランチを他のブランチと同じバージョンまで持ってくる
 
-mainブランチだけ先に進み、releaseブランチが遅れている場合、releaseブランチにmainブランチの状態にしたいなどということもあると思われる。そんなときにいちいちmainブランチからreleaseブランチにコピペするのは面倒くさい。そんなときに`merge`を使用する。  
+mainブランチだけ先に進み、deveブランチが遅れている場合、deveブランチにmainブランチの状態にしたいなどということもあると思われる。そんなときにいちいちmainブランチからdeveブランチにコピペするのは面倒くさい。そんなときに`merge`を使用する。  
 進めたいブランチに`checkout`し、
 
 ```bash : Git Bash
 git merge [進んでいるブランチ名]
 ```
 
-を実行する。releaseブランチをmainブランチと同じ状態にしたい場合は、
+を実行する。deveブランチをmainブランチと同じ状態にしたい場合は、
 
 ```bash : Git Bash
-git checkout release
+git checkout deve
 git merge main
 ```
 
-を実行することでreleaseブランチにmainブランチの変更を反映させることができる。  
-このあとにreleaseブランチにpushし、リモートにも反映させる。
+を実行することでdeveブランチにmainブランチの変更を反映させることができる。  
+このあとにdeveブランチにpushし、リモートにも反映させる。
 
 ### ブランチの削除
 

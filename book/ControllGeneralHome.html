@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
@@ -131,9 +129,6 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
 
                     </div>
                 </div>
@@ -160,25 +155,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
-<p>制御に関するお勉強・開発のHome<br />
-基本的に<code>C言語</code>を用いる。一部<code>C++</code>などの他の言語の知識が混ざる可能性もある。環境構築等はすでに済んでいるものとし、コードの内容のみになることがある。<br />
-各開発などのリポジトリは各ページに掲載していることもある。あくまで参考程度にしかならない。<br />
+                        <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
+<p>筆者の制御に関するお勉強・開発のHome<br />
+プログラムの使用言語は基本的に<code>C言語</code>、<code>C++</code>である。一部、他の言語の知識が混ざる可能性がある。<br />
+環境構築等はすでに済んでいるものとし、コードの内容のみになる場合がある。筆者と異なるOSを使用する場合は各自で環境に合わせて対応すること。<br />
+各開発などのリポジトリは各ページに掲載していることもあるが、あくまで参考程度にしかならない。<br />
 一部に自作のヘッダファイルなどを使用する場合がある。その場合は、そのファイルの中身などを簡単に説明する記事を作るように心掛ける。<br />
 <strong>結局は自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
+<hr />
 <h2 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h2>
 <ul>
 <li>Windows 11 Home</li>
@@ -217,6 +201,22 @@ span.codeblock_filename_inner {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
