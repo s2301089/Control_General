@@ -1,9 +1,9 @@
 
 # はじめに  
 
-[前提条件等](./ControllGeneralHome.md)  
+[前提条件等](./ControlGeneralHome.md)  
 
-# 基礎知識
+<!-- # 基礎知識
 
 - [一覧](./BasicContents/BasicContentsHome.md)
   - [git / GitHub](./BasicContents/git_GitHub.md)  
@@ -43,4 +43,4 @@
     - [UART通信(受信)](./DevelopmentSTM32CubeIDE/Connectability/uartReceive.md)
     - [UART通信(送信)](./DevelopmentSTM32CubeIDE/Connectability/uartTransmit.md)
     - [Arduinoとの通信](./DevelopmentSTM32CubeIDE/Connectability/ConnectArduino.md)
-    - [CAN通信(受信)](./DevelopmentSTM32CubeIDE/Connectability/canReceive.md)
+    - [CAN通信(受信)](./DevelopmentSTM32CubeIDE/Connectability/canReceive.md) -->
