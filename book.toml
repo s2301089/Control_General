@@ -9,6 +9,8 @@ title = "Control_General"
 mathjax-support = true
 git-repository-url = "https://github.com/s2301089/"
 git-repository-icon = "fa-github"
+additional-js = ["theme/pagetoc.js"]
+additional-css = ["theme/pagetoc.css"]
 
 [preprocessor.image-size]
 command = "mdbook-image-size"

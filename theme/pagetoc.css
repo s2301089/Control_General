@@ -55,3 +55,32 @@
         display: none;
     }
 }
+
+/* 右側のページ内目次 */
+nav.pagetoc {
+  position: fixed;
+  /* right: 0; */
+  /* top: 0; */
+  /* width: 18%; */
+  max-width: 280px;
+  padding: 1rem;
+  border-left: 1px solid #ddd;
+  /* background-color: #fafafa; */
+  overflow-y: auto;
+  /* height: calc(100vh - 60px); */
+}
+
+/* 本文の右余白確保 */
+main {
+  margin-right: 20%;
+}
+
+/* 小画面では非表示 */
+/* @media (max-width: 720px) {
+  nav.pagetoc {
+    display: none;
+  }
+  main {
+    margin-right: 0;
+  }
+} */
