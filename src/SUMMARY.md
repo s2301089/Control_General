@@ -6,6 +6,7 @@
   - [git / GitHub](./BasicContents/git_GitHub.md)  
   - [DCモーターの制御](./BasicContents/motor.md)  
   - [コントローラーのデータ](./BasicContents/Controller/how_to.md)
+    - [受信側(lib)](./BasicContents/Controller/use_rxController.md)
 
 <!-- # PlatformIOでの開発
 

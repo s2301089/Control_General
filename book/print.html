@@ -623,6 +623,304 @@ span.codeblock_filename_inner {
 <p><code>header</code> : <code>0xaf</code><br />
 <code>SUM</code> : データ確認用SUM <code>1~8Byte</code>の合計値<br />
 <code>footer</code> : <code>0xed</code></p>
+<div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="受信側ライブラリの使い方"><a class="header" href="#受信側ライブラリの使い方">受信側ライブラリの使い方</a></h1>
+<h2 id="ライブラリの場所"><a class="header" href="#ライブラリの場所">ライブラリの場所</a></h2>
+<p><a href="https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src">receiveController</a></p>
+<p><code>GitHub/2025-B/receiveController</code>の<code>main</code>ブランチ、<code>receiveF446RE/lib/rxfep</code>にある。使用する場合は<code>rxfep</code>フォルダごとダウンロードして使用する。</p>
+<blockquote>
+<p>ライブラリは置き場、公開/非公開が変更される場合がある。<br />
+2025/11/02：一部の人のみに公開</p>
+</blockquote>
+<h2 id="使用方法dualshock4の場合"><a class="header" href="#使用方法dualshock4の場合">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
+<p>ページの下に<a href="BasicContents/Controller/use_rxController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を掲載。</p>
+<h3 id="include--using"><a class="header" href="#include--using">include &amp; using</a></h3>
+<ul>
+<li>
+<p><code>platformio</code>のプロジェクトの<code>lib</code>フォルダに<code>rxfep</code>を入れる。</p>
+</li>
+<li>
+<p>使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行う。</p>
+<pre><code class="language-cpp : main.cpp">#include "rxDualshock4.hpp"
+namespace using snct;
+</code></pre>
+</li>
+<li>
+<p><code>namespace using snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えることで解決する。</p>
+</li>
+</ul>
+<h3 id="変数などの宣言"><a class="header" href="#変数などの宣言">変数などの宣言</a></h3>
+<ul>
+<li>
+<p>使用するためには次のものが必要になる。</p>
+<ul>
+<li>データを格納する構造体</li>
+<li><code>UART</code>を使用するための<code>UnbufferedSerial</code>のインスタンス</li>
+<li>使用したいコントローラー用のインスタンス</li>
+</ul>
+<pre><code class="language-cpp : main.cpp">struct RxDualshock4::DS4_struct data;
+mbed::UnbufferedSerial fep(PinName::PC_10, PinName::PC_11, 38400);
+// PC_10はUART3_TX、PC_11はUART3_RX、38400はbaudrate
+RxDualshock4 ps4(fep,&amp;data,RxController::GET_TYPE::polling);
+</code></pre>
+</li>
+</ul>
+<h3 id="rxdualshock4の引数"><a class="header" href="#rxdualshock4の引数">RxDualshock4の引数</a></h3>
+<ul>
+<li><code>ps4(fep, &amp;data,RxController::GET_TYPE::polling);</code>では2つの引数がある。
+<ul>
+<li><code>fep</code>：<code>UnbufferedSerial</code>のインスタンス</li>
+<li><code>data</code>：構造体のポインタ</li>
+<li><code>RxController::GET_TYPE::polling</code>：受信方法の設定
+<ul>
+<li><code>polling</code>：ポーリング処理(データが来るまで一定期間待機)</li>
+<li><code>interrupt</code>：割り込み受信</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="受信する"><a class="header" href="#受信する">受信する</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">// GET_TYPE::pollingの場合
+if(ps4.getDS4()){
+    // 受信成功時の処理
+}else{
+    // 受信失敗時の処理
+}
+
+// GET_TYPE::interruptの場合
+if(ps4.getDS4_IT()){
+    // 受信成功時の処理
+}else{
+    // 受信失敗時の処理
+}
+</code></pre>
+<h3 id="受信したデータの使用方法"><a class="header" href="#受信したデータの使用方法">受信したデータの使用方法</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">led.write(data.CIRCLE);
+</code></pre>
+<ul>
+<li><code>data.《ほしいデータ名》</code>でアクセスする</li>
+<li>データ名とデータ型は以下の通り
+<ul>
+<li><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code></li>
+<li><code>bool</code>：<code>TRIANGLE</code>、<code>CIRCLE</code>、<code>CROSS</code>、<code>SQUARE</code>、<code>UP</code>、<code>RIGHT</code>、<code>DOWN</code>、<code>LEFT</code>、<code>L1</code>、<code>L3</code>、<code>R1</code>、<code>R3</code>、<code>SHARE</code>、<code>OPTIONS</code>、<code>PS</code>、<code>TOUCHPAD</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
+<h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
+<ul>
+<li><code>RxDualshock4(mbed::UnbufferedSerial&amp; unbuffered_serial_obj, struct RxDualshock4::DS4_struct *struct_p, RxController::GET_TYPE type);</code>
+<ul>
+<li><code>unbuffered_serial_obj</code>：<code>UnbufferedSerial</code>のインスタンス</li>
+<li><code>*struct_p</code>：構造体のポインタ</li>
+<li><code>type</code>：受信方法。デフォルトでは割り込み</li>
+</ul>
+</li>
+<li>グローバルで宣言することが多い</li>
+</ul>
+<h3 id="getds4"><a class="header" href="#getds4">getDS4()</a></h3>
+<ul>
+<li>ポーリング受信の場合に使用する</li>
+<li>引数なし</li>
+<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code></li>
+</ul>
+<h3 id="getds4_it"><a class="header" href="#getds4_it">getDS4_IT()</a></h3>
+<ul>
+<li>割り込み受信の場合に使用する</li>
+<li>引数なし</li>
+<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code></li>
+</ul>
+<h2 id="その他設定用関数の引数と戻り値基本的に使用しないdualshock4の場合"><a class="header" href="#その他設定用関数の引数と戻り値基本的に使用しないdualshock4の場合">その他設定用関数の引数と戻り値(基本的に使用しない。<code>DUALSHOCK4</code>の場合)</a></h2>
+<h3 id="setheader"><a class="header" href="#setheader">setHeader()</a></h3>
+<ul>
+<li>引数なしの場合
+<ul>
+<li>ヘッダー符号をデフォルトの<code>0xaf</code>に設定する</li>
+</ul>
+</li>
+<li>引数<code>uint8_t header</code>
+<ul>
+<li><code>header</code>をヘッダー符号に設定する</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したヘッダー符号を返す</li>
+</ul>
+</li>
+</ul>
+<h3 id="setfooter"><a class="header" href="#setfooter">setFooter()</a></h3>
+<ul>
+<li>引数なしの場合
+<ul>
+<li>フッター符号をデフォルトの<code>0xed</code>に設定する</li>
+</ul>
+</li>
+<li>引数<code>uint8_t footer</code>
+<ul>
+<li><code>footer</code>をフッター符号に設定する</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したフッター符号を返す</li>
+</ul>
+</li>
+</ul>
+<h3 id="settimeout"><a class="header" href="#settimeout">setTimeout()</a></h3>
+<ul>
+<li>ポーリング受信の場合に使用する</li>
+<li>引数なしの場合
+<ul>
+<li>タイムアウトの時間をデフォルトの<code>15ms</code>に設定する</li>
+</ul>
+</li>
+<li>引数<code>chrono::milliseconds time</code>
+<ul>
+<li><code>time</code>をタイムアウトの時間に設定する</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したタイムアウトの時間を返す</li>
+</ul>
+</li>
+</ul>
+<h3 id="setretry"><a class="header" href="#setretry">setRetry()</a></h3>
+<ul>
+<li>ポーリング受信の場合に使用する</li>
+<li>引数なしの場合
+<ul>
+<li>リトライ回数をデフォルトの<code>16</code>に設定する</li>
+</ul>
+</li>
+<li>引数<code>uint8_t retry</code>
+<ul>
+<li><code>retry</code>をリトライ回数に設定する</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したリトライ回数を返す</li>
+</ul>
+</li>
+</ul>
+<h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<ul>
+<li><code>lib/rxfep</code>
+<ul>
+<li><code>rxController.cpp</code></li>
+<li><code>rxController.hpp</code></li>
+<li><code>rxDualshock4.cpp</code></li>
+<li><code>rxDualshock4.hpp</code></li>
+</ul>
+</li>
+<li><code>STM32F446RET6</code></li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;mbed.h&gt;
+#include "rxDualshock4.hpp" //  libをinclude
+
+#define DBG_M
+
+//  namespace using snct;をしていないからsnct::をつける
+struct snct::RxDualshock4::DS4_struct data;
+
+//  UnbufferedSerialのインスタンスを作成
+mbed::UnbufferedSerial fep(PinName::PC_10, PinName::PC_11, 38400);
+
+//  RxDualshock4のインスタンスを作成
+snct::RxDualshock4 ps4(fep,&amp;data,snct::RxController::GET_TYPE::interrupt);
+
+mbed::PwmOut em_led(PB_15);     //  緊急停止sw用のチェックLEDのインスタンス
+mbed::PwmOut fep_led(PB_14);    //  受信成功失敗用のチェックLEDのインスタンス
+
+mbed::DigitalIn em_sw(PA_4);    //  緊急停止sw用のインスタンス
+
+constexpr uint8_t FAIL_MAX = 3;     //  受信失敗の上限値
+uint8_t fail_count = FAIL_MAX * 2;  //  受信失敗カウンタ
+bool em_sw_status = 0;              //  緊急停止swの状態
+bool fep_status = 0;                //  受信の状態
+
+int main(void){
+    em_led.period_us(83);   //  LEDの設定
+    em_led.write(0);
+    fep_led.period_us(83);
+    fep_led.write(0);
+    while(true){            //  main loop
+        #ifdef DBG_M
+        printf("%d ", fail_count);
+        #endif
+        em_sw_status = em_sw.read();
+        if(!em_sw_status){
+            fep_status = ps4.getDS4_IT();   //  割り込み受信
+            if(fep_status){
+                fail_count = 0;
+
+                #ifdef DBG_M    //  各データを出力
+                char buf[64] = {0};
+                sprintf(buf, 
+                    "LX:%3d LY:%3d RX:%3d RY:%3d L2:%3d R2:%3d Pressed Button: ", 
+                    data.LX, data.LY, data.RX, data.RY, data.L2, data.R2
+                );
+                printf(buf);
+                if(data.TRIANGLE)  printf("TRIANGLE ");
+                if(data.CIRCLE)    printf("CIRCLE ");
+                if(data.CROSS)     printf("CROSS ");
+                if(data.SQUARE)    printf("SQUARE ");
+
+                if(data.UP)        printf("UP ");
+                if(data.RIGHT)     printf("RIGHT ");
+                if(data.DOWN)      printf("DOWN ");
+                if(data.LEFT)      printf("LEFT ");
+
+                if(data.L1)        printf("L1 ");
+                if(data.L3)        printf("L3 ");
+                if(data.R1)        printf("R1 ");
+                if(data.R3)        printf("R3 ");
+
+                if(data.SHARE)     printf("SHARE ");
+                if(data.OPTIONS)   printf("OPTIONS ");
+                if(data.PS)        printf("PS ");
+                if(data.TOUCHPAD)  printf("TOUCHPAD ");
+                #endif
+            }else{
+                fail_count++;
+                if(fail_count &gt; FAIL_MAX + 1){
+                    fail_count--;
+                }
+                #ifdef DBG_M
+                printf("fail ");
+                #endif
+            }
+        }else{
+            #ifdef DBG_M
+            printf("em_sw_pushed ");
+            #endif
+        }
+        fep_led.write(!fep_status); //  チェックLEDに出力
+        em_led.write(em_sw_status);
+        #ifdef DBG_M
+        printf("\n");
+        #endif
+    }
+}
+</code></pre>
 
                     </main>
 
