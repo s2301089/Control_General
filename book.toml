@@ -14,7 +14,7 @@ git-repository-url = "https://github.com/s2301089/"
 git-repository-icon = "fa-github"
 # ページ内見出し
 additional-js = ["theme/pagetoc.js"]
-additional-css = ["theme/pagetoc.css"]
+additional-css = ["theme/pagetoc.css", "./mdbook-admonish.css"]
 
 # 画像サイズ指定
 [preprocessor.image-size]
@@ -25,3 +25,8 @@ command = "mdbook-image-size"
 
 # ページ内見出し
 [preprocessor.pagetoc]
+
+# 注意・補足
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.1.0" # do not edit: managed by `mdbook-admonish install`
