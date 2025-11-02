@@ -177,26 +177,56 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
-<p>制御に関するお勉強・開発のHome<br />
-使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>である。一部、他の言語の知識が混ざる可能性がある。<br />
-環境構築等はすでに済んでいるものとし、コードの内容のみになる場合がある。筆者と異なるOSを使用する場合は各自で環境に合わせて対応すること。<br />
-各開発などのリポジトリは各ページに掲載していることもあるが、あくまで参考程度にしかならない。<br />
-一部に自作のヘッダファイルなどを使用する場合がある。その場合は、そのファイルの中身などを簡単に説明する記事を作るように心掛ける。<br />
-<strong>結局は自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
+<p>制御(回路・プログラム)に関するお勉強・開発のHomeです。<br />
+使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>です。一部、他の言語の知識が混ざる可能性があります。<br />
+環境構築等はすでに済んでいるものとして扱い、コードの内容のみになる場合があります。筆者と異なるOS・バージョンを使用する場合はそれぞれの環境に合わせて対応する必要があります。<br />
+各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br />
+一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br />
+結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
+<div id="admonition-調べ方のコツ" class="admonition admonish-tip" role="note" aria-labelledby="admonition-調べ方のコツ-title">
+<div class="admonition-title">
+<div id="admonition-調べ方のコツ-title">
+<p>調べ方のコツ？</p>
+</div>
+<a class="admonition-anchor-link" href="ControlGeneral.html#admonition-調べ方のコツ"></a>
+</div>
+<div>
+<p>知りたいことがあれば、調べてみよう。<br />
+例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。<code>Qiita</code>や<code>Zenn</code>などがその例です。中には個人のサイトで解説をしている方もいます。<br />
+データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。<br />
+<code>ChatGPT</code>などの生成AIを調べもせずに頼ることはおすすめしません。最初から頼ると意味などの理解が困難になります。</p>
+</div>
+</div>
 <hr />
 <h2 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h2>
 <ul>
-<li>Windows 11 Home</li>
+<li>Windows 11 Home <strong>← 推奨</strong></li>
 <li>Ubuntu 22.04 LTS</li>
 </ul>
-<h2 id="使用中使用予定のマイコン一覧"><a class="header" href="#使用中使用予定のマイコン一覧">使用中(使用予定)のマイコン一覧</a></h2>
+<div id="admonition-osについての注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-osについての注意点-title">
+<div class="admonition-title">
+<div id="admonition-osについての注意点-title">
+<p>OSについての注意点</p>
+</div>
+<a class="admonition-anchor-link" href="ControlGeneral.html#admonition-osについての注意点"></a>
+</div>
+<div>
+<p>Macは使用しているソフトウェアが対応していない、機能がないなどの問題点があります。<br />
+そのため<strong>Windows</strong>を<strong>推奨</strong>します。その他のOSは自分で対応できる自信のある人のみ使用することをおすすめします。</p>
+</div>
+</div>
+<h2 id="使用中使用予定の機器一覧"><a class="header" href="#使用中使用予定の機器一覧">使用中(使用予定)の機器一覧</a></h2>
 <ul>
-<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g117215/">(ATOM Matrix)</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g115674/">(ESP32-WROVER-E)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8(部)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico(私物)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualshock-4-wireless-controller/">DUALSHOCK4(部)</a></li>
+<li><a href="https://www.sony.com/ja/SonyInfo/design/gallery/CECH-ZC2/">DUALSHOCK3(部)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(私物)</a></li>
+<li><a href="https://amzn.asia/d/h1pTd7G">USB Host Shield 2.0(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g117215/">(ATOM Matrix)(私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g115674/">(ESP32-WROVER-E)(私物)</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
@@ -212,12 +242,73 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="基礎知識"><a class="header" href="#基礎知識">基礎知識</a></h1>
-<ul>
-<li><a href="BasicContents/./git_GitHub.html">git / GitHub</a></li>
-<li><a href="BasicContents/./motor.html">DCモーターの制御</a></li>
-<li><a href="BasicContents/./Controller/how_to.html">コントローラーのデータ</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
+<h2 id="git--github"><a class="header" href="#git--github"><a href="BasicContents/./git_GitHub.html">git / GitHub</a></a></h2>
+<div id="admonition-内容" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-title">
+<div class="admonition-title">
+<div id="admonition-内容-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/BasicContents.html#admonition-内容"></a>
+</div>
+<div>
+<p><code>git</code>とは、<code>GitHub</code>とはなにか<br />
+導入方法、設定、使用方法など</p>
+</div>
+</div>
+<h2 id="dcモーターの制御"><a class="header" href="#dcモーターの制御"><a href="BasicContents/./motor.html">DCモーターの制御</a></a></h2>
+<div id="admonition-内容-1" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-1-title">
+<div class="admonition-title">
+<div id="admonition-内容-1-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/BasicContents.html#admonition-内容-1"></a>
+</div>
+<div>
+<p>DCモーターを制御するための回路<br />
+<code>PWM</code>とはなにか<br />
+モーターへの出力の決定方法など</p>
+</div>
+</div>
+<h2 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ"><a href="BasicContents/./Controller/how_to.html">コントローラーのデータ</a></a></h2>
+<div id="admonition-内容-2" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-2-title">
+<div class="admonition-title">
+<div id="admonition-内容-2-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/BasicContents.html#admonition-内容-2"></a>
+</div>
+<div>
+<p>データの取得方法、送信方法・受信方法<br />
+使用する機器<br />
+送受信しているデータの構成など</p>
+</div>
+</div>
+<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="BasicContents/./Controller/use_rxController.html">受信側(lib)</a></a></h3>
+<div id="admonition-内容-3" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-3-title">
+<div class="admonition-title">
+<div id="admonition-内容-3-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/BasicContents.html#admonition-内容-3"></a>
+</div>
+<div>
+<p>コントローラーのデータを受信、使用するためのライブラリ<br />
+使用方法、サンプルプログラムなど</p>
+</div>
+</div>
+<h3 id="送信側lib"><a class="header" href="#送信側lib"><a href="BasicContents/./Controller/use_txController.html">送信側(lib)</a></a></h3>
+<div id="admonition-内容-4" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-4-title">
+<div class="admonition-title">
+<div id="admonition-内容-4-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/BasicContents.html#admonition-内容-4"></a>
+</div>
+<div>
+<p>コントローラーのデータを取得、送信するためのライブラリ<br />
+使用方法、サンプルプログラムなど</p>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
 }
@@ -230,7 +321,7 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="git--github"><a class="header" href="#git--github">git / GitHub</a></h1>
+<h1 id="git--github-1"><a class="header" href="#git--github-1">git / GitHub</a></h1>
 <p><code>git</code>とはバージョン管理ツールである。誰がいつ、どの部分を変更したのかを細かく記録できる。プログラムなどの開発では、うまく行ったときとそうでないときの違いなどを確認しやすくなる。<br />
 <code>git</code>のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスが<code>GitHub</code>。<code>git</code>と<code>GitHub</code>は全くの別物である。</p>
 <h2 id="導入"><a class="header" href="#導入">導入</a></h2>
@@ -547,7 +638,7 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="dcモーターの制御"><a class="header" href="#dcモーターの制御">DCモーターの制御</a></h1>
+<h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
 <h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
 <p>回路的には以下のようになっている。<br />
 <img src="BasicContents/../resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png" /><br />
@@ -585,13 +676,21 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ">コントローラーのデータ</a></h1>
+<h1 id="コントローラーのデータ-1"><a class="header" href="#コントローラーのデータ-1">コントローラーのデータ</a></h1>
 <h2 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h2>
-<p>双葉電子の<code>FEP02</code>を使用している。</p>
-<blockquote>
+<p>双葉電子の<code>FEP02</code>を使用しています。</p>
+<div id="admonition-製品情報" class="admonition admonish-info" role="note" aria-labelledby="admonition-製品情報-title">
+<div class="admonition-title">
+<div id="admonition-製品情報-title">
+<p>製品情報</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/how_to.html#admonition-製品情報"></a>
+</div>
+<div>
 <p><a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">FEP-02</a></p>
-</blockquote>
-<p><code>920MHz</code>帯の無線モジュールであり、<code>UART</code>(シリアル通信)でデータの送信を行っている。<code>Baudrate</code>は<code>38400bps</code>になっているものが多い。</p>
+</div>
+</div>
+<p><code>920MHz</code>帯の無線モジュールです。<code>UART</code>(シリアル通信)でデータの送受信を行っています。<code>Baudrate</code>は<code>38400bps</code>の設定になっているものが多いです。</p>
 <h2 id="送信側"><a class="header" href="#送信側">送信側</a></h2>
 <p>使用機器</p>
 <ul>
@@ -599,18 +698,18 @@ span.codeblock_filename_inner {
 <li><code>USB Host Shield 2.0</code></li>
 <li><code>FEP</code></li>
 <li>コントローラー<br />
-<code>DUALSHOCK4</code>などが多い</li>
+<code>DUALSHOCK4</code>など</li>
 </ul>
-<p>以下の図のように接続する。</p>
+<p>以下の図のように接続します。</p>
 <p><img src="BasicContents/Controller/../../resources/BasicContents/Controller/tx_connect.png" alt="tx_connect.png" /></p>
 <h2 id="受信側"><a class="header" href="#受信側">受信側</a></h2>
 <p>使用機器</p>
 <ul>
 <li>マイコン
-<code>STM32F446RET6</code>や<code>STM32F303K8T6</code>などが多い</li>
+<code>STM32F446RET6</code>や<code>STM32F303K8T6</code>など</li>
 <li><code>FEP</code></li>
 </ul>
-<p>以下の図のように接続する。</p>
+<p>以下の図のように接続します。</p>
 <p><img src="BasicContents/Controller/../../resources/BasicContents/Controller/rx_connect.png" alt="rx_connect.png" /></p>
 <h2 id="送受信するデータ"><a class="header" href="#送受信するデータ">送受信するデータ</a></h2>
 <p><code>DUALSHOCK4</code>の場合</p>
@@ -619,11 +718,20 @@ span.codeblock_filename_inner {
 <p><img src="BasicContents/Controller/../../resources/BasicContents/Controller/data_assign_DUALSHOCK3.png" alt="data_assign_DUALSHOCK4.png" /></p>
 <p><code>DUALSENSE</code>の場合</p>
 <p><img src="BasicContents/Controller/../../resources/BasicContents/Controller/data_assign_DUALSENSE.png" alt="data_assign_DUALSHOCK4.png" /></p>
-<p>データ型はすべて<code>uint8_t</code>。合計13Byte。</p>
-<p><code>header</code> : <code>0xaf</code><br />
-<code>SUM</code> : データ確認用SUM <code>1~8Byte</code>の合計値<br />
-<code>footer</code> : <code>0xed</code></p>
-<div style="break-before: page; page-break-before: always;"></div><style>
+<p>データ型はすべて<code>uint8_t</code>で、合計13Byteのデータになっています。</p>
+<div id="admonition-追加のデータ" class="admonition admonish-info" role="note" aria-labelledby="admonition-追加のデータ-title">
+<div class="admonition-title">
+<div id="admonition-追加のデータ-title">
+<p>追加のデータ</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/how_to.html#admonition-追加のデータ"></a>
+</div>
+<div>
+<p><code>header</code> : <code>0xaf</code> 先頭データを意味します。<br />
+<code>SUM</code> : データ確認用のSUMです。 <code>1~8Byte</code>の合計値になっています。<br />
+<code>footer</code> : <code>0xed</code>  終端データを意味します。</p>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
 }
@@ -638,33 +746,51 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="受信側ライブラリの使い方"><a class="header" href="#受信側ライブラリの使い方">受信側ライブラリの使い方</a></h1>
 <h2 id="ライブラリの場所"><a class="header" href="#ライブラリの場所">ライブラリの場所</a></h2>
+<div id="admonition-github" class="admonition admonish-info" role="note" aria-labelledby="admonition-github-title">
+<div class="admonition-title">
+<div id="admonition-github-title">
+<p>GitHub</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_rxController.html#admonition-github"></a>
+</div>
+<div>
 <p><a href="https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src">receiveController</a></p>
-<p><code>GitHub/2025-B/receiveController</code>の<code>main</code>ブランチ、<code>receiveF446RE/lib/rxfep</code>にある。使用する場合は<code>rxfep</code>フォルダごとダウンロードして使用する。</p>
-<blockquote>
-<p>ライブラリは置き場、公開/非公開が変更される場合がある。<br />
-2025/11/02：一部の人のみに公開</p>
-</blockquote>
+</div>
+</div>
+<p><code>GitHub/2025-B/receiveController</code>の<code>main</code>ブランチ、<code>receiveF446RE/lib/rxfep</code>にあります。使用する場合は<code>rxfep</code>フォルダごとダウンロードして使用してください。</p>
+<div id="admonition-注意点" class="admonition admonish-tip" role="note" aria-labelledby="admonition-注意点-title">
+<div class="admonition-title">
+<div id="admonition-注意点-title">
+<p>注意点</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_rxController.html#admonition-注意点"></a>
+</div>
+<div>
+<p>ライブラリは置き場、公開/非公開が変更される場合があります。<br />
+2025/11/02時点では一部の人のみに公開しています。</p>
+</div>
+</div>
 <h2 id="使用方法dualshock4の場合"><a class="header" href="#使用方法dualshock4の場合">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
-<p>ページの下に<a href="BasicContents/Controller/use_rxController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を掲載。</p>
+<p>ページの下に<a href="BasicContents/Controller/use_rxController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
 <h3 id="include--using"><a class="header" href="#include--using">include &amp; using</a></h3>
 <ul>
 <li>
-<p><code>platformio</code>のプロジェクトの<code>lib</code>フォルダに<code>rxfep</code>を入れる。</p>
+<p><code>platformio</code>のプロジェクトの<code>lib</code>フォルダに<code>rxfep</code>をコピーしてください。</p>
 </li>
 <li>
-<p>使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行う。</p>
+<p>使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行います。</p>
 <pre><code class="language-cpp : main.cpp">#include "rxDualshock4.hpp"
 namespace using snct;
 </code></pre>
 </li>
 <li>
-<p><code>namespace using snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えることで解決する。</p>
+<p><code>namespace using snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えてください。</p>
 </li>
 </ul>
 <h3 id="変数などの宣言"><a class="header" href="#変数などの宣言">変数などの宣言</a></h3>
 <ul>
 <li>
-<p>使用するためには次のものが必要になる。</p>
+<p>使用するためには次のものが必要になります。</p>
 <ul>
 <li>データを格納する構造体</li>
 <li><code>UART</code>を使用するための<code>UnbufferedSerial</code>のインスタンス</li>
@@ -679,13 +805,13 @@ RxDualshock4 ps4(fep,&amp;data,RxController::GET_TYPE::polling);
 </ul>
 <h3 id="rxdualshock4の引数"><a class="header" href="#rxdualshock4の引数">RxDualshock4の引数</a></h3>
 <ul>
-<li><code>ps4(fep, &amp;data,RxController::GET_TYPE::polling);</code>では2つの引数がある。
+<li><code>ps4(fep, &amp;data,RxController::GET_TYPE::polling);</code>では3つの引数があります。
 <ul>
 <li><code>fep</code>：<code>UnbufferedSerial</code>のインスタンス</li>
 <li><code>data</code>：構造体のポインタ</li>
 <li><code>RxController::GET_TYPE::polling</code>：受信方法の設定
 <ul>
-<li><code>polling</code>：ポーリング処理(データが来るまで一定期間待機)</li>
+<li><code>polling</code>：ポーリング処理(データが来るまで一定期間待機する)</li>
 <li><code>interrupt</code>：割り込み受信</li>
 </ul>
 </li>
@@ -713,14 +839,20 @@ if(ps4.getDS4_IT()){
 <pre><code class="language-cpp">led.write(data.CIRCLE);
 </code></pre>
 <ul>
-<li><code>data.《ほしいデータ名》</code>でアクセスする</li>
-<li>データ名とデータ型は以下の通り
-<ul>
-<li><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code></li>
-<li><code>bool</code>：<code>TRIANGLE</code>、<code>CIRCLE</code>、<code>CROSS</code>、<code>SQUARE</code>、<code>UP</code>、<code>RIGHT</code>、<code>DOWN</code>、<code>LEFT</code>、<code>L1</code>、<code>L3</code>、<code>R1</code>、<code>R3</code>、<code>SHARE</code>、<code>OPTIONS</code>、<code>PS</code>、<code>TOUCHPAD</code></li>
+<li><code>data.《ほしいデータ名》</code>でアクセスします。</li>
 </ul>
-</li>
-</ul>
+<div id="admonition-データ名とデータ型" class="admonition admonish-info" role="note" aria-labelledby="admonition-データ名とデータ型-title">
+<div class="admonition-title">
+<div id="admonition-データ名とデータ型-title">
+<p>データ名とデータ型</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_rxController.html#admonition-データ名とデータ型"></a>
+</div>
+<div>
+<p><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code><br />
+<code>bool</code>：<code>TRIANGLE</code>、<code>CIRCLE</code>、<code>CROSS</code>、<code>SQUARE</code>、<code>UP</code>、<code>RIGHT</code>、<code>DOWN</code>、<code>LEFT</code>、<code>L1</code>、<code>L3</code>、<code>R1</code>、<code>R3</code>、<code>SHARE</code>、<code>OPTIONS</code>、<code>PS</code>、<code>TOUCHPAD</code></p>
+</div>
+</div>
 <h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
 <ul>
@@ -728,39 +860,40 @@ if(ps4.getDS4_IT()){
 <ul>
 <li><code>unbuffered_serial_obj</code>：<code>UnbufferedSerial</code>のインスタンス</li>
 <li><code>*struct_p</code>：構造体のポインタ</li>
-<li><code>type</code>：受信方法。デフォルトでは割り込み</li>
+<li><code>type</code>：受信方法を指定します。デフォルトでは割り込み受信になります。</li>
 </ul>
 </li>
-<li>グローバルで宣言することが多い</li>
+<li>グローバルで宣言することが多いです。</li>
 </ul>
 <h3 id="getds4"><a class="header" href="#getds4">getDS4()</a></h3>
 <ul>
-<li>ポーリング受信の場合に使用する</li>
-<li>引数なし</li>
-<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code></li>
+<li>ポーリング受信の場合に使用します。</li>
+<li>引数はありません。</li>
+<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code>が返ります。</li>
 </ul>
 <h3 id="getds4_it"><a class="header" href="#getds4_it">getDS4_IT()</a></h3>
 <ul>
-<li>割り込み受信の場合に使用する</li>
-<li>引数なし</li>
-<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code></li>
+<li>割り込み受信の場合に使用します。</li>
+<li>引数はありません。</li>
+<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code>が返ります。</li>
 </ul>
-<h2 id="その他設定用関数の引数と戻り値基本的に使用しないdualshock4の場合"><a class="header" href="#その他設定用関数の引数と戻り値基本的に使用しないdualshock4の場合">その他設定用関数の引数と戻り値(基本的に使用しない。<code>DUALSHOCK4</code>の場合)</a></h2>
+<h2 id="その他設定用関数の引数と戻り値dualshock4の場合"><a class="header" href="#その他設定用関数の引数と戻り値dualshock4の場合">その他設定用関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
+<p>基本的に使用しません。</p>
 <h3 id="setheader"><a class="header" href="#setheader">setHeader()</a></h3>
 <ul>
 <li>引数なしの場合
 <ul>
-<li>ヘッダー符号をデフォルトの<code>0xaf</code>に設定する</li>
+<li>ヘッダー符号をデフォルトの<code>0xaf</code>に設定します。</li>
 </ul>
 </li>
 <li>引数<code>uint8_t header</code>
 <ul>
-<li><code>header</code>をヘッダー符号に設定する</li>
+<li><code>header</code>をヘッダー符号に設定します。</li>
 </ul>
 </li>
 <li>戻り値
 <ul>
-<li>設定したヘッダー符号を返す</li>
+<li>設定したヘッダー符号を返します。</li>
 </ul>
 </li>
 </ul>
@@ -768,59 +901,68 @@ if(ps4.getDS4_IT()){
 <ul>
 <li>引数なしの場合
 <ul>
-<li>フッター符号をデフォルトの<code>0xed</code>に設定する</li>
+<li>フッター符号をデフォルトの<code>0xed</code>に設定します。</li>
 </ul>
 </li>
 <li>引数<code>uint8_t footer</code>
 <ul>
-<li><code>footer</code>をフッター符号に設定する</li>
+<li><code>footer</code>をフッター符号に設定します。</li>
 </ul>
 </li>
 <li>戻り値
 <ul>
-<li>設定したフッター符号を返す</li>
+<li>設定したフッター符号を返します。</li>
 </ul>
 </li>
 </ul>
 <h3 id="settimeout"><a class="header" href="#settimeout">setTimeout()</a></h3>
 <ul>
-<li>ポーリング受信の場合に使用する</li>
+<li>ポーリング受信の場合に使用します。</li>
 <li>引数なしの場合
 <ul>
-<li>タイムアウトの時間をデフォルトの<code>15ms</code>に設定する</li>
+<li>タイムアウトの時間をデフォルトの<code>15ms</code>に設定します。</li>
 </ul>
 </li>
 <li>引数<code>chrono::milliseconds time</code>
 <ul>
-<li><code>time</code>をタイムアウトの時間に設定する</li>
+<li><code>time</code>をタイムアウトの時間に設定します。</li>
 </ul>
 </li>
 <li>戻り値
 <ul>
-<li>設定したタイムアウトの時間を返す</li>
+<li>設定したタイムアウトの時間を返します。</li>
 </ul>
 </li>
 </ul>
 <h3 id="setretry"><a class="header" href="#setretry">setRetry()</a></h3>
 <ul>
-<li>ポーリング受信の場合に使用する</li>
+<li>ポーリング受信の場合に使用します。</li>
 <li>引数なしの場合
 <ul>
-<li>リトライ回数をデフォルトの<code>16</code>に設定する</li>
+<li>リトライ回数をデフォルトの<code>16</code>に設定します。</li>
 </ul>
 </li>
 <li>引数<code>uint8_t retry</code>
 <ul>
-<li><code>retry</code>をリトライ回数に設定する</li>
+<li><code>retry</code>をリトライ回数に設定します。</li>
 </ul>
 </li>
 <li>戻り値
 <ul>
-<li>設定したリトライ回数を返す</li>
+<li>設定したリトライ回数を返します。</li>
 </ul>
 </li>
 </ul>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div id="admonition-dualshock4の場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-dualshock4の場合-title">
+<div class="admonition-title">
+<div id="admonition-dualshock4の場合-title">
+<p>DUALSHOCK4の場合</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_rxController.html#admonition-dualshock4の場合"></a>
+</div>
+<div>
+<p>使用しているものです。<code>DUALSHOCK4</code>用のファイルとコントローラー共通のファイルが必要になります。</p>
 <ul>
 <li><code>lib/rxfep</code>
 <ul>
@@ -834,11 +976,11 @@ if(ps4.getDS4_IT()){
 </ul>
 <div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
 <pre><code class="language-cpp">#include &lt;mbed.h&gt;
-#include "rxDualshock4.hpp" //  libをinclude
+#include "rxDualshock4.hpp" //  ヘッダファイルをインクルードします。
 
 #define DBG_M
 
-//  namespace using snct;をしていないからsnct::をつける
+//  namespace using snct;をしていないからsnct::をつけます。
 struct snct::RxDualshock4::DS4_struct data;
 
 //  UnbufferedSerialのインスタンスを作成
@@ -921,7 +1063,299 @@ int main(void){
     }
 }
 </code></pre>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
 
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="送信側ライブラリの使い方"><a class="header" href="#送信側ライブラリの使い方">送信側ライブラリの使い方</a></h1>
+<h2 id="ライブラリの場所-1"><a class="header" href="#ライブラリの場所-1">ライブラリの場所</a></h2>
+<div id="admonition-github" class="admonition admonish-info" role="note" aria-labelledby="admonition-github-title">
+<div class="admonition-title">
+<div id="admonition-github-title">
+<p>GitHub</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_txController.html#admonition-github"></a>
+</div>
+<div>
+<p><a href="https://github.com/2025-B/transmitController/tree/main/transmitFromArduino/lib/txfep/src">transmitController</a></p>
+</div>
+</div>
+<p><code>GitHub/2025-B/transmitController</code>の<code>main</code>ブランチ、<code>transmitFromArduino/lib/txfep</code>にあります。使用する場合は<code>txfep</code>フォルダごとダウンロードして使用してください。</p>
+<div id="admonition-注意点" class="admonition admonish-tip" role="note" aria-labelledby="admonition-注意点-title">
+<div class="admonition-title">
+<div id="admonition-注意点-title">
+<p>注意点</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_txController.html#admonition-注意点"></a>
+</div>
+<div>
+<p>ライブラリは置き場、公開/非公開が変更される場合があります。<br />
+2025/11/02時点では一部の人のみに公開しています。</p>
+</div>
+</div>
+<h2 id="使用方法dualshock4の場合-1"><a class="header" href="#使用方法dualshock4の場合-1">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
+<p>ページの下に<a href="BasicContents/Controller/use_txController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
+<h3 id="include--using-1"><a class="header" href="#include--using-1">include &amp; using</a></h3>
+<ul>
+<li>
+<p><code>platformio</code>のプロジェクトの<code>lib</code>フォルダに<code>txfep</code>をコピーしてください。</p>
+</li>
+<li>
+<p>使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行います。</p>
+<pre><code class="language-cpp : main.cpp">#include "txDualshock4.hpp"
+namespace using snct;
+</code></pre>
+</li>
+<li>
+<p><code>namespace using snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えてください。</p>
+</li>
+</ul>
+<h3 id="変数などの宣言-1"><a class="header" href="#変数などの宣言-1">変数などの宣言</a></h3>
+<ul>
+<li>
+<p>使用するためには次のものが必要になります。</p>
+<ul>
+<li>データを格納する構造体</li>
+<li><code>UART</code>を使用するための<code>SoftwareSerial</code>のインスタンス</li>
+<li><code>terminal</code>に出力するための<code>HardwareSerial</code>のインスタンス</li>
+<li><code>USB</code>のインスタンス</li>
+<li>コントローラーのインスタンス</li>
+<li>使用したいコントローラー用のインスタンス</li>
+</ul>
+<pre><code class="language-cpp : main.cpp">USB usb;                  //  USB Host Shield 2.0の
+PS4USB PS4(&amp;usb);         //  USB Host Shield 2.0の
+SoftwareSerial fep(7,6);  //  SoftwareSerialの
+
+TxDualshock4::DS4 data;   //  構造体
+TxDualshock4 ps4(fep,Serial,usb,PS4,&amp;data);
+</code></pre>
+</li>
+</ul>
+<h3 id="txdualshock4の引数"><a class="header" href="#txdualshock4の引数">TxDualshock4の引数</a></h3>
+<ul>
+<li><code>ps4(fep,Serial,usb,PS4,&amp;data);</code>では5つの引数があります。
+<ul>
+<li><code>fep</code>：<code>SoftwareSerial</code>のインスタンス</li>
+<li><code>Serial</code>：<code>HardwareSerial</code>のインスタンス</li>
+<li><code>usb</code>：<code>USB</code>のインスタンス</li>
+<li><code>PS4</code>：<code>PS4USB</code>のインスタンス</li>
+<li><code>data</code>：構造体のポインタ</li>
+</ul>
+</li>
+</ul>
+<h3 id="各クラスの初期化等"><a class="header" href="#各クラスの初期化等">各クラスの初期化等</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">void setup(){
+    Serial.begin(9600); //  HardwareSerialの開始    baudrate:9600
+    fep.begin(38400);   //  SoftwareSerialの開始    baudrate:38400
+    usb.Init();         //  USBの初期化
+}
+</code></pre>
+<h3 id="コントローラーのデータを取得する"><a class="header" href="#コントローラーのデータを取得する">コントローラーのデータを取得する</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">if(ps4.getDS4()){
+    // 成功時の処理
+}else{
+    // 失敗時の処理
+}
+</code></pre>
+<h3 id="送信する"><a class="header" href="#送信する">送信する</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">ps4.putDS4();
+</code></pre>
+<h3 id="取得したデータの使用方法"><a class="header" href="#取得したデータの使用方法">取得したデータの使用方法</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">if(data.CIRCLE){        //  CIRCLEが押されているなら
+    PS4.setLed(Red);    //  コントローラーのLEDを赤に
+}else{
+    PS4.setLed(Blue);   //  コントローラーのLEDを青に
+}
+</code></pre>
+<ul>
+<li><code>data.《ほしいデータ名》</code>でアクセスします。</li>
+</ul>
+<div id="admonition-データ名とデータ型" class="admonition admonish-info" role="note" aria-labelledby="admonition-データ名とデータ型-title">
+<div class="admonition-title">
+<div id="admonition-データ名とデータ型-title">
+<p>データ名とデータ型</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_txController.html#admonition-データ名とデータ型"></a>
+</div>
+<div>
+<p><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code><br />
+<code>bool</code>：<code>TRIANGLE</code>、<code>CIRCLE</code>、<code>CROSS</code>、<code>SQUARE</code>、<code>UP</code>、<code>RIGHT</code>、<code>DOWN</code>、<code>LEFT</code>、<code>L1</code>、<code>L3</code>、<code>R1</code>、<code>R3</code>、<code>SHARE</code>、<code>OPTIONS</code>、<code>PS</code>、<code>TOUCHPAD</code></p>
+</div>
+</div>
+<h2 id="使用する関数の引数と戻り値dualshock4の場合-1"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合-1">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
+<h3 id="コンストラクタ-1"><a class="header" href="#コンストラクタ-1">コンストラクタ</a></h3>
+<ul>
+<li><code>TxDualshock4(SoftwareSerial&amp; software_serial,HardwareSerial&amp; hardware_serial,USB&amp; usb,PS4USB&amp; ps4_usb,TxDualshock4::DS4 *struct_p);</code>
+<ul>
+<li><code>software_serial</code>：<code>SoftwareSerial</code>のインスタンス</li>
+<li><code>hardware_serial</code>：<code>HardwareSerial</code>のインスタンス</li>
+<li><code>usb</code>：<code>USB</code>のインスタンス</li>
+<li><code>ps4_usb</code>：<code>PS4USB</code>のインスタンス</li>
+<li><code>*struct_p</code>：構造体のポインタ</li>
+</ul>
+</li>
+<li>グローバルで宣言することが多いです。</li>
+</ul>
+<h3 id="getds4-1"><a class="header" href="#getds4-1">getDS4()</a></h3>
+<ul>
+<li>コントローラーのデータを構造体に格納します。</li>
+<li>引数はありません。</li>
+<li>戻り値は成功時(コントローラー接続時)は<code>true</code>、失敗時は<code>false</code>が返ります。</li>
+</ul>
+<h3 id="putds4"><a class="header" href="#putds4">putDS4()</a></h3>
+<ul>
+<li>コントローラーのデータを<code>UART</code>で送信します(<code>HardwareSerial</code>)。</li>
+<li>引数はありません。</li>
+<li>戻り値はありません。</li>
+</ul>
+<h3 id="showds4"><a class="header" href="#showds4">showDS4()</a></h3>
+<ul>
+<li>コントローラーのデータを表示します(<code>SoftwareSerial</code>)。</li>
+<li>引数はありません。</li>
+<li>戻り値はありません。</li>
+</ul>
+<h2 id="その他設定用関数の引数と戻り値dualshock4の場合-1"><a class="header" href="#その他設定用関数の引数と戻り値dualshock4の場合-1">その他設定用関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
+<p>基本的に使用しません。</p>
+<h3 id="setheader-1"><a class="header" href="#setheader-1">setHeader()</a></h3>
+<ul>
+<li>引数なしの場合
+<ul>
+<li>ヘッダー符号をデフォルトの<code>0xaf</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>uint8_t header</code>
+<ul>
+<li><code>header</code>をヘッダー符号に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したヘッダー符号を返します。</li>
+</ul>
+</li>
+</ul>
+<h3 id="setfooter-1"><a class="header" href="#setfooter-1">setFooter()</a></h3>
+<ul>
+<li>引数なしの場合
+<ul>
+<li>フッター符号をデフォルトの<code>0xed</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>uint8_t footer</code>
+<ul>
+<li><code>footer</code>をフッター符号に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したフッター符号を返します。</li>
+</ul>
+</li>
+</ul>
+<h3 id="setinterval"><a class="header" href="#setinterval">setInterval()</a></h3>
+<ul>
+<li>送信間隔(遅延)を設定します。</li>
+<li>引数なしの場合
+<ul>
+<li>送信間隔の時間をデフォルトの<code>8ms</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>unsigned long interval</code>
+<ul>
+<li><code>interval</code>を送信間隔の時間に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定した送信間隔の時間を返します。</li>
+</ul>
+</li>
+</ul>
+<h2 id="サンプルプログラム-1"><a class="header" href="#サンプルプログラム-1">サンプルプログラム</a></h2>
+<div id="admonition-dualshock4の場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-dualshock4の場合-title">
+<div class="admonition-title">
+<div id="admonition-dualshock4の場合-title">
+<p>DUALSHOCK4の場合</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/Controller/use_txController.html#admonition-dualshock4の場合"></a>
+</div>
+<div>
+<p>使用しているものです。<code>DUALSHOCK4</code>用のファイルとコントローラー共通のファイルが必要になります。</p>
+<ul>
+<li><code>lib/txfep</code>
+<ul>
+<li><code>txController.cpp</code></li>
+<li><code>txController.hpp</code></li>
+<li><code>txDualshock4.cpp</code></li>
+<li><code>txDualshock4.hpp</code></li>
+</ul>
+</li>
+<li><code>Arduino Uno R3</code></li>
+<li><code>USB Host Shield 2.0</code></li>
+<li><code>DUALSHOCK4</code></li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "txDualshock4.hpp" //  ヘッダファイルをインクルードします。
+
+//  USBのインスタンスを作成
+USB usb;
+
+//  PS4USBのインスタンスを作成
+PS4USB PS4(&amp;usb);
+
+//  SoftwareSerialのインスタンスを作成
+SoftwareSerial fep(7,6);
+
+//  namespace using snct;をしていないからsnct::をつけます。
+snct::TxDualshock4::DS4 data;
+
+//  TxDualshock4のインスタンスを作成
+snct::TxDualshock4 ps4(fep,Serial,usb,PS4,&amp;data);
+
+bool TOUCHPAD_status = 1;
+
+void setup(){
+    Serial.begin(9600); //  HardwareSerialの開始
+    fep.begin(38400);   //  SoftwareSerialの開始
+    usb.Init();         //  USBの初期化
+}
+
+void loop(){
+    if(ps4.getDS4()){   //  コントローラーのデータを取得
+        if(data.TOUCHPAD){
+            TOUCHPAD_status ^= 0x01;
+        }
+        if(TOUCHPAD_status){
+            Serial.print("em ");
+            PS4.setLed(Red);
+        }else{
+            PS4.setLed(Blue);
+        }
+        
+        data.TOUCHPAD = TOUCHPAD_status;
+        ps4.putDS4();   //  送信
+        ps4.showDS4();  //  表示
+    }else{
+        Serial.println("not connected");
+    }
+}
+</code></pre>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -939,22 +1373,6 @@ int main(void){
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

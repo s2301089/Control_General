@@ -2,34 +2,39 @@
 
 ## ライブラリの場所  
 
+```admonish info "GitHub"
 [receiveController](https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src)  
+```
 
-`GitHub/2025-B/receiveController`の`main`ブランチ、`receiveF446RE/lib/rxfep`にある。使用する場合は`rxfep`フォルダごとダウンロードして使用する。
-> ライブラリは置き場、公開/非公開が変更される場合がある。  
-> 2025/11/02：一部の人のみに公開
+`GitHub/2025-B/receiveController`の`main`ブランチ、`receiveF446RE/lib/rxfep`にあります。使用する場合は`rxfep`フォルダごとダウンロードして使用してください。
+
+```admonish important "注意点"
+ライブラリは置き場、公開/非公開が変更される場合があります。  
+2025/11/02時点では一部の人のみに公開しています。
+```
 
 ## 使用方法(`DUALSHOCK4`の場合)  
 
-ページの下に[サンプルプログラム](#サンプルプログラム)を掲載。  
+ページの下に[サンプルプログラム](#サンプルプログラム)を紹介しています。
 
 ### include & using
 
-- `platformio`のプロジェクトの`lib`フォルダに`rxfep`を入れる。  
-- 使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行う。  
+- `platformio`のプロジェクトの`lib`フォルダに`rxfep`をコピーしてください。
+- 使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行います。
 
   ```cpp : main.cpp
   #include "rxDualshock4.hpp"
   namespace using snct;
   ```
 
-- `namespace using snct;`を行わない場合は、使用する際に`snct::`を先頭に付け加えることで解決する。
+- `namespace using snct;`を行わない場合は、使用する際に`snct::`を先頭に付け加えてください。
 
 ### 変数などの宣言  
 
-- 使用するためには次のものが必要になる。  
-  - データを格納する構造体  
-  - `UART`を使用するための`UnbufferedSerial`のインスタンス  
-  - 使用したいコントローラー用のインスタンス  
+- 使用するためには次のものが必要になります。
+  - データを格納する構造体
+  - `UART`を使用するための`UnbufferedSerial`のインスタンス
+  - 使用したいコントローラー用のインスタンス
 
   ```cpp : main.cpp
   struct RxDualshock4::DS4_struct data;
@@ -40,12 +45,12 @@
 
 ### RxDualshock4の引数  
 
-- `ps4(fep, &data,RxController::GET_TYPE::polling);`では2つの引数がある。
+- `ps4(fep, &data,RxController::GET_TYPE::polling);`では3つの引数があります。
   - `fep`：`UnbufferedSerial`のインスタンス
   - `data`：構造体のポインタ
-  - `RxController::GET_TYPE::polling`：受信方法の設定  
-    - `polling`：ポーリング処理(データが来るまで一定期間待機)
-    - `interrupt`：割り込み受信  
+  - `RxController::GET_TYPE::polling`：受信方法の設定
+    - `polling`：ポーリング処理(データが来るまで一定期間待機する)
+    - `interrupt`：割り込み受信
 
 ### 受信する
 
@@ -71,74 +76,81 @@ if(ps4.getDS4_IT()){
 led.write(data.CIRCLE);
 ```
 
-- `data.《ほしいデータ名》`でアクセスする  
-- データ名とデータ型は以下の通り
-  - `uint8_t`：`LX`、`LY`、`RX`、`RY`、`L2`、`R2`
-  - `bool`：`TRIANGLE`、`CIRCLE`、`CROSS`、`SQUARE`、`UP`、`RIGHT`、`DOWN`、`LEFT`、`L1`、`L3`、`R1`、`R3`、`SHARE`、`OPTIONS`、`PS`、`TOUCHPAD`
+- `data.《ほしいデータ名》`でアクセスします。  
+
+```admonish info "データ名とデータ型"
+`uint8_t`：`LX`、`LY`、`RX`、`RY`、`L2`、`R2`  
+`bool`：`TRIANGLE`、`CIRCLE`、`CROSS`、`SQUARE`、`UP`、`RIGHT`、`DOWN`、`LEFT`、`L1`、`L3`、`R1`、`R3`、`SHARE`、`OPTIONS`、`PS`、`TOUCHPAD`
+```
 
 ## 使用する関数の引数と戻り値(`DUALSHOCK4`の場合)  
 
 ### コンストラクタ  
 
-- `RxDualshock4(mbed::UnbufferedSerial& unbuffered_serial_obj, struct RxDualshock4::DS4_struct *struct_p, RxController::GET_TYPE type);`  
+- `RxDualshock4(mbed::UnbufferedSerial& unbuffered_serial_obj, struct RxDualshock4::DS4_struct *struct_p, RxController::GET_TYPE type);`
   - `unbuffered_serial_obj`：`UnbufferedSerial`のインスタンス
   - `*struct_p`：構造体のポインタ
-  - `type`：受信方法。デフォルトでは割り込み
-- グローバルで宣言することが多い
+  - `type`：受信方法を指定します。デフォルトでは割り込み受信になります。
+- グローバルで宣言することが多いです。
 
 ### getDS4()
 
-- ポーリング受信の場合に使用する
-- 引数なし
-- 戻り値は受信成功時は`true`、失敗時は`false`
+- ポーリング受信の場合に使用します。
+- 引数はありません。
+- 戻り値は受信成功時は`true`、失敗時は`false`が返ります。
 
 ### getDS4_IT()
 
-- 割り込み受信の場合に使用する
-- 引数なし
-- 戻り値は受信成功時は`true`、失敗時は`false`
+- 割り込み受信の場合に使用します。
+- 引数はありません。
+- 戻り値は受信成功時は`true`、失敗時は`false`が返ります。
 
-## その他設定用関数の引数と戻り値(基本的に使用しない。`DUALSHOCK4`の場合)  
+## その他設定用関数の引数と戻り値(`DUALSHOCK4`の場合)  
+
+基本的に使用しません。
 
 ### setHeader()
 
 - 引数なしの場合
-  - ヘッダー符号をデフォルトの`0xaf`に設定する
+  - ヘッダー符号をデフォルトの`0xaf`に設定します。
 - 引数`uint8_t header`
-  - `header`をヘッダー符号に設定する
+  - `header`をヘッダー符号に設定します。
 - 戻り値
-  - 設定したヘッダー符号を返す
+  - 設定したヘッダー符号を返します。
 
 ### setFooter()
 
 - 引数なしの場合
-  - フッター符号をデフォルトの`0xed`に設定する
+  - フッター符号をデフォルトの`0xed`に設定します。
 - 引数`uint8_t footer`
-  - `footer`をフッター符号に設定する
+  - `footer`をフッター符号に設定します。
 - 戻り値
-  - 設定したフッター符号を返す
+  - 設定したフッター符号を返します。
 
 ### setTimeout()
 
-- ポーリング受信の場合に使用する
+- ポーリング受信の場合に使用します。
 - 引数なしの場合
-  - タイムアウトの時間をデフォルトの`15ms`に設定する
+  - タイムアウトの時間をデフォルトの`15ms`に設定します。
 - 引数`chrono::milliseconds time`
-  - `time`をタイムアウトの時間に設定する
+  - `time`をタイムアウトの時間に設定します。
 - 戻り値
-  - 設定したタイムアウトの時間を返す
+  - 設定したタイムアウトの時間を返します。
 
 ### setRetry()
 
-- ポーリング受信の場合に使用する
+- ポーリング受信の場合に使用します。
 - 引数なしの場合
-  - リトライ回数をデフォルトの`16`に設定する
+  - リトライ回数をデフォルトの`16`に設定します。
 - 引数`uint8_t retry`
-  - `retry`をリトライ回数に設定する
+  - `retry`をリトライ回数に設定します。
 - 戻り値
-  - 設定したリトライ回数を返す
+  - 設定したリトライ回数を返します。
 
 ## サンプルプログラム
+
+````admonish example "DUALSHOCK4の場合"
+使用しているものです。`DUALSHOCK4`用のファイルとコントローラー共通のファイルが必要になります。  
 
 - `lib/rxfep`
   - `rxController.cpp`
@@ -149,11 +161,11 @@ led.write(data.CIRCLE);
 
 ```cpp : main.cpp
 #include <mbed.h>
-#include "rxDualshock4.hpp" //  libをinclude
+#include "rxDualshock4.hpp" //  ヘッダファイルをインクルードします。
 
 #define DBG_M
 
-//  namespace using snct;をしていないからsnct::をつける
+//  namespace using snct;をしていないからsnct::をつけます。
 struct snct::RxDualshock4::DS4_struct data;
 
 //  UnbufferedSerialのインスタンスを作成
@@ -236,3 +248,5 @@ int main(void){
     }
 }
 ```
+
+````

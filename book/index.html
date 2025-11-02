@@ -176,26 +176,56 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
-<p>制御に関するお勉強・開発のHome<br />
-使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>である。一部、他の言語の知識が混ざる可能性がある。<br />
-環境構築等はすでに済んでいるものとし、コードの内容のみになる場合がある。筆者と異なるOSを使用する場合は各自で環境に合わせて対応すること。<br />
-各開発などのリポジトリは各ページに掲載していることもあるが、あくまで参考程度にしかならない。<br />
-一部に自作のヘッダファイルなどを使用する場合がある。その場合は、そのファイルの中身などを簡単に説明する記事を作るように心掛ける。<br />
-<strong>結局は自分で調べ、データシートなどを確認することがとても大事である。</strong></p>
+<p>制御(回路・プログラム)に関するお勉強・開発のHomeです。<br />
+使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>です。一部、他の言語の知識が混ざる可能性があります。<br />
+環境構築等はすでに済んでいるものとして扱い、コードの内容のみになる場合があります。筆者と異なるOS・バージョンを使用する場合はそれぞれの環境に合わせて対応する必要があります。<br />
+各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br />
+一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br />
+結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
+<div id="admonition-調べ方のコツ" class="admonition admonish-tip" role="note" aria-labelledby="admonition-調べ方のコツ-title">
+<div class="admonition-title">
+<div id="admonition-調べ方のコツ-title">
+<p>調べ方のコツ？</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-調べ方のコツ"></a>
+</div>
+<div>
+<p>知りたいことがあれば、調べてみよう。<br />
+例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。<code>Qiita</code>や<code>Zenn</code>などがその例です。中には個人のサイトで解説をしている方もいます。<br />
+データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。<br />
+<code>ChatGPT</code>などの生成AIを調べもせずに頼ることはおすすめしません。最初から頼ると意味などの理解が困難になります。</p>
+</div>
+</div>
 <hr />
 <h2 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h2>
 <ul>
-<li>Windows 11 Home</li>
+<li>Windows 11 Home <strong>← 推奨</strong></li>
 <li>Ubuntu 22.04 LTS</li>
 </ul>
-<h2 id="使用中使用予定のマイコン一覧"><a class="header" href="#使用中使用予定のマイコン一覧">使用中(使用予定)のマイコン一覧</a></h2>
+<div id="admonition-osについての注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-osについての注意点-title">
+<div class="admonition-title">
+<div id="admonition-osについての注意点-title">
+<p>OSについての注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-osについての注意点"></a>
+</div>
+<div>
+<p>Macは使用しているソフトウェアが対応していない、機能がないなどの問題点があります。<br />
+そのため<strong>Windows</strong>を<strong>推奨</strong>します。その他のOSは自分で対応できる自信のある人のみ使用することをおすすめします。</p>
+</div>
+</div>
+<h2 id="使用中使用予定の機器一覧"><a class="header" href="#使用中使用予定の機器一覧">使用中(使用予定)の機器一覧</a></h2>
 <ul>
-<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g117215/">(ATOM Matrix)</a></li>
-<li><a href="https://akizukidenshi.com/catalog/g/g115674/">(ESP32-WROVER-E)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8(部)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico(私物)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualshock-4-wireless-controller/">DUALSHOCK4(部)</a></li>
+<li><a href="https://www.sony.com/ja/SonyInfo/design/gallery/CECH-ZC2/">DUALSHOCK3(部)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(私物)</a></li>
+<li><a href="https://amzn.asia/d/h1pTd7G">USB Host Shield 2.0(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g117215/">(ATOM Matrix)(私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g115674/">(ESP32-WROVER-E)(私物)</a></li>
 </ul>
 
                     </main>
@@ -221,22 +251,6 @@ span.codeblock_filename_inner {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
