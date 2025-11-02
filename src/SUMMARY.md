@@ -1,16 +1,13 @@
+# SUMMARY
 
-# はじめに  
+[前提条件等](./ControlGeneral.md)  
 
-[前提条件等](./ControlGeneralHome.md)  
-
-<!-- # 基礎知識
-
-- [一覧](./BasicContents/BasicContentsHome.md)
+- [基礎知識](./BasicContents/BasicContents.md)
   - [git / GitHub](./BasicContents/git_GitHub.md)  
-  - [モーター](./BasicContents/motor.md)  
-  - [ｺﾝﾄﾛｰﾗｰで送受信するデータ](./BasicContents/ControllerData/controllerHome.md)
+  - [DCモーターの制御](./BasicContents/motor.md)  
+  - [コントローラーのデータ](./BasicContents/Controller/how_to.md)
 
-# PlatformIOでの開発
+<!-- # PlatformIOでの開発
 
 - [一覧](./DevelopmentPlatformIO/DevelopmentPlatformIOHome.md)
   - [PlatformIOの導入](./DevelopmentPlatformIO/InstallPlatformIO.md)

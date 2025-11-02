@@ -1,3 +1,4 @@
+# Japanese Control_General
 [book]
 authors = ["s2301089"]
 language = "ja"
@@ -6,15 +7,21 @@ src = "src"
 title = "Control_General"
 
 [output.html]
+# 数式
 mathjax-support = true
+# 右上のアイコンとURL
 git-repository-url = "https://github.com/s2301089/"
 git-repository-icon = "fa-github"
+# ページ内見出し
 additional-js = ["theme/pagetoc.js"]
 additional-css = ["theme/pagetoc.css"]
 
+# 画像サイズ指定
 [preprocessor.image-size]
 command = "mdbook-image-size"
 
+# codeブロック端末名表示
 [preprocessor.codename]
 
+# ページ内見出し
 [preprocessor.pagetoc]
