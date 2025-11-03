@@ -8,6 +8,7 @@
   - [コントローラーのデータ](./BasicContents/Controller/how_to.md)
     - [受信側(lib)](./BasicContents/Controller/use_rxController.md)
     - [送信側(lib)](./BasicContents/Controller/use_txController.md)
+  - [C言語 / C++](./BasicContents/language_c_cpp.md)
 
 <!-- # PlatformIOでの開発 -->
 

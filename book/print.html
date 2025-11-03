@@ -1511,7 +1511,561 @@ void loop(){
 }
 </code></pre>
 </div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="c言語--c"><a class="header" href="#c言語--c">C言語 / C++</a></h1>
+<div id="admonition-プログラミング言語とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-プログラミング言語とは-title">
+<div class="admonition-title">
+<div id="admonition-プログラミング言語とは-title">
+<p>プログラミング言語とは</p>
 </div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-プログラミング言語とは"></a>
+</div>
+<div>
+<p>機械(コンピューターなど)にさせる処理を記述する言語です。人と人間をつなぐ言語です。<br />
+プログラミング言語には様々な種類があります。<br />
+また、プログラミング言語で記述されたものを<strong>プログラム</strong>と言います。</p>
+</div>
+</div>
+<div id="admonition-c言語とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-c言語とは-title">
+<div class="admonition-title">
+<div id="admonition-c言語とは-title">
+<p>C言語とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-c言語とは"></a>
+</div>
+<div>
+<p>数多のプログラミング言語の中でも有名かつ古くから利用されているプログラミング言語の1つです。<br />
+システムの記述を目的として開発され、人間にも理解しやすい仕様で、コンピューターを直接操作するような特徴を併せ持ちます。<br />
+実行するためにはコンパイルとリンク(ソースコードを機械語に変換)が必要になります。</p>
+</div>
+</div>
+<div id="admonition-プログラムの作成手順" class="admonition admonish-info" role="note" aria-labelledby="admonition-プログラムの作成手順-title">
+<div class="admonition-title">
+<div id="admonition-プログラムの作成手順-title">
+<p>プログラムの作成手順</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-プログラムの作成手順"></a>
+</div>
+<div>
+<p>ウォーターフォールモデルに則って作成することをおすすめします。</p>
+<ol>
+<li>内容の整理</li>
+<li>プログラムの設計</li>
+<li>プログラムの作成</li>
+<li>コンパイル・リンク</li>
+<li>実行</li>
+<li>評価</li>
+<li>完成</li>
+</ol>
+<p>順番に行っていき、問題が発生したら問題の箇所に戻り、再度手順通りに作成を行います。</p>
+</div>
+</div>
+<h2 id="c言語の基礎"><a class="header" href="#c言語の基礎">C言語の基礎</a></h2>
+<h3 id="c言語の基本構成"><a class="header" href="#c言語の基本構成">C言語の基本構成</a></h3>
+<div id="admonition-基本構成" class="admonition admonish-info" role="note" aria-labelledby="admonition-基本構成-title">
+<div class="admonition-title">
+<div id="admonition-基本構成-title">
+<p>基本構成</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-基本構成"></a>
+</div>
+<div>
+<p>C言語のプログラムは関数が1つ以上集まって構成されます。プログラムを実行するためにはmain関数が必須であり、main関数はプログラムの実行時に一番最初に実行される関数です。<br />
+それぞれの関数は1つ以上の文から構成され、引数(ひきすう)と戻り値の型を持ちます。<br />
+文は<code>;</code>(セミコロン)で区切られ、改行などでは区切られません。</p>
+</div>
+</div>
+<div id="admonition-関数の基本構成" class="admonition admonish-example" role="note" aria-labelledby="admonition-関数の基本構成-title">
+<div class="admonition-title">
+<div id="admonition-関数の基本構成-title">
+<p>関数の基本構成</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-関数の基本構成"></a>
+</div>
+<div>
+<pre><code class="language-c">関数の型 関数名(引数){  
+    文1;  
+    文2;  
+
+    return 戻り値; 
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-有名なサンプルプログラム" class="admonition admonish-example" role="note" aria-labelledby="admonition-有名なサンプルプログラム-title">
+<div class="admonition-title">
+<div id="admonition-有名なサンプルプログラム-title">
+<p>有名なサンプルプログラム</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-有名なサンプルプログラム"></a>
+</div>
+<div>
+<p>世界でも最も有名と言われているサンプルプログラムHello,World!を例に説明します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">helloworld.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void){
+    printf("Hello,World!\n");
+
+    return 0;
+}
+</code></pre>
+<ul>
+<li>
+<p><code>#include &lt;stdio.h&gt;</code></p>
+<ul>
+<li>あらかじめ用意されている標準入出力関数をプログラムで利用するために読み込むための命令です。</li>
+<li>プログラムに組み込むファイル名を<code>&lt;&gt;</code>で囲むとシステムで用意されているファイルを読み込むことができます。</li>
+<li><code>""</code>で囲むとユーザーが用意したファイルを読み込むことができます。</li>
+</ul>
+</li>
+<li>
+<p><code>int main(void){</code></p>
+<ul>
+<li>実行するために必要なmain関数の宣言・定義です。この場合は、関数の戻り値の型はint(整数型)で、引数はなし(void)であることを示しています。</li>
+</ul>
+<pre><code class="language-admonish faq &quot;型と引数&quot;">型と引数については、後で説明します。現段階では存在を覚えていてください。
+</code></pre>
+</li>
+<li>
+<p><code>printf("Hello,World!\n");</code></p>
+<ul>
+<li>標準出力(基本はターミナルの画面)に<code>""</code>(ダブルクォーテーション)で囲まれた文字列を出力する関数です。</li>
+<li><code>stdio.h</code>で定義されています。</li>
+</ul>
+</li>
+<li>
+<p><code>return 0;</code></p>
+<ul>
+<li>関数の戻り値を0とし、関数の終了を意味します。ほとんどのシステムではmain関数の戻り値0は正常終了を意味します。</li>
+</ul>
+</li>
+<li>
+<p><code>}</code></p>
+<ul>
+<li>関数の終わりを意味します。main関数宣言部の最後の括弧と中身を挟んでmain関数の範囲を表現しています。</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h3 id="コメント"><a class="header" href="#コメント">コメント</a></h3>
+<div id="admonition-コメント" class="admonition admonish-info" role="note" aria-labelledby="admonition-コメント-title">
+<div class="admonition-title">
+<div id="admonition-コメント-title">
+<p>コメント</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-コメント"></a>
+</div>
+<div>
+<p>ソースコードの中で、動作には影響しない注釈をつけることができます。その注釈のことを指します。<br />
+C言語では<code>//</code>(スラッシュ2つ)と<code>/* */</code>による2つの記述方法があります。<br />
+<code>//</code>はこれ以降のその行をコメントとします。<br />
+<code>/* */</code>は<code>/*</code>と<code>*/</code>で囲まれた最小区間をすべてコメントとします。こちらは改行が含まれていても問題ありません。</p>
+<pre><code class="language-c">// ここはコメントです。
+ここはコメントではありません。  //  しかし、ここはコメントです。
+/* ここはコメントです。
+ここもコメントです。
+/*  ここもコメントです。    */  ここはコメントではありません。
+*/  ここもコメントではありません。
+//  ここはコメントです。
+</code></pre>
+</div>
+</div>
+<h3 id="データ型と変数"><a class="header" href="#データ型と変数">データ型と変数</a></h3>
+<div id="admonition-データ型" class="admonition admonish-info" role="note" aria-labelledby="admonition-データ型-title">
+<div class="admonition-title">
+<div id="admonition-データ型-title">
+<p>データ型</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-データ型"></a>
+</div>
+<div>
+<p>変数や関数の戻り値など、データの格納や受け渡しのときのデータの種類を決める型のことです。<br />
+主なデータ型を紹介します。</p>
+<ul>
+<li>文字(1文字)型：<code>char</code></li>
+<li>整数型：<code>char</code>、<code>short</code>、<code>int</code>、<code>long</code>など</li>
+<li>実数型：<code>float</code>、<code>double</code></li>
+<li>空：<code>void</code></li>
+</ul>
+<p>文字型は、ASCIIコードの文字を扱えます。<br />
+整数型は、最上位ビットを符号部とし格納します。<br />
+実数型は、浮動小数点方式(IEEE 754)で格納します。</p>
+</div>
+</div>
+<div id="admonition-変数" class="admonition admonish-info" role="note" aria-labelledby="admonition-変数-title">
+<div class="admonition-title">
+<div id="admonition-変数-title">
+<p>変数</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-変数"></a>
+</div>
+<div>
+<p>様々な文字、数値を保持(記憶・格納)しておく領域のことを指します。扱いは数学などの変数と同じものとして考えて問題はありません。</p>
+</div>
+</div>
+<div id="admonition-変数の宣言" class="admonition admonish-example" role="note" aria-labelledby="admonition-変数の宣言-title">
+<div class="admonition-title">
+<div id="admonition-変数の宣言-title">
+<p>変数の宣言</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-変数の宣言"></a>
+</div>
+<div>
+<p>変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。</p>
+<pre><code class="language-c">型 変数名;
+int x;
+</code></pre>
+<p>同じ型の変数を複数宣言する場合は、<code>,</code>(カンマ)で区切って並べることができます。</p>
+<pre><code class="language-c">int x_1, x_2;
+char c_1, c_2;
+</code></pre>
+</div>
+</div>
+<div id="admonition-変数へのアクセス" class="admonition admonish-example" role="note" aria-labelledby="admonition-変数へのアクセス-title">
+<div class="admonition-title">
+<div id="admonition-変数へのアクセス-title">
+<p>変数へのアクセス</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-変数へのアクセス"></a>
+</div>
+<div>
+<p>変数に値を代入する場合は、<code>=</code>(イコール)を使用します。</p>
+<pre><code class="language-c">x = 11;     // int x;
+c = 's';    // char c;
+y = x;      // int y;   変数yに変数xの値を代入する
+</code></pre>
+<p>左辺の変数に右辺の値を格納します。値を代入する場合は値と変数の型を一致させる必要があります。</p>
+</div>
+</div>
+<h3 id="演算子"><a class="header" href="#演算子">演算子</a></h3>
+<div id="admonition-算術演算子" class="admonition admonish-info" role="note" aria-labelledby="admonition-算術演算子-title">
+<div class="admonition-title">
+<div id="admonition-算術演算子-title">
+<p>算術演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-算術演算子"></a>
+</div>
+<div>
+<p>数値や変数などを使用して、算術計算を行うときに使用します。</p>
+<ul>
+<li><code>+</code>：加算</li>
+<li><code>-</code>：減算</li>
+<li><code>*</code>：乗算</li>
+<li><code>/</code>：除算</li>
+<li><code>%</code>：剰余算</li>
+</ul>
+<p>計算結果の変数など代入は、値の代入と同じ方法です。計算結果のデータ型は、整数型同士の演算は整数型になり、それ以外の組み合わせの演算では実数型になります。<br />
+演算順序は数学と同じで括弧→乗除→加減です。</p>
+<pre><code class="language-c">a + b
+a - b
+a * b
+a / b
+a % b   //  整数型のみ
+</code></pre>
+</div>
+</div>
+<div id="admonition-除算での注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-除算での注意点-title">
+<div class="admonition-title">
+<div id="admonition-除算での注意点-title">
+<p>除算での注意点</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-除算での注意点"></a>
+</div>
+<div>
+<p>整数型同士で除算を行うと、演算結果は整数型となります。<br />
+小数点以下は切り捨てられるため、実数型で結果を得るためには、どちらか一方が実数型である必要があります。</p>
+</div>
+</div>
+<div id="admonition-括弧の記述" class="admonition admonish-note" role="note" aria-labelledby="admonition-括弧の記述-title">
+<div class="admonition-title">
+<div id="admonition-括弧の記述-title">
+<p>括弧の記述</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-括弧の記述"></a>
+</div>
+<div>
+<p>数学では、先に優先したい演算を様々な括弧(<code>()</code>、<code>{}</code>、<code>[]</code>)で囲います。<br />
+C言語では演算の括弧はすべて<code>()</code>で囲い、次の式のような記述になります。<br />
+$$ S = \left({(x_1 + x_2)} - {(y_1 + y_2)}\right) \times {2} $$</p>
+<pre><code class="language-c">int s;
+s = ((x_1 + x_2) - (y_1 + y_2)) * 2;
+</code></pre>
+</div>
+</div>
+<div id="admonition-数学にはない演算" class="admonition admonish-tip" role="note" aria-labelledby="admonition-数学にはない演算-title">
+<div class="admonition-title">
+<div id="admonition-数学にはない演算-title">
+<p>数学にはない演算</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-数学にはない演算"></a>
+</div>
+<div>
+<p>プログラミング言語では自分自身に自身の値を演算した結果を代入することができます。<br />
+<code>a = a + 5;</code></p>
+</div>
+</div>
+<div id="admonition-論理演算子" class="admonition admonish-info" role="note" aria-labelledby="admonition-論理演算子-title">
+<div class="admonition-title">
+<div id="admonition-論理演算子-title">
+<p>論理演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-論理演算子"></a>
+</div>
+<div>
+<p>数値や変数などを使用して、論理計算を行うときに使用します。<br />
+論理演算には種類があり、ビット単位での演算と変数や数値単位での演算の2つがあります。</p>
+<p>ビット単位の演算</p>
+<ul>
+<li><code>&amp;</code>：論理積(AND)</li>
+<li><code>|</code>：論理和(OR)</li>
+<li><code>^</code>：排他的論理和(XOR)</li>
+<li><code>~</code>：否定(NOT)</li>
+</ul>
+<pre><code class="language-c">a &amp; b
+a | b
+a ^ b
+~a
+</code></pre>
+<p>変数や数値単位での演算<br />
+C言語では、ビット単位ではなく変数や数値に対して論理演算を行う場合は、<code>0</code>を偽(<code>false</code>)、それ以外を真(<code>true</code>)として扱います。</p>
+<ul>
+<li><code>&amp;&amp;</code>：論理積(AND)</li>
+<li><code>||</code>：論理和(OR)</li>
+<li><code>!</code>：否定(NOT)</li>
+</ul>
+<pre><code class="language-c">a &amp;&amp; b
+a || b
+!a
+</code></pre>
+</div>
+</div>
+<div id="admonition-比較演算子" class="admonition admonish-info" role="note" aria-labelledby="admonition-比較演算子-title">
+<div class="admonition-title">
+<div id="admonition-比較演算子-title">
+<p>比較演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-比較演算子"></a>
+</div>
+<div>
+<p>変数や数値の大小関係を調べるときに使用します。演算結果は式が成り立つ場合は<code>1</code>(<code>true</code>)、成り立たない場合は<code>0</code>(<code>false</code>)を得ることができます。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">数学表現</th><th style="text-align: center">ｃ言語表現</th></tr></thead><tbody>
+<tr><td style="text-align: center">=</td><td style="text-align: center">==</td></tr>
+<tr><td style="text-align: center">&lt;</td><td style="text-align: center">&lt;</td></tr>
+<tr><td style="text-align: center">&gt;</td><td style="text-align: center">&gt;</td></tr>
+<tr><td style="text-align: center">≦</td><td style="text-align: center">&lt;=</td></tr>
+<tr><td style="text-align: center">≧</td><td style="text-align: center">&gt;=</td></tr>
+<tr><td style="text-align: center">≠</td><td style="text-align: center">!=</td></tr>
+</tbody></table>
+</div>
+<p>特に、数学表現の<code>=</code>はC言語では代入を意味するため間違えないよう注意してください。</p>
+</div>
+</div>
+<div id="admonition-増減演算子" class="admonition admonish-info" role="note" aria-labelledby="admonition-増減演算子-title">
+<div class="admonition-title">
+<div id="admonition-増減演算子-title">
+<p>増減演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-増減演算子"></a>
+</div>
+<div>
+<p>変数の値を<code>1</code>増減する演算子です。</p>
+<ul>
+<li><code>++</code>：増分(インクリメント)</li>
+<li><code>--</code>：減分(デクリメント)</li>
+</ul>
+<p>前置増減(<code>++a</code>、<code>--b</code>)と後置増減(<code>a++</code>、<code>b--</code>)の2種類があります。<br />
+前置増減は変数の値を増減した後に、変数の値を使用します。反対に、後置増減が変数の値を使用した後に、変数の値を増減します。</p>
+</div>
+</div>
+<div id="admonition-シフト演算子" class="admonition admonish-info" role="note" aria-labelledby="admonition-シフト演算子-title">
+<div class="admonition-title">
+<div id="admonition-シフト演算子-title">
+<p>シフト演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-シフト演算子"></a>
+</div>
+<div>
+<p>変数や数値を2進数表記で左右にビットシフトします。シフトして空いたビットは<code>0</code>で埋められます(シフトする値が負の場合は<code>0</code>ではなく<code>1</code>で埋められる場合があります)。</p>
+<ul>
+<li><code>&gt;&gt;</code>：右シフト</li>
+<li><code>&lt;&lt;</code>：左シフト</li>
+</ul>
+</div>
+</div>
+<div id="admonition-代入演算子" class="admonition admonish-info" role="note" aria-labelledby="admonition-代入演算子-title">
+<div class="admonition-title">
+<div id="admonition-代入演算子-title">
+<p>代入演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-代入演算子"></a>
+</div>
+<div>
+<p>変数に値を代入するときに、他の演算を同時に行うことができます。</p>
+<ul>
+<li><code>=</code>：単純代入：<code>a = b</code></li>
+<li><code>+=</code>：加算代入：<code>a += b</code>は<code>a = a + b</code>と同じ</li>
+<li><code>-=</code>：減算代入：<code>a -= b</code>は<code>a = a - b</code>と同じ</li>
+<li><code>*=</code>：乗算代入：<code>a *= b</code>は<code>a = a * b</code>と同じ</li>
+<li><code>/=</code>：除算代入：<code>a /= b</code>は<code>a = a / b</code>と同じ</li>
+<li><code>%=</code>：剰余代入：<code>a %= b</code>は<code>a = a % b</code>と同じ</li>
+<li><code>&lt;&lt;=</code>：左シフト代入：<code>a &lt;&lt;= b</code>は<code>a = a &lt;&lt; b</code>と同じ</li>
+<li><code>&gt;&gt;=</code>：右シフト代入：<code>a &gt;&gt; = b</code>は<code>a = a &gt;&gt; b</code>と同じ</li>
+<li><code>&amp;=</code>：ビット論理積代入：<code>a &amp;= b</code>は<code>a = a &amp; b</code>と同じ</li>
+<li><code>|=</code>：ビット論理和代入：<code>a |= b</code>は<code>a = a | b</code>と同じ</li>
+<li><code>^=</code>：ビット排他的論理和代入：<code>a ^= b</code>は<code>a = a^+ b</code>と同じ</li>
+</ul>
+</div>
+</div>
+<div id="admonition-条件演算子" class="admonition admonish-warning" role="note" aria-labelledby="admonition-条件演算子-title">
+<div class="admonition-title">
+<div id="admonition-条件演算子-title">
+<p>条件演算子</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-条件演算子"></a>
+</div>
+<div>
+<p>他にも、条件演算子という演算子があります。しかし、個人的にはどこが評価式であるか、式であるかが分かりづらいと考えているため存在のみ紹介します。<br />
+使用したい場合は各自で調べてください。使用は<strong>おすすめしません</strong>。</p>
+</div>
+</div>
+<div id="admonition-優先順位" class="admonition admonish-tip" role="note" aria-labelledby="admonition-優先順位-title">
+<div class="admonition-title">
+<div id="admonition-優先順位-title">
+<p>優先順位</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-優先順位"></a>
+</div>
+<div>
+<p>演算子には優先順位があります。ここでは紹介しませんが、もしいろいろな演算子を式中に使用していて、思ったとおりに動作しない場合は調べてみてください。<br />
+<code>()</code>をつけるとそこが優先して演算されます。</p>
+</div>
+</div>
+<h3 id="標準入出力関数"><a class="header" href="#標準入出力関数">標準入出力関数</a></h3>
+<div id="admonition-標準出力" class="admonition admonish-info" role="note" aria-labelledby="admonition-標準出力-title">
+<div class="admonition-title">
+<div id="admonition-標準出力-title">
+<p>標準出力</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-標準出力"></a>
+</div>
+<div>
+<p>ターミナルの画面に文字や数値を出力するときは<code>printf()</code>を使用します。<br />
+<code>printf("書式文字列", 引数1, 引数2, ...);</code><br />
+書式文字列は出力する書式を指定します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">文字列の出力</span></div>
+<pre><code class="language-c">printf("Hello,World!\n");
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">数値(整数)の出力</span></div>
+<pre><code class="language-c">int x = 3;
+printf("%d\n", x);
+</code></pre>
+<p><code>%d</code>は出力変換指定子・フォーマット指定子と呼びます。一部を紹介します。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">記号</th><th style="text-align: center">対応する型</th></tr></thead><tbody>
+<tr><td style="text-align: center">%d</td><td style="text-align: center">整数</td></tr>
+<tr><td style="text-align: center">%f</td><td style="text-align: center">実数</td></tr>
+<tr><td style="text-align: center">%c</td><td style="text-align: center">文字</td></tr>
+</tbody></table>
+</div>
+<p>他にもたくさんあります。必要に応じて調べてみてください。</p>
+</div>
+</div>
+<div id="admonition-桁数の指定" class="admonition admonish-tip" role="note" aria-labelledby="admonition-桁数の指定-title">
+<div class="admonition-title">
+<div id="admonition-桁数の指定-title">
+<p>桁数の指定</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-桁数の指定"></a>
+</div>
+<div>
+<p>数値を出力する場合は、桁数を指定することができます。</p>
+<ul>
+<li><code>%3d</code>：整数3桁</li>
+<li><code>%5.2f</code>：実数全体を5桁(小数点含む)、小数点以下を2桁</li>
+</ul>
+</div>
+</div>
+<div id="admonition-文字列との組み合わせ" class="admonition admonish-tip" role="note" aria-labelledby="admonition-文字列との組み合わせ-title">
+<div class="admonition-title">
+<div id="admonition-文字列との組み合わせ-title">
+<p>文字列との組み合わせ</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-文字列との組み合わせ"></a>
+</div>
+<div>
+<p>フォーマット指定子と文字列を組み合わせることで数値と文字列を同時に出力することができます。</p>
+<pre><code class="language-c">int score = 59;
+float rate = 60.0f;
+printf("得点は%d点です。\n", score);
+printf("合格する確率は%.1f%%です。\n", rate);
+</code></pre>
+<p><code>%</code>という文字を出力したい場合は<code>%%</code>で出力できます。</p>
+</div>
+</div>
+<div id="admonition-標準入力" class="admonition admonish-info" role="note" aria-labelledby="admonition-標準入力-title">
+<div class="admonition-title">
+<div id="admonition-標準入力-title">
+<p>標準入力</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-標準入力"></a>
+</div>
+<div>
+<p>ターミナルの画面から文字や数値を入力するときは<code>scanf()</code>を使用します。<br />
+<code>scanf("書式文字列", 引数1, 引数2, ...);</code><br />
+書式文字列は出力する書式を指定します。書式指定子は出力の場合と基本同じですが、<code>double</code>型の場合は<code>%f</code>ではなく<code>%lf</code>になることに注意してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">文字(1文字)の入力</span></div>
+<pre><code class="language-c">char c;
+scanf("%c", &amp;c);
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">数値(整数)の入力</span></div>
+<pre><code class="language-c">int x;
+scanf("%d", &amp;x);
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">数値(実数(単精度)と実数(倍精度))の入力</span></div>
+<pre><code class="language-c">float f;
+double d;
+scanf("%f %lf", &amp;f, &amp;d);
+</code></pre>
+</div>
+</div>
+<div id="admonition-入力時の注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-入力時の注意点-title">
+<div class="admonition-title">
+<div id="admonition-入力時の注意点-title">
+<p>入力時の注意点</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-入力時の注意点"></a>
+</div>
+<div>
+<p>出力するときは、書式文字列に<code>\n</code>(改行文字)を含めていたが入力のときには含めないようにしてください。<br />
+変数に値を代入するときは変数の実体を引数に渡すのではなく、変数の<strong>ポインタ</strong>を渡すようにしましょう。</p>
+</div>
+</div>
+<div id="admonition-ポインタとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-ポインタとは-title">
+<div class="admonition-title">
+<div id="admonition-ポインタとは-title">
+<p>ポインタとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-ポインタとは"></a>
+</div>
+<div>
+<p>変数の領域を指し示すもののことです。詳しくは後で説明します。<br />
+現時点では入力するときは変数に<code>&amp;</code>(アンパサンド(アンド))をつけるとポインタになると思っていてください。</p>
+</div>
+</div>
+<!-- ### 条件分岐 -->
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
