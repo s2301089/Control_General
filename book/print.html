@@ -322,53 +322,115 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="git--github-1"><a class="header" href="#git--github-1">git / GitHub</a></h1>
-<p><code>git</code>とはバージョン管理ツールである。誰がいつ、どの部分を変更したのかを細かく記録できる。プログラムなどの開発では、うまく行ったときとそうでないときの違いなどを確認しやすくなる。<br />
-<code>git</code>のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスが<code>GitHub</code>。<code>git</code>と<code>GitHub</code>は全くの別物である。</p>
+<div id="admonition-gitとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-gitとは-title">
+<div class="admonition-title">
+<div id="admonition-gitとは-title">
+<p>gitとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-gitとは"></a>
+</div>
+<div>
+<p>バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。</p>
+</div>
+</div>
+<div id="admonition-githubとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-githubとは-title">
+<div class="admonition-title">
+<div id="admonition-githubとは-title">
+<p>GitHubとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-githubとは"></a>
+</div>
+<div>
+<p><code>git</code>のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。<br />
+<code>git</code>と<code>GitHub</code>は全くの別物です。</p>
+</div>
+</div>
 <h2 id="導入"><a class="header" href="#導入">導入</a></h2>
 <ul>
 <li>
-<p><code>git</code>のダウンロード
+<p><code>git</code>のダウンロードをします。
 <a href="https://git-scm.com/downloads/win">Download for Windows</a><br />
-基本的に<code>Click here to download</code>をクリックし、インストーラーをダウンロードする。</p>
+基本的に<code>Click here to download</code>をクリックし、インストーラーをダウンロードしてください。</p>
 </li>
 <li>
-<p>ダウンロードしたインストーラー<code>Git-x.xx.x-64-bit.exe</code>をクリックし、インストーラーを起動する。<br />
-基本的に<code>Next</code>を選択する。</p>
+<p>ダウンロードしたインストーラー<code>Git-x.xx.x-64-bit.exe</code>をクリックし、インストーラーを起動します。<br />
+基本的に<code>Next</code>を選択してください。</p>
 </li>
 <li>
-<p>インストールが完了したら<code>Git Bash</code>を起動する。<br />
-デスクトップのショートカット、あるいは、スタートから起動する。</p>
+<p>インストールが完了したら<code>Git Bash</code>を起動します。<br />
+デスクトップのショートカット、あるいは、スタートから起動してください。</p>
 </li>
 <li>
-<p><code>git</code>のバージョンを確認し、インストールできていることを確認する。</p>
-<pre><code class="language-bash : Git Bash">$ git --version
-git version 2.44.0.windows.1 # 例
-</code></pre>
+<p><code>git</code>のバージョンを確認し、インストールできていることを確認します。</p>
+<div id="admonition-gitのバージョン確認" class="admonition admonish-example" role="note" aria-labelledby="admonition-gitのバージョン確認-title">
+<div class="admonition-title">
+<div id="admonition-gitのバージョン確認-title">
+<p>gitのバージョン確認</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-gitのバージョン確認"></a>
+</div>
+<div>
+<p>$ git --version
+git version 2.44.0.windows.1</p>
+</div>
+</div>
 </li>
 <li>
-<p><code>GitHub</code>への登録
+<p><code>GitHub</code>への登録をします
 <a href="https://github.com/">GitHub</a><br />
-すでに<code>GitHub</code>アカウントがある人は右上の<code>Sign in</code>を選択しログインする。<br />
-アカウントがない人は<code>Sign up</code>を選択し、新規作成を行う。</p>
+すでに<code>GitHub</code>アカウントがある人は右上の<code>Sign in</code>を選択しログインしてください。<br />
+アカウントがない人は<code>Sign up</code>を選択し、新規作成を行ってください。</p>
 <ul>
-<li><code>Email</code> : メールアドレスを入力<br />
-学校のメールアドレスでも良いが、卒業時などに別のメールアドレスに変更しなければならない。</li>
-<li><code>Password</code> : 15文字以上、または、数字と小文字を含む8文字以上</li>
-<li><code>Username</code> : ユーザー名。半角英数字</li>
-<li><code>Your Country/Region</code> : 国と地域<code>Japan</code></li>
-<li><code>Email preferemces</code> : お知らせメールを受け取るかどうか(自由)<br />
-<code>Create account</code>で作成完了(なはず)</li>
+<li>
+<p><code>Email</code> : メールアドレスを入力</p>
+<div id="admonition-メールアドレスの注意点" class="admonition admonish-tip" role="note" aria-labelledby="admonition-メールアドレスの注意点-title">
+<div class="admonition-title">
+<div id="admonition-メールアドレスの注意点-title">
+<p>メールアドレスの注意点</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-メールアドレスの注意点"></a>
+</div>
+<div>
+<p>学校のメールアドレスでも問題はありません。<br />
+しかし、卒業時などに学校のメールアドレスは使えなくなるため、別のメールアドレスに変更しなければなりません。</p>
+</div>
+</div>
+</li>
+<li>
+<p><code>Password</code> : 15文字以上、または、数字と小文字を含む8文字以上。機構本部のパスワード規約に則ってください。</p>
+</li>
+<li>
+<p><code>Username</code> : ユーザー名を半角英数字で構成します。</p>
+</li>
+<li>
+<p><code>Your Country/Region</code> : 国と地域は<code>Japan</code>だと思います。</p>
+</li>
+<li>
+<p><code>Email preferemces</code> : お知らせメールを受け取るかどうかの項目です(自由)。<br />
+<code>Create account</code>で作成完了です。</p>
+</li>
 </ul>
+<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<div class="admonition-title">
+<div id="admonition-note-title">
+<p>Note</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-note"></a>
+</div>
+<div>
+<p>登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。</p>
+</div>
+</div>
 </li>
 </ul>
 <h2 id="sshの設定"><a class="header" href="#sshの設定">SSHの設定</a></h2>
-<p>学内LANなどからサーバーと通信を行うためには、<code>SSH</code>による認証を使用しなければならない。</p>
+<p>学内LANなどからサーバーと通信を行うためには、<code>SSH</code>による認証を使用しなければなりません。</p>
 <ul>
 <li>
-<p><code>SSH</code>鍵を作成する。</p>
+<p><code>SSH</code>鍵を作成します。</p>
 </li>
 <li>
-<p><code>~/.ssh/</code>に移動する。ない場合は作成する。</p>
+<p><code>~/.ssh/</code>に移動します。フォルダがない場合は作成してください。</p>
 <pre><code class="language-bash : Git Bash">$ ls -a ~ | grep .ssh
 .ssh/ # ある
 # ない場合 $ mkdir ~/.ssh
@@ -376,13 +438,13 @@ $ cd ~/.ssh/
 </code></pre>
 </li>
 <li>
-<p>すでに<code>SSH</code>鍵が作られているか確認する。</p>
+<p>すでに<code>SSH</code>鍵が作られているか確認します。</p>
 <pre><code class="language-bash : Git Bash">$ ls
 # なにも表示されない、または、known_hostsのみならok
 </code></pre>
 </li>
 <li>
-<p><code>ssh-keygen.exe</code>で<code>SSH</code>鍵を作成する。</p>
+<p><code>ssh-keygen.exe</code>で<code>SSH</code>鍵を作成します。</p>
 <pre><code class="language-bash : Git Bash">$ ssh-keygen -t rsa -C [email@email.com] -f [id_rsa_username]
 # email@email.com は GitHub に登録したメールアドレス
 # id_rsa_username は 出力ファイル名(自由)
@@ -396,9 +458,9 @@ SHA256:------ email@email.com
 The key's randomart image is:
 ---
 </code></pre>
-<p><code>ssh</code>鍵が生成される。</p>
+<p><code>ssh</code>鍵が生成されます。</p>
 <ul>
-<li>公開鍵と秘密鍵の両方が生成されていることを確認する。</li>
+<li>公開鍵と秘密鍵の両方が生成されていることを確認してください。</li>
 </ul>
 <pre><code class="language-bash : Git Bash">$ ls
 id_rsa_username       known_hosts
@@ -406,26 +468,27 @@ id_rsa_username.pub
 </code></pre>
 </li>
 <li>
-<p><code>id_rsa_username.pub</code>の内容をコピーする。</p>
-<pre><code class="language-bash : Git Bash">$ cat id_rsa_username.pub | clip
-# id_rsa_username.pub の中身をクリップボードに
+<p><code>id_rsa_username.pub</code>の内容をコピーします。</p>
+<pre><code class="language-bash : Git Bash"># (Git Bashの場合)
+$ cat id_rsa_username.pub | clip
+# id_rsa_username.pub の中身をクリップボードにコピー
 </code></pre>
 </li>
 <li>
-<p><code>GitHub</code>に登録する
+<p><code>GitHub</code>に<code>SSH</code>鍵を登録します
 <a href="https://github.com/">GitHub</a></p>
 <ul>
-<li><code>アイコン</code> - <code>Settings</code> - <code>Access</code> - <code>SSH and GPG keys</code> - <code>SSH Keys</code></li>
-<li><code>New SSH key</code><br />
-<code>Title</code>は鍵の名前を設定する。パソコン名や学校名などにしておくとわかりやすい。<br />
-<code>Key type</code>は<code>Authentication Key</code>に設定する。<br />
-<code>Key</code>に先ほどコピーした鍵をペーストする。</li>
-<li><code>Add SSH key</code>で<code>SSH</code>鍵を登録する。</li>
+<li><code>アイコン</code> - <code>Settings</code> - <code>Access</code> - <code>SSH and GPG keys</code> - <code>SSH Keys</code>で移動します。</li>
+<li><code>New SSH key</code>を選択してください。<br />
+<code>Title</code>は鍵の名前を設定します。パソコン名や学校名などにしておくとわかりやすいです。<br />
+<code>Key type</code>は<code>Authentication Key</code>に設定します。<br />
+<code>Key</code>に先ほどコピーした鍵をペーストしてください。</li>
+<li><code>Add SSH key</code>で<code>SSH</code>鍵を登録します。</li>
 </ul>
 </li>
 <li>
-<p><code>SSH</code>の設定<br />
-<code>~/.ssh/config</code>を開く(なければ作成する)</p>
+<p><code>SSH</code>の設定をします。<br />
+<code>~/.ssh/config</code>を開いてください。なければ作成してください。</p>
 <pre><code class="language-bash : Git Bash">$ ls
 config # ある
 # ない場合 $ touch config
@@ -433,7 +496,7 @@ $ code config
 </code></pre>
 </li>
 <li>
-<p>アカウントと<code>SSH</code>鍵を紐づける設定</p>
+<p>アカウントと<code>SSH</code>鍵を紐づける設定をします。</p>
 <pre><code class="language-config : config">Host github.com
     HostName github.com
     IdentityFile /C/Users/user_name/.ssh/id_rsa_username
@@ -444,8 +507,8 @@ $ code config
 </code></pre>
 </li>
 <li>
-<p><code>SSH</code>の確認<br />
-通信ができるかどうか確認する</p>
+<p><code>SSH</code>の確認をします。<br />
+通信ができるかどうか確認します。</p>
 <pre><code class="language-bash : Git Bash">$ ssh -T github.com
 Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 </code></pre>
@@ -455,49 +518,70 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 <ul>
 <li>
 <p>clone</p>
-<p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分の作業環境)に複製する。</p>
+<p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分の作業環境)に複製します。</p>
 <pre><code class="language-bash : Git Bash">$ git clone [remote URL]
 # 実行するディレクトリに注意
 </code></pre>
-<p>実行したディレクトリにそのリポジトリが複製される。<code>[remote URL]</code>は<code>GitHub</code>から確認する。<br />
-<a href="https://github.com/">GitHub</a>からcloneしたいリポジトリのページまで移動する。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーする。</p>
+<p>実行したディレクトリにそのリポジトリが複製されます。<code>[remote URL]</code>は<code>GitHub</code>から確認できます。<br />
+<a href="https://github.com/">GitHub</a>からcloneしたいリポジトリのページまで移動してください。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーできます。</p>
 </li>
 <li>
 <p>add</p>
-<p>ローカルで変更したファイルなどをリモートにあげるファイルを選択する。<br />
-コミットに含めるファイルを選択する。</p>
+<p>ローカルで変更したファイルなどをリモート反映させるファイルを選択します。<br />
+「コミットに含めるファイルを選択する」と同じことです。</p>
 <pre><code class="language-bash : Git Bash">$ git add [ファイル名1] [ファイル名2] …
-# ファイル名(フォルダ名)は何個でも書けるはず…
+# ファイル名(フォルダ名)は何個でも書けるはずです。
 </code></pre>
 </li>
 <li>
 <p>commit</p>
-<p>コミットを作成する。<code>add</code>したファイルをひとまとまりにする。</p>
+<p>コミットを作成します。<code>add</code>したファイルをひとまとまりにします。</p>
 <pre><code class="language-bash : Git Bash">$ git commit -m "[コミットメッセージ]"
-# コミットメッセージをつける
+# コミットメッセージをつけることができます
 </code></pre>
-<p>コミットメッセージには何を更新したのかなどの内容を書いておくとよい。<br />
-<code>add</code>：ファイルの新規作成や新規追加など<br />
-<code>update</code>：ファイルの中身の更新など<br />
-<code>fixed</code>、<code>fix</code>：バグの修正など<br />
-<code>style</code>：動作に問題のない部分の修正、インデントの修正など<br />
-<code>docs</code> : ドキュメントの編集など</p>
-<blockquote>
-<p>例<br />
-"fixed #3"、"update; add to receive controller;"<br />
-コミットメッセージは日本語でもよい(基本英語)。(部内であれば日本語でも大丈夫)</p>
-</blockquote>
+<div id="admonition-コミットメッセージのおすすめの書き方" class="admonition admonish-tip" role="note" aria-labelledby="admonition-コミットメッセージのおすすめの書き方-title">
+<div class="admonition-title">
+<div id="admonition-コミットメッセージのおすすめの書き方-title">
+<p>コミットメッセージのおすすめの書き方</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-コミットメッセージのおすすめの書き方"></a>
+</div>
+<div>
+<p>コミットメッセージには何を更新したのかなどの内容を書いておくとわかりやすいです。</p>
+<ul>
+<li><code>add</code>：ファイルの新規作成や新規追加など</li>
+<li><code>update</code>：ファイルの中身の更新など</li>
+<li><code>fixed</code>、<code>fix</code>：バグの修正など</li>
+<li><code>style</code>：動作に問題のない部分の修正、インデントの修正など</li>
+<li><code>docs</code> : ドキュメントの編集など</li>
+</ul>
+</div>
+</div>
+<p>コミットメッセージは日本語でも問題はありません。</p>
+<div id="admonition-コミットメッセージの例" class="admonition admonish-example" role="note" aria-labelledby="admonition-コミットメッセージの例-title">
+<div class="admonition-title">
+<div id="admonition-コミットメッセージの例-title">
+<p>コミットメッセージの例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-コミットメッセージの例"></a>
+</div>
+<div>
+<p>"fixed #3"<br />
+"update; add to receive controller;"<br />
+"モーターが逆回転する問題を修正"</p>
+</div>
+</div>
 </li>
 <li>
 <p>push</p>
-<p>作成したコミットをリモートに反映させる。</p>
+<p>作成したコミットをリモートに反映させます。</p>
 <pre><code class="language-bash : Git Bash">$ git push origin main
-# mainブランチにpushする
+# mainブランチにpushします
 </code></pre>
 </li>
 <li>
 <p>status</p>
-<p>更新されたファイルなどがあるか確認</p>
+<p>更新されたファイルなどがあるか確認します。</p>
 <pre><code class="language-bash : Git Bash">$ git status
 Your branch is up to date with 'origin/main'.
 
@@ -506,117 +590,161 @@ Changes not staged for commit:
   (use "git restore &lt;file&gt;..." to discard changes in working directory)
 ---
 </code></pre>
-<p>現在のリポジトリで更新されたファイルがあるかどうか、確認できる。</p>
+<p>現在のリポジトリで更新されたファイルがあるかどうか、確認できます。</p>
 </li>
 <li>
 <p>pull</p>
-<p>リモートの変更をもってくる。<br />
-「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのはめんどうくさい。</p>
-<pre><code class="language-bash : Git Bash">$ git pull
-# デフォルトブランチからpullしてくる
+<p>リモートの変更をローカルに反映させます。<br />
+「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのは時間がかかります。</p>
+<div id="admonition-デフォルトブランチからpullする場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-デフォルトブランチからpullする場合-title">
+<div class="admonition-title">
+<div id="admonition-デフォルトブランチからpullする場合-title">
+<p>デフォルトブランチからpullする場合</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-デフォルトブランチからpullする場合"></a>
+</div>
+<div>
+<pre><code class="language-bash : Git Bash">git pull
 </code></pre>
-<p>リモートの変更を反映させることができる。</p>
-<pre><code class="language-bash : Git Bash">$ git pull origin main
-# $ git pull origin [branch名] でpullするブランチを指定できる
+</div>
+</div>
+<div id="admonition-他のブランチからpullする場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-他のブランチからpullする場合-title">
+<div class="admonition-title">
+<div id="admonition-他のブランチからpullする場合-title">
+<p>他のブランチからpullする場合</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-他のブランチからpullする場合"></a>
+</div>
+<div>
+<pre><code class="language-bash : Git Bash">$ git pull origin [branch名]  
+$ git pull origin main
+# mainブランチからpull
 </code></pre>
-<p><code>pull</code>は<code>fetch</code>(変更情報を持ってくる)と<code>merge</code>(変更を反映させる)を同時に行う。<code>merge</code>するときにローカルにリモートにはない変更があった場合は、コンフリクトが発生する。発生した場合は、手動で<code>merge</code>作業を行う必要がある。</p>
+</div>
+</div>
+<p><code>pull</code>は<code>fetch</code>(変更情報を持ってくる)と<code>merge</code>(変更を反映させる)を同時に行います。<code>merge</code>するときにローカルにリモートにはない変更があった場合は、コンフリクトが発生します。発生した場合は、手動で<code>merge</code>作業を行う必要があります。</p>
 </li>
 </ul>
 <h2 id="branch"><a class="header" href="#branch">branch</a></h2>
-<p>普段はおそらく<code>main</code>ブランチ、または、<code>master</code>ブランチを使用していると思われるが、開発用のブランチ<code>main</code>と更新用(リリースごと)のブランチ<code>release</code>に分けておきたいとする。<code>main</code>ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともある。ブランチは分けずにタグを作成して、そのときのコミットに戻れるという機能もあるがそれは<code>branch</code>の次に紹介する。</p>
-<blockquote>
-<p>開発用は<code>development</code>とかで確実に動くものは<code>main</code>に反映させるなどもあり。</p>
-</blockquote>
+<p>普段はおそらく<code>main</code>ブランチ、または、<code>master</code>ブランチを使用していると思います。<br />
+ここでは、開発用のブランチ<code>main</code>と更新用(安定版)のブランチ<code>release</code>にわけておきたいとします。<code>main</code>ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともあります。ブランチはわけずにタグを作成して、そのときのコミットに戻れるという機能もありますが、それは<code>branch</code>の次に紹介します。</p>
+<div id="admonition-おすすめの方法" class="admonition admonish-tip" role="note" aria-labelledby="admonition-おすすめの方法-title">
+<div class="admonition-title">
+<div id="admonition-おすすめの方法-title">
+<p>おすすめの方法</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-おすすめの方法"></a>
+</div>
+<div>
+<p>開発用は<code>development</code>という名前のブランチで確実に動くものは<code>main</code>に反映させるなどがおすすめです。</p>
+</div>
+</div>
 <ul>
 <li>
-<p>ブランチの作成</p>
-<p>まずはブランチを作成する。</p>
+<p>ブランチの作成をします。</p>
 <pre><code class="language-bash : Git Bash">git branch deve
 </code></pre>
-<p><code>deve</code>という名前のブランチがローカルに作成された。</p>
+<p><code>deve</code>という名前のブランチがローカルに作成されました。</p>
 <pre><code class="language-bash : Git Bash">$ git branch
 * main
   deve
 </code></pre>
-<p>現在ローカルにあるブランチの一覧を表示できる。</p>
+<p>現在ローカルにあるブランチの一覧を表示できます。</p>
 </li>
 <li>
 <p>checkout</p>
-<p>ブランチを作成したらそのブランチに移動する。</p>
+<p>ブランチを作成したらそのブランチに移動します。</p>
 <pre><code class="language-bash : Git Bash">git checkout [ブランチ名]
 </code></pre>
 </li>
 <li>
 <p>push</p>
-<p>あとは変更したファイルを<code>add</code>したり<code>commit</code>したりしても問題ない。</p>
+<p>あとは変更したファイルを<code>add</code>したり<code>commit</code>したりしても問題はありません。</p>
 <pre><code class="language-bash : Git Bash">$ git push origin [ブランチ名]
-# origin で指定しないとpushできないことがある
+# origin で指定しないとpushできないことが多いです
 </code></pre>
 </li>
 <li>
 <p>merge</p>
-<p><code>main</code>ブランチだけ先に進み、<code>deve</code>ブランチが遅れている場合、<code>deve</code>ブランチに<code>main</code>ブランチの状態にしたいなどということもあると思われる。そんなときにいちいち<code>main</code>ブランチから<code>deve</code>ブランチにコピペするのは面倒くさい。そんなときに<code>merge</code>を使用する。<br />
-進めたいブランチに<code>checkout</code>し、<code>merge</code>を実行する。</p>
+<p><code>main</code>ブランチだけ先に進み、<code>deve</code>ブランチが遅れている場合、<code>deve</code>ブランチに<code>main</code>ブランチの状態にしたいなどということがあると思います。<br />
+そんなときに、いちいち<code>main</code>ブランチから<code>deve</code>ブランチにコピペするのは時間の無駄です。<code>merge</code>を使用します。<br />
+進めたいブランチに<code>checkout</code>し、<code>merge</code>を実行します。</p>
 <pre><code class="language-bash : Git Bash">git merge [進んでいるブランチ名]
 </code></pre>
-<p><code>deve</code>ブランチを<code>main</code>ブランチと同じ状態にしたい場合は、</p>
+<div id="admonition-deveブランチをmainブランチと同じ状態にしたい場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-deveブランチをmainブランチと同じ状態にしたい場合-title">
+<div class="admonition-title">
+<div id="admonition-deveブランチをmainブランチと同じ状態にしたい場合-title">
+<p>deveブランチをmainブランチと同じ状態にしたい場合</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-deveブランチをmainブランチと同じ状態にしたい場合"></a>
+</div>
+<div>
 <pre><code class="language-bash : Git Bash">git checkout deve
 git merge main
 </code></pre>
-<p>を実行することで<code>deve</code>ブランチに<code>main</code>ブランチの変更を反映させることができる。<br />
-このあとに<code>deve</code>ブランチに<code>push</code>し、リモートにも反映させる。</p>
+<p>これを実行することで<code>deve</code>ブランチに<code>main</code>ブランチの変更を反映させることができます。<br />
+このあとに<code>deve</code>ブランチに<code>push</code>し、リモートにも反映させます。</p>
+</div>
+</div>
 </li>
 <li>
 <p>ブランチの削除</p>
-<p>ブランチが要らなくなったときに削除できるように。</p>
+<p>ブランチが不必要になった場合に削除できます。</p>
 <pre><code class="language-bash : Git Bash">git branch -d [ブランチ名]
 </code></pre>
-<p>ローカルのブランチが削除された。</p>
+<p>ローカルのブランチが削除されます。</p>
 <pre><code class="language-bash : Git Bash">git push origin --delete [ブランチ名]
 </code></pre>
-<p>リモートのブランチも削除することができる。</p>
+<p>リモートのブランチが削除されます。</p>
 </li>
 <li>
 <p>確認</p>
-<p>ローカルにあるブランチの確認</p>
+<p>ローカルにあるブランチを確認ができます。</p>
 <pre><code class="language-bash : Git Bash">git branch
 </code></pre>
-<p>リモートにあるブランチの確認</p>
+<p>リモートにあるブランチを確認できます。</p>
 <pre><code class="language-bash : Git Bash">git branch -r
 </code></pre>
 </li>
 </ul>
 <h2 id="tag"><a class="header" href="#tag">tag</a></h2>
-<p>特定のバージョンに戻りたい(リリースバージョンとか)というときにリリースを作成するという事もできるがそれでは検索などに引っかかってしまう。それが嫌だという場合は<code>tag</code>を作成し、そのタグに戻ればよい。</p>
+<p>特定のバージョンに戻りたい(リリースバージョンとか)というときにリリースを作成するという事もできます。しかし、検索などに引っかかってしまう可能性があります。それが嫌だという場合は<code>tag</code>を作成し、そのタグに戻るという行為をします。</p>
 <ul>
 <li>
 <p>tagの作成とpush</p>
-<p>タグを作成する前に変更などはすべてリモートに反映させておくとよい。</p>
+<p>タグを作成する前に変更などはすべてリモートに反映させておきましょう。</p>
 <pre><code class="language-bash : Git Bash">git tag -a [タグ名] -m "[タグのメッセージ]"
 </code></pre>
-<p>これでローカルに<code>tag</code>を作成する。ローカルのcommitに<code>tag</code>がつけられる(と思われる)。</p>
+<p>これでローカルに<code>tag</code>を作成します。ローカルのcommitに<code>tag</code>がつけられます(たぶん)。</p>
 <pre><code class="language-bash : Git Bash">git push origin [タグ名]
 </code></pre>
-<p>これにより、タグを作成し、作成したタグをリモートに反映することができる。</p>
+<p>これにより、タグを作成し、作成したタグをリモートに反映することができます。</p>
 </li>
 <li>
 <p>tagの確認</p>
 <pre><code class="language-bash : Git Bash">git tag
 </code></pre>
-<p>ローカルにあるタグを確認できる。</p>
+<p>ローカルにあるタグを確認できます。</p>
 </li>
 <li>
 <p>tagの削除</p>
-<p>ローカルにあるタグを削除する。</p>
+<p>ローカルにあるタグを削除します。</p>
 <pre><code class="language-bash : Git Bash">git tag -d [タグ名]
 </code></pre>
-<p>リモートにあるタグを削除する。</p>
+<p>リモートにあるタグを削除します。</p>
 <pre><code class="language-bash : Git Bash">git push origin --delete [タグ名]
 </code></pre>
 </li>
 </ul>
 <hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
 <p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/git_GitHub.html#admonition-参考"></a>
+</div>
+<div>
 <ul>
 <li>授業</li>
 <li>教育推進プロジェクト(講座)</li>
@@ -625,7 +753,8 @@ git merge main
 <li><a href="https://youtu.be/LDOR5HfI_sQ?si=grgKMmUMKT4dgnn-">【Git入門】Git + Github使い方入門講座🐒Gitの仕組みや使い方を完全解説！パーフェクトGit入門！</a></li>
 <li><a href="https://youtu.be/2mehreEA7yc?si=5BQeVtQgHnAOc_l_">GitHubの使い方を解説！ファイルの作成方法、ブランチの使い方が分かる！</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
 }
@@ -640,30 +769,57 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
 <h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
-<p>回路的には以下のようになっている。<br />
+<p>回路的には以下のようになっています。<br />
 <img src="BasicContents/../resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png" /><br />
-モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要がある。それをフォトカプラで信号のやり取りを行っている。<br />
-また、<code>PWM</code>の周期を<code>83[μs]</code>に設定する。これはフォトカプラが変換に対応する周波数によって決まっている(らしい)。</p>
-<h2 id="pwmとは"><a class="header" href="#pwmとは">PWMとは</a></h2>
-<p><code>PWM</code>とは、<code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>という。一定周期の中で出力が<code>HIGH</code>の時間と<code>LOW</code>の時間比(デューティー比)で中間の電圧を表現する。</p>
-<p>PWMの出力波形は以下の図のようなもの。<br />
+モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br />
+また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
+<h2 id="pwm"><a class="header" href="#pwm">PWM</a></h2>
+<div id="admonition-pwmとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-pwmとは-title">
+<div class="admonition-title">
+<div id="admonition-pwmとは-title">
+<p>PWMとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-pwmとは"></a>
+</div>
+<div>
+<p><code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>といいます。<br />
+一定周期の中で出力が<code>HIGH</code>の時間と<code>LOW</code>の時間の比(デューティー比)で中間の電圧を擬似的に表現します。</p>
+<p>PWMの出力波形は以下の図のようなものです。<br />
 <img src="BasicContents/../resources/BasicContents/motor/pwm_waveform.png" alt="pwm_pwm_waveform.png" /></p>
-<blockquote>
-<p>出力が<code>5V</code>でデューティー比が<code>25%</code>であれば、出力は<code>1.25V</code>になる。出力電圧は以下の式で求められる。<br />
-<code>(出力電圧) = (最大電圧) × (デューティー比)</code><br />
-そのため、デューティー比が小さいと素子によってはデューティー比<code>0％</code>とあまり変わらない結果が得られるものもある。各素子の動作電圧などをしっかりと確認すること。</p>
-</blockquote>
+</div>
+</div>
+<div id="admonition-出力の例" class="admonition admonish-example" role="note" aria-labelledby="admonition-出力の例-title">
+<div class="admonition-title">
+<div id="admonition-出力の例-title">
+<p>出力の例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-出力の例"></a>
+</div>
+<div>
+<p>GPIOピンの出力が<code>5V</code>でデューティー比が<code>25%</code>であれば、出力は<code>1.25V</code>になります。出力電圧は以下の式で求められます。<br />
+$$ 出力電圧 = {最大電圧} \times {デューティー比} $$<br />
+デューティー比が小さいと素子によってはデューティー比<code>0％</code>とあまり変わらない結果が得られるものもあります。<strong>各素子の動作電圧</strong>などを確認してください。</p>
+</div>
+</div>
 <h2 id="出力の決定"><a class="header" href="#出力の決定">出力の決定</a></h2>
-<p>モーターへの出力は<code>Digital</code>と<code>PWM</code>の2つで決まり、<code>Digital</code>と<code>PWM</code>の差が出力になる。図示すると以下のようになる。</p>
+<p>モーターへの出力は<code>Digital</code>と<code>PWM</code>の2つで決まり、<code>Digital</code>と<code>PWM</code>の差が出力になります。図示すると以下のようになります。</p>
 <p><img src="BasicContents/../resources/BasicContents/motor/motor_output.png" alt="motor_output.png" /></p>
-<p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応する。</p>
+<p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応します。</p>
 <hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
 <p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-参考"></a>
+</div>
+<div>
 <ul>
 <li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
 }
@@ -1373,6 +1529,22 @@ void loop(){
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
