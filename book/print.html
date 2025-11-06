@@ -1661,6 +1661,26 @@ int main(void){
 </ul>
 </div>
 </div>
+<div id="admonition-順序" class="admonition admonish-warning" role="note" aria-labelledby="admonition-順序-title">
+<div class="admonition-title">
+<div id="admonition-順序-title">
+<p>順序</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-順序"></a>
+</div>
+<div>
+<p>C言語は、関数の中身は上の文から順番に実行されます。<code>return</code>文を実行すると、関数内のその後の文は実行されません。</p>
+<pre><code class="language-c">int main(void){
+    printf("Hello");    //  実行される
+    printf("World");    //  実行される
+
+    return 0;           //  実行される
+
+    printf("!\n");      //  実行されない
+}
+</code></pre>
+</div>
+</div>
 <h3 id="コメント"><a class="header" href="#コメント">コメント</a></h3>
 <div id="admonition-コメント" class="admonition admonish-info" role="note" aria-labelledby="admonition-コメント-title">
 <div class="admonition-title">
@@ -1682,6 +1702,18 @@ C言語では<code>//</code>(スラッシュ2つ)と<code>/* */</code>による2
 */  ここもコメントではありません。
 //  ここはコメントです。
 </code></pre>
+</div>
+</div>
+<div id="admonition-全角文字" class="admonition admonish-danger" role="note" aria-labelledby="admonition-全角文字-title">
+<div class="admonition-title">
+<div id="admonition-全角文字-title">
+<p>全角文字</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-全角文字"></a>
+</div>
+<div>
+<p>コメントには全角文字(日本語や全角スペース)を使用できますが、コード部分には全角文字は文字列以外の部分に使用することができません。<br />
+<code>;</code>と<code>；</code>は半角と全角で異なるため注意してください。</p>
 </div>
 </div>
 <h3 id="データ型と変数"><a class="header" href="#データ型と変数">データ型と変数</a></h3>
@@ -1749,6 +1781,24 @@ c = 's';    // char c;
 y = x;      // int y;   変数yに変数xの値を代入する
 </code></pre>
 <p>左辺の変数に右辺の値を格納します。値を代入する場合は値と変数の型を一致させる必要があります。</p>
+</div>
+</div>
+<div id="admonition-文字と文字列と数値" class="admonition admonish-tip" role="note" aria-labelledby="admonition-文字と文字列と数値-title">
+<div class="admonition-title">
+<div id="admonition-文字と文字列と数値-title">
+<p>文字と文字列と数値</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-文字と文字列と数値"></a>
+</div>
+<div>
+<p>C言語では、文字と文字列と数値は異なります。<br />
+文字を表現するためには、文字を<code>''</code>(シングルクォーテーション)で囲います。<br />
+文字列を表現するためには、文字を<code>""</code>(ダブルクォーテーション)で囲います。<br />
+数値を表現するためには、数字をそのまま記述します。</p>
+<pre><code class="language-c">'c'     //  「c」という文字(1文字)
+"abc"   //  「abc」という文字列
+30      //  「30」という数値
+</code></pre>
 </div>
 </div>
 <h3 id="演算子"><a class="header" href="#演算子">演算子</a></h3>
@@ -1954,6 +2004,22 @@ a || b
 <code>()</code>をつけるとそこが優先して演算されます。</p>
 </div>
 </div>
+<div id="admonition-数値表現" class="admonition admonish-tip" role="note" aria-labelledby="admonition-数値表現-title">
+<div class="admonition-title">
+<div id="admonition-数値表現-title">
+<p>数値表現</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-数値表現"></a>
+</div>
+<div>
+<p>整数を文中にそのままの数値を記述すると、それは10進数と解釈されます。C言語では2進数、16進数といった他の基数表現でも数値を記述することができます。<br />
+2進数は、数値の先頭に<code>0b</code>を、16進数は、数値の先頭に<code>0x</code>をつけます。</p>
+<pre><code class="language-c">int x_10 = 16;      //  10進数の16
+int x_2 = 0b1010;   //  2進数の1010。10進数では10
+int x_16 = 0x20;    //  16進数の20。10進数では32
+</code></pre>
+</div>
+</div>
 <h3 id="標準入出力関数"><a class="header" href="#標準入出力関数">標準入出力関数</a></h3>
 <div id="admonition-標準出力" class="admonition admonish-info" role="note" aria-labelledby="admonition-標準出力-title">
 <div class="admonition-title">
@@ -2025,7 +2091,7 @@ printf("合格する確率は%.1f%%です。\n", rate);
 <div>
 <p>ターミナルの画面から文字や数値を入力するときは<code>scanf()</code>を使用します。<br />
 <code>scanf("書式文字列", 引数1, 引数2, ...);</code><br />
-書式文字列は出力する書式を指定します。書式指定子は出力の場合と基本同じですが、<code>double</code>型の場合は<code>%f</code>ではなく<code>%lf</code>になることに注意してください。</p>
+入力変換指定子は入力する書式を指定します。書式指定子は出力の場合と基本同じですが、<code>double</code>型の場合は<code>%f</code>ではなく<code>%lf</code>になることに注意してください。</p>
 <div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">文字(1文字)の入力</span></div>
 <pre><code class="language-c">char c;
 scanf("%c", &amp;c);
@@ -2065,7 +2131,294 @@ scanf("%f %lf", &amp;f, &amp;d);
 現時点では入力するときは変数に<code>&amp;</code>(アンパサンド(アンド))をつけるとポインタになると思っていてください。</p>
 </div>
 </div>
-<!-- ### 条件分岐 -->
+<h3 id="条件分岐"><a class="header" href="#条件分岐">条件分岐</a></h3>
+<div id="admonition-if文" class="admonition admonish-info" role="note" aria-labelledby="admonition-if文-title">
+<div class="admonition-title">
+<div id="admonition-if文-title">
+<p>if文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-if文"></a>
+</div>
+<div>
+<p>「もし 〇〇 ならば これを実行する」を表現する文です。指定した条件をが真か偽かを判定し、処理を2つに分岐されることができる。</p>
+<pre><code class="language-c">if(条件式){
+    条件が真の場合の処理;
+}else{
+    条件が偽の場合の処理;
+}
+</code></pre>
+<p>処理が1行であり、偽の場合の処理がない場合は文を<code>{}</code>で囲む必要はなく、<code>else</code>以降も不要です。</p>
+<p>「もし 条件式1 ならば 処理1、そうでなければ もし 条件式2 ならば 処理2、そうでなければ 処理3」という分岐をする場合は以下のコードのように記述します。</p>
+<pre><code class="language-c">if(条件式1){
+    処理1;
+}else if(条件式2){
+    処理2;
+}else {
+    処理3;
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-if文-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-if文-1-title">
+<div class="admonition-title">
+<div id="admonition-if文-1-title">
+<p>if文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-if文-1"></a>
+</div>
+<div>
+<p>変数の値によって処理を変更する例を示します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">if.c</span></div>
+<pre><code class="language-c">if(x &gt; 0){
+    printf("xは正です。\n");
+}else if(x &lt; 0){
+    printf("xは負です。\n");
+}else{
+    printf("xは0です。\n");
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-switch文" class="admonition admonish-info" role="note" aria-labelledby="admonition-switch文-title">
+<div class="admonition-title">
+<div id="admonition-switch文-title">
+<p>switch文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-switch文"></a>
+</div>
+<div>
+<p>制御式の値によって処理を分岐させるときに使用します。</p>
+<p>「もし 制御式 が 0 なら 処理1、もし 制御式 が 1 なら 処理2、...」といった処理をする場合に使用することが多いです。</p>
+<pre><code class="language-c">switch(制御式){
+    case 事項式1:
+        文1;
+        文2;
+        break;
+    case 事項式2:
+        文3;
+        文4;
+        break;
+    default:
+        文5;
+}
+</code></pre>
+<p>制御式は整数として解釈され、<code>break</code>文で<code>switch</code>文から抜けることができます。<code>break</code>文がない場合は次の事項式の判定などに処理が続きます。</p>
+</div>
+</div>
+<div id="admonition-switch文-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-switch文-1-title">
+<div class="admonition-title">
+<div id="admonition-switch文-1-title">
+<p>switch文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-switch文-1"></a>
+</div>
+<div>
+<p>変数の値によって処理を変更する例を示します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">switch.c</span></div>
+<pre><code class="language-c">switch(z){
+    case 0:
+        printf("zは0です。\n");
+        break;
+    case 2:
+    case 3:
+    case 5:
+    case 7:
+        printf("zは素数である数字です。\n");
+        break;
+    default:
+        printf("zはその他の数です。\n");
+}
+</code></pre>
+</div>
+</div>
+<h3 id="繰り返し"><a class="header" href="#繰り返し">繰り返し</a></h3>
+<div id="admonition-for文" class="admonition admonish-info" role="note" aria-labelledby="admonition-for文-title">
+<div class="admonition-title">
+<div id="admonition-for文-title">
+<p>for文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-for文"></a>
+</div>
+<div>
+<p>回数が決まっている繰り返し処理を行いたいときによく利用される文です。<br />
+for文は次の構成になっています。</p>
+<pre><code class="language-c">for(初期設定式; 継続条件式; 再設定式){
+    処理;
+}
+</code></pre>
+<ul>
+<li>初期設定式
+<ul>
+<li>繰り返し開始前に1回だけ実行される式です。</li>
+<li>主に制御変数の初期化をするために使用します。</li>
+</ul>
+</li>
+<li>継続条件式
+<ul>
+<li>この式が真の間、処理が繰り返されます。</li>
+</ul>
+</li>
+<li>再設定式
+<ul>
+<li>処理を1回行った後に実行される式です。毎回の繰り返し終了時に実行されます。</li>
+<li>主に制御変数の値を変更するために使用します。</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="admonition-for文-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-for文-1-title">
+<div class="admonition-title">
+<div id="admonition-for文-1-title">
+<p>for文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-for文-1"></a>
+</div>
+<div>
+<p>繰り返しの回数を表示する例を示します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">for1.c</span></div>
+<pre><code class="language-c">for(int i = 0; i &lt; 10; i++){    //  0~9までの10回繰り返される
+    printf("%2d回目です。\n", i);
+}
+</code></pre>
+<p>九九の表を表示する例を示します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">for2.c</span></div>
+<pre><code class="language-c">for(int i = 1; i &lt;= 9; i++){
+    for(int j = 1; j &lt;= 9; j++){
+        printf("| %2d ", i * j);
+    }
+    printf("|\n");
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-while文" class="admonition admonish-info" role="note" aria-labelledby="admonition-while文-title">
+<div class="admonition-title">
+<div id="admonition-while文-title">
+<p>while文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-while文"></a>
+</div>
+<div>
+<p>回数が決まっていない繰り返し処理を行いたいときによく利用される文です。<br />
+while文は次の構成になっています。</p>
+<pre><code class="language-c">while(継続条件式){
+    処理;
+}
+</code></pre>
+<p>継続条件式が真の間、処理を繰り返します。</p>
+</div>
+</div>
+<div id="admonition-while文-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-while文-1-title">
+<div class="admonition-title">
+<div id="admonition-while文-1-title">
+<p>while文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-while文-1"></a>
+</div>
+<div>
+<p>xの値が負になるまで(0以上の間)、数字を入力する例を示します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">while.c</span></div>
+<pre><code class="language-c">scanf("%d", &amp;x);
+while(x &gt;= 0){
+    scanf("%d", &amp;x);
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-do-while文" class="admonition admonish-tip" role="note" aria-labelledby="admonition-do-while文-title">
+<div class="admonition-title">
+<div id="admonition-do-while文-title">
+<p>do-while文</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-do-while文"></a>
+</div>
+<div>
+<p>処理を行う前に条件の判断を行う<code>while</code>文に対して、処理を行った後に条件の判断を行う<code>do-while</code>文があります。<br />
+<code>do-while</code>文は次の構成になっています。</p>
+<pre><code class="language-c">do{
+    処理;
+}while(継続条件式);
+</code></pre>
+<p>上の<code>while</code>文の例を<code>do-while</code>文で書き直すと次のようになります。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">do-while.c</span></div>
+<pre><code class="language-c">do{
+    scanf("%d", &amp;x);
+}while(x &gt;= 0);
+</code></pre>
+</div>
+</div>
+<h3 id="配列"><a class="header" href="#配列">配列</a></h3>
+<div id="admonition-配列とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-配列とは-title">
+<div class="admonition-title">
+<div id="admonition-配列とは-title">
+<p>配列とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-配列とは"></a>
+</div>
+<div>
+<p>同じ型の変数を複数個まとめて扱えるもののことです。C言語では以下のように表します。</p>
+<pre><code class="language-c">配列名[定数式]
+</code></pre>
+<p>定数式は<code>0</code>から始まる正の整数です。<br />
+配列を使用すると、文字列を扱うこともできます。</p>
+</div>
+</div>
+<div id="admonition-配列の宣言" class="admonition admonish-example" role="note" aria-labelledby="admonition-配列の宣言-title">
+<div class="admonition-title">
+<div id="admonition-配列の宣言-title">
+<p>配列の宣言</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-配列の宣言"></a>
+</div>
+<div>
+<p>配列の宣言は、変数と同じように行います。宣言時に配列の大きさを指定する必要があります。</p>
+<pre><code class="language-c">int d[10];
+float f[4];
+</code></pre>
+<p>それぞれ、配列dは<code>d[0]~d[9]</code>まで、配列fは<code>f[0]~[3]</code>の変数が宣言されます。配列番号(定数式)は<code>0</code>から始まるため、<code>0~n-1</code>までの<code>n</code>個になります。</p>
+</div>
+</div>
+<div id="admonition-配列へのアクセス" class="admonition admonish-example" role="note" aria-labelledby="admonition-配列へのアクセス-title">
+<div class="admonition-title">
+<div id="admonition-配列へのアクセス-title">
+<p>配列へのアクセス</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-配列へのアクセス"></a>
+</div>
+<div>
+<p>配列へのアクセスは変数と代わりありません。しかし、要素番号を指定する必要があります。要素番号は整数であれば変数や式も使用できます。</p>
+<pre><code class="language-c">x = 11;     // int x;
+y[0] = x;   // int y[3];    配列y[0]に変数xの値を代入する
+
+for(int i = 0; i &lt; 8; i++){
+    data[i] = 0;    //  int data[8];
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-多次元配列とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-多次元配列とは-title">
+<div class="admonition-title">
+<div id="admonition-多次元配列とは-title">
+<p>多次元配列とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-多次元配列とは"></a>
+</div>
+<div>
+<p>平面や立体、それ以上の次元をイメージして配列を扱いたいときに利用します。</p>
+<pre><code class="language-c">int data[2][3];
+
+/*
+      0   1   2
+  0 |   |   |   |
+  1 |   |   |   |
+*/
+</code></pre>
+<p>配列は<code>[x][y]</code>ではなく<code>[y][x]</code>となるため、注意が必要です。<br />
+<code>data[z][y][x]; data[y][x];</code><br />
+定数式を増やすことで多次元配列を宣言することができます。</p>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
