@@ -277,3 +277,12 @@ sup {
 .result-no-output {
     font-style: italic;
 }
+
+@media print{
+    #right-toc, nav.pagetoc, .pagetoc, #right-index{
+        display: none !important;
+    }
+    .content, main{
+        margin-right: 0 !important;
+    }
+}
