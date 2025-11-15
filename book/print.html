@@ -1762,7 +1762,11 @@ C言語では<code>//</code>(スラッシュ2つ)と<code>/* */</code>による2
 <a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-変数の宣言"></a>
 </div>
 <div>
-<p>変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。</p>
+<p>変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。<br />
+また、同じ変数名を<strong>スコープ</strong>内に複数置くことはできません。</p>
+<blockquote>
+<p>スコープについては後で話します。</p>
+</blockquote>
 <pre><code class="language-c">型 変数名;
 int x;
 </code></pre>
@@ -2688,6 +2692,150 @@ int main(void){
 </div>
 </div>
 <h3 id="関数"><a class="header" href="#関数">関数</a></h3>
+<p>関数は型と戻り値を持ちます。</p>
+<div id="admonition-関数の宣言" class="admonition admonish-info" role="note" aria-labelledby="admonition-関数の宣言-title">
+<div class="admonition-title">
+<div id="admonition-関数の宣言-title">
+<p>関数の宣言</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-関数の宣言"></a>
+</div>
+<div>
+<p>一番初めに書いた関数の基本構成に少し情報を付け足します。</p>
+<pre><code class="language-c">記憶域クラス 型 関数名(引数リスト){  
+    文;  
+
+    return 戻り値; 
+}
+</code></pre>
+<ul>
+<li>記憶域クラス
+<ul>
+<li><code>static</code>や<code>auto</code>(省略可)を指定します。</li>
+</ul>
+</li>
+<li>型
+<ul>
+<li>関数の戻り値の型を指定します。</li>
+<li>戻り値がない場合は<code>void</code>を指定します。</li>
+</ul>
+</li>
+<li>関数名
+<ul>
+<li>関数名は変数名と同じルールで名前を指定します。</li>
+</ul>
+</li>
+<li>引数リスト
+<ul>
+<li>データの受け渡しに使用する変数を<code>,</code>(カンマ)で区切って記述します。
+-　引数がない場合は空(<code>void</code>)を指定します。</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">add</span></div>
+<pre><code class="language-c">int add(int a, int b);
+
+int main(void){
+    int x, y, z;
+    scanf(" %d%d", &amp;x, &amp;y);
+    z = add(x, y);
+    printf("%d+%d=%d\n", x, y, z);
+
+    return 0;
+}
+
+int add(int a, int b){
+    int ans;
+    ans = a + b;
+
+    return ans;
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-関数プロトタイプ" class="admonition admonish-info" role="note" aria-labelledby="admonition-関数プロトタイプ-title">
+<div class="admonition-title">
+<div id="admonition-関数プロトタイプ-title">
+<p>関数プロトタイプ</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-関数プロトタイプ"></a>
+</div>
+<div>
+<p>関数を使用、定義する前に関数についての情報を宣言することを指します。プロトタイプ宣言とも呼ばれます。<br />
+プロトタイプ宣言をせずに他の関数内で使用しようとするとエラーになります。</p>
+</div>
+</div>
+<p>関数を呼び出すときに関数に引数としてデータを渡すことができます。C言語では引数によるデータの渡し方には2種類あります。</p>
+<ul>
+<li>値渡し
+<ul>
+<li>値をコピーして関数に渡す方法です。</li>
+<li><code>add_by_value()</code>の<code>a</code>、<code>b</code>の値を<code>add_by_value()</code>で代入などで変更しても、呼び出し側の<code>x</code>、<code>y</code>の値は変更されません。</li>
+</ul>
+</li>
+<li>参照渡し
+<ul>
+<li>変数の<a href="BasicContents/language_c_cpp.html#%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF">ポインタ</a>を渡す方法です。</li>
+<li><code>add_by_reference()</code>の<code>ans</code>の値を変更すると、呼び出し側の<code>z</code>の値が変更されます。</li>
+<li><code>z</code>はポインタを渡すために<code>&amp;</code>をつけて渡しています。</li>
+</ul>
+</li>
+</ul>
+<div id="admonition-値渡しと参照渡し" class="admonition admonish-example" role="note" aria-labelledby="admonition-値渡しと参照渡し-title">
+<div class="admonition-title">
+<div id="admonition-値渡しと参照渡し-title">
+<p>値渡しと参照渡し</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-値渡しと参照渡し"></a>
+</div>
+<div>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">value and reference</span></div>
+<pre><code class="language-c">int add_by_value(int a, int b);
+int add_by_reference(int a, int b, int *ans);
+
+int main(void){
+    int x, y, z;
+    scanf(" %d%d", &amp;x, &amp;y);
+    z = add_by_value(x, y);
+    printf("%d+%d=%d\n", x, y, z);
+    scanf(" %d%d", &amp;x, &amp;y);
+    add_by_reference(x, y, &amp;z);
+    printf("%d+%d=%d\n", x, y, z);
+
+    return 0;
+}
+
+int add_by_value(int a, int b){
+    return a + b;
+}
+
+void add_by_reference(int a, int b, int *ans){
+    ans = a + b;
+
+    return;
+}
+</code></pre>
+</div>
+</div>
+<p>他の人が作成した関数などを使用したい場合は、関数などが含まれているヘッダファイルを読み込むことで使用できます。<br />
+今まで<code>#include &lt;stdio.h&gt;</code>などと記述していましたが、これは<code>stdio.h</code>というヘッダファイルを読み込む処理をしていました。</p>
+<div id="admonition-mathh" class="admonition admonish-example" role="note" aria-labelledby="admonition-mathh-title">
+<div class="admonition-title">
+<div id="admonition-mathh-title">
+<p>math.h</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_cpp.html#admonition-mathh"></a>
+</div>
+<div>
+<p>数学の基本的な計算が含まれているライブラリです。<br />
+平方根(sqrt)、三角関数(sin、cos、tan)、逆三角関数(asin、acos、atan、atan2)、累乗(pow)などがあります。また、円周率は<code>M_PI</code>と定義されています。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">sqrt(2)</span></div>
+<pre><code class="language-c">root2 = sqrt(2);        //  √2
+r_cos = r * cos(theta);
+r_sin = r * sin(theta);
+</code></pre>
+</div>
+</div>
 <hr />
 <div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
 <div class="admonition-title">

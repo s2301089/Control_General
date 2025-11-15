@@ -150,6 +150,9 @@ C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法が�
 
 ````admonish example "変数の宣言"
 変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。  
+また、同じ変数名を**スコープ**内に複数置くことはできません。  
+
+> スコープについては後で話します。  
 
 ```c : 
 型 変数名;
@@ -858,6 +861,114 @@ int main(void){
 ```
 
 ### 関数
+
+関数は型と戻り値を持ちます。
+
+````admonish info "関数の宣言"
+
+一番初めに書いた関数の基本構成に少し情報を付け足します。
+
+```c : 
+記憶域クラス 型 関数名(引数リスト){  
+    文;  
+
+    return 戻り値; 
+}
+```
+
+- 記憶域クラス
+    - `static`や`auto`(省略可)を指定します。
+- 型
+    - 関数の戻り値の型を指定します。
+    - 戻り値がない場合は`void`を指定します。
+- 関数名
+    - 関数名は変数名と同じルールで名前を指定します。
+- 引数リスト
+    - データの受け渡しに使用する変数を`,`(カンマ)で区切って記述します。
+    -　引数がない場合は空(`void`)を指定します。
+
+```c : add
+int add(int a, int b);
+
+int main(void){
+    int x, y, z;
+    scanf(" %d%d", &x, &y);
+    z = add(x, y);
+    printf("%d+%d=%d\n", x, y, z);
+
+    return 0;
+}
+
+int add(int a, int b){
+    int ans;
+    ans = a + b;
+
+    return ans;
+}
+```
+
+````
+
+````admonish info "関数プロトタイプ"
+関数を使用、定義する前に関数についての情報を宣言することを指します。プロトタイプ宣言とも呼ばれます。  
+プロトタイプ宣言をせずに他の関数内で使用しようとするとエラーになります。
+````
+
+関数を呼び出すときに関数に引数としてデータを渡すことができます。C言語では引数によるデータの渡し方には2種類あります。  
+
+- 値渡し
+  - 値をコピーして関数に渡す方法です。
+  - `add_by_value()`の`a`、`b`の値を`add_by_value()`で代入などで変更しても、呼び出し側の`x`、`y`の値は変更されません。
+- 参照渡し
+  - 変数の[ポインタ](#ポインタ)を渡す方法です。
+  - `add_by_reference()`の`ans`の値を変更すると、呼び出し側の`z`の値が変更されます。
+  - `z`はポインタを渡すために`&`をつけて渡しています。
+
+````admonish example "値渡しと参照渡し"
+
+```c : value and reference
+int add_by_value(int a, int b);
+int add_by_reference(int a, int b, int *ans);
+
+int main(void){
+    int x, y, z;
+    scanf(" %d%d", &x, &y);
+    z = add_by_value(x, y);
+    printf("%d+%d=%d\n", x, y, z);
+    scanf(" %d%d", &x, &y);
+    add_by_reference(x, y, &z);
+    printf("%d+%d=%d\n", x, y, z);
+
+    return 0;
+}
+
+int add_by_value(int a, int b){
+    return a + b;
+}
+
+void add_by_reference(int a, int b, int *ans){
+    ans = a + b;
+
+    return;
+}
+```
+
+````
+
+他の人が作成した関数などを使用したい場合は、関数などが含まれているヘッダファイルを読み込むことで使用できます。  
+今まで`#include <stdio.h>`などと記述していましたが、これは`stdio.h`というヘッダファイルを読み込む処理をしていました。  
+
+````admonish example "math.h"
+数学の基本的な計算が含まれているライブラリです。  
+平方根(sqrt)、三角関数(sin、cos、tan)、逆三角関数(asin、acos、atan、atan2)、累乗(pow)などがあります。また、円周率は`M_PI`と定義されています。
+
+```c : sqrt(2)
+root2 = sqrt(2);        //  √2
+r_cos = r * cos(theta);
+r_sin = r * sin(theta);
+```
+
+````
 
 ---
 
