@@ -15,7 +15,7 @@ DCモーターを制御するための回路
 モーターへの出力の決定方法など
 ```
 
-## [コントローラーのデータ](./Controller/how_to.md)
+## [コントローラーのデータ](./controller_data.md)
 
 ```admonish abstract "内容"
 データの取得方法、送信方法・受信方法  
@@ -23,16 +23,10 @@ DCモーターを制御するための回路
 送受信しているデータの構成など  
 ```
 
-### [受信側(lib)](./Controller/use_rxController.md)
+## [C言語](./language_c.md)
 
 ```admonish abstract "内容"
-コントローラーのデータを受信、使用するためのライブラリ  
-使用方法、サンプルプログラムなど  
-```
-
-### [送信側(lib)](./Controller/use_txController.md)
-
-```admonish abstract "内容"
-コントローラーのデータを取得、送信するためのライブラリ  
-使用方法、サンプルプログラムなど  
+プログラミング言語とは  
+C言語の基本的な内容  
+C言語の発展的な内容  
 ```

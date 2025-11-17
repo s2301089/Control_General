@@ -1,14 +1,23 @@
+<!-- markdownlint-disable MD025 -->
+
 # SUMMARY
 
 [前提条件等](./ControlGeneral.md)  
 
+# Basic Contents
+
 - [基礎知識](./BasicContents/BasicContents.md)
   - [git / GitHub](./BasicContents/git_GitHub.md)  
   - [DCモーターの制御](./BasicContents/motor.md)  
-  - [コントローラーのデータ](./BasicContents/Controller/how_to.md)
-    - [受信側(lib)](./BasicContents/Controller/use_rxController.md)
-    - [送信側(lib)](./BasicContents/Controller/use_txController.md)
-  - [C言語 / C++](./BasicContents/language_c_cpp.md)
+  - [コントローラーのデータ](./BasicContents/controller_data.md)
+  - [C言語](./BasicContents/language_c.md)
+
+# PlatformIO
+
+- [PlatformIO IDE](./PlatformIO/PlatformIO.md)
+  - [環境構築](./PlatformIO/setup.md)
+  - [mbed](./PlatformIO/mbed/mbedPlatformIO.md)
+    - [コントローラー受信側(lib)](./PlatformIO/mbed/Controller/use_rxController.md)
 
 <!-- # PlatformIOでの開発 -->
 
