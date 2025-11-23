@@ -2227,6 +2227,347 @@ span.codeblock_filename_inner {
 }
 
 </style>
+<h1 id="c"><a class="header" href="#c">C++</a></h1>
+<div id="admonition-cの前に" class="admonition admonish-danger" role="note" aria-labelledby="admonition-cの前に-title">
+<div class="admonition-title">
+<div id="admonition-cの前に-title">
+<p>C++の前に</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-cの前に"></a>
+</div>
+<div>
+<p>C++の前にC言語を理解しましょう。<br />
+C言語がわからないとC++の説明がわからないことがあります。</p>
+</div>
+</div>
+<hr />
+<div id="admonition-cとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-cとは-title">
+<div class="admonition-title">
+<div id="admonition-cとは-title">
+<p>C++とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-cとは"></a>
+</div>
+<div>
+<p>プログラミング言語の一つで、C言語に<strong>オブジェクト指向</strong>要素を加えた言語です。<br />
+基本的な文法はC言語とほぼ一致します。C言語を更に拡張し、オブジェクト指向できるように作成された言語です。</p>
+</div>
+</div>
+<div id="admonition-オブジェクト指向とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-オブジェクト指向とは-title">
+<div class="admonition-title">
+<div id="admonition-オブジェクト指向とは-title">
+<p>オブジェクト指向とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-オブジェクト指向とは"></a>
+</div>
+<div>
+<p>「もの」を考えるプログラミング言語の考え方です。<br />
+例えば、「車」というオブジェクトには、「燃料」、「タイヤの回転数」、「乗車人数」などの変数や「走る」、「止まる」、「窓を開ける」などの動作を表す機能があります。<br />
+また、「走る」、「止まる」などの操作をするために内部でどんなことが行われているか知る必要はありません。「走る」、「止まる」ためにはどんな操作を行えばいいのかがわかっていれば内部の仕組みに関係なく、使用することができます。</p>
+</div>
+</div>
+<div id="admonition-クラスとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-クラスとは-title">
+<div class="admonition-title">
+<div id="admonition-クラスとは-title">
+<p>クラスとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-クラスとは"></a>
+</div>
+<div>
+<p>複数の車がある場合、持つべき変数、動作は同じですがそれぞれで変数の値などは異なります。変数の値などが異なるだけなら、構造体を作成し、一つ一つの車をそれぞれの構造体に対応させれば問題はありません。しかし、動きなどはすべて同じなため、それぞれの車に対して定義するのは無駄です。<br />
+そこで、一つの変数、動きをまとめ大量生産できるようにした型のことをクラスと呼びます。</p>
+<p>C言語の構造体に変数だけでなく、関数も追加したようなものがクラスです。</p>
+<p><img src="BasicContents/../resources/BasicContents/language_cpp/car_class.png" alt="car_class" width="300"></p>  
+<p>この例では、<code>car</code>というクラスの中に<code>move_forward()</code>というメソッドや、<code>fuel</code>というメンバ変数が存在します。</p>
+</div>
+</div>
+<div id="admonition-インスタンスとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-インスタンスとは-title">
+<div class="admonition-title">
+<div id="admonition-インスタンスとは-title">
+<p>インスタンスとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-インスタンスとは"></a>
+</div>
+<div>
+<p>オブジェクトはそれぞれの車を表すときに用いられる考え方で「インスタンス」とも呼びます。<br />
+車の設計書がクラスで、実際につくる車が「インスタンス」という考え方で、問題はないと思います。</p>
+<p>C言語の構造体で言えば、構造体変数に当たるものと同じです。</p>
+</div>
+</div>
+<div id="admonition-名前空間とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-名前空間とは-title">
+<div class="admonition-title">
+<div id="admonition-名前空間とは-title">
+<p>名前空間とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-名前空間とは"></a>
+</div>
+<div>
+<p>変数や関数、クラスの名前が重複しにくいように作成された空間のことです。違う名前空間なら同じ名前の変数などが複数存在しても問題ありません。しかし、同じ名前空間内ではもちろん同じ名前は使用できません。</p>
+<p><img src="BasicContents/../resources/BasicContents/language_cpp/namespace.png" alt="namespace" width="300"></p>  
+<p>この例では<code>a</code>、<code>b</code>、<code>c</code>の3つの名前空間があります。<br />
+名前空間が異なるため<code>read</code>や<code>write</code>などがそれぞれの名前空間で存在しています。しかし、名前空間<code>c</code>では、同じ名前空間内なので<code>read</code>という名前は複数宣言できません。</p>
+</div>
+</div>
+<div id="admonition-利用例" class="admonition admonish-example" role="note" aria-labelledby="admonition-利用例-title">
+<div class="admonition-title">
+<div id="admonition-利用例-title">
+<p>利用例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-利用例"></a>
+</div>
+<div>
+<p>クラスを使用する例を紹介します。クラスの作成や名前空間の定義は一旦飛ばします。</p>
+<pre><code class="language-cpp">#include "car.hpp"
+
+int main(void){
+    car car1;               //  インスタンスを作成
+    car1.move_forward();    //  メソッドを呼び出し
+    car1.light_on();
+
+    return 0;
+}
+</code></pre>
+<p>インスタンスを宣言する場合は変数などと同じように宣言します。<code>car1</code>というインスタンスが作成されます。<br />
+メソッドや変数にアクセスするためには、構造体と同じように<code>.</code>(ピリオド)を使用します。</p>
+<p>名前空間を使用する例を紹介します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HelloWorld_1.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(void){
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p><code>Hello, World!"</code>を表示するプログラムの例です。<code>std</code>という名前空間にある<code>cout</code>と<code>endl</code>というものを使用しています。<code>std</code>という名前空間を使用する前に<code>using namespace std;</code>で<code>std</code>を使用するという宣言をしています。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HelloWorld_2.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+
+int main(void){
+    std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>また、名前空間の使用を宣言せずに<code>std::cout</code>のように名前空間にあるものを使用する際に一つ一つに<code>名前空間名::</code>をつけることでその名前空間に定義されているものを使用することができます。</p>
+</div>
+</div>
+<div id="admonition-引数付きのインスタンス" class="admonition admonish-tip" role="note" aria-labelledby="admonition-引数付きのインスタンス-title">
+<div class="admonition-title">
+<div id="admonition-引数付きのインスタンス-title">
+<p>引数付きのインスタンス</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-引数付きのインスタンス"></a>
+</div>
+<div>
+<p>インスタンスを宣言するときに引数を渡すことができます。引数を渡すときに呼び出すメソッドを<strong>コンストラクタ</strong>と言います。<br />
+コンストラクタは主に、宣言時に初期化したいものの値などを渡してあげます。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car2.cpp</span></div>
+<pre><code class="language-cpp">#include "car.hpp"
+
+int main(void){
+    car car1(100);
+}
+</code></pre>
+<p>このように引数を渡すことができます。この例では、燃料の初期値として<code>100</code>を渡しています。渡す引数はそれぞれのクラスで異なるため、クラスを使用する場合には宣言方法をしっかりと確認する必要があります。</p>
+</div>
+</div>
+<!-- ````admonish example "サンプルプログラム(クラス)"
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.hpp</span></div>
+
+```cpp
+#ifndef INCLUDE_CAR_HPP
+#define INCLUDE_CAR_HPP
+
+class car{
+    public:
+        void move_forward(uint16_t length);
+        void move_back(uint16_t length);
+        void light_on(uint8_t level);
+        void light_off(void);
+    private:
+        uint16_t fuel = 0;
+        uint16_t mileage = 0;
+        uint16_t speed = 0;
+}
+
+#endif  //  INCLUDE_CAR_HPP
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+void car::move_forward(uint16_t length){
+    mileage += length;
+}
+
+void car::move_back(uint8_t length){
+    mileage -= length;
+}
+
+void car::light_on(uint8_t level){
+    
+}
+
+void car::light_off(void){
+
+}
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+int main(void){
+    car car1;   //  インスタンスを作成
+    car1.light_on(127);
+    car1.move_forward();
+    
+    return 0;
+}
+```
+
+クラスを定義する場合はこのように記述します。  
+`public`と`private`はアクセス修飾子と呼ばれ呼び出し側で利用できるものが`public`、クラス内のみで利用できるものが`private`と指定します。  
+実態の宣言は関数名の前にクラス名`::`(コロン2つ)をつけます。  
+クラスの各メンバにアクセスするときは、構造体と同じで`.`(ピリオド)を使用します。  
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`</span></div>
+
+````
+
+```
+名前空間の定義  
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car_namaspace.hpp</span></div>
+
+```cpp
+#ifndef INCLUDE_CAR_NAMESPACE_HPP
+#define INCLUDE_CAR_NAMESPACE_HPP
+
+namespace science{
+    class car{
+        //  略
+    }    
+}
+
+#endif  //  INCLUDE_CAR_NAMESPACE_HPP
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+namespace science{
+    //  略
+}
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+using namespace science;
+
+int main(void){
+    car car1;
+    car1.light_on(127);
+    car1.move_forward();
+    
+    return 0;
+}
+```
+名前空間を宣言する場合は`namespace`を使用します。  
+名前空間にあるものを使用する場合は`using namespace 名前空間名`を使用します。また、`using`を使用しない場合はそれぞれに`名前空間名::`をつけて使用します。
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+int main(void){
+    science::car car1;
+    car1.light_on(127);
+    car1.move_forward();
+    
+    return 0;
+}
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`</span></div>
+
+````
+
+```
+インスタンスを作成する際に、引数を渡すことができます。インスタンスを作成する際に呼ばれるメソッドをコンストラクタと言います。  
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car_namaspace.hpp</span></div>
+
+```cpp
+#ifndef INCLUDE_CAR_NAMESPACE_HPP
+#define INCLUDE_CAR_NAMESPACE_HPP
+
+namespace science{
+    class car{
+        public:
+            car(uint16_t default_fuel);
+        //  略
+    }    
+}
+
+#endif  //  INCLUDE_CAR_NAMESPACE_HPP
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+namespace science{
+    car::car(uint16_t default_fuel){
+
+    }
+    //  略
+}
+```
+
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+
+```cpp
+#include "car.hpp"
+
+using namespace science;
+
+int main(void){
+    car car1;
+    car1.light_on(127);
+    car1.move_forward();
+    
+    return 0;
+}
+```
+<div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
 <h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
 <h2 id="環境構築"><a class="header" href="#環境構築"><a href="PlatformIO/./setup.html">環境構築</a></a></h2>
 <div id="admonition-内容" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-title">
@@ -2239,20 +2580,6 @@ span.codeblock_filename_inner {
 <div>
 <p><code>PlatformIO</code>とはなにか<br />
 <code>Visual Studio Code</code>、<code>PlatformIO IDE</code>、<code>Python</code>のインストール</p>
-</div>
-</div>
-<h2 id="mbed"><a class="header" href="#mbed"><a href="PlatformIO/./mbed/mbedPlatformIO.html">mbed</a></a></h2>
-<div id="admonition-内容-1" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-1-title">
-<div class="admonition-title">
-<div id="admonition-内容-1-title">
-<p>内容</p>
-</div>
-<a class="admonition-anchor-link" href="PlatformIO/PlatformIO.html#admonition-内容-1"></a>
-</div>
-<div>
-<p>プロジェクトの作成方法<br />
-<code>mbed</code>で使用できる関数やクラス<br />
-<code>mbed</code>用ライブラリの使い方など</p>
 </div>
 </div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
@@ -2387,29 +2714,42 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="mbed-1"><a class="header" href="#mbed-1">mbed</a></h1>
+<h1 id="mbed"><a class="header" href="#mbed">mbed</a></h1>
 <p>PlatformIO framework mbed</p>
-<h2 id="通信"><a class="header" href="#通信">通信</a></h2>
-<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="PlatformIO/mbed/./Controller/use_rxController.html">受信側(lib)</a></a></h3>
 <div id="admonition-内容" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-title">
 <div class="admonition-title">
 <div id="admonition-内容-title">
 <p>内容</p>
 </div>
-<a class="admonition-anchor-link" href="PlatformIO/mbed/mbedPlatformIO.html#admonition-内容"></a>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容"></a>
+</div>
+<div>
+<p>プロジェクトの作成方法<br />
+<code>mbed</code>で使用できる関数やクラス<br />
+<code>mbed</code>用ライブラリの使い方など</p>
+</div>
+</div>
+<h2 id="通信"><a class="header" href="#通信">通信</a></h2>
+<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./Controller/use_rxController.html">受信側(lib)</a></a></h3>
+<div id="admonition-内容-1" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-1-title">
+<div class="admonition-title">
+<div id="admonition-内容-1-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-1"></a>
 </div>
 <div>
 <p>コントローラーのデータを受信、使用するためのライブラリ<br />
 使用方法、サンプルプログラムなど</p>
 </div>
 </div>
-<h3 id="送信側lib"><a class="header" href="#送信側lib"><a href="PlatformIO/mbed/./Controller/use_txController.html">送信側(lib)</a></a></h3>
-<div id="admonition-内容-1" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-1-title">
+<h3 id="送信側lib"><a class="header" href="#送信側lib"><a href="mbed/./Controller/use_txController.html">送信側(lib)</a></a></h3>
+<div id="admonition-内容-2" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-2-title">
 <div class="admonition-title">
-<div id="admonition-内容-1-title">
+<div id="admonition-内容-2-title">
 <p>内容</p>
 </div>
-<a class="admonition-anchor-link" href="PlatformIO/mbed/mbedPlatformIO.html#admonition-内容-1"></a>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-2"></a>
 </div>
 <div>
 <p>コントローラーのデータを取得、送信するためのライブラリ<br />
@@ -2435,7 +2775,7 @@ span.codeblock_filename_inner {
 <div id="admonition-github-title">
 <p>GitHub</p>
 </div>
-<a class="admonition-anchor-link" href="PlatformIO/mbed/Controller/use_rxController.html#admonition-github"></a>
+<a class="admonition-anchor-link" href="mbed/Controller/use_rxController.html#admonition-github"></a>
 </div>
 <div>
 <p><a href="https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src">receiveController</a></p>
@@ -2447,7 +2787,7 @@ span.codeblock_filename_inner {
 <div id="admonition-注意点-title">
 <p>注意点</p>
 </div>
-<a class="admonition-anchor-link" href="PlatformIO/mbed/Controller/use_rxController.html#admonition-注意点"></a>
+<a class="admonition-anchor-link" href="mbed/Controller/use_rxController.html#admonition-注意点"></a>
 </div>
 <div>
 <p>ライブラリは置き場、公開/非公開が変更される場合があります。<br />
@@ -2455,7 +2795,7 @@ span.codeblock_filename_inner {
 </div>
 </div>
 <h2 id="使用方法dualshock4の場合"><a class="header" href="#使用方法dualshock4の場合">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
-<p>ページの下に<a href="PlatformIO/mbed/Controller/use_rxController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
+<p>ページの下に<a href="mbed/Controller/use_rxController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
 <h3 id="include--using"><a class="header" href="#include--using">include &amp; using</a></h3>
 <ul>
 <li>
@@ -2530,7 +2870,7 @@ if(ps4.getDS4_IT()){
 <div id="admonition-データ名とデータ型-title">
 <p>データ名とデータ型</p>
 </div>
-<a class="admonition-anchor-link" href="PlatformIO/mbed/Controller/use_rxController.html#admonition-データ名とデータ型"></a>
+<a class="admonition-anchor-link" href="mbed/Controller/use_rxController.html#admonition-データ名とデータ型"></a>
 </div>
 <div>
 <p><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code><br />
@@ -2643,7 +2983,7 @@ if(ps4.getDS4_IT()){
 <div id="admonition-dualshock4の場合-title">
 <p>DUALSHOCK4の場合</p>
 </div>
-<a class="admonition-anchor-link" href="PlatformIO/mbed/Controller/use_rxController.html#admonition-dualshock4の場合"></a>
+<a class="admonition-anchor-link" href="mbed/Controller/use_rxController.html#admonition-dualshock4の場合"></a>
 </div>
 <div>
 <p>使用しているものです。<code>DUALSHOCK4</code>用のファイルとコントローラー共通のファイルが必要になります。</p>
@@ -2766,6 +3106,22 @@ int main(void){
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

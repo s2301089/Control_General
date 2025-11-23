@@ -11,13 +11,14 @@
   - [DCモーターの制御](./BasicContents/motor.md)  
   - [コントローラーのデータ](./BasicContents/controller_data.md)
   - [C言語](./BasicContents/language_c.md)
-
-# PlatformIO
-
+  - [C++](./BasicContents/language_cpp.md)
 - [PlatformIO IDE](./PlatformIO/PlatformIO.md)
   - [環境構築](./PlatformIO/setup.md)
-  - [mbed](./PlatformIO/mbed/mbedPlatformIO.md)
-    - [コントローラー受信側(lib)](./PlatformIO/mbed/Controller/use_rxController.md)
+
+# mbed OS
+
+- [mbed](./mbed/mbedPlatformIO.md)
+  - [コントローラー受信側(lib)](./mbed/Controller/use_rxController.md)
 
 <!-- # PlatformIOでの開発 -->
 
