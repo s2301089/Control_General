@@ -24,10 +24,10 @@
 
   ```cpp : main.cpp
   #include "txDualshock4.hpp"
-  namespace using snct;
+  using namespace snct;
   ```
 
-- `namespace using snct;`を行わない場合は、使用する際に`snct::`を先頭に付け加えてください。
+- `using namespace snct;`を行わない場合は、使用する際に`snct::`を先頭に付け加えてください。
 
 ### 変数などの宣言  
 
@@ -188,7 +188,7 @@ PS4USB PS4(&usb);
 //  SoftwareSerialのインスタンスを作成
 SoftwareSerial fep(7,6);
 
-//  namespace using snct;をしていないからsnct::をつけます。
+//  using namespace snct;をしていないからsnct::をつけます。
 snct::TxDualshock4::DS4 data;
 
 //  TxDualshock4のインスタンスを作成

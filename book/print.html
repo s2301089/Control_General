@@ -755,139 +755,6 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
-<h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
-<p>回路的には以下のようになっています。<br />
-<img src="BasicContents/../resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png" /><br />
-モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br />
-また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
-<h2 id="pwm"><a class="header" href="#pwm">PWM</a></h2>
-<div id="admonition-pwmとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-pwmとは-title">
-<div class="admonition-title">
-<div id="admonition-pwmとは-title">
-<p>PWMとは</p>
-</div>
-<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-pwmとは"></a>
-</div>
-<div>
-<p><code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>といいます。<br />
-一定周期の中で出力が<code>HIGH</code>の時間と<code>LOW</code>の時間の比(デューティー比)で中間の電圧を擬似的に表現します。</p>
-<p>PWMの出力波形は以下の図のようなものです。<br />
-<img src="BasicContents/../resources/BasicContents/motor/pwm_waveform.png" alt="pwm_pwm_waveform.png" /></p>
-</div>
-</div>
-<div id="admonition-出力の例" class="admonition admonish-example" role="note" aria-labelledby="admonition-出力の例-title">
-<div class="admonition-title">
-<div id="admonition-出力の例-title">
-<p>出力の例</p>
-</div>
-<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-出力の例"></a>
-</div>
-<div>
-<p>GPIOピンの出力が<code>5V</code>でデューティー比が<code>25%</code>であれば、出力は<code>1.25V</code>になります。出力電圧は以下の式で求められます。<br />
-$$ 出力電圧 = {最大電圧} \times {デューティー比} $$<br />
-デューティー比が小さいと素子によってはデューティー比<code>0％</code>とあまり変わらない結果が得られるものもあります。<strong>各素子の動作電圧</strong>などを確認してください。</p>
-</div>
-</div>
-<h2 id="出力の決定"><a class="header" href="#出力の決定">出力の決定</a></h2>
-<p>モーターへの出力は<code>Digital</code>と<code>PWM</code>の2つで決まり、<code>Digital</code>と<code>PWM</code>の差が出力になります。図示すると以下のようになります。</p>
-<p><img src="BasicContents/../resources/BasicContents/motor/motor_output.png" alt="motor_output.png" /></p>
-<p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応します。</p>
-<hr />
-<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
-<div class="admonition-title">
-<div id="admonition-参考-title">
-<p>参考</p>
-</div>
-<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-参考"></a>
-</div>
-<div>
-<ul>
-<li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
-<li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
-</ul>
-</div>
-</div><div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="コントローラーのデータ-1"><a class="header" href="#コントローラーのデータ-1">コントローラーのデータ</a></h1>
-<h2 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h2>
-<p>双葉電子の<code>FEP02</code>を使用しています。</p>
-<div id="admonition-製品情報" class="admonition admonish-info" role="note" aria-labelledby="admonition-製品情報-title">
-<div class="admonition-title">
-<div id="admonition-製品情報-title">
-<p>製品情報</p>
-</div>
-<a class="admonition-anchor-link" href="BasicContents/controller_data.html#admonition-製品情報"></a>
-</div>
-<div>
-<p><a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">FEP-02</a></p>
-</div>
-</div>
-<p><code>920MHz</code>帯の無線モジュールです。<code>UART</code>(シリアル通信)でデータの送受信を行っています。<code>Baudrate</code>は<code>38400bps</code>の設定になっているものが多いです。</p>
-<h2 id="送信側"><a class="header" href="#送信側">送信側</a></h2>
-<p>使用機器</p>
-<ul>
-<li><code>Arduino Uno R3</code></li>
-<li><code>USB Host Shield 2.0</code></li>
-<li><code>FEP</code></li>
-<li>コントローラー<br />
-<code>DUALSHOCK4</code>など</li>
-</ul>
-<p>以下の図のように接続します。</p>
-<p><img src="BasicContents/../../resources/BasicContents/Controller/tx_connect.png" alt="tx_connect.png" /></p>
-<h2 id="受信側"><a class="header" href="#受信側">受信側</a></h2>
-<p>使用機器</p>
-<ul>
-<li>マイコン
-<code>STM32F446RET6</code>や<code>STM32F303K8T6</code>など</li>
-<li><code>FEP</code></li>
-</ul>
-<p>以下の図のように接続します。</p>
-<p><img src="BasicContents/../../resources/BasicContents/Controller/rx_connect.png" alt="rx_connect.png" /></p>
-<h2 id="送受信するデータ"><a class="header" href="#送受信するデータ">送受信するデータ</a></h2>
-<p><code>DUALSHOCK4</code>の場合</p>
-<p><img src="BasicContents/../../resources/BasicContents/Controller/data_assign_DUALSHOCK4.png" alt="data_assign_DUALSHOCK4.png" /></p>
-<p><code>DUALSHOCK3</code>の場合</p>
-<p><img src="BasicContents/../../resources/BasicContents/Controller/data_assign_DUALSHOCK3.png" alt="data_assign_DUALSHOCK4.png" /></p>
-<p><code>DUALSENSE</code>の場合</p>
-<p><img src="BasicContents/../../resources/BasicContents/Controller/data_assign_DUALSENSE.png" alt="data_assign_DUALSHOCK4.png" /></p>
-<p>データ型はすべて<code>uint8_t</code>で、合計13Byteのデータになっています。</p>
-<div id="admonition-追加のデータ" class="admonition admonish-info" role="note" aria-labelledby="admonition-追加のデータ-title">
-<div class="admonition-title">
-<div id="admonition-追加のデータ-title">
-<p>追加のデータ</p>
-</div>
-<a class="admonition-anchor-link" href="BasicContents/controller_data.html#admonition-追加のデータ"></a>
-</div>
-<div>
-<p><code>header</code> : <code>0xaf</code> 先頭データを意味します。<br />
-<code>SUM</code> : データ確認用のSUMです。 <code>1~8Byte</code>の合計値になっています。<br />
-<code>footer</code> : <code>0xed</code>  終端データを意味します。</p>
-</div>
-</div><div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
 <h1 id="c言語-1"><a class="header" href="#c言語-1">C言語</a></h1>
 <div id="admonition-プログラミング言語とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-プログラミング言語とは-title">
 <div class="admonition-title">
@@ -2375,187 +2242,153 @@ int main(void){
 <p>このように引数を渡すことができます。この例では、燃料の初期値として<code>100</code>を渡しています。渡す引数はそれぞれのクラスで異なるため、クラスを使用する場合には宣言方法をしっかりと確認する必要があります。</p>
 </div>
 </div>
-<!-- ````admonish example "サンプルプログラム(クラス)"
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.hpp</span></div>
-
-```cpp
-#ifndef INCLUDE_CAR_HPP
-#define INCLUDE_CAR_HPP
-
-class car{
-    public:
-        void move_forward(uint16_t length);
-        void move_back(uint16_t length);
-        void light_on(uint8_t level);
-        void light_off(void);
-    private:
-        uint16_t fuel = 0;
-        uint16_t mileage = 0;
-        uint16_t speed = 0;
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_cpp.html#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://cpp-lang.sevendays-study.com/index.html">一週間で身につくC++言語の基本</a></li>
+</ul>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
 }
 
-#endif  //  INCLUDE_CAR_HPP
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-void car::move_forward(uint16_t length){
-    mileage += length;
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
 }
 
-void car::move_back(uint8_t length){
-    mileage -= length;
+</style>
+<h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
+<h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
+<p>回路的には以下のようになっています。<br />
+<img src="BasicContents/../resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png" /><br />
+モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br />
+また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
+<h2 id="pwm"><a class="header" href="#pwm">PWM</a></h2>
+<div id="admonition-pwmとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-pwmとは-title">
+<div class="admonition-title">
+<div id="admonition-pwmとは-title">
+<p>PWMとは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-pwmとは"></a>
+</div>
+<div>
+<p><code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>といいます。<br />
+一定周期の中で出力が<code>HIGH</code>の時間と<code>LOW</code>の時間の比(デューティー比)で中間の電圧を擬似的に表現します。</p>
+<p>PWMの出力波形は以下の図のようなものです。<br />
+<img src="BasicContents/../resources/BasicContents/motor/pwm_waveform.png" alt="pwm_pwm_waveform.png" /></p>
+</div>
+</div>
+<div id="admonition-出力の例" class="admonition admonish-example" role="note" aria-labelledby="admonition-出力の例-title">
+<div class="admonition-title">
+<div id="admonition-出力の例-title">
+<p>出力の例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-出力の例"></a>
+</div>
+<div>
+<p>GPIOピンの出力が<code>5V</code>でデューティー比が<code>25%</code>であれば、出力は<code>1.25V</code>になります。出力電圧は以下の式で求められます。<br />
+$$ 出力電圧 = {最大電圧} \times {デューティー比} $$<br />
+デューティー比が小さいと素子によってはデューティー比<code>0％</code>とあまり変わらない結果が得られるものもあります。<strong>各素子の動作電圧</strong>などを確認してください。</p>
+</div>
+</div>
+<h2 id="出力の決定"><a class="header" href="#出力の決定">出力の決定</a></h2>
+<p>モーターへの出力は<code>Digital</code>と<code>PWM</code>の2つで決まり、<code>Digital</code>と<code>PWM</code>の差が出力になります。図示すると以下のようになります。</p>
+<p><img src="BasicContents/../resources/BasicContents/motor/motor_output.png" alt="motor_output.png" /></p>
+<p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応します。</p>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/motor.html#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
+<li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
+</ul>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
 }
 
-void car::light_on(uint8_t level){
-    
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
 }
 
-void car::light_off(void){
-
-}
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-int main(void){
-    car car1;   //  インスタンスを作成
-    car1.light_on(127);
-    car1.move_forward();
-    
-    return 0;
-}
-```
-
-クラスを定義する場合はこのように記述します。  
-`public`と`private`はアクセス修飾子と呼ばれ呼び出し側で利用できるものが`public`、クラス内のみで利用できるものが`private`と指定します。  
-実態の宣言は関数名の前にクラス名`::`(コロン2つ)をつけます。  
-クラスの各メンバにアクセスするときは、構造体と同じで`.`(ピリオド)を使用します。  
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`</span></div>
-
-````
-
-```
-名前空間の定義  
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car_namaspace.hpp</span></div>
-
-```cpp
-#ifndef INCLUDE_CAR_NAMESPACE_HPP
-#define INCLUDE_CAR_NAMESPACE_HPP
-
-namespace science{
-    class car{
-        //  略
-    }    
-}
-
-#endif  //  INCLUDE_CAR_NAMESPACE_HPP
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-namespace science{
-    //  略
-}
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-using namespace science;
-
-int main(void){
-    car car1;
-    car1.light_on(127);
-    car1.move_forward();
-    
-    return 0;
-}
-```
-名前空間を宣言する場合は`namespace`を使用します。  
-名前空間にあるものを使用する場合は`using namespace 名前空間名`を使用します。また、`using`を使用しない場合はそれぞれに`名前空間名::`をつけて使用します。
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-int main(void){
-    science::car car1;
-    car1.light_on(127);
-    car1.move_forward();
-    
-    return 0;
-}
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`</span></div>
-
-````
-
-```
-インスタンスを作成する際に、引数を渡すことができます。インスタンスを作成する際に呼ばれるメソッドをコンストラクタと言います。  
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car_namaspace.hpp</span></div>
-
-```cpp
-#ifndef INCLUDE_CAR_NAMESPACE_HPP
-#define INCLUDE_CAR_NAMESPACE_HPP
-
-namespace science{
-    class car{
-        public:
-            car(uint16_t default_fuel);
-        //  略
-    }    
-}
-
-#endif  //  INCLUDE_CAR_NAMESPACE_HPP
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-namespace science{
-    car::car(uint16_t default_fuel){
-
-    }
-    //  略
-}
-```
-
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-
-```cpp
-#include "car.hpp"
-
-using namespace science;
-
-int main(void){
-    car car1;
-    car1.light_on(127);
-    car1.move_forward();
-    
-    return 0;
-}
-```
-<div style="break-before: page; page-break-before: always;"></div><style>
+</style>
+<h1 id="コントローラーのデータ-1"><a class="header" href="#コントローラーのデータ-1">コントローラーのデータ</a></h1>
+<h2 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h2>
+<p>双葉電子の<code>FEP02</code>を使用しています。</p>
+<div id="admonition-製品情報" class="admonition admonish-info" role="note" aria-labelledby="admonition-製品情報-title">
+<div class="admonition-title">
+<div id="admonition-製品情報-title">
+<p>製品情報</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/controller_data.html#admonition-製品情報"></a>
+</div>
+<div>
+<p><a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">FEP-02</a></p>
+</div>
+</div>
+<p><code>920MHz</code>帯の無線モジュールです。<code>UART</code>(シリアル通信)でデータの送受信を行っています。<code>Baudrate</code>は<code>38400bps</code>の設定になっているものが多いです。</p>
+<h2 id="送信側"><a class="header" href="#送信側">送信側</a></h2>
+<p>使用機器</p>
+<ul>
+<li><code>Arduino Uno R3</code></li>
+<li><code>USB Host Shield 2.0</code></li>
+<li><code>FEP</code></li>
+<li>コントローラー<br />
+<code>DUALSHOCK4</code>など</li>
+</ul>
+<p>以下の図のように接続します。</p>
+<p><img src="BasicContents/../../resources/BasicContents/Controller/tx_connect.png" alt="tx_connect.png" /></p>
+<h2 id="受信側"><a class="header" href="#受信側">受信側</a></h2>
+<p>使用機器</p>
+<ul>
+<li>マイコン
+<code>STM32F446RET6</code>や<code>STM32F303K8T6</code>など</li>
+<li><code>FEP</code></li>
+</ul>
+<p>以下の図のように接続します。</p>
+<p><img src="BasicContents/../../resources/BasicContents/Controller/rx_connect.png" alt="rx_connect.png" /></p>
+<h2 id="送受信するデータ"><a class="header" href="#送受信するデータ">送受信するデータ</a></h2>
+<p><code>DUALSHOCK4</code>の場合</p>
+<p><img src="BasicContents/../../resources/BasicContents/Controller/data_assign_DUALSHOCK4.png" alt="data_assign_DUALSHOCK4.png" /></p>
+<p><code>DUALSHOCK3</code>の場合</p>
+<p><img src="BasicContents/../../resources/BasicContents/Controller/data_assign_DUALSHOCK3.png" alt="data_assign_DUALSHOCK4.png" /></p>
+<p><code>DUALSENSE</code>の場合</p>
+<p><img src="BasicContents/../../resources/BasicContents/Controller/data_assign_DUALSENSE.png" alt="data_assign_DUALSHOCK4.png" /></p>
+<p>データ型はすべて<code>uint8_t</code>で、合計13Byteのデータになっています。</p>
+<div id="admonition-追加のデータ" class="admonition admonish-info" role="note" aria-labelledby="admonition-追加のデータ-title">
+<div class="admonition-title">
+<div id="admonition-追加のデータ-title">
+<p>追加のデータ</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/controller_data.html#admonition-追加のデータ"></a>
+</div>
+<div>
+<p><code>header</code> : <code>0xaf</code> 先頭データを意味します。<br />
+<code>SUM</code> : データ確認用のSUMです。 <code>1~8Byte</code>の合計値になっています。<br />
+<code>footer</code> : <code>0xed</code>  終端データを意味します。</p>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
 }
@@ -2804,11 +2637,11 @@ span.codeblock_filename_inner {
 <li>
 <p>使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行います。</p>
 <pre><code class="language-cpp : main.cpp">#include "rxDualshock4.hpp"
-namespace using snct;
+using namespace snct;
 </code></pre>
 </li>
 <li>
-<p><code>namespace using snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えてください。</p>
+<p><code>using namespace snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えてください。</p>
 </li>
 </ul>
 <h3 id="変数などの宣言"><a class="header" href="#変数などの宣言">変数などの宣言</a></h3>
@@ -3004,7 +2837,7 @@ if(ps4.getDS4_IT()){
 
 #define DBG_M
 
-//  namespace using snct;をしていないからsnct::をつけます。
+//  using namespace snct;をしていないからsnct::をつけます。
 struct snct::RxDualshock4::DS4_struct data;
 
 //  UnbufferedSerialのインスタンスを作成
@@ -3106,22 +2939,6 @@ int main(void){
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

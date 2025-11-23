@@ -7,11 +7,11 @@
 # Basic Contents
 
 - [基礎知識](./BasicContents/BasicContents.md)
-  - [git / GitHub](./BasicContents/git_GitHub.md)  
-  - [DCモーターの制御](./BasicContents/motor.md)  
-  - [コントローラーのデータ](./BasicContents/controller_data.md)
+  - [git / GitHub](./BasicContents/git_GitHub.md)
   - [C言語](./BasicContents/language_c.md)
   - [C++](./BasicContents/language_cpp.md)
+  - [DCモーターの制御](./BasicContents/motor.md)
+  - [コントローラーのデータ](./BasicContents/controller_data.md)
 - [PlatformIO IDE](./PlatformIO/PlatformIO.md)
   - [環境構築](./PlatformIO/setup.md)
 

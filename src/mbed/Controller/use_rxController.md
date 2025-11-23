@@ -24,10 +24,10 @@
 
   ```cpp : main.cpp
   #include "rxDualshock4.hpp"
-  namespace using snct;
+  using namespace snct;
   ```
 
-- `namespace using snct;`を行わない場合は、使用する際に`snct::`を先頭に付け加えてください。
+- `using namespace snct;`を行わない場合は、使用する際に`snct::`を先頭に付け加えてください。
 
 ### 変数などの宣言  
 
@@ -165,7 +165,7 @@ led.write(data.CIRCLE);
 
 #define DBG_M
 
-//  namespace using snct;をしていないからsnct::をつけます。
+//  using namespace snct;をしていないからsnct::をつけます。
 struct snct::RxDualshock4::DS4_struct data;
 
 //  UnbufferedSerialのインスタンスを作成
