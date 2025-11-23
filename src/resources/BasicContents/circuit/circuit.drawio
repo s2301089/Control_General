@@ -1,0 +1,621 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="ページ1" id="SakfipAxuGlpZM8aSOgZ">
+    <mxGraphModel dx="1671" dy="984" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eZskiz_GbekbPZuHMrsU-1" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="270" y="340" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-2" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="130" y="340" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;startFill=0;fontFamily=Cambria Math;align=center;fontStyle=2;fontSize=22;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-1" target="eZskiz_GbekbPZuHMrsU-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-5" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;startFill=0;endArrow=none;fontStyle=2" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-1" target="eZskiz_GbekbPZuHMrsU-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-10" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="430" as="sourcePoint" />
+            <mxPoint x="260" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-17" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="310" as="sourcePoint" />
+            <mxPoint x="250" y="310" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-18" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="200" y="270" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-20" value="V&lt;sub&gt;R&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="220" y="370" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-21" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="430" as="sourcePoint" />
+            <mxPoint x="120" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-22" value="E&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;3.3[V]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-24" value="R&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="360" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-25" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="270" y="110" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-26" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="130" y="110" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;startFill=0;fontFamily=Cambria Math;align=center;fontStyle=2;fontSize=22;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-25" target="eZskiz_GbekbPZuHMrsU-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-28" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;startFill=0;endArrow=none;fontStyle=2" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-25" target="eZskiz_GbekbPZuHMrsU-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-29" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="200" as="sourcePoint" />
+            <mxPoint x="260" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-30" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="80" as="sourcePoint" />
+            <mxPoint x="250" y="80" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-31" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-32" value="V" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="220" y="140" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-36" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="270" y="660" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-37" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="130" y="710" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;startFill=0;fontFamily=Cambria Math;align=center;fontStyle=2;fontSize=22;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-36" target="eZskiz_GbekbPZuHMrsU-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-40" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="750" as="sourcePoint" />
+            <mxPoint x="260" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-41" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="630" as="sourcePoint" />
+            <mxPoint x="250" y="630" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-42" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="200" y="590" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-43" value="V&lt;sub&gt;R1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="210" y="690" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-44" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="800" as="sourcePoint" />
+            <mxPoint x="120" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-45" value="E&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;5.0[V]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="60" y="730" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-46" value="R&lt;sub&gt;1&lt;/sub&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="680" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-49" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="270" y="760" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-50" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="850" as="sourcePoint" />
+            <mxPoint x="260" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-51" value="V&lt;sub&gt;R2&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="210" y="790" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-52" value="R&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="780" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-53" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-49" target="eZskiz_GbekbPZuHMrsU-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-54" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="630" y="660" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-55" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="490" y="710" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;startFill=0;fontFamily=Cambria Math;align=center;fontStyle=2;fontSize=22;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-54" target="eZskiz_GbekbPZuHMrsU-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-57" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="750" as="sourcePoint" />
+            <mxPoint x="620" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-58" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="630" as="sourcePoint" />
+            <mxPoint x="610" y="630" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-59" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="560" y="590" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-60" value="V&lt;sub&gt;R1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="570" y="690" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-61" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="800" as="sourcePoint" />
+            <mxPoint x="480" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-62" value="E&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;5.0[V]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="420" y="730" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-63" value="R&lt;sub&gt;1&lt;/sub&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;5[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="680" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-64" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="630" y="760" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-65" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="850" as="sourcePoint" />
+            <mxPoint x="620" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-66" value="V&lt;sub&gt;R2&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="570" y="790" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-67" value="R&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="780" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-68" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-64" target="eZskiz_GbekbPZuHMrsU-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-84" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1260" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-85" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1260" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-88" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="1350" as="sourcePoint" />
+            <mxPoint x="260" y="1270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-89" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="1230" as="sourcePoint" />
+            <mxPoint x="250" y="1230" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-90" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="200" y="1190" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-91" value="V&lt;sub&gt;R1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="210" y="1290" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-92" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="1350" as="sourcePoint" />
+            <mxPoint x="120" y="1270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-93" value="E&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;5.0[V]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="60" y="1280" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-94" value="R&lt;sub&gt;1&lt;/sub&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1280" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-95" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1260" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-96" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="1350" as="sourcePoint" />
+            <mxPoint x="420" y="1270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-97" value="V&lt;sub&gt;R2&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="370" y="1290" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-98" value="R&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1280" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-101" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-85" target="eZskiz_GbekbPZuHMrsU-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-102" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-84" target="eZskiz_GbekbPZuHMrsU-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-103" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-85" target="eZskiz_GbekbPZuHMrsU-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-104" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-84" target="eZskiz_GbekbPZuHMrsU-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-106" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="1250" as="sourcePoint" />
+            <mxPoint x="290" y="1270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="1261" />
+              <mxPoint x="290" y="1261" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-107" value="I&lt;sub&gt;1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1250" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-108" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="1250" as="sourcePoint" />
+            <mxPoint x="450" y="1270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="450" y="1261" />
+              <mxPoint x="450" y="1261" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-109" value="I&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1250" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-110" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;rounded=0;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1230" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-111" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;rounded=0;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1370" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-116" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1500" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-117" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1500" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-118" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="1590" as="sourcePoint" />
+            <mxPoint x="260" y="1510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-119" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="1470" as="sourcePoint" />
+            <mxPoint x="250" y="1470" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-120" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="200" y="1430" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-121" value="V&lt;sub&gt;R1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="210" y="1530" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-122" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="1590" as="sourcePoint" />
+            <mxPoint x="120" y="1510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-123" value="E&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;5.0[V]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="60" y="1520" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-124" value="R&lt;sub&gt;1&lt;/sub&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;5[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1520" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-125" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1500" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-126" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="1590" as="sourcePoint" />
+            <mxPoint x="420" y="1510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-127" value="V&lt;sub&gt;R2&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="370" y="1530" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-128" value="R&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;10[kΩ]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1520" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-129" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-117" target="eZskiz_GbekbPZuHMrsU-116">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-130" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-116" target="eZskiz_GbekbPZuHMrsU-125">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-131" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-117" target="eZskiz_GbekbPZuHMrsU-116">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-132" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-116" target="eZskiz_GbekbPZuHMrsU-125">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-133" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="1490" as="sourcePoint" />
+            <mxPoint x="290" y="1510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="1501" />
+              <mxPoint x="290" y="1501" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-134" value="I&lt;sub&gt;1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1490" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-135" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="1490" as="sourcePoint" />
+            <mxPoint x="450" y="1510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="450" y="1501" />
+              <mxPoint x="450" y="1501" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-136" value="I&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1490" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-137" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;rounded=0;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1470" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-138" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;rounded=0;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1610" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-139" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="750" as="sourcePoint" />
+            <mxPoint x="290" y="770" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="761" />
+              <mxPoint x="290" y="761" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-140" value="I&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="750" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-141" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="650" as="sourcePoint" />
+            <mxPoint x="290" y="670" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="661" />
+              <mxPoint x="290" y="661" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-142" value="I&lt;span&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="650" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-143" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="750" as="sourcePoint" />
+            <mxPoint x="650" y="770" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="650" y="761" />
+              <mxPoint x="650" y="761" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-144" value="I&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="750" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-145" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="650" as="sourcePoint" />
+            <mxPoint x="650" y="670" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="650" y="661" />
+              <mxPoint x="650" y="661" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-146" value="I&lt;span&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="650" y="650" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-149" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="200" as="sourcePoint" />
+            <mxPoint x="120" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-150" value="E" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-151" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="510" y="100" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-152" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="370" y="150" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;startFill=0;fontFamily=Cambria Math;align=center;fontStyle=2;fontSize=22;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-151" target="eZskiz_GbekbPZuHMrsU-152">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-155" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="190" as="sourcePoint" />
+            <mxPoint x="500" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-156" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="70" as="sourcePoint" />
+            <mxPoint x="490" y="70" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-157" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="440" y="30" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-158" value="V&lt;sub&gt;1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-159" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="240" as="sourcePoint" />
+            <mxPoint x="360" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-160" value="E" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-161" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="510" y="200" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-162" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="290" as="sourcePoint" />
+            <mxPoint x="500" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-163" value="V&lt;sub&gt;2&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="460" y="230" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-164" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-152" target="eZskiz_GbekbPZuHMrsU-161">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-165" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="90" as="sourcePoint" />
+            <mxPoint x="530" y="110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="101" />
+              <mxPoint x="530" y="101" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-166" value="I&lt;span&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="90" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-167" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="190" as="sourcePoint" />
+            <mxPoint x="530" y="210" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="201" />
+              <mxPoint x="530" y="201" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-168" value="I&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="190" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-169" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="590" y="420" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-170" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;fillColor=strokeColor;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.electrical.miscellaneous.monocell_battery;direction=north;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="450" y="420" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-171" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;startFill=0;fontFamily=Cambria Math;align=center;fontStyle=2;fontSize=22;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-169" target="eZskiz_GbekbPZuHMrsU-170">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-172" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;startFill=0;endArrow=none;fontStyle=2" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-169" target="eZskiz_GbekbPZuHMrsU-170">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-173" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="510" as="sourcePoint" />
+            <mxPoint x="580" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-174" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="390" as="sourcePoint" />
+            <mxPoint x="570" y="390" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-175" value="I" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="520" y="350" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-176" value="V&lt;sub&gt;1&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="540" y="450" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-177" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="510" as="sourcePoint" />
+            <mxPoint x="440" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-178" value="E" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="400" y="450" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-179" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.resistors.resistor_1;direction=south;fontFamily=Cambria Math;fontStyle=2;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="670" y="420" width="20" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-180" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF8080;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="510" as="sourcePoint" />
+            <mxPoint x="660" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-181" value="V&lt;sub&gt;2&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#FF8080;labelBackgroundColor=none;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="620" y="450" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-182" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-169" target="eZskiz_GbekbPZuHMrsU-179">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-183" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;startFill=0;endArrow=none;" edge="1" parent="1" source="eZskiz_GbekbPZuHMrsU-169" target="eZskiz_GbekbPZuHMrsU-179">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-184" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="410" as="sourcePoint" />
+            <mxPoint x="610" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="610" y="421" />
+              <mxPoint x="610" y="421" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-185" value="I&lt;span&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="610" y="410" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-186" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8080FF;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;labelBackgroundColor=default;edgeStyle=orthogonalEdgeStyle;fontStyle=2" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="410" as="sourcePoint" />
+            <mxPoint x="690" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="421" />
+              <mxPoint x="690" y="421" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-187" value="I&lt;span&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Cambria Math;fontSize=22;fontColor=#8080FF;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="690" y="410" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-188" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;rounded=0;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="590" y="530" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eZskiz_GbekbPZuHMrsU-189" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;rounded=0;align=center;verticalAlign=middle;fontFamily=Cambria Math;fontSize=22;fontColor=default;fontStyle=2;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="590" y="390" width="20" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

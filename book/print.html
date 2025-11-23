@@ -2268,6 +2268,233 @@ span.codeblock_filename_inner {
 }
 
 </style>
+<h1 id="回路の基礎"><a class="header" href="#回路の基礎">回路の基礎</a></h1>
+<h2 id="基本物理量"><a class="header" href="#基本物理量">基本物理量</a></h2>
+<div id="admonition-電流とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-電流とは-title">
+<div class="admonition-title">
+<div id="admonition-電流とは-title">
+<p>電流とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-電流とは"></a>
+</div>
+<div>
+<p><strong>電荷</strong>(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。<br />
+電流は \(I\) で表され、単位は \(\mathrm{[A]}\) (アンペア)です。</p>
+</div>
+</div>
+<p>電流が流れる路を<strong>電気回路</strong>と言います。</p>
+<div id="admonition-電圧とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-電圧とは-title">
+<div class="admonition-title">
+<div id="admonition-電圧とは-title">
+<p>電圧とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-電圧とは"></a>
+</div>
+<div>
+<p>電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を<strong>電位差</strong>と言い、電気回路では電圧とも言います。<br />
+電圧は \(V\) で表され、単位は \(\mathrm{[V]}\) (ボルト)です。</p>
+</div>
+</div>
+<p>電流は電位の高い方から低い方に向かって流れます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_circuit.png" alt="r_circuit" height="200"></p>
+<div id="admonition-抵抗とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-抵抗とは-title">
+<div class="admonition-title">
+<div id="admonition-抵抗とは-title">
+<p>抵抗とは</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-抵抗とは"></a>
+</div>
+<div>
+<p>電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを<strong>電圧降下</strong>と言います。<br />
+抵抗は \(R\) で表され、単位は \(\mathrm{[\Omega]}\) (オーム)です。</p>
+</div>
+</div>
+<h2 id="si接頭語"><a class="header" href="#si接頭語">SI接頭語</a></h2>
+<p>大きな数字や小さな数字をわかりやすく表すために、10のべき乗を表し桁数を少なくします。<br />
+電気回路で使用するSI接頭語の一部を紹介します。電気回路では\(10^{3}\)ごとのSI接頭語を使用します。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">記号</th><th style="text-align: center">接頭語</th><th style="text-align: center">\(10^{n}\)</th></tr></thead><tbody>
+<tr><td style="text-align: center">\(T\)</td><td style="text-align: center">テラ</td><td style="text-align: center">\(10^{12}\)</td></tr>
+<tr><td style="text-align: center">\(G\)</td><td style="text-align: center">ギラ</td><td style="text-align: center">\(10^{9}\)</td></tr>
+<tr><td style="text-align: center">\(M\)</td><td style="text-align: center">メガ</td><td style="text-align: center">\(10^{6}\)</td></tr>
+<tr><td style="text-align: center">\(k\)</td><td style="text-align: center">キロ</td><td style="text-align: center">\(10^{3}\)</td></tr>
+<tr><td style="text-align: center">\(m\)</td><td style="text-align: center">ミリ</td><td style="text-align: center">\(10^{-3}\)</td></tr>
+<tr><td style="text-align: center">\(\mu\)</td><td style="text-align: center">マイクロ</td><td style="text-align: center">\(10^{-6}\)</td></tr>
+<tr><td style="text-align: center">\(n\)</td><td style="text-align: center">ナノ</td><td style="text-align: center">\(10^{-9}\)</td></tr>
+<tr><td style="text-align: center">\(p\)</td><td style="text-align: center">ピコ</td><td style="text-align: center">\(10^{-12}\)</td></tr>
+</tbody></table>
+</div>
+<h2 id="オームの法則"><a class="header" href="#オームの法則">オームの法則</a></h2>
+<p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br />
+$$ V = RI $$</p>
+<div id="admonition-例" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-title">
+<div class="admonition-title">
+<div id="admonition-例-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-例"></a>
+</div>
+<div>
+<p>次の回路では何\(\mathrm{[A]}\)の電流が流れるでしょうか。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_10k_circuit.png" alt="r_10k_circuit" height="200"></p>  
+<p>オームの法則で求めます。<br />
+$$ V=RI $$
+$$ I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}} = 0.33 \times 10^{-3}\mathrm{[A]} = 0.33\mathrm{[mA]} $$</p>
+<p>抵抗\(R\)の両端には電源である\(E\)がすべて印加されます。そのため、\(R\)に印加される電圧は\(3.3\mathrm{[V]}\)となります。</p>
+</div>
+</div>
+<h2 id="直列回路と並列回路"><a class="header" href="#直列回路と並列回路">直列回路と並列回路</a></h2>
+<div id="admonition-直列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-直列接続-title">
+<div class="admonition-title">
+<div id="admonition-直列接続-title">
+<p>直列接続</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-直列接続"></a>
+</div>
+<div>
+<p>素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。<br />
+直列接続の場合は電圧と電流は次のようになります。<br />
+$$ E = V_{1} + V_{2} $$
+$$ I = I_{1} = I_{2} $$</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_series_circuit.png" alt="r_series_circuit" height="250"></p>
+</div>
+</div>
+<div id="admonition-並列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-並列接続-title">
+<div class="admonition-title">
+<div id="admonition-並列接続-title">
+<p>並列接続</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-並列接続"></a>
+</div>
+<div>
+<p>素子の端子同士を両端接続する方法です。図として表すと次のようになります。<br />
+並列接続の場合は電圧と電流は次のようになります。<br />
+$$ E = V_{1} = V_{2} $$
+$$ I = I_{1} + I_{2} $$</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_parallel_circuit.png" alt="r_parallel_circuit" height="250"></p>
+</div>
+</div>
+<h2 id="合成抵抗"><a class="header" href="#合成抵抗">合成抵抗</a></h2>
+<p>抵抗が複数ある場合は全体の抵抗はどうなるでしょうか。<br />
+全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br />
+直列接続の合成抵抗は次の式で求められます。<br />
+$$ R = R_{1} + R_{2} $$</p>
+<div id="admonition-例-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-1-title">
+<div class="admonition-title">
+<div id="admonition-例-1-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-例-1"></a>
+</div>
+<div>
+<p>次の回路の合成抵抗を求めます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_10k_series_10k_circuit.png" alt="r_10k_series_10k_circuit" height="250"></p>
+<p>$$ R = R_{1} + R_{2} = 10 \times 10^{3} + 10 \times 10^{3} = 20 \times 10^{3} = 20\mathrm{[k\Omega]} $$</p>
+<p>次の回路の合成抵抗を求めます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_5k_series_10k_circuit.png" alt="r_5k_series_10k_circuit" height="250"></p>
+<p>$$ R = R_{1} + R_{2} = 5 \times 10^{3} + 10 \times 10^{3} = 15 \times 10^{3} = 15\mathrm{[k\Omega]} $$</p>
+<p>直列接続の場合は合成抵抗は大きくなります。</p>
+</div>
+</div>
+<p>並列接続の合成抵抗は次の式で求められます。
+$$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
+並列接続の場合、抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
+$$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
+この式を「和分の積」と呼ぶ人もいます。</p>
+<div id="admonition-例-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-2-title">
+<div class="admonition-title">
+<div id="admonition-例-2-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-例-2"></a>
+</div>
+<div>
+<p>次の回路の合成抵抗を求めます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png" alt="r_10k_parallel_10k_circuit" height="250"></p>
+<p>$$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} = \frac{1}{\frac{1}{10 \times 10^{3}} + \frac{1}{10 \times 10^{3}}} = 5 \times 10^{3} = 5\mathrm{[k\Omega]} $$</p>
+<p>次の回路の合成抵抗を求めます。「和分の積」で求めてみます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png" alt="r_5k_parallel_10k_circuit" height="250"></p>
+<p>$$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} = \frac{5 \times 10^{3} \times 10 \times 10^{3}}{5 \times 10^{3} + 10 \times 10^{3}} = 3.33\ldots \times 10^{3} \fallingdotseq 3.3\mathrm{[k\Omega]} $$</p>
+<p>並列接続の場合は合成抵抗は小さくなります。</p>
+</div>
+</div>
+<h2 id="分圧"><a class="header" href="#分圧">分圧</a></h2>
+<p>直列接続の場合は全体の電圧が\(V = V_{1} + V_{2}\)で表されます。<br />
+\(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
+$$ V_{1} = \frac{R_{1}}{R}V $$
+$$ V_{2} = \frac{R_{2}}{R}V $$</p>
+<div id="admonition-例-3" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-3-title">
+<div class="admonition-title">
+<div id="admonition-例-3-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-例-3"></a>
+</div>
+<div>
+<p>次の回路のそれぞれの抵抗に加わる電圧を求めます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_10k_series_10k_circuit.png" alt="r_10k_series_10k_circuit" height="250"></p>
+<p>$$ V_{1} = \frac{R_{1}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} $$
+$$ V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} $$</p>
+<p>次の回路のそれぞれの抵抗に加わる電圧を求めます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_5k_series_10k_circuit.png" alt="r_5k_series_10k_circuit" height="250"></p>
+<p>$$ V_{1} = \frac{R_{1}}{R}E = \frac{5 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 1.66\ldots \fallingdotseq 1.7\mathrm{[V]} $$
+$$ V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 3.33\ldots \fallingdotseq 3.3\mathrm{[V]} $$</p>
+<p>抵抗が大きい方に電圧が多く加わります。</p>
+</div>
+</div>
+<h2 id="分流"><a class="header" href="#分流">分流</a></h2>
+<p>並列接続の場合は全体の電流が\(I = I_{1} + I_{2}\)で表されます。<br />
+\(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
+$$ I_{1} = \frac{R}{R_{1}}I = \frac{R_{2}}{R_{1} + R_{2}}I $$
+$$ I_{2} = \frac{R}{R_{2}}I = \frac{R_{1}}{R_{1} + R_{2}}I $$</p>
+<div id="admonition-例-4" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-4-title">
+<div class="admonition-title">
+<div id="admonition-例-4-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-例-4"></a>
+</div>
+<div>
+<p>次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\(I\)をオームの法則で求めます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png" alt="r_10k_parallel_10k_circuit" height="250"></p>
+<p>$$ I = \frac{E}{R} = \frac{5.0}{5 \times 10^{3}} = 1 \times 10^{-3} = 1\mathrm{[mA]} $$
+$$ I_{1} = \frac{R}{R_{1}}I = \frac{5 \times 10^{3}}{10 \times 10^{3}} \times 1 \times 10^{-3} = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} $$
+$$ I_{2} = \frac{R_{1}}{R_{1} + R_{2}}I = \frac{10 \times 10^{3}}{10 \times 10^{3} + 10 \times 10^{3}} \times 1 \times 10^{-3} $$
+$$ = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} $$</p>
+<p>次の回路のそれぞれの抵抗に流れる電流を求めます。それぞれの抵抗値と加わる電圧が分かればオームの法則でも求めることができます。</p>
+<p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png" alt="r_5k_parallel_10k_circuit" height="250"></p>
+<p>$$ I_{1} = \frac{V_{R1}}{R_{1}} = \frac{5.0}{5 \times 10^{3}} = 1\mathrm{[mA]} $$
+$$ I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $$</p>
+<p>抵抗が小さい方に電流が多く流れます。</p>
+</div>
+</div>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/circuit.html#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li>講習資料</li>
+<li><a href="https://www.morikita.co.jp/books/mid/073253">電気回路の基礎</a></li>
+<li><a href="https://www.dainippon-tosho.co.jp/unit/si_prefix.html">SI接頭語</a></li>
+</ul>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
 <h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
 <h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
 <p>回路的には以下のようになっています。<br />

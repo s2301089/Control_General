@@ -10,6 +10,7 @@
   - [git / GitHub](./BasicContents/git_GitHub.md)
   - [C言語](./BasicContents/language_c.md)
   - [C++](./BasicContents/language_cpp.md)
+  - [回路の基礎](./BasicContents/circuit.md)
   - [DCモーターの制御](./BasicContents/motor.md)
   - [コントローラーのデータ](./BasicContents/controller_data.md)
 - [PlatformIO IDE](./PlatformIO/PlatformIO.md)
