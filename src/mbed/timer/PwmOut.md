@@ -2,7 +2,7 @@
 
 ## `PwmOut`
 
-`PWM`出力をする場合は`PwmOut`クラスを使用します。  
+`PWM`出力をする場合は、`PwmOut`クラスを使用します。  
 
 ```admonish note "PWM"
 `PWM`はどういうものか[このページ](../../BasicContents/motor.md#pwm)で簡単に説明しています。  

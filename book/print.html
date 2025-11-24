@@ -3089,8 +3089,8 @@ Lチカプログラム</p>
 やわらかいLチカプログラム</p>
 </div>
 </div>
-<h2 id="thread"><a class="header" href="#thread">Thread</a></h2>
-<h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="mbed/./thread/ThisThread.html">待ち時間</a></a></h3>
+<h2 id="analog"><a class="header" href="#analog">Analog</a></h2>
+<h3 id="アナログ入力"><a class="header" href="#アナログ入力"><a href="mbed/./analog/AnalogIn.html">アナログ入力</a></a></h3>
 <div id="admonition-内容-4" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-4-title">
 <div class="admonition-title">
 <div id="admonition-内容-4-title">
@@ -3099,17 +3099,31 @@ Lチカプログラム</p>
 <a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-4"></a>
 </div>
 <div>
-<p>待ち時間の作成</p>
+<p>アナログ入力<br />
+半固定抵抗による<code>LED</code>制御プログラム</p>
 </div>
 </div>
-<h2 id="通信"><a class="header" href="#通信">通信</a></h2>
-<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<h2 id="thread"><a class="header" href="#thread">Thread</a></h2>
+<h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="mbed/./thread/ThisThread.html">待ち時間</a></a></h3>
 <div id="admonition-内容-5" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-5-title">
 <div class="admonition-title">
 <div id="admonition-内容-5-title">
 <p>内容</p>
 </div>
 <a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-5"></a>
+</div>
+<div>
+<p>待ち時間の作成</p>
+</div>
+</div>
+<h2 id="通信"><a class="header" href="#通信">通信</a></h2>
+<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<div id="admonition-内容-6" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-6-title">
+<div class="admonition-title">
+<div id="admonition-内容-6-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-6"></a>
 </div>
 <div>
 <p>コントローラーのデータを受信、使用するためのライブラリ<br />
@@ -3130,7 +3144,7 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="ディジタル出力-1"><a class="header" href="#ディジタル出力-1">ディジタル出力</a></h1>
 <h2 id="digitalout"><a class="header" href="#digitalout"><code>DigitalOut</code></a></h2>
-<p>ディジタル出力をする場合は<code>DigitalOut</code>クラスを使用します。</p>
+<p>ディジタル出力をする場合は、<code>DigitalOut</code>クラスを使用します。</p>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
 <p>コンストラクタは<code>DigitalOut(PinName pin)</code>、<code>DigitalOut(PinName pin, int value)</code>で定義されています。</p>
 <ul>
@@ -3246,7 +3260,7 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="ディジタル入力-1"><a class="header" href="#ディジタル入力-1">ディジタル入力</a></h1>
 <h2 id="digitalin"><a class="header" href="#digitalin"><code>DigitalIn</code></a></h2>
-<p>ディジタル入力をする場合は<code>DigitalIn</code>クラスを使用します。</p>
+<p>ディジタル入力をする場合は、<code>DigitalIn</code>クラスを使用します。</p>
 <h3 id="コンストラクタ-1"><a class="header" href="#コンストラクタ-1">コンストラクタ</a></h3>
 <p>コンストラクタは<code>DigitalIn(PinName pin)</code>、<code>DigitalIn(PinName pin, PinMode mode)</code>で定義されています。</p>
 <ul>
@@ -3385,7 +3399,7 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="pwm出力-1"><a class="header" href="#pwm出力-1">PWM出力</a></h1>
 <h2 id="pwmout"><a class="header" href="#pwmout"><code>PwmOut</code></a></h2>
-<p><code>PWM</code>出力をする場合は<code>PwmOut</code>クラスを使用します。</p>
+<p><code>PWM</code>出力をする場合は、<code>PwmOut</code>クラスを使用します。</p>
 <div id="admonition-pwm" class="admonition admonish-note" role="note" aria-labelledby="admonition-pwm-title">
 <div class="admonition-title">
 <div id="admonition-pwm-title">
@@ -3535,9 +3549,130 @@ span.codeblock_filename_inner {
 }
 
 </style>
+<h1 id="アナログ入力-1"><a class="header" href="#アナログ入力-1">アナログ入力</a></h1>
+<h2 id="analogin"><a class="header" href="#analogin"><code>AnalogIn</code></a></h2>
+<p>アナログ入力をする場合は、<code>AnalogIn</code>クラスを使用します。</p>
+<h3 id="コンストラクタ-3"><a class="header" href="#コンストラクタ-3">コンストラクタ</a></h3>
+<p>コンストラクタは<code>AnalogIn(PinName pin, float vref = MBED_CONF_TARGET_DEFAULT_ADC_VREF)</code>で定義されています。</p>
+<ul>
+<li><code>pin</code>
+<ul>
+<li>使用するピンを指定します。</li>
+<li>アナログ入力には<code>ADC</code>を使用するため、<code>ADC</code>に対応しているピンを指定する必要があります。</li>
+</ul>
+</li>
+<li><code>vref</code>
+<ul>
+<li>基準電圧を指定します。</li>
+<li>よく分かりませんでした。</li>
+<li>指定しない場合は初期値として<code>MBED_CONF_TARGET_DEFAULT_ADC_VREF</code>が指定されます。</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">vref初期値</span></div>
+<pre><code class="language-cpp">AnalogIn var_r1(PA_0);
+</code></pre>
+<p><code>var_r1</code>というインスタンスを宣言しています。ピンは<code>PA_0</code>を指定しています。</p>
+<h3 id="float-readvoid-1"><a class="header" href="#float-readvoid-1"><code>float read(void)</code></a></h3>
+<p>ピンの入力電圧を読み取り、<code>0.0f(0%)</code>~<code>1.0f(100%)</code>の値を返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">float pin_value = var_r1.read();
+</code></pre>
+<h3 id="unsigned-short-read_u16void"><a class="header" href="#unsigned-short-read_u16void"><code>unsigned short read_u16(void)</code></a></h3>
+<p>ピンの入力電圧を読み取り、<code>0x0000(0%)</code>~<code>0xffff(100%)</code>の値を返します。<br />
+入力電圧を<code>16bit</code>に正規化して返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">uint16_t pin_value = var_r1.read_u16();
+</code></pre>
+<h2 id="サンプルプログラム-3"><a class="header" href="#サンプルプログラム-3">サンプルプログラム</a></h2>
+<div id="admonition-ledの明るさ制御" class="admonition admonish-example" role="note" aria-labelledby="admonition-ledの明るさ制御-title">
+<div class="admonition-title">
+<div id="admonition-ledの明るさ制御-title">
+<p>LEDの明るさ制御</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/analog/AnalogIn.html#admonition-ledの明るさ制御"></a>
+</div>
+<div>
+<p><code>PA5</code>を<code>PA0</code>の入力値を出力に設定するプログラムです。<br />
+<code>NUCLEO-F446RE</code>で動作確認しました。評価ボード上の<code>LD2</code>が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。</p>
+<p style="text-align:center"><img src="mbed/analog/../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png" alt="variable_resistor_10k_breadboard" width="500"></p>  
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
+
+using namespace std;
+using namespace mbed;
+
+int main(void){
+    AnalogIn var_r1(PA_0);
+    PwmOut led2(PA_5);
+    led2.period_ms(1);
+
+    while(1){
+        led2.write(var_r1.read());
+    }
+
+    return 0;
+}
+</code></pre>
+<p>半固定抵抗のつまみを左から右に回すと<code>LED</code>が明るくなり、右から左に回すと<code>LED</code>が暗くなります。</p>
+<p>半固定抵抗はこのような記号で表されます。</p>
+<p><img src="mbed/analog/../../resources/mbed/analog/AnalogIn/variable_resistor_default.png" alt="variable_resistor_default" /></p>
+<p>この状態では<code>3.3[V]-R1-R2-GND</code>の直列回路になります。分圧されるので中間の電圧が入力電圧となり、中途半端な明るさになります。<br />
+左に回しきったときは次の状態になります。</p>
+<p><img src="mbed/analog/../../resources/mbed/analog/AnalogIn/variable_resistor_gnd.png" alt="variable_resistor_default" /></p>
+<p>この状態では<code>3.3[V]-R-GND</code>の回路になり、入力電圧が\(\mathrm{0[V]}\)になるので、消灯(<code>0%</code>)になります。<br />
+右に回しきったときは次の状態になります。</p>
+<p><img src="mbed/analog/../../resources/mbed/analog/AnalogIn/variable_resistor_vdd.png" alt="variable_resistor_default" /></p>
+<p>この状態では、入力電圧が\(\mathrm{3.3[V]}\)になるので、点灯(<code>100%</code>)になります。</p>
+</div>
+</div>
+<h2 id="他のメソッド使用したことがない-3"><a class="header" href="#他のメソッド使用したことがない-3">他のメソッド(使用したことがない)</a></h2>
+<h3 id="float-read_voltagevoid"><a class="header" href="#float-read_voltagevoid"><code>float read_voltage(void)</code></a></h3>
+<h3 id="void-set_reference_voltagefloat-vref"><a class="header" href="#void-set_reference_voltagefloat-vref"><code>void set_reference_voltage(float vref)</code></a></h3>
+<h3 id="float-get_reference_voltage"><a class="header" href="#float-get_reference_voltage"><code>float get_reference_voltage()</code></a></h3>
+<hr />
+<div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
+<div class="admonition-title">
+<div id="admonition-使用部品-title">
+<p>使用部品</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/analog/AnalogIn.html#admonition-使用部品"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/ja/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a></li>
+<li>USB A to miniB ケーブル</li>
+<li><a href="https://akizukidenshi.com/catalog/g/g100315/">ブレッドボード</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g106110/">半固定抵抗 10[kΩ]</a></li>
+<li>ジャンパ線</li>
+</ul>
+</div>
+</div>
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/analog/AnalogIn.html#admonition-参考"></a>
+</div>
+<div>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
 <h1 id="thisthread"><a class="header" href="#thisthread">ThisThread</a></h1>
 <h2 id="待ち時間の作成"><a class="header" href="#待ち時間の作成">待ち時間の作成</a></h2>
-<p>待ち時間(遅延)を作成する場合は名前空間<code>ThisThread</code>にある関数を使用します。</p>
+<p>待ち時間(遅延)を作成する場合は、名前空間<code>ThisThread</code>にある関数を使用します。</p>
 <h3 id="void-sleep_forkernelclockduration_u32-rel_time"><a class="header" href="#void-sleep_forkernelclockduration_u32-rel_time"><code>void sleep_for(Kernel::Clock::duration_u32 rel_time)</code></a></h3>
 <p>引数に待ち時間を渡します。<code>Kernel::Clock::duration_u32</code>は<code>chrono</code>時間と同じみたいです。<br />
 数値をそのまま渡す場合は、整数値に単位をつけて渡します。</p>
@@ -3682,7 +3817,7 @@ if(ps4.getDS4_IT()){
 </div>
 </div>
 <h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
-<h3 id="コンストラクタ-3"><a class="header" href="#コンストラクタ-3">コンストラクタ</a></h3>
+<h3 id="コンストラクタ-4"><a class="header" href="#コンストラクタ-4">コンストラクタ</a></h3>
 <ul>
 <li><code>RxDualshock4(mbed::UnbufferedSerial&amp; unbuffered_serial_obj, struct RxDualshock4::DS4_struct *struct_p, RxController::GET_TYPE type);</code>
 <ul>
@@ -3781,7 +3916,7 @@ if(ps4.getDS4_IT()){
 </ul>
 </li>
 </ul>
-<h2 id="サンプルプログラム-3"><a class="header" href="#サンプルプログラム-3">サンプルプログラム</a></h2>
+<h2 id="サンプルプログラム-4"><a class="header" href="#サンプルプログラム-4">サンプルプログラム</a></h2>
 <div id="admonition-dualshock4の場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-dualshock4の場合-title">
 <div class="admonition-title">
 <div id="admonition-dualshock4の場合-title">

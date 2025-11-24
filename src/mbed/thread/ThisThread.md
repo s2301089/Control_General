@@ -2,7 +2,7 @@
 
 ## 待ち時間の作成
 
-待ち時間(遅延)を作成する場合は名前空間`ThisThread`にある関数を使用します。  
+待ち時間(遅延)を作成する場合は、名前空間`ThisThread`にある関数を使用します。  
 
 ### `void sleep_for(Kernel::Clock::duration_u32 rel_time)`
 
