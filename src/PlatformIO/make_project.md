@@ -109,7 +109,16 @@
 コードだけを作成する場合は`Build`、書き込みまで行う場合は`Upload`をします。  
 右上の三角から`Build`または`Upload`を選択します。  
 
-![](../resources/PlatformIO/make_project/build_upload.png =200x)
+![build_upload](../resources/PlatformIO/make_project/build_upload.png =200x)  
+
+成功した場合は`[SUCCESS]`と表示されます。  
+
+![upload_success](../resources/PlatformIO/make_project/upload_success.png)  
+
+失敗した場合は`[FAILED]`と表示されます。  
+失敗した場合はエラーメッセージも出力されます。
+
+![build_failed](../resources/PlatformIO/make_project/build_failed.png)  
 
 ---
 
