@@ -61,20 +61,22 @@ $$ I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}}
 ```admonish info "直列接続"
 素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。  
 直列接続の場合は電圧と電流は次のようになります。  
-$$ E = V_{1} + V_{2} $$
-$$ I = I_{1} = I_{2} $$
 
 ![r_series_circuit](../resources/BasicContents/circuit/r_series_circuit.png =x250 center)
+
+$$ E = V_{1} + V_{2} $$
+$$ I = I_{1} = I_{2} $$
 
 ```
 
 ```admonish info "並列接続"
 素子の端子同士を両端接続する方法です。図として表すと次のようになります。  
 並列接続の場合は電圧と電流は次のようになります。  
-$$ E = V_{1} = V_{2} $$
-$$ I = I_{1} + I_{2} $$
 
 ![r_parallel_circuit](../resources/BasicContents/circuit/r_parallel_circuit.png =x250 center)
+
+$$ E = V_{1} = V_{2} $$
+$$ I = I_{1} + I_{2} $$
 
 ```
 
@@ -103,7 +105,7 @@ $$ R = R_{1} + R_{2} = 5 \times 10^{3} + 10 \times 10^{3} = 15 \times 10^{3} = 1
 
 並列接続の合成抵抗は次の式で求められます。
 $$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
-並列接続の場合、抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
+抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
 $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
 この式を「和分の積」と呼ぶ人もいます。
 

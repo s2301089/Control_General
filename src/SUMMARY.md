@@ -15,6 +15,7 @@
   - [コントローラーのデータ](./BasicContents/controller_data.md)
 - [PlatformIO IDE](./PlatformIO/PlatformIO.md)
   - [環境構築](./PlatformIO/setup.md)
+  - [プロジェクトの基本操作](./PlatformIO/make_project.md)
 
 # mbed OS
 

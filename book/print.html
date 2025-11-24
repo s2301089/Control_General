@@ -2352,10 +2352,10 @@ $$ I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}}
 </div>
 <div>
 <p>素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。<br />
-直列接続の場合は電圧と電流は次のようになります。<br />
-$$ E = V_{1} + V_{2} $$
-$$ I = I_{1} = I_{2} $$</p>
+直列接続の場合は電圧と電流は次のようになります。</p>
 <p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_series_circuit.png" alt="r_series_circuit" height="250"></p>
+<p>$$ E = V_{1} + V_{2} $$
+$$ I = I_{1} = I_{2} $$</p>
 </div>
 </div>
 <div id="admonition-並列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-並列接続-title">
@@ -2367,10 +2367,10 @@ $$ I = I_{1} = I_{2} $$</p>
 </div>
 <div>
 <p>素子の端子同士を両端接続する方法です。図として表すと次のようになります。<br />
-並列接続の場合は電圧と電流は次のようになります。<br />
-$$ E = V_{1} = V_{2} $$
-$$ I = I_{1} + I_{2} $$</p>
+並列接続の場合は電圧と電流は次のようになります。</p>
 <p style="text-align:center"><img src="BasicContents/../resources/BasicContents/circuit/r_parallel_circuit.png" alt="r_parallel_circuit" height="250"></p>
+<p>$$ E = V_{1} = V_{2} $$
+$$ I = I_{1} + I_{2} $$</p>
 </div>
 </div>
 <h2 id="合成抵抗"><a class="header" href="#合成抵抗">合成抵抗</a></h2>
@@ -2397,7 +2397,7 @@ $$ R = R_{1} + R_{2} $$</p>
 </div>
 <p>並列接続の合成抵抗は次の式で求められます。
 $$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
-並列接続の場合、抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
+抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
 $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
 この式を「和分の積」と呼ぶ人もいます。</p>
 <div id="admonition-例-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-2-title">
@@ -2702,7 +2702,7 @@ OSにあまり依存しないため、誰でも気軽に作成することがで
 </div>
 <ul>
 <li>まずは言語を日本語に変更します。</li>
-<li>左のバーのブロックのマークから拡張機能を開きます。(<code>Ctrl</code>+<code>Shift</code>+<code>x</code>)<p><img src="PlatformIO/../resources/PlatformIO/market.png" alt="market" height="50"></p>
+<li>左のバーのブロックのマークから拡張機能を開きます。(<code>Ctrl</code>+<code>Shift</code>+<code>x</code>)<p><img src="PlatformIO/../resources/PlatformIO/setup/market.png" alt="market" height="50"></p>
 </li>
 <li>マーケットプレイスの検索欄に<code>japanese</code>と入力し、<code>Japanese Language Pack for Visual Studio Code</code>を探します。<br />
 <img src="PlatformIO/../resources/PlatformIO/setup/japanese_language_pack.png" alt="japanese language pack" /></li>
@@ -2759,6 +2759,185 @@ Please install the latest Python 3 and restart VSCode
 <li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
 <li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
 <li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
+</ul>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="プロジェクトの基本操作"><a class="header" href="#プロジェクトの基本操作">プロジェクトの基本操作</a></h1>
+<h2 id="プロジェクトの作成"><a class="header" href="#プロジェクトの作成">プロジェクトの作成</a></h2>
+<ul>
+<li>
+<p><code>vscode</code>の左の蜂マークを選択します。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/platformio_icon.png" alt="platformio_icon" height="50"></p>  
+</li>
+<li>
+<p><code>Create New Project</code>を選択し、プロジェクトを作成します。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/project_tasks.png" alt="project_tasks" height="300"></p>  
+</li>
+<li>
+<p><code>PIO Home</code>が開くので、<code>Quick Access</code>から<code>New Project</code>を選択します。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/quick_access.png" alt="quick_access" height="200"></p>  
+</li>
+<li>
+<p><code>Project Wizard</code>が開くので各項目を入力します。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/project_wizard.png" height="300"></p>  
+<ul>
+<li><code>Name</code>
+<ul>
+<li>プロジェクトの名前を入力します。</li>
+<li>半角文字で構成してください。</li>
+</ul>
+</li>
+<li><code>Board</code>
+<ul>
+<li>使用するボードを選択します。</li>
+<li><code>ST Nucleo F446RE</code>や<code>ST Nucleo F303K8</code>、<code>Arduino Uno</code>などがあります。</li>
+<li>使用するボードやマイコンに合わせて選択してください。</li>
+</ul>
+</li>
+<li><code>Framework</code>
+<ul>
+<li>使用する言語環境のようなものです。</li>
+<li><code>Arduino Uno</code>であれば<code>Arduino</code>を、<code>STM</code>マイコン系であれば<code>Mbed</code>を選択することが多いです。</li>
+</ul>
+</li>
+<li><code>Location</code>
+<ul>
+<li>プロジェクトの保存場所を指定します。</li>
+<li><code>Use default location</code>のチェックを外し、フォルダーを選択します。</li>
+<li>プロジェクトへのPATHに日本語などの全角文字が含まれないようにしてください。</li>
+</ul>
+</li>
+</ul>
+<div id="admonition-例" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-title">
+<div class="admonition-title">
+<div id="admonition-例-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="PlatformIO/make_project.html#admonition-例"></a>
+</div>
+<div>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/project_wizard_example.png" width="400"></p>
+</div>
+</div>
+</li>
+<li>
+<p>入力が終わったら<code>Finish</code>を押します。
+プロジェクトが作成されるのを待ちます。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/wait_make_project.png" alt="wait_make_project" height="200"></p>
+</li>
+</ul>
+<h2 id="プロジェクトファイルの初期設定"><a class="header" href="#プロジェクトファイルの初期設定">プロジェクトファイルの初期設定</a></h2>
+<ul>
+<li>
+<p>プロジェクトの作成が終わったら<code>platformio.ini</code>が開きます。</p>
+<ul>
+<li>開かない場合は、蜂マークから<code>Pick a folder</code>を押してプロジェクトフォルダーを選択して開きます。</li>
+</ul>
+</li>
+<li>
+<p>作成されたファイルを編集します。</p>
+  <div id="admonition-platformioini" class="admonition admonish-example" role="note" aria-labelledby="admonition-platformioini-title">
+  <div class="admonition-title">
+  <div id="admonition-platformioini-title">
+<p>platformio.ini</p>
+  </div>
+  <a class="admonition-anchor-link" href="PlatformIO/make_project.html#admonition-platformioini"></a>
+  </div>
+  <div>
+<pre><code class="language-ini :">; PlatformIO Project Configuration File
+;
+;   Build options: build flags, source filter
+;   Upload options: custom upload port, speed and extra flags
+;   Library options: dependencies, extra library storages
+;   Advanced options: extra scripting
+;
+; Please visit documentation for the other options and examples
+; https://docs.platformio.org/page/projectconf.html
+
+[env:nucleo_f446re]
+platform = ststm32
+board = nucleo_f446re
+framework = mbed
+
+[platformio]
+build_cache_dir = ./.cache
+</code></pre>
+  <p><img src="PlatformIO/../resources/PlatformIO/make_project/updating_platformio.png" alt="updating_platformio" width="400"></p>
+<p>このプロジェクトの更新の表示が終わるまで待ちましょう。</p>
+  </div>
+  </div>
+  <div id="admonition-gitignore" class="admonition admonish-example" role="note" aria-labelledby="admonition-gitignore-title">
+  <div class="admonition-title">
+  <div id="admonition-gitignore-title">
+<p>.gitignore</p>
+  </div>
+  <a class="admonition-anchor-link" href="PlatformIO/make_project.html#admonition-gitignore"></a>
+  </div>
+  <div>
+<pre><code class="language-.gitignore">.pio
+.vscode/.browse.c_cpp.db*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch
+.cache
+.vscode
+</code></pre>
+  </div>
+  </div>
+</li>
+</ul>
+<h2 id="プロジェクトファイルの構成"><a class="header" href="#プロジェクトファイルの構成">プロジェクトファイルの構成</a></h2>
+<ul>
+<li>
+<p>次の構成になっています。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/example_project_dir.png" width="300"></p>
+</li>
+<li>
+<p>主に使用するフォルダは<code>lib</code>と<code>src</code>です。</p>
+</li>
+<li>
+<p><code>lib</code></p>
+<ul>
+<li>ライブラリ、ヘッダファイルを管理するフォルダです。</li>
+<li>使用するライブラリをこのフォルダ内にコピーします。</li>
+</ul>
+</li>
+<li>
+<p><code>src</code></p>
+<ul>
+<li>ソースコードを管理するフォルダです。</li>
+</ul>
+</li>
+</ul>
+<h2 id="ビルドとアップロード"><a class="header" href="#ビルドとアップロード">ビルドとアップロード</a></h2>
+<p>コードを作成したら書き込むコードを作成します。<br />
+コードだけを作成する場合は<code>Build</code>、書き込みまで行う場合は<code>Upload</code>をします。<br />
+右上の三角から<code>Build</code>または<code>Upload</code>を選択します。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/build_upload.png" width="200"></p>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="PlatformIO/make_project.html#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li>講習資料</li>
+<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
 </ul>
 </div>
 </div><div style="break-before: page; page-break-before: always;"></div><style>

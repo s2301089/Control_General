@@ -32,7 +32,7 @@ OSにあまり依存しないため、誰でも気軽に作成することがで
 
 - まずは言語を日本語に変更します。
 - 左のバーのブロックのマークから拡張機能を開きます。(`Ctrl`+`Shift`+`x`)  
-  ![market](../resources/PlatformIO/market.png =x50)
+  ![market](../resources/PlatformIO/setup/market.png =x50)
 - マーケットプレイスの検索欄に`japanese`と入力し、`Japanese Language Pack for Visual Studio Code`を探します。  
   ![japanese language pack](../resources/PlatformIO/setup/japanese_language_pack.png)
 - `install`を押し、インストールを行い、通知から`vscode`を再起動します。  
