@@ -4,7 +4,7 @@
 
 ディジタル出力をする場合は`DigitalOut`クラスを使用します。  
 
-### インスタンス
+### コンストラクタ
 
 コンストラクタは`DigitalOut(PinName pin)`、`DigitalOut(PinName pin, int value)`で定義されています。  
 
@@ -77,6 +77,10 @@ int main(void){
 `STM32F446RET6`の`GPIO`ピンの電流は\\(\mathrm{25[mA]}\\)(最大定格)未満にする必要がありますが、\\(\mathrm{約6.47[mA]}\\)なので問題はありません。  
 
 ````
+
+## 他のメソッド(使用したことがない)
+
+### `int is_connected(void)`
 
 ---
 

@@ -22,6 +22,7 @@
 - [mbed](./mbed/mbedPlatformIO.md)
   - [ディジタル出力](./mbed/gpio/DigitalOut.md)
   - [ディジタル入力](./mbed/gpio/DigitalIn.md)
+  - [PWM出力](./mbed/timer/PwmOut.md)
   - [待ち時間](./mbed/thread/ThisThread.md)
   - [コントローラー受信側(lib)](./mbed/connectivity/use_rxController.md)
 

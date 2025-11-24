@@ -42,6 +42,30 @@ int main(void){
 Lチカプログラム
 ```
 
+### [ディジタル入力](./gpio/DigitalIn.md)
+
+```admonish abstract "内容"
+ディジタル入力  
+プッシュスイッチによる`LED`制御プログラム
+```
+
+## Timer
+
+### [PWM出力](./timer/PwmOut.md)
+
+```admonish abstract "内容"
+`PWM`出力  
+やわらかいLチカプログラム
+```
+
+## Thread
+
+### [待ち時間](./thread/ThisThread.md)
+
+```admonish abstract "内容"
+待ち時間の作成  
+```
+
 ## 通信
 
 ### [受信側(lib)](./connectivity/use_rxController.md)

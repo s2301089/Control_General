@@ -3062,14 +3062,54 @@ int main(void){
 Lチカプログラム</p>
 </div>
 </div>
-<h2 id="通信"><a class="header" href="#通信">通信</a></h2>
-<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<h3 id="ディジタル入力"><a class="header" href="#ディジタル入力"><a href="mbed/./gpio/DigitalIn.html">ディジタル入力</a></a></h3>
 <div id="admonition-内容-2" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-2-title">
 <div class="admonition-title">
 <div id="admonition-内容-2-title">
 <p>内容</p>
 </div>
 <a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-2"></a>
+</div>
+<div>
+<p>ディジタル入力<br />
+プッシュスイッチによる<code>LED</code>制御プログラム</p>
+</div>
+</div>
+<h2 id="timer"><a class="header" href="#timer">Timer</a></h2>
+<h3 id="pwm出力"><a class="header" href="#pwm出力"><a href="mbed/./timer/PwmOut.html">PWM出力</a></a></h3>
+<div id="admonition-内容-3" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-3-title">
+<div class="admonition-title">
+<div id="admonition-内容-3-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-3"></a>
+</div>
+<div>
+<p><code>PWM</code>出力<br />
+やわらかいLチカプログラム</p>
+</div>
+</div>
+<h2 id="thread"><a class="header" href="#thread">Thread</a></h2>
+<h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="mbed/./thread/ThisThread.html">待ち時間</a></a></h3>
+<div id="admonition-内容-4" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-4-title">
+<div class="admonition-title">
+<div id="admonition-内容-4-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-4"></a>
+</div>
+<div>
+<p>待ち時間の作成</p>
+</div>
+</div>
+<h2 id="通信"><a class="header" href="#通信">通信</a></h2>
+<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<div id="admonition-内容-5" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-5-title">
+<div class="admonition-title">
+<div id="admonition-内容-5-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-5"></a>
 </div>
 <div>
 <p>コントローラーのデータを受信、使用するためのライブラリ<br />
@@ -3091,7 +3131,7 @@ span.codeblock_filename_inner {
 <h1 id="ディジタル出力-1"><a class="header" href="#ディジタル出力-1">ディジタル出力</a></h1>
 <h2 id="digitalout"><a class="header" href="#digitalout"><code>DigitalOut</code></a></h2>
 <p>ディジタル出力をする場合は<code>DigitalOut</code>クラスを使用します。</p>
-<h3 id="インスタンス"><a class="header" href="#インスタンス">インスタンス</a></h3>
+<h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
 <p>コンストラクタは<code>DigitalOut(PinName pin)</code>、<code>DigitalOut(PinName pin, int value)</code>で定義されています。</p>
 <ul>
 <li><code>pin</code>
@@ -3161,6 +3201,8 @@ int main(void){
 <code>STM32F446RET6</code>の<code>GPIO</code>ピンの電流は\(\mathrm{25[mA]}\)(最大定格)未満にする必要がありますが、\(\mathrm{約6.47[mA]}\)なので問題はありません。</p>
 </div>
 </div>
+<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
+<h3 id="int-is_connectedvoid"><a class="header" href="#int-is_connectedvoid"><code>int is_connected(void)</code></a></h3>
 <hr />
 <div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
 <div class="admonition-title">
@@ -3202,10 +3244,10 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="ディジタル入力"><a class="header" href="#ディジタル入力">ディジタル入力</a></h1>
+<h1 id="ディジタル入力-1"><a class="header" href="#ディジタル入力-1">ディジタル入力</a></h1>
 <h2 id="digitalin"><a class="header" href="#digitalin"><code>DigitalIn</code></a></h2>
 <p>ディジタル入力をする場合は<code>DigitalIn</code>クラスを使用します。</p>
-<h3 id="インスタンス-1"><a class="header" href="#インスタンス-1">インスタンス</a></h3>
+<h3 id="コンストラクタ-1"><a class="header" href="#コンストラクタ-1">コンストラクタ</a></h3>
 <p>コンストラクタは<code>DigitalIn(PinName pin)</code>、<code>DigitalIn(PinName pin, PinMode mode)</code>で定義されています。</p>
 <ul>
 <li><code>pin</code>
@@ -3297,6 +3339,8 @@ int main(void){
 この回路では、抵抗が\(\mathrm{4.7k[\Omega]}\)で、<code>VDD</code>が\(\mathrm{3.3[V]}\)なので、電流は\(\mathrm{約0.70[mA]}\)となります。<code>PC13</code>は\(\mathrm{3[mA]}\)未満にする必要がありますが、\(\mathrm{約0.70[mA]}\)なので問題はありません。</p>
 </div>
 </div>
+<h2 id="他のメソッド使用したことがない-1"><a class="header" href="#他のメソッド使用したことがない-1">他のメソッド(使用したことがない)</a></h2>
+<h3 id="int-is_connectedvoid-1"><a class="header" href="#int-is_connectedvoid-1"><code>int is_connected(void)</code></a></h3>
 <hr />
 <div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
 <div class="admonition-title">
@@ -3324,6 +3368,158 @@ int main(void){
 <li><a href="https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf">MB1136-DEFAULT-C05 Board schematic</a></li>
 <li><a href="https://www.st.com/resource/en/datasheet/stm32f446mc.pdf">DS10693</a></li>
 <li><a href="https://adaptivesupport.amd.com/s/question/0D52E00006hpZk5SAE/about-pullnone-setting-of-unused-pin-for-artix7?language=en_US">About pullnone setting of unused pin for artix-7.</a></li>
+</ul>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="pwm出力-1"><a class="header" href="#pwm出力-1">PWM出力</a></h1>
+<h2 id="pwmout"><a class="header" href="#pwmout"><code>PwmOut</code></a></h2>
+<p><code>PWM</code>出力をする場合は<code>PwmOut</code>クラスを使用します。</p>
+<div id="admonition-pwm" class="admonition admonish-note" role="note" aria-labelledby="admonition-pwm-title">
+<div class="admonition-title">
+<div id="admonition-pwm-title">
+<p>PWM</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/timer/PwmOut.html#admonition-pwm"></a>
+</div>
+<div>
+<p><code>PWM</code>はどういうものか<a href="mbed/timer/../../BasicContents/motor.html#pwm">このページ</a>で簡単に説明しています。</p>
+</div>
+</div>
+<h3 id="コンストラクタ-2"><a class="header" href="#コンストラクタ-2">コンストラクタ</a></h3>
+<p>コンストラクタは<code>PwmOut(PinName pin)</code>で定義されています。</p>
+<ul>
+<li><code>pin</code>
+<ul>
+<li>使用するピンを指定します。</li>
+<li><code>PWM</code>出力に対応しているピンを指定する必要があります。</li>
+<li>ピンは<code>Timer</code>のチャンネルが被らないように設定する必要があります。</li>
+<li><code>mbed</code>の使用するボードのページにある<code>Morpho headers</code>を確認し、ピンを指定します。
+<ul>
+<li><code>NUCLEO-F446RE</code>の場合は<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/#morpho-headers">このページ</a>です。</li>
+<li><code>PWM1/1</code>の<code>PWM1</code>は<code>Timer1</code>であることを表し、<code>/1</code>は<code>Channel1</code>であることを表しています。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">宣言</span></div>
+<pre><code class="language-cpp">PwmOut led2(PA_5);
+</code></pre>
+<p><code>led2</code>というインスタンスを宣言しています。ピンは<code>PA5</code>を指定しています。<code>PA5</code>は<code>Timer2</code>の<code>Channel1</code>を使用しています。</p>
+<h3 id="void-writefloat-value"><a class="header" href="#void-writefloat-value"><code>void write(float value)</code></a></h3>
+<p>デューティー比を<code>0.0f(0%)</code>~<code>1.0f(100%)</code>に指定します。範囲外の値は<code>0.0f</code>、または、<code>1.0f</code>になります。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">100%に設定</span></div>
+<pre><code class="language-cpp">led2.write(1.0f);
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">30%に設定</span></div>
+<pre><code class="language-cpp">led2.write(0.3f);
+</code></pre>
+<h3 id="float-readvoid"><a class="header" href="#float-readvoid"><code>float read(void)</code></a></h3>
+<p>デューティー比の出力設定を<code>0.0f(0%)</code>~<code>1.0f(100%)</code>で返します。<code>write()</code>で指定した値と完全に一致しない場合があります。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">float pin_duty = led2.read();
+</code></pre>
+<h3 id="void-periodfloat-seconds"><a class="header" href="#void-periodfloat-seconds"><code>void period(float seconds)</code></a></h3>
+<p><code>PWM</code>の周期の秒数を指定します。分解能はマイクロ秒単位でこれより小さい周期は<code>0</code>に設定されます。</p>
+<h3 id="void-period_msint-ms"><a class="header" href="#void-period_msint-ms"><code>void period_ms(int ms)</code></a></h3>
+<p><code>PWM</code>の周期をミリ秒単位で指定します。</p>
+<h3 id="void-period_usint-us"><a class="header" href="#void-period_usint-us"><code>void period_us(int us)</code></a></h3>
+<p><code>PWM</code>の周期をマイクロ秒単位で指定します。</p>
+<h2 id="サンプルプログラム-2"><a class="header" href="#サンプルプログラム-2">サンプルプログラム</a></h2>
+<div id="admonition-やわらかい点滅" class="admonition admonish-example" role="note" aria-labelledby="admonition-やわらかい点滅-title">
+<div class="admonition-title">
+<div id="admonition-やわらかい点滅-title">
+<p>やわらかい点滅</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/timer/PwmOut.html#admonition-やわらかい点滅"></a>
+</div>
+<div>
+<p><code>PWM</code>のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。<br />
+<code>NUCLEO-F446RE</code>で動作確認しました。評価ボード上の<code>LD2</code>がやさしく点滅します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
+
+using namespace std;
+using namespace mbed;
+
+int main(void){
+    PwmOut led2(PA_5);
+    led2.period_ms(1);
+    float i = 0.0f, div, div_abs = 0.01f;
+    div = div_abs;
+
+    while(1){
+        led2.write(i);
+        i+=div;
+        if(i &gt; 1.0f){
+            i = 1.0f;
+            div = -div_abs;
+        }else if(i &lt; 0.0f){
+            i = 0.0f;
+            div = div_abs;
+        }
+        ThisThread::sleep_for(10ms);
+    }
+
+    return 0;
+}
+</code></pre>
+<p>周期が\(\mathrm{1[ms]}\)の<code>PWM</code>を出力します。</p>
+</div>
+</div>
+<h2 id="他のメソッド使用したことがない-2"><a class="header" href="#他のメソッド使用したことがない-2">他のメソッド(使用したことがない)</a></h2>
+<h3 id="int-read_period_usvoid"><a class="header" href="#int-read_period_usvoid"><code>int read_period_us(void)</code></a></h3>
+<p><code>PWM</code>の周期設定を返します。マイクロ秒単位の周期が返されます。</p>
+<h3 id="void-pulsewidthfloat-seconds"><a class="header" href="#void-pulsewidthfloat-seconds"><code>void pulsewidth(float seconds)</code></a></h3>
+<p><code>PWM</code>のパルス幅を秒数で指定します。</p>
+<h3 id="void-pulsewidth_msint-ms"><a class="header" href="#void-pulsewidth_msint-ms"><code>void pulsewidth_ms(int ms)</code></a></h3>
+<p><code>PWM</code>のパルス幅をミリ秒単位で指定します。</p>
+<h3 id="void-pulsewidth_usint-us"><a class="header" href="#void-pulsewidth_usint-us"><code>void pulsewidth_us(int us)</code></a></h3>
+<p><code>PWM</code>のパルス幅をマイクロ秒単位で指定します。</p>
+<h3 id="int-read_pulsewidth_us"><a class="header" href="#int-read_pulsewidth_us"><code>int read_pulsewidth_us()</code></a></h3>
+<p><code>PWM</code>のパルス幅設定を返します。マイクロ秒単位の秒数が返されます。</p>
+<h3 id="void-suspend"><a class="header" href="#void-suspend"><code>void suspend()</code></a></h3>
+<p><code>PWM</code>の動作を一時停止します。停止中は他の呼び出しは動作しません。</p>
+<h3 id="void-resume"><a class="header" href="#void-resume"><code>void resume()</code></a></h3>
+<p><code>PWM</code>の動作を再開します。<code>suspend()</code>で停止する前の状態に復元します。</p>
+<hr />
+<div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
+<div class="admonition-title">
+<div id="admonition-使用部品-title">
+<p>使用部品</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/timer/PwmOut.html#admonition-使用部品"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/ja/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a></li>
+<li>USB A to miniB ケーブル</li>
+</ul>
+</div>
+</div>
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/timer/PwmOut.html#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf">MB1136-DEFAULT-C05 Board schematic</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/stm32f446mc.pdf">DS10693</a></li>
 </ul>
 </div>
 </div><div style="break-before: page; page-break-before: always;"></div><style>
@@ -3486,7 +3682,7 @@ if(ps4.getDS4_IT()){
 </div>
 </div>
 <h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
-<h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
+<h3 id="コンストラクタ-3"><a class="header" href="#コンストラクタ-3">コンストラクタ</a></h3>
 <ul>
 <li><code>RxDualshock4(mbed::UnbufferedSerial&amp; unbuffered_serial_obj, struct RxDualshock4::DS4_struct *struct_p, RxController::GET_TYPE type);</code>
 <ul>
@@ -3585,7 +3781,7 @@ if(ps4.getDS4_IT()){
 </ul>
 </li>
 </ul>
-<h2 id="サンプルプログラム-2"><a class="header" href="#サンプルプログラム-2">サンプルプログラム</a></h2>
+<h2 id="サンプルプログラム-3"><a class="header" href="#サンプルプログラム-3">サンプルプログラム</a></h2>
 <div id="admonition-dualshock4の場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-dualshock4の場合-title">
 <div class="admonition-title">
 <div id="admonition-dualshock4の場合-title">

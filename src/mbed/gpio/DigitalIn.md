@@ -4,7 +4,7 @@
 
 ディジタル入力をする場合は`DigitalIn`クラスを使用します。  
 
-### インスタンス
+### コンストラクタ
 
 コンストラクタは`DigitalIn(PinName pin)`、`DigitalIn(PinName pin, PinMode mode)`で定義されています。  
 
@@ -86,6 +86,10 @@ int main(void){
 この回路では、抵抗が\\(\mathrm{4.7k[\Omega]}\\)で、`VDD`が\\(\mathrm{3.3[V]}\\)なので、電流は\\(\mathrm{約0.70[mA]}\\)となります。`PC13`は\\(\mathrm{3[mA]}\\)未満にする必要がありますが、\\(\mathrm{約0.70[mA]}\\)なので問題はありません。  
 
 ````
+
+## 他のメソッド(使用したことがない)
+
+### `int is_connected(void)`
 
 ---
 
