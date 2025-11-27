@@ -22,7 +22,7 @@
 
 以下の図のように接続します。  
 
-![tx_connect.png](../../resources/BasicContents/Controller/tx_connect.png)  
+![tx_connect.png](../resources/BasicContents/Controller/tx_connect.png)  
 
 ## 受信側
 
@@ -34,21 +34,21 @@
 
 以下の図のように接続します。  
 
-![rx_connect.png](../../resources/BasicContents/Controller/rx_connect.png)  
+![rx_connect.png](../resources/BasicContents/Controller/rx_connect.png)  
 
 ## 送受信するデータ
 
 `DUALSHOCK4`の場合  
 
-![data_assign_DUALSHOCK4.png](../../resources/BasicContents/Controller/data_assign_DUALSHOCK4.png)  
+![data_assign_DUALSHOCK4.png](../resources/BasicContents/Controller/data_assign_DUALSHOCK4.png)  
 
 `DUALSHOCK3`の場合  
 
-![data_assign_DUALSHOCK4.png](../../resources/BasicContents/Controller/data_assign_DUALSHOCK3.png)  
+![data_assign_DUALSHOCK4.png](../resources/BasicContents/Controller/data_assign_DUALSHOCK3.png)  
 
 `DUALSENSE`の場合  
 
-![data_assign_DUALSHOCK4.png](../../resources/BasicContents/Controller/data_assign_DUALSENSE.png)  
+![data_assign_DUALSHOCK4.png](../resources/BasicContents/Controller/data_assign_DUALSENSE.png)  
 
 データ型はすべて`uint8_t`で、合計13Byteのデータになっています。  
 
