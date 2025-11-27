@@ -1,0 +1,550 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>コントローラー受信側(lib) - Control_General</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Control_General</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="受信側ライブラリの使い方"><a class="header" href="#受信側ライブラリの使い方">受信側ライブラリの使い方</a></h1>
+<h2 id="ライブラリの場所"><a class="header" href="#ライブラリの場所">ライブラリの場所</a></h2>
+<div id="admonition-github" class="admonition admonish-info" role="note" aria-labelledby="admonition-github-title">
+<div class="admonition-title">
+<div id="admonition-github-title">
+<p>GitHub</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-github"></a>
+</div>
+<div>
+<p><a href="https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src">receiveController</a></p>
+</div>
+</div>
+<p><code>GitHub/2025-B/receiveController</code>の<code>main</code>ブランチ、<code>receiveF446RE/lib/rxfep</code>にあります。使用する場合は<code>rxfep</code>フォルダごとダウンロードして使用してください。</p>
+<div id="admonition-注意点" class="admonition admonish-tip" role="note" aria-labelledby="admonition-注意点-title">
+<div class="admonition-title">
+<div id="admonition-注意点-title">
+<p>注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-注意点"></a>
+</div>
+<div>
+<p>ライブラリは置き場、公開/非公開が変更される場合があります。<br />
+2025/11/02時点では一部の人のみに公開しています。</p>
+</div>
+</div>
+<h2 id="使用方法dualshock4の場合"><a class="header" href="#使用方法dualshock4の場合">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
+<p>ページの下に<a href="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
+<h3 id="include--using"><a class="header" href="#include--using">include &amp; using</a></h3>
+<ul>
+<li>
+<p><code>platformio</code>のプロジェクトの<code>lib</code>フォルダに<code>rxfep</code>をコピーしてください。</p>
+</li>
+<li>
+<p>使用するファイルでヘッダファイルをインクルードし、名前空間の設定を行います。</p>
+<pre><code class="language-cpp : main.cpp">#include "rxDualshock4.hpp"
+using namespace snct;
+</code></pre>
+</li>
+<li>
+<p><code>using namespace snct;</code>を行わない場合は、使用する際に<code>snct::</code>を先頭に付け加えてください。</p>
+</li>
+</ul>
+<h3 id="変数などの宣言"><a class="header" href="#変数などの宣言">変数などの宣言</a></h3>
+<ul>
+<li>
+<p>使用するためには次のものが必要になります。</p>
+<ul>
+<li>データを格納する構造体</li>
+<li><code>UART</code>を使用するための<code>UnbufferedSerial</code>のインスタンス</li>
+<li>使用したいコントローラー用のインスタンス</li>
+</ul>
+<pre><code class="language-cpp : main.cpp">struct RxDualshock4::DS4_struct data;
+mbed::UnbufferedSerial fep(PinName::PC_10, PinName::PC_11, 38400);
+// PC_10はUART3_TX、PC_11はUART3_RX、38400はbaudrate
+RxDualshock4 ps4(fep,&amp;data,RxController::GET_TYPE::polling);
+</code></pre>
+</li>
+</ul>
+<h3 id="rxdualshock4の引数"><a class="header" href="#rxdualshock4の引数">RxDualshock4の引数</a></h3>
+<ul>
+<li><code>ps4(fep, &amp;data,RxController::GET_TYPE::polling);</code>では3つの引数があります。
+<ul>
+<li><code>fep</code>：<code>UnbufferedSerial</code>のインスタンス</li>
+<li><code>data</code>：構造体のポインタ</li>
+<li><code>RxController::GET_TYPE::polling</code>：受信方法の設定
+<ul>
+<li><code>polling</code>：ポーリング処理(データが来るまで一定期間待機する)</li>
+<li><code>interrupt</code>：割り込み受信</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="受信する"><a class="header" href="#受信する">受信する</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">// GET_TYPE::pollingの場合
+if(ps4.getDS4()){
+    // 受信成功時の処理
+}else{
+    // 受信失敗時の処理
+}
+
+// GET_TYPE::interruptの場合
+if(ps4.getDS4_IT()){
+    // 受信成功時の処理
+}else{
+    // 受信失敗時の処理
+}
+</code></pre>
+<h3 id="受信したデータの使用方法"><a class="header" href="#受信したデータの使用方法">受信したデータの使用方法</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">led.write(data.CIRCLE);
+</code></pre>
+<ul>
+<li><code>data.《ほしいデータ名》</code>でアクセスします。</li>
+</ul>
+<div id="admonition-データ名とデータ型" class="admonition admonish-info" role="note" aria-labelledby="admonition-データ名とデータ型-title">
+<div class="admonition-title">
+<div id="admonition-データ名とデータ型-title">
+<p>データ名とデータ型</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-データ名とデータ型"></a>
+</div>
+<div>
+<p><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code><br />
+<code>bool</code>：<code>TRIANGLE</code>、<code>CIRCLE</code>、<code>CROSS</code>、<code>SQUARE</code>、<code>UP</code>、<code>RIGHT</code>、<code>DOWN</code>、<code>LEFT</code>、<code>L1</code>、<code>L3</code>、<code>R1</code>、<code>R3</code>、<code>SHARE</code>、<code>OPTIONS</code>、<code>PS</code>、<code>TOUCHPAD</code></p>
+</div>
+</div>
+<h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
+<h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
+<ul>
+<li><code>RxDualshock4(mbed::UnbufferedSerial&amp; unbuffered_serial_obj, struct RxDualshock4::DS4_struct *struct_p, RxController::GET_TYPE type);</code>
+<ul>
+<li><code>unbuffered_serial_obj</code>：<code>UnbufferedSerial</code>のインスタンス</li>
+<li><code>*struct_p</code>：構造体のポインタ</li>
+<li><code>type</code>：受信方法を指定します。デフォルトでは割り込み受信になります。</li>
+</ul>
+</li>
+<li>グローバルで宣言することが多いです。</li>
+</ul>
+<h3 id="getds4"><a class="header" href="#getds4">getDS4()</a></h3>
+<ul>
+<li>ポーリング受信の場合に使用します。</li>
+<li>引数はありません。</li>
+<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code>が返ります。</li>
+</ul>
+<h3 id="getds4_it"><a class="header" href="#getds4_it">getDS4_IT()</a></h3>
+<ul>
+<li>割り込み受信の場合に使用します。</li>
+<li>引数はありません。</li>
+<li>戻り値は受信成功時は<code>true</code>、失敗時は<code>false</code>が返ります。</li>
+</ul>
+<h2 id="その他設定用関数の引数と戻り値dualshock4の場合"><a class="header" href="#その他設定用関数の引数と戻り値dualshock4の場合">その他設定用関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
+<p>基本的に使用しません。</p>
+<h3 id="setheader"><a class="header" href="#setheader">setHeader()</a></h3>
+<ul>
+<li>引数なしの場合
+<ul>
+<li>ヘッダー符号をデフォルトの<code>0xaf</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>uint8_t header</code>
+<ul>
+<li><code>header</code>をヘッダー符号に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したヘッダー符号を返します。</li>
+</ul>
+</li>
+</ul>
+<h3 id="setfooter"><a class="header" href="#setfooter">setFooter()</a></h3>
+<ul>
+<li>引数なしの場合
+<ul>
+<li>フッター符号をデフォルトの<code>0xed</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>uint8_t footer</code>
+<ul>
+<li><code>footer</code>をフッター符号に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したフッター符号を返します。</li>
+</ul>
+</li>
+</ul>
+<h3 id="settimeout"><a class="header" href="#settimeout">setTimeout()</a></h3>
+<ul>
+<li>ポーリング受信の場合に使用します。</li>
+<li>引数なしの場合
+<ul>
+<li>タイムアウトの時間をデフォルトの<code>15ms</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>chrono::milliseconds time</code>
+<ul>
+<li><code>time</code>をタイムアウトの時間に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したタイムアウトの時間を返します。</li>
+</ul>
+</li>
+</ul>
+<h3 id="setretry"><a class="header" href="#setretry">setRetry()</a></h3>
+<ul>
+<li>ポーリング受信の場合に使用します。</li>
+<li>引数なしの場合
+<ul>
+<li>リトライ回数をデフォルトの<code>16</code>に設定します。</li>
+</ul>
+</li>
+<li>引数<code>uint8_t retry</code>
+<ul>
+<li><code>retry</code>をリトライ回数に設定します。</li>
+</ul>
+</li>
+<li>戻り値
+<ul>
+<li>設定したリトライ回数を返します。</li>
+</ul>
+</li>
+</ul>
+<h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div id="admonition-dualshock4の場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-dualshock4の場合-title">
+<div class="admonition-title">
+<div id="admonition-dualshock4の場合-title">
+<p>DUALSHOCK4の場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-dualshock4の場合"></a>
+</div>
+<div>
+<p>使用しているものです。<code>DUALSHOCK4</code>用のファイルとコントローラー共通のファイルが必要になります。</p>
+<ul>
+<li><code>lib/rxfep</code>
+<ul>
+<li><code>rxController.cpp</code></li>
+<li><code>rxController.hpp</code></li>
+<li><code>rxDualshock4.cpp</code></li>
+<li><code>rxDualshock4.hpp</code></li>
+</ul>
+</li>
+<li><code>STM32F446RET6</code></li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;mbed.h&gt;
+#include "rxDualshock4.hpp" //  ヘッダファイルをインクルードします。
+
+#define DBG_M
+
+//  using namespace snct;をしていないからsnct::をつけます。
+struct snct::RxDualshock4::DS4_struct data;
+
+//  UnbufferedSerialのインスタンスを作成
+mbed::UnbufferedSerial fep(PinName::PC_10, PinName::PC_11, 38400);
+
+//  RxDualshock4のインスタンスを作成
+snct::RxDualshock4 ps4(fep,&amp;data,snct::RxController::GET_TYPE::interrupt);
+
+mbed::PwmOut em_led(PB_15);     //  緊急停止sw用のチェックLEDのインスタンス
+mbed::PwmOut fep_led(PB_14);    //  受信成功失敗用のチェックLEDのインスタンス
+
+mbed::DigitalIn em_sw(PA_4);    //  緊急停止sw用のインスタンス
+
+constexpr uint8_t FAIL_MAX = 3;     //  受信失敗の上限値
+uint8_t fail_count = FAIL_MAX * 2;  //  受信失敗カウンタ
+bool em_sw_status = 0;              //  緊急停止swの状態
+bool fep_status = 0;                //  受信の状態
+
+int main(void){
+    em_led.period_us(83);   //  LEDの設定
+    em_led.write(0);
+    fep_led.period_us(83);
+    fep_led.write(0);
+    while(true){            //  main loop
+        #ifdef DBG_M
+        printf("%d ", fail_count);
+        #endif
+        em_sw_status = em_sw.read();
+        if(!em_sw_status){
+            fep_status = ps4.getDS4_IT();   //  割り込み受信
+            if(fep_status){
+                fail_count = 0;
+
+                #ifdef DBG_M    //  各データを出力
+                char buf[64] = {0};
+                sprintf(buf, 
+                    "LX:%3d LY:%3d RX:%3d RY:%3d L2:%3d R2:%3d Pressed Button: ", 
+                    data.LX, data.LY, data.RX, data.RY, data.L2, data.R2
+                );
+                printf(buf);
+                if(data.TRIANGLE)  printf("TRIANGLE ");
+                if(data.CIRCLE)    printf("CIRCLE ");
+                if(data.CROSS)     printf("CROSS ");
+                if(data.SQUARE)    printf("SQUARE ");
+
+                if(data.UP)        printf("UP ");
+                if(data.RIGHT)     printf("RIGHT ");
+                if(data.DOWN)      printf("DOWN ");
+                if(data.LEFT)      printf("LEFT ");
+
+                if(data.L1)        printf("L1 ");
+                if(data.L3)        printf("L3 ");
+                if(data.R1)        printf("R1 ");
+                if(data.R3)        printf("R3 ");
+
+                if(data.SHARE)     printf("SHARE ");
+                if(data.OPTIONS)   printf("OPTIONS ");
+                if(data.PS)        printf("PS ");
+                if(data.TOUCHPAD)  printf("TOUCHPAD ");
+                #endif
+            }else{
+                fail_count++;
+                if(fail_count &gt; FAIL_MAX + 1){
+                    fail_count--;
+                }
+                #ifdef DBG_M
+                printf("fail ");
+                #endif
+            }
+        }else{
+            #ifdef DBG_M
+            printf("em_sw_pushed ");
+            #endif
+        }
+        fep_led.write(!fep_status); //  チェックLEDに出力
+        em_led.write(em_sw_status);
+        #ifdef DBG_M
+        printf("\n");
+        #endif
+    }
+}
+</code></pre>
+</div>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../mbed/thread/ThisThread.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../mbed/thread/ThisThread.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../DevelopmentPlatformIO/DevelopmentPlatformIOHome.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

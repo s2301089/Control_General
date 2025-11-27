@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>前提条件等 - Control_General</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/pagetoc.css">
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Control_General</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
+<p>制御(回路・プログラム)に関するお勉強・開発のHomeです。<br />
+使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>です。一部、他の言語の知識が混ざる可能性があります。<br />
+環境構築等はすでに済んでいるものとして扱い、コードの内容のみになる場合があります。筆者と異なるOS・バージョンを使用する場合はそれぞれの環境に合わせて対応する必要があります。<br />
+各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br />
+一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br />
+結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
+<div id="admonition-調べ方のコツ" class="admonition admonish-tip" role="note" aria-labelledby="admonition-調べ方のコツ-title">
+<div class="admonition-title">
+<div id="admonition-調べ方のコツ-title">
+<p>調べ方のコツ？</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-調べ方のコツ"></a>
+</div>
+<div>
+<p>知りたいことがあれば、調べてみよう。<br />
+例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。<code>Qiita</code>や<code>Zenn</code>などがその例です。中には個人のサイトで解説をしている方もいます。<br />
+データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。<br />
+<code>ChatGPT</code>などの生成AIを調べもせずに頼ることはおすすめしません。最初から頼ると意味などの理解が困難になります。</p>
+</div>
+</div>
+<hr />
+<h2 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h2>
+<ul>
+<li>Windows 11 Home <strong>← 推奨</strong></li>
+<li>Ubuntu 22.04 LTS</li>
+</ul>
+<div id="admonition-osについての注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-osについての注意点-title">
+<div class="admonition-title">
+<div id="admonition-osについての注意点-title">
+<p>OSについての注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-osについての注意点"></a>
+</div>
+<div>
+<p>Macは使用しているソフトウェアが対応していない、機能がないなどの問題点があります。<br />
+そのため<strong>Windows</strong>を<strong>推奨</strong>します。その他のOSは自分で対応できる自信のある人のみ使用することをおすすめします。</p>
+</div>
+</div>
+<h2 id="使用中使用予定の機器一覧"><a class="header" href="#使用中使用予定の機器一覧">使用中(使用予定)の機器一覧</a></h2>
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g110172/">NUCLEO-F303K8(部)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g107385/">Arduino Uno Rev3(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g116132/">Raspberry Pi Pico(私物)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualshock-4-wireless-controller/">DUALSHOCK4(部)</a></li>
+<li><a href="https://www.sony.com/ja/SonyInfo/design/gallery/CECH-ZC2/">DUALSHOCK3(部)</a></li>
+<li><a href="https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/">DUALSENSE(私物)</a></li>
+<li><a href="https://amzn.asia/d/h1pTd7G">USB Host Shield 2.0(部・私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g117215/">(ATOM Matrix)(私物)</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g115674/">(ESP32-WROVER-E)(私物)</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="BasicContents/BasicContents.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="BasicContents/BasicContents.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>アナログ入力 - Control_General</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Control_General</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="アナログ入力"><a class="header" href="#アナログ入力">アナログ入力</a></h1>
+<h2 id="analogin"><a class="header" href="#analogin"><code>AnalogIn</code></a></h2>
+<p>アナログ入力をする場合は、<code>AnalogIn</code>クラスを使用します。</p>
+<h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
+<p>コンストラクタは<code>AnalogIn(PinName pin, float vref = MBED_CONF_TARGET_DEFAULT_ADC_VREF)</code>で定義されています。</p>
+<ul>
+<li><code>pin</code>
+<ul>
+<li>使用するピンを指定します。</li>
+<li>アナログ入力には<code>ADC</code>を使用するため、<code>ADC</code>に対応しているピンを指定する必要があります。</li>
+</ul>
+</li>
+<li><code>vref</code>
+<ul>
+<li>基準電圧を指定します。</li>
+<li>よく分かりませんでした。</li>
+<li>指定しない場合は初期値として<code>MBED_CONF_TARGET_DEFAULT_ADC_VREF</code>が指定されます。</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">vref初期値</span></div>
+<pre><code class="language-cpp">AnalogIn var_r1(PA_0);
+</code></pre>
+<p><code>var_r1</code>というインスタンスを宣言しています。ピンは<code>PA_0</code>を指定しています。</p>
+<h3 id="float-readvoid"><a class="header" href="#float-readvoid"><code>float read(void)</code></a></h3>
+<p>ピンの入力電圧を読み取り、<code>0.0f(0%)</code>~<code>1.0f(100%)</code>の値を返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">float pin_value = var_r1.read();
+</code></pre>
+<h3 id="unsigned-short-read_u16void"><a class="header" href="#unsigned-short-read_u16void"><code>unsigned short read_u16(void)</code></a></h3>
+<p>ピンの入力電圧を読み取り、<code>0x0000(0%)</code>~<code>0xffff(100%)</code>の値を返します。<br />
+入力電圧を<code>16bit</code>に正規化して返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">uint16_t pin_value = var_r1.read_u16();
+</code></pre>
+<h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div id="admonition-ledの明るさ制御" class="admonition admonish-example" role="note" aria-labelledby="admonition-ledの明るさ制御-title">
+<div class="admonition-title">
+<div id="admonition-ledの明るさ制御-title">
+<p>LEDの明るさ制御</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-ledの明るさ制御"></a>
+</div>
+<div>
+<p><code>PA5</code>を<code>PA0</code>の入力値を出力に設定するプログラムです。<br />
+<code>NUCLEO-F446RE</code>で動作確認しました。評価ボード上の<code>LD2</code>が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。</p>
+<p style="text-align:center"><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png" alt="variable_resistor_10k_breadboard" width="500"></p>  
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
+
+using namespace std;
+using namespace mbed;
+
+int main(void){
+    AnalogIn var_r1(PA_0);
+    PwmOut led2(PA_5);
+    led2.period_ms(1);
+
+    while(1){
+        led2.write(var_r1.read());
+    }
+
+    return 0;
+}
+</code></pre>
+<p>半固定抵抗のつまみを左から右に回すと<code>LED</code>が明るくなり、右から左に回すと<code>LED</code>が暗くなります。</p>
+<p>半固定抵抗はこのような記号で表されます。</p>
+<p><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_default.png" alt="variable_resistor_default" /></p>
+<p>この状態では<code>3.3[V]-R1-R2-GND</code>の直列回路になります。分圧されるので中間の電圧が入力電圧となり、中途半端な明るさになります。<br />
+左に回しきったときは次の状態になります。</p>
+<p><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_gnd.png" alt="variable_resistor_default" /></p>
+<p>この状態では<code>3.3[V]-R-GND</code>の回路になり、入力電圧が\(\mathrm{0[V]}\)になるので、消灯(<code>0%</code>)になります。<br />
+右に回しきったときは次の状態になります。</p>
+<p><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_vdd.png" alt="variable_resistor_default" /></p>
+<p>この状態では、入力電圧が\(\mathrm{3.3[V]}\)になるので、点灯(<code>100%</code>)になります。</p>
+</div>
+</div>
+<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
+<h3 id="float-read_voltagevoid"><a class="header" href="#float-read_voltagevoid"><code>float read_voltage(void)</code></a></h3>
+<h3 id="void-set_reference_voltagefloat-vref"><a class="header" href="#void-set_reference_voltagefloat-vref"><code>void set_reference_voltage(float vref)</code></a></h3>
+<h3 id="float-get_reference_voltage"><a class="header" href="#float-get_reference_voltage"><code>float get_reference_voltage()</code></a></h3>
+<hr />
+<div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
+<div class="admonition-title">
+<div id="admonition-使用部品-title">
+<p>使用部品</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-使用部品"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/ja/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a></li>
+<li>USB A to miniB ケーブル</li>
+<li><a href="https://akizukidenshi.com/catalog/g/g100315/">ブレッドボード</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g106110/">半固定抵抗 10[kΩ]</a></li>
+<li>ジャンパ線</li>
+</ul>
+</div>
+</div>
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+</div>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../mbed/timer/PwmOut.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../mbed/thread/ThisThread.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../mbed/timer/PwmOut.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../mbed/thread/ThisThread.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

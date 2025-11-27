@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>回路の基礎 - Control_General</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Control_General</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="回路の基礎"><a class="header" href="#回路の基礎">回路の基礎</a></h1>
+<h2 id="基本物理量"><a class="header" href="#基本物理量">基本物理量</a></h2>
+<div id="admonition-電流とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-電流とは-title">
+<div class="admonition-title">
+<div id="admonition-電流とは-title">
+<p>電流とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-電流とは"></a>
+</div>
+<div>
+<p><strong>電荷</strong>(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。<br />
+電流は \(I\) で表され、単位は \(\mathrm{[A]}\) (アンペア)です。</p>
+</div>
+</div>
+<p>電流が流れる路を<strong>電気回路</strong>と言います。</p>
+<div id="admonition-電圧とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-電圧とは-title">
+<div class="admonition-title">
+<div id="admonition-電圧とは-title">
+<p>電圧とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-電圧とは"></a>
+</div>
+<div>
+<p>電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を<strong>電位差</strong>と言い、電気回路では電圧とも言います。<br />
+電圧は \(V\) で表され、単位は \(\mathrm{[V]}\) (ボルト)です。</p>
+</div>
+</div>
+<p>電流は電位の高い方から低い方に向かって流れます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_circuit.png" alt="r_circuit" height="200"></p>
+<div id="admonition-抵抗とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-抵抗とは-title">
+<div class="admonition-title">
+<div id="admonition-抵抗とは-title">
+<p>抵抗とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-抵抗とは"></a>
+</div>
+<div>
+<p>電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを<strong>電圧降下</strong>と言います。<br />
+抵抗は \(R\) で表され、単位は \(\mathrm{[\Omega]}\) (オーム)です。</p>
+</div>
+</div>
+<h2 id="si接頭語"><a class="header" href="#si接頭語">SI接頭語</a></h2>
+<p>大きな数字や小さな数字をわかりやすく表すために、10のべき乗を表し桁数を少なくします。<br />
+電気回路で使用するSI接頭語の一部を紹介します。電気回路では\(10^{3}\)ごとのSI接頭語を使用します。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">記号</th><th style="text-align: center">接頭語</th><th style="text-align: center">\(10^{n}\)</th></tr></thead><tbody>
+<tr><td style="text-align: center">\(T\)</td><td style="text-align: center">テラ</td><td style="text-align: center">\(10^{12}\)</td></tr>
+<tr><td style="text-align: center">\(G\)</td><td style="text-align: center">ギラ</td><td style="text-align: center">\(10^{9}\)</td></tr>
+<tr><td style="text-align: center">\(M\)</td><td style="text-align: center">メガ</td><td style="text-align: center">\(10^{6}\)</td></tr>
+<tr><td style="text-align: center">\(k\)</td><td style="text-align: center">キロ</td><td style="text-align: center">\(10^{3}\)</td></tr>
+<tr><td style="text-align: center">\(m\)</td><td style="text-align: center">ミリ</td><td style="text-align: center">\(10^{-3}\)</td></tr>
+<tr><td style="text-align: center">\(\mu\)</td><td style="text-align: center">マイクロ</td><td style="text-align: center">\(10^{-6}\)</td></tr>
+<tr><td style="text-align: center">\(n\)</td><td style="text-align: center">ナノ</td><td style="text-align: center">\(10^{-9}\)</td></tr>
+<tr><td style="text-align: center">\(p\)</td><td style="text-align: center">ピコ</td><td style="text-align: center">\(10^{-12}\)</td></tr>
+</tbody></table>
+</div>
+<h2 id="オームの法則"><a class="header" href="#オームの法則">オームの法則</a></h2>
+<p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br />
+$$ V = RI $$</p>
+<div id="admonition-例" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-title">
+<div class="admonition-title">
+<div id="admonition-例-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例"></a>
+</div>
+<div>
+<p>次の回路では何\(\mathrm{[A]}\)の電流が流れるでしょうか。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_circuit.png" alt="r_10k_circuit" height="200"></p>  
+<p>オームの法則で求めます。<br />
+$$ V=RI \\
+I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}} = 0.33 \times 10^{-3}\mathrm{[A]} = 0.33\mathrm{[mA]} $$</p>
+<p>抵抗\(R\)の両端には電源である\(E\)がすべて印加されます。そのため、\(R\)に印加される電圧は\(3.3\mathrm{[V]}\)となります。</p>
+</div>
+</div>
+<h2 id="直列回路と並列回路"><a class="header" href="#直列回路と並列回路">直列回路と並列回路</a></h2>
+<div id="admonition-直列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-直列接続-title">
+<div class="admonition-title">
+<div id="admonition-直列接続-title">
+<p>直列接続</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-直列接続"></a>
+</div>
+<div>
+<p>素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。<br />
+直列接続の場合は電圧と電流は次のようになります。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_series_circuit.png" alt="r_series_circuit" height="250"></p>
+<p>$$ E = V_{1} + V_{2} \\
+I = I_{1} = I_{2} $$</p>
+</div>
+</div>
+<div id="admonition-並列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-並列接続-title">
+<div class="admonition-title">
+<div id="admonition-並列接続-title">
+<p>並列接続</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-並列接続"></a>
+</div>
+<div>
+<p>素子の端子同士を両端接続する方法です。図として表すと次のようになります。<br />
+並列接続の場合は電圧と電流は次のようになります。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_parallel_circuit.png" alt="r_parallel_circuit" height="250"></p>
+<p>$$ E = V_{1} = V_{2} \\
+I = I_{1} + I_{2} $$</p>
+</div>
+</div>
+<h2 id="合成抵抗"><a class="header" href="#合成抵抗">合成抵抗</a></h2>
+<p>抵抗が複数ある場合は全体の抵抗はどうなるでしょうか。<br />
+全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br />
+直列接続の合成抵抗は次の式で求められます。<br />
+$$ R = R_{1} + R_{2} $$</p>
+<div id="admonition-例-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-1-title">
+<div class="admonition-title">
+<div id="admonition-例-1-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例-1"></a>
+</div>
+<div>
+<p>次の回路の合成抵抗を求めます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_series_10k_circuit.png" alt="r_10k_series_10k_circuit" height="250"></p>
+<p>$$ R = R_{1} + R_{2} = 10 \times 10^{3} + 10 \times 10^{3} = 20 \times 10^{3} = 20\mathrm{[k\Omega]} $$</p>
+<p>次の回路の合成抵抗を求めます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_series_10k_circuit.png" alt="r_5k_series_10k_circuit" height="250"></p>
+<p>$$ R = R_{1} + R_{2} = 5 \times 10^{3} + 10 \times 10^{3} = 15 \times 10^{3} = 15\mathrm{[k\Omega]} $$</p>
+<p>直列接続の場合は合成抵抗は大きくなります。</p>
+</div>
+</div>
+<p>並列接続の合成抵抗は次の式で求められます。
+$$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
+抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
+$$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
+この式を「和分の積」と呼ぶ人もいます。</p>
+<div id="admonition-例-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-2-title">
+<div class="admonition-title">
+<div id="admonition-例-2-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例-2"></a>
+</div>
+<div>
+<p>次の回路の合成抵抗を求めます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png" alt="r_10k_parallel_10k_circuit" height="250"></p>
+<p>$$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} = \frac{1}{\frac{1}{10 \times 10^{3}} + \frac{1}{10 \times 10^{3}}} = 5 \times 10^{3} = 5\mathrm{[k\Omega]} $$</p>
+<p>次の回路の合成抵抗を求めます。「和分の積」で求めてみます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png" alt="r_5k_parallel_10k_circuit" height="250"></p>
+<p>$$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} = \frac{5 \times 10^{3} \times 10 \times 10^{3}}{5 \times 10^{3} + 10 \times 10^{3}} = 3.33\ldots \times 10^{3} \fallingdotseq 3.3\mathrm{[k\Omega]} $$</p>
+<p>並列接続の場合は合成抵抗は小さくなります。</p>
+</div>
+</div>
+<h2 id="分圧"><a class="header" href="#分圧">分圧</a></h2>
+<p>直列接続の場合は全体の電圧が\(V = V_{1} + V_{2}\)で表されます。<br />
+\(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
+$$ V_{1} = \frac{R_{1}}{R}V \\
+V_{2} = \frac{R_{2}}{R}V $$</p>
+<div id="admonition-例-3" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-3-title">
+<div class="admonition-title">
+<div id="admonition-例-3-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例-3"></a>
+</div>
+<div>
+<p>次の回路のそれぞれの抵抗に加わる電圧を求めます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_series_10k_circuit.png" alt="r_10k_series_10k_circuit" height="250"></p>
+<p>$$ V_{1} = \frac{R_{1}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} \\
+V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} $$</p>
+<p>次の回路のそれぞれの抵抗に加わる電圧を求めます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_series_10k_circuit.png" alt="r_5k_series_10k_circuit" height="250"></p>
+<p>$$ V_{1} = \frac{R_{1}}{R}E = \frac{5 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 1.66\ldots \fallingdotseq 1.7\mathrm{[V]} \\
+V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 3.33\ldots \fallingdotseq 3.3\mathrm{[V]} $$</p>
+<p>抵抗が大きい方に電圧が多く加わります。</p>
+</div>
+</div>
+<h2 id="分流"><a class="header" href="#分流">分流</a></h2>
+<p>並列接続の場合は全体の電流が\(I = I_{1} + I_{2}\)で表されます。<br />
+\(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
+$$ I_{1} = \frac{R}{R_{1}}I = \frac{R_{2}}{R_{1} + R_{2}}I \\
+I_{2} = \frac{R}{R_{2}}I = \frac{R_{1}}{R_{1} + R_{2}}I $$</p>
+<div id="admonition-例-4" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-4-title">
+<div class="admonition-title">
+<div id="admonition-例-4-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例-4"></a>
+</div>
+<div>
+<p>次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\(I\)をオームの法則で求めます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png" alt="r_10k_parallel_10k_circuit" height="250"></p>
+<p>$$ I = \frac{E}{R} = \frac{5.0}{5 \times 10^{3}} = 1 \times 10^{-3} = 1\mathrm{[mA]} \\
+I_{1} = \frac{R}{R_{1}}I = \frac{5 \times 10^{3}}{10 \times 10^{3}} \times 1 \times 10^{-3} = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} \\
+I_{2} = \frac{R_{1}}{R_{1} + R_{2}}I = \frac{10 \times 10^{3}}{10 \times 10^{3} + 10 \times 10^{3}} \times 1 \times 10^{-3} \\ = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} $$</p>
+<p>次の回路のそれぞれの抵抗に流れる電流を求めます。それぞれの抵抗値と加わる電圧が分かればオームの法則でも求めることができます。</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png" alt="r_5k_parallel_10k_circuit" height="250"></p>
+<p>$$ I_{1} = \frac{V_{R1}}{R_{1}} = \frac{5.0}{5 \times 10^{3}} = 1\mathrm{[mA]} \\
+I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $$</p>
+<p>抵抗が小さい方に電流が多く流れます。</p>
+</div>
+</div>
+<h2 id="短絡と開放"><a class="header" href="#短絡と開放">短絡と開放</a></h2>
+<p><strong>短絡</strong>は\(R=0\)であることです。<br />
+抵抗がないため\(V=RI=0\)になります。このとき\(I\neq0\)になります。</p>
+<p><strong>開放</strong>は\(R=\infty\)であることです。<br />
+抵抗が無限大のため\(I=\frac{V}{R}=0\)になります。このとき\(V\neq0\)になります。</p>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li>講習資料</li>
+<li><a href="https://www.morikita.co.jp/books/mid/073253">電気回路の基礎</a></li>
+<li><a href="https://www.dainippon-tosho.co.jp/unit/si_prefix.html">SI接頭語</a></li>
+</ul>
+</div>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../BasicContents/language_cpp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../BasicContents/motor.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../BasicContents/language_cpp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../BasicContents/motor.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

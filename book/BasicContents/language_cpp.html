@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>C++ - Control_General</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Control_General</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="c"><a class="header" href="#c">C++</a></h1>
+<div id="admonition-cの前に" class="admonition admonish-danger" role="note" aria-labelledby="admonition-cの前に-title">
+<div class="admonition-title">
+<div id="admonition-cの前に-title">
+<p>C++の前に</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-cの前に"></a>
+</div>
+<div>
+<p>C++の前にC言語を理解しましょう。<br />
+C言語がわからないとC++の説明がわからないことがあります。</p>
+</div>
+</div>
+<hr />
+<div id="admonition-cとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-cとは-title">
+<div class="admonition-title">
+<div id="admonition-cとは-title">
+<p>C++とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-cとは"></a>
+</div>
+<div>
+<p>プログラミング言語の一つで、C言語に<strong>オブジェクト指向</strong>要素を加えた言語です。<br />
+基本的な文法はC言語とほぼ一致します。C言語を更に拡張し、オブジェクト指向できるように作成された言語です。</p>
+</div>
+</div>
+<div id="admonition-オブジェクト指向とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-オブジェクト指向とは-title">
+<div class="admonition-title">
+<div id="admonition-オブジェクト指向とは-title">
+<p>オブジェクト指向とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-オブジェクト指向とは"></a>
+</div>
+<div>
+<p>「もの」を考えるプログラミング言語の考え方です。<br />
+例えば、「車」というオブジェクトには、「燃料」、「タイヤの回転数」、「乗車人数」などの変数や「走る」、「止まる」、「窓を開ける」などの動作を表す機能があります。<br />
+また、「走る」、「止まる」などの操作をするために内部でどんなことが行われているか知る必要はありません。「走る」、「止まる」ためにはどんな操作を行えばいいのかがわかっていれば内部の仕組みに関係なく、使用することができます。</p>
+</div>
+</div>
+<div id="admonition-クラスとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-クラスとは-title">
+<div class="admonition-title">
+<div id="admonition-クラスとは-title">
+<p>クラスとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-クラスとは"></a>
+</div>
+<div>
+<p>複数の車がある場合、持つべき変数、動作は同じですがそれぞれで変数の値などは異なります。変数の値などが異なるだけなら、構造体を作成し、一つ一つの車をそれぞれの構造体に対応させれば問題はありません。しかし、動きなどはすべて同じなため、それぞれの車に対して定義するのは無駄です。<br />
+そこで、一つの変数、動きをまとめ大量生産できるようにした型のことをクラスと呼びます。</p>
+<p>C言語の構造体に変数だけでなく、関数も追加したようなものがクラスです。</p>
+<p><img src="../resources/BasicContents/language_cpp/car_class.png" alt="car_class" width="300"></p>  
+<p>この例では、<code>car</code>というクラスの中に<code>move_forward()</code>というメソッドや、<code>fuel</code>というメンバ変数が存在します。</p>
+</div>
+</div>
+<div id="admonition-インスタンスとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-インスタンスとは-title">
+<div class="admonition-title">
+<div id="admonition-インスタンスとは-title">
+<p>インスタンスとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-インスタンスとは"></a>
+</div>
+<div>
+<p>オブジェクトはそれぞれの車を表すときに用いられる考え方で「インスタンス」とも呼びます。<br />
+車の設計書がクラスで、実際につくる車が「インスタンス」という考え方で、問題はないと思います。</p>
+<p>C言語の構造体で言えば、構造体変数に当たるものと同じです。</p>
+</div>
+</div>
+<div id="admonition-名前空間とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-名前空間とは-title">
+<div class="admonition-title">
+<div id="admonition-名前空間とは-title">
+<p>名前空間とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-名前空間とは"></a>
+</div>
+<div>
+<p>変数や関数、クラスの名前が重複しにくいように作成された空間のことです。違う名前空間なら同じ名前の変数などが複数存在しても問題ありません。しかし、同じ名前空間内ではもちろん同じ名前は使用できません。</p>
+<p><img src="../resources/BasicContents/language_cpp/namespace.png" alt="namespace" width="300"></p>  
+<p>この例では<code>a</code>、<code>b</code>、<code>c</code>の3つの名前空間があります。<br />
+名前空間が異なるため<code>read</code>や<code>write</code>などがそれぞれの名前空間で存在しています。しかし、名前空間<code>c</code>では、同じ名前空間内なので<code>read</code>という名前は複数宣言できません。</p>
+</div>
+</div>
+<div id="admonition-利用例" class="admonition admonish-example" role="note" aria-labelledby="admonition-利用例-title">
+<div class="admonition-title">
+<div id="admonition-利用例-title">
+<p>利用例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-利用例"></a>
+</div>
+<div>
+<p>クラスを使用する例を紹介します。クラスの作成や名前空間の定義は一旦飛ばします。</p>
+<pre><code class="language-cpp">#include "car.hpp"
+
+int main(void){
+    car car1;               //  インスタンスを作成
+    car1.move_forward();    //  メソッドを呼び出し
+    car1.light_on();
+
+    return 0;
+}
+</code></pre>
+<p>インスタンスを宣言する場合は変数などと同じように宣言します。<code>car1</code>というインスタンスが作成されます。<br />
+メソッドや変数にアクセスするためには、構造体と同じように<code>.</code>(ピリオド)を使用します。</p>
+<p>名前空間を使用する例を紹介します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HelloWorld_1.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(void){
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p><code>Hello, World!"</code>を表示するプログラムの例です。<code>std</code>という名前空間にある<code>cout</code>と<code>endl</code>というものを使用しています。<code>std</code>という名前空間を使用する前に<code>using namespace std;</code>で<code>std</code>を使用するという宣言をしています。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HelloWorld_2.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+
+int main(void){
+    std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>また、名前空間の使用を宣言せずに<code>std::cout</code>のように名前空間にあるものを使用する際に一つ一つに<code>名前空間名::</code>をつけることでその名前空間に定義されているものを使用することができます。</p>
+</div>
+</div>
+<div id="admonition-引数付きのインスタンス" class="admonition admonish-tip" role="note" aria-labelledby="admonition-引数付きのインスタンス-title">
+<div class="admonition-title">
+<div id="admonition-引数付きのインスタンス-title">
+<p>引数付きのインスタンス</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-引数付きのインスタンス"></a>
+</div>
+<div>
+<p>インスタンスを宣言するときに引数を渡すことができます。引数を渡すときに呼び出すメソッドを<strong>コンストラクタ</strong>と言います。<br />
+コンストラクタは主に、宣言時に初期化したいものの値などを渡してあげます。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car2.cpp</span></div>
+<pre><code class="language-cpp">#include "car.hpp"
+
+int main(void){
+    car car1(100);
+}
+</code></pre>
+<p>このように引数を渡すことができます。この例では、燃料の初期値として<code>100</code>を渡しています。渡す引数はそれぞれのクラスで異なるため、クラスを使用する場合には宣言方法をしっかりと確認する必要があります。</p>
+</div>
+</div>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://cpp-lang.sevendays-study.com/index.html">一週間で身につくC++言語の基本</a></li>
+</ul>
+</div>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../BasicContents/language_c.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../BasicContents/circuit.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../BasicContents/language_c.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../BasicContents/circuit.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

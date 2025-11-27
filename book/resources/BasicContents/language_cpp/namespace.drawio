@@ -1,0 +1,97 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="ページ1" id="6YUPkfpS1kLruGxaa8Tl">
+    <mxGraphModel dx="683" dy="398" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="id4kPyNiZJsY8U2su-tB-1" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="170" y="120" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-2" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="290" y="120" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-3" value="read" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="180" y="130" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-4" value="get" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="340" y="130" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-5" value="a" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="210" y="110" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-6" value="b" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="330" y="110" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-7" value="put" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="220" y="130" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-8" value="read" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="300" y="130" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-11" value="write" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="180" y="150" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-12" value="write" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="300" y="150" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-13" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="230" y="190" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-14" value="get" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-15" value="c" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="270" y="180" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-16" value="read" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="240" y="200" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-17" value="write" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="240" y="220" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-18" value="read" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-22" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.99;entryY=0.14;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=ubuntu mono;" edge="1" parent="1" source="id4kPyNiZJsY8U2su-tB-16" target="id4kPyNiZJsY8U2su-tB-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="210" as="sourcePoint" />
+            <mxPoint x="290" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-23" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontFamily=ubuntu mono;" edge="1" parent="1" source="id4kPyNiZJsY8U2su-tB-18" target="id4kPyNiZJsY8U2su-tB-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="210" as="sourcePoint" />
+            <mxPoint x="290" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-24" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-25" value="car" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="120" y="350" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-26" value="move_forward()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-27" value="light_on()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="40" y="410" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-29" value="light_off()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-30" value="move_back()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="40" y="390" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-31" value="fuel" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="160" y="370" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-32" value="speed" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="160" y="410" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="id4kPyNiZJsY8U2su-tB-33" value="mileage" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=ubuntu mono;" vertex="1" parent="1">
+          <mxGeometry x="160" y="390" width="60" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

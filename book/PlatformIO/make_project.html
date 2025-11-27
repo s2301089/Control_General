@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>プロジェクトの基本操作 - Control_General</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Control_General</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="プロジェクトの基本操作"><a class="header" href="#プロジェクトの基本操作">プロジェクトの基本操作</a></h1>
+<h2 id="プロジェクトの作成"><a class="header" href="#プロジェクトの作成">プロジェクトの作成</a></h2>
+<ul>
+<li>
+<p><code>vscode</code>の左の蜂マークを選択します。</p>
+<p><img src="../resources/PlatformIO/make_project/platformio_icon.png" alt="platformio_icon" height="50"></p>  
+</li>
+<li>
+<p><code>Create New Project</code>を選択し、プロジェクトを作成します。</p>
+<p><img src="../resources/PlatformIO/make_project/project_tasks.png" alt="project_tasks" height="300"></p>  
+</li>
+<li>
+<p><code>PIO Home</code>が開くので、<code>Quick Access</code>から<code>New Project</code>を選択します。</p>
+<p><img src="../resources/PlatformIO/make_project/quick_access.png" alt="quick_access" height="200"></p>  
+</li>
+<li>
+<p><code>Project Wizard</code>が開くので各項目を入力します。</p>
+<p><img src="../resources/PlatformIO/make_project/project_wizard.png" height="300"></p>  
+<ul>
+<li><code>Name</code>
+<ul>
+<li>プロジェクトの名前を入力します。</li>
+<li>半角文字で構成してください。</li>
+</ul>
+</li>
+<li><code>Board</code>
+<ul>
+<li>使用するボードを選択します。</li>
+<li><code>ST Nucleo F446RE</code>や<code>ST Nucleo F303K8</code>、<code>Arduino Uno</code>などがあります。</li>
+<li>使用するボードやマイコンに合わせて選択してください。</li>
+</ul>
+</li>
+<li><code>Framework</code>
+<ul>
+<li>使用する言語環境のようなものです。</li>
+<li><code>Arduino Uno</code>であれば<code>Arduino</code>を、<code>STM</code>マイコン系であれば<code>Mbed</code>を選択することが多いです。</li>
+</ul>
+</li>
+<li><code>Location</code>
+<ul>
+<li>プロジェクトの保存場所を指定します。</li>
+<li><code>Use default location</code>のチェックを外し、フォルダーを選択します。</li>
+<li>プロジェクトへのPATHに日本語などの全角文字が含まれないようにしてください。</li>
+</ul>
+</li>
+</ul>
+<div id="admonition-例" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-title">
+<div class="admonition-title">
+<div id="admonition-例-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例"></a>
+</div>
+<div>
+<p><img src="../resources/PlatformIO/make_project/project_wizard_example.png" width="400"></p>
+</div>
+</div>
+</li>
+<li>
+<p>入力が終わったら<code>Finish</code>を押します。
+プロジェクトが作成されるのを待ちます。</p>
+<p><img src="../resources/PlatformIO/make_project/wait_make_project.png" alt="wait_make_project" height="200"></p>
+</li>
+</ul>
+<h2 id="プロジェクトファイルの初期設定"><a class="header" href="#プロジェクトファイルの初期設定">プロジェクトファイルの初期設定</a></h2>
+<ul>
+<li>
+<p>プロジェクトの作成が終わったら<code>platformio.ini</code>が開きます。</p>
+<ul>
+<li>開かない場合は、蜂マークから<code>Pick a folder</code>を押してプロジェクトフォルダーを選択して開きます。</li>
+</ul>
+</li>
+<li>
+<p>作成されたファイルを編集します。</p>
+  <div id="admonition-platformioini" class="admonition admonish-example" role="note" aria-labelledby="admonition-platformioini-title">
+  <div class="admonition-title">
+  <div id="admonition-platformioini-title">
+<p>platformio.ini</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-platformioini"></a>
+  </div>
+  <div>
+<pre><code class="language-ini :">; PlatformIO Project Configuration File
+;
+;   Build options: build flags, source filter
+;   Upload options: custom upload port, speed and extra flags
+;   Library options: dependencies, extra library storages
+;   Advanced options: extra scripting
+;
+; Please visit documentation for the other options and examples
+; https://docs.platformio.org/page/projectconf.html
+
+[env:nucleo_f446re]
+platform = ststm32
+board = nucleo_f446re
+framework = mbed
+
+[platformio]
+build_cache_dir = ./.cache
+</code></pre>
+  <p><img src="../resources/PlatformIO/make_project/updating_platformio.png" alt="updating_platformio" width="400"></p>
+<p>このプロジェクトの更新の表示が終わるまで待ちましょう。</p>
+  </div>
+  </div>
+  <div id="admonition-gitignore" class="admonition admonish-example" role="note" aria-labelledby="admonition-gitignore-title">
+  <div class="admonition-title">
+  <div id="admonition-gitignore-title">
+<p>.gitignore</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-gitignore"></a>
+  </div>
+  <div>
+<pre><code class="language-.gitignore">.pio
+.vscode/.browse.c_cpp.db*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch
+.cache
+.vscode
+</code></pre>
+  </div>
+  </div>
+</li>
+</ul>
+<h2 id="プロジェクトファイルの構成"><a class="header" href="#プロジェクトファイルの構成">プロジェクトファイルの構成</a></h2>
+<ul>
+<li>
+<p>次の構成になっています。</p>
+<p><img src="../resources/PlatformIO/make_project/example_project_dir.png" width="300"></p>
+</li>
+<li>
+<p>主に使用するフォルダは<code>lib</code>と<code>src</code>です。</p>
+</li>
+<li>
+<p><code>lib</code></p>
+<ul>
+<li>ライブラリ、ヘッダファイルを管理するフォルダです。</li>
+<li>使用するライブラリをこのフォルダ内にコピーします。</li>
+</ul>
+</li>
+<li>
+<p><code>src</code></p>
+<ul>
+<li>ソースコードを管理するフォルダです。</li>
+</ul>
+</li>
+</ul>
+<h2 id="ビルドとアップロード"><a class="header" href="#ビルドとアップロード">ビルドとアップロード</a></h2>
+<p>コードを作成したら書き込むコードを作成します。<br />
+コードだけを作成する場合は<code>Build</code>、書き込みまで行う場合は<code>Upload</code>をします。<br />
+右上の三角から<code>Build</code>または<code>Upload</code>を選択します。</p>
+<p><img src="../resources/PlatformIO/make_project/build_upload.png" alt="build_upload" width="200"></p>  
+<p>成功した場合は<code>[SUCCESS]</code>と表示されます。</p>
+<p><img src="../resources/PlatformIO/make_project/upload_success.png" alt="upload_success" /></p>
+<p>失敗した場合は<code>[FAILED]</code>と表示されます。<br />
+失敗した場合はエラーメッセージも出力されます。</p>
+<p><img src="../resources/PlatformIO/make_project/build_failed.png" alt="build_failed" /></p>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li>講習資料</li>
+<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
+</ul>
+</div>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../PlatformIO/setup.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../mbed/mbedPlatformIO.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../PlatformIO/setup.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../mbed/mbedPlatformIO.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
