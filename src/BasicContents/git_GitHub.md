@@ -142,6 +142,18 @@
 
 ## gitコマンドの基本  
 
+- config
+  
+  ユーザー名などの設定をします。  
+
+  ```bash : Git Bash
+  # ユーザー名の設定
+  $ git config --global user.name "username"
+  
+  # メールアドレスの設定
+  $ git config --global user.email "email@email.com"
+  ```
+
 - clone  
 
   リモート(`Git`のサーバー)からリポジトリをローカル(自分の作業環境)に複製します。  

@@ -372,6 +372,16 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 <h2 id="gitコマンドの基本"><a class="header" href="#gitコマンドの基本">gitコマンドの基本</a></h2>
 <ul>
 <li>
+<p>config</p>
+<p>ユーザー名などの設定をします。</p>
+<pre><code class="language-bash : Git Bash"># ユーザー名の設定
+$ git config --global user.name "username"
+
+# メールアドレスの設定
+$ git config --global user.email "email@email.com"
+</code></pre>
+</li>
+<li>
 <p>clone</p>
 <p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分の作業環境)に複製します。</p>
 <pre><code class="language-bash : Git Bash">$ git clone [remote URL]
@@ -639,6 +649,22 @@ git merge main
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
