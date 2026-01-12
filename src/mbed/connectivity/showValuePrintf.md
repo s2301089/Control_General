@@ -12,37 +12,31 @@ printf("sw:%d\n", sw.read());
 ```
 
 基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。  
-シリアルモニターなどで確認できます。基本的にボーレートは`9600`です。  
+シリアルモニターなどで確認できます。ボーレートはデフォルトで`9600`です。  
 
-### 浮動小数点数の表示
+### ボーレートの変更
 
-初めに`%f`を`printf`で使用すると、おそらく`%f`と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。  
-プロジェクトフォルダの階層(`src/`や`lib/`のある階層)に新しいファイルを作成します。  
+`UnbufferedSerial`のインスタンスを宣言するだけでボーレートを変更することができます。  
 
-```json : mbed_app.json
-{
-    "target_overrides":{
-        "*":{
-            "target.printf_lib":"std"
-        }
-    }
-}
+```cpp : UnbufferedSerialの宣言
+UnbufferedSerial pc(USBTX, USBRX, 38400);
 ```
+
+`38400`がボーレートの設定になります。`9600`や`38400`、`115200`などに設定することが多いです。  
 
 ## 自分で実装する
 
 `mbed`では`printf`を使用すると勝手にPCへ送信されてしまうため、`printf`のような関数を実装する必要があります。  
-自分で実装する場合はボーレートも`9600`以外に設定できます。  
 使用する場合は、`Serial`の宣言をし、関数を実装するだけです。定義する関数は、`printf`と同じように使用できます。  
 
 ### UnbufferedSerialの宣言
 
-```cpp : Serialの宣言
+```cpp : UnbufferedSerialの宣言
 UnbufferedSerial pc(USBTX, USBRX, 38400);
 // TX、RX、baudrate
 ```
 
-`UnbufferedSerial`のインスタンス`pc`を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。`main.cpp`の上の方に宣言するとよいでしょう。  
+`UnbufferedSerial`のインスタンス`pc`を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。`main.cpp`の上の方に宣言します。  
 `baudrate`を指定しない場合は`9600`になります。  
 
 ### 代替関数の実装
@@ -62,3 +56,28 @@ void pc_printf(const char *format, ...){
 
 詳細な説明は省きますが、無限長引数を解釈し、`buf`にまとめ、`pc.write()`で送信しています。  
 `pc`は宣言した`UnbufferedSerial`のインスタンス名に合わせてください。  
+
+## 浮動小数点数等の表示
+
+初めに`%f`を`printf`で使用すると、`%f`と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。  
+プロジェクトフォルダの階層(`src/`や`lib/`のある階層)に新しいファイルを作成します。  
+
+```json : mbed_app.json
+{
+    "target_overrides":{
+        "*":{
+            "target.printf_lib":"std"
+        }
+    }
+}
+```
+
+`long`等も正しく表示できない場合があります。その場合は、上記の`mbed_app.json`を作成する必要があります。
+
+---
+
+```admonish quote "参考"
+
+- [NUCLEOのKeil Studioで浮動小数点数を出力する方法](https://forums.mbed.com/t/nucleo-keil-studio/22433)
+
+```

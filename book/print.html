@@ -3739,29 +3739,22 @@ span.codeblock_filename_inner {
 <pre><code class="language-cpp">printf("sw:%d\n", sw.read());
 </code></pre>
 <p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br />
-シリアルモニターなどで確認できます。基本的にボーレートは<code>9600</code>です。</p>
-<h3 id="浮動小数点数の表示"><a class="header" href="#浮動小数点数の表示">浮動小数点数の表示</a></h3>
-<p>初めに<code>%f</code>を<code>printf</code>で使用すると、おそらく<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
-プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
-<pre><code class="language-json">{
-    "target_overrides":{
-        "*":{
-            "target.printf_lib":"std"
-        }
-    }
-}
+シリアルモニターなどで確認できます。ボーレートはデフォルトで<code>9600</code>です。</p>
+<h3 id="ボーレートの変更"><a class="header" href="#ボーレートの変更">ボーレートの変更</a></h3>
+<p><code>UnbufferedSerial</code>のインスタンスを宣言するだけでボーレートを変更することができます。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
+<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
 </code></pre>
+<p><code>38400</code>がボーレートの設定になります。<code>9600</code>や<code>38400</code>、<code>115200</code>などに設定することが多いです。</p>
 <h2 id="自分で実装する"><a class="header" href="#自分で実装する">自分で実装する</a></h2>
 <p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br />
-自分で実装する場合はボーレートも<code>9600</code>以外に設定できます。<br />
 使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
 <h3 id="unbufferedserialの宣言"><a class="header" href="#unbufferedserialの宣言">UnbufferedSerialの宣言</a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Serialの宣言</span></div>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
 <pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
 // TX、RX、baudrate
 </code></pre>
-<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言するとよいでしょう。<br />
+<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言します。<br />
 <code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
 <h3 id="代替関数の実装"><a class="header" href="#代替関数の実装">代替関数の実装</a></h3>
 <p><code>printf</code>の代わりに呼び出す関数を定義します。</p>
@@ -3777,7 +3770,33 @@ span.codeblock_filename_inner {
 </code></pre>
 <p>詳細な説明は省きますが、無限長引数を解釈し、<code>buf</code>にまとめ、<code>pc.write()</code>で送信しています。<br />
 <code>pc</code>は宣言した<code>UnbufferedSerial</code>のインスタンス名に合わせてください。</p>
-<div style="break-before: page; page-break-before: always;"></div><style>
+<h2 id="浮動小数点数等の表示"><a class="header" href="#浮動小数点数等の表示">浮動小数点数等の表示</a></h2>
+<p>初めに<code>%f</code>を<code>printf</code>で使用すると、<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
+プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
+<pre><code class="language-json">{
+    "target_overrides":{
+        "*":{
+            "target.printf_lib":"std"
+        }
+    }
+}
+</code></pre>
+<p><code>long</code>等も正しく表示できない場合があります。その場合は、上記の<code>mbed_app.json</code>を作成する必要があります。</p>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/connectivity/showValuePrintf.html#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://forums.mbed.com/t/nucleo-keil-studio/22433">NUCLEOのKeil Studioで浮動小数点数を出力する方法</a></li>
+</ul>
+</div>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
 }
@@ -4123,439 +4142,6 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="platformioの導入"><a class="header" href="#platformioの導入">PlatformIOの導入</a></h1>
-<p>2025Team_Bは<code>Keil Studio</code>を使用した制御プログラムの作成を辞め、他の開発環境への移行を考えている。Mbedのサポート終了が宣言されたからである。<a href="https://os.mbed.com/blog/entry/Important-Update-on-Mbed/">'記事'</a><br />
-<code>PlatformIO</code>は<code>ArduinoIDE</code>での書き方や<code>Mbed OS</code>での書き方などいろいろな書き方ができる。</p>
-<p><strong>コンテンツ一覧</strong></p>
-<ul>
-<li><a href="DevelopmentPlatformIO/./InstallPlatformIO.html">PlatformIOの入れ方</a></li>
-<li><a href="DevelopmentPlatformIO/./FrameworkArduino/FrameworkArduinoHome.html">Arduinoで書く</a>
-<ul>
-<li><a href="DevelopmentPlatformIO/./FrameworkArduino/MakeProjectLchika.html">プロジェクトの作成とLチカ</a></li>
-<li><a href="DevelopmentPlatformIO/./FrameworkArduino/SerialPrint.html">シリアルモニタに出力</a></li>
-</ul>
-</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="platform-ioを入れる"><a class="header" href="#platform-ioを入れる">Platform IOを入れる</a></h1>
-<p>そしてこれは<code>VSCode</code>の拡張機能なので比較的導入が簡単なものである。
-この拡張機能を使用して試しにコードを書き込むまでの記録。</p>
-<h2 id="学内lanでは極力ダウンロードなどはしないようにしよう"><a class="header" href="#学内lanでは極力ダウンロードなどはしないようにしよう">学内LANでは極力ダウンロードなどはしないようにしよう</a></h2>
-<blockquote>
-<p>学内LANで<code>PlatformIO</code>のセッティングを行うためには<code>VSCode</code>自体のプロキシ設定が必要になる。<br />
-<code>Ctrl + ,</code>で設定を開き、設定の検索バーで<code>proxy</code>と入力。<code>Http: Proxy(すべてのプロファイルに適用)</code>を探し、プロキシサーバーを入力する欄に学内LANのプロキシサーバー(<code>http://サーバーアドレス:ポート番号</code>)を入力し、保存し終わったら<code>VSCode</code>の再起動を行う。</p>
-</blockquote>
-<p><code>VSCode</code>で拡張機能のマーケットプレイスで、<code>PlatformIO IDE</code>をインストールする。<code>platformio.platformio-ide</code>これを検索バーに入力するか、<code>platform</code>とか検索する。<a href="https://marketplace.visualstudio.com/items/?itemName=platformio.platformio-ide">'Marketplace'</a></p>
-<p>インストール中に<code>PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode</code>こんな表示がでてくるかもしれない。これは<code>Python 3.6</code>以上が見つかりませんって言われているだけ。<code>Python</code>をインストールしていない人は<code>Install Python</code>を押して<a href="https://www.python.org/downloads/">'site'</a>からWindows用をダウンロードする。もうインストールしてある人は<code>I have Python</code>てきなところを押せばいいと思われ。僕はインストールしてなかったからインストールする。</p>
-<blockquote>
-<p>追記：<code>PlatformIO</code>は<code>Python3.11</code>以下で動作するみたい<br />
-siteから<code>python</code>をインストールする場合は<code>Python Releases for Windows</code>の下の方にある<code>Python 3.11.9 - April 2, 2024</code>などをダウンロードしてインストールしよう。</p>
-</blockquote>
-<p><code>Python</code>のインストーラーをダウンロードしたら、Pythonのインストーラーを実行。下のチェックボックス欄の<code>Add Python.exe to PATH</code>にチェックを入れる。<code>Use admin privileges when installing py.exe</code>のチェックは管理者権限ですべてのユーザーにインストールするみたいな項目だから、チェックしてなくて問題ない。チェックが終わったら<code>Install Now</code>を押してインストールする。<br />
-<code>Setup was Successful</code>がでたら<code>Close</code>を押してもよいけど、<code>Disable path length limit</code>っていう項目が残っている。これはパスの長さの制限をなくしますか？っていう項目だから押しておけば今後何も考えなくていい。押さなくても別に問題はないかも。(僕は押した)<br />
-そしたら<code>VSCode</code>を再起動してほかのインストールが終わるのを待つ。</p>
-<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
-<ul>
-<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
-<li><a href="https://qiita.com/cointoss1973/items/b3c84daeed90fd183501">Visual Studio Code に Proxy を設定する方法</a></li>
-<li><a href="https://www.python.jp/install/windows/install.html">Windows版Pythonのインストール</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="frameworkでmbedosを選択したとき"><a class="header" href="#frameworkでmbedosを選択したとき">FrameworkでMbedOSを選択したとき</a></h1>
-<p>基本的なことは<code>Keil Studio</code>と同じ。ただし、<code>MbedOS6</code>であることに注意。(おそらく普段は<code>MbedOS2</code>を使用していると思われる)</p>
-<p><strong>コンテンツ一覧</strong></p>
-<ul>
-<li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./LchikaPrint.html">Lチカと変数の表示</a></li>
-<li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./outPwm.html">PWMを出力する</a></li>
-<li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./readAnalogResi.html">可変抵抗の値を読む</a></li>
-<li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./canUsePrintFloat.html">%fできるようにする</a></li>
-<li><a href="DevelopmentPlatformIO/FrameworkMbedOS/./howToUseOs6Sample.html">SerialCtrl(OS6 sample)</a></li>
-</ul>
-<h2 id="名前空間mbed"><a class="header" href="#名前空間mbed">名前空間<code>mbed</code></a></h2>
-<h3 id="mbedprintf"><a class="header" href="#mbedprintf"><code>mbed::printf(...)</code></a></h3>
-<ul>
-<li>シリアル通信で文字列などを送信する関数</li>
-<li>デフォルトでは<code>PC</code>とボーレート<code>9600[bps]</code>で通信を行う</li>
-<li><code>stdio.h</code>の<code>printf()</code>である</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">printf("HelloWorld.\n");
-</code></pre>
-<h3 id="mbeddigitaloutクラス"><a class="header" href="#mbeddigitaloutクラス"><code>mbed::DigitalOut</code>クラス</a></h3>
-<h4 id="mbeddigitaloutpin"><a class="header" href="#mbeddigitaloutpin"><code>mbed::DigitalOut::(pin)</code></a></h4>
-<ul>
-<li>ディジタル出力を行うクラス</li>
-<li>使用する<code>GPIO</code>ピンを指定する</li>
-<li>引数
-<ul>
-<li><code>pin</code></li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PA_0 を出力ピンとしてインスタンスを作成
-DigitalOut led(PA_0);
-</code></pre>
-<h4 id="mbeddigitaloutwritevalue"><a class="header" href="#mbeddigitaloutwritevalue"><code>mbed::DigitalOut::write(value)</code></a></h4>
-<ul>
-<li>ディジタル出力を行う関数</li>
-<li>引数
-<ul>
-<li><code>value</code> (<code>1</code>/<code>0</code>)</li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// ledのピンを1(HIGH)に指定
-led.write(1);
-</code></pre>
-<h4 id="mbeddigitaloutreadvoid"><a class="header" href="#mbeddigitaloutreadvoid"><code>mbed::DigitalOut::read(void)</code></a></h4>
-<ul>
-<li>現在のディジタル値を取得する関数</li>
-<li>引数
-<ul>
-<li>なし</li>
-</ul>
-</li>
-<li>戻り値
-<ul>
-<li>ディジタル値 (<code>1</code>/<code>0</code>)</li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// ledの値をled_valueに代入
-bool led_value = led.read();
-</code></pre>
-<h3 id="mbeddigitalinクラス"><a class="header" href="#mbeddigitalinクラス"><code>mbed::DigitalIn</code>クラス</a></h3>
-<h4 id="mbeddigitalinpin"><a class="header" href="#mbeddigitalinpin"><code>mbed::DigitalIn::(pin)</code></a></h4>
-<ul>
-<li>ディジタル入力を行うクラス</li>
-<li>引数
-<ul>
-<li><code>pin</code></li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PA_1 を入力ピンとしてインスタンスを作成
-DigitalIn sw(PA_1);
-</code></pre>
-<h4 id="mbeddigitalinreadvoid"><a class="header" href="#mbeddigitalinreadvoid"><code>mbed::DigitalIn::read(void)</code></a></h4>
-<ul>
-<li>ディジタル値を取得する関数</li>
-<li>引数
-<ul>
-<li>なし</li>
-</ul>
-</li>
-<li>戻り値
-<ul>
-<li>ディジタル値 (<code>1</code>/<code>0</code>)</li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// swの値を変数sw_valueに代入
-bool sw_value = sw.read();
-</code></pre>
-<h3 id="mbedpwmoutクラス"><a class="header" href="#mbedpwmoutクラス"><code>mbed::PwmOut</code>クラス</a></h3>
-<h4 id="mbedpwmoutpin"><a class="header" href="#mbedpwmoutpin"><code>mbed::PwmOut::(pin)</code></a></h4>
-<ul>
-<li><code>PWM</code>波形の出力を行うクラス</li>
-<li>引数
-<ul>
-<li><code>pin</code></li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PB_0 をPWM出力ピンとしてインスタンスを作成
-PWMOut moter(PB_0);
-</code></pre>
-<h4 id="mbedpwmoutperiod_ustime"><a class="header" href="#mbedpwmoutperiod_ustime"><code>mbed::PwmOut::period_us(time)</code></a></h4>
-<ul>
-<li><code>PWM</code>の周期を設定する関数</li>
-<li>引数
-<ul>
-<li><code>time</code></li>
-<li>単位は<code>[us]</code></li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// moterのPWM周期を83[us]に設定
-moter.period(83);
-</code></pre>
-<h4 id="mbedpwmoutwritevalue"><a class="header" href="#mbedpwmoutwritevalue"><code>mbed::PwmOut::write(value)</code></a></h4>
-<ul>
-<li><code>PWM</code>波形を出力する関数</li>
-<li>引数
-<ul>
-<li><code>value</code>
-<ul>
-<li>範囲は<code>0</code>~<code>1</code>(少数)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// Duty比25％に指定
-moter.write(0.25);
-</code></pre>
-<h3 id="mbedanaloginクラス"><a class="header" href="#mbedanaloginクラス"><code>mbed::AnalogIn</code>クラス</a></h3>
-<h4 id="mbedanaloginpin"><a class="header" href="#mbedanaloginpin"><code>mbed::AnalogIn::(pin)</code></a></h4>
-<ul>
-<li>アナログ入力を行うクラス</li>
-<li>引数
-<ul>
-<li><code>pin</code></li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// PA_4 をアナログ入力ピンとしてインスタンスを作成
-AnalogIn variable_resister(PA_4);
-</code></pre>
-<h4 id="mbedanaloginreadvoid"><a class="header" href="#mbedanaloginreadvoid"><code>mbed::AnalogIn::read(void)</code></a></h4>
-<ul>
-<li><code>AD</code>値を取得する関数</li>
-<li>戻り値
-<ul>
-<li><code>AD</code>値</li>
-<li>範囲は<code>0</code>~<code>1</code>(少数)</li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// variable_resisterのAD値を取得する
-double variable_resister_value = variable_resister.read();
-</code></pre>
-<h2 id="名前空間mbedthisthread"><a class="header" href="#名前空間mbedthisthread">名前空間<code>mbed::ThisThread</code></a></h2>
-<h3 id="mbedthisthreadsleep_fortimems"><a class="header" href="#mbedthisthreadsleep_fortimems"><code>mbed::ThisThread::sleep_for(timems)</code></a></h3>
-<ul>
-<li>指定した時間処理を停止する関数</li>
-<li>引数
-<ul>
-<li><code>timems</code>
-<ul>
-<li><code>ms</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">// 250[ms]間処理を停止する
-sleep_for(250ms);
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="lチカと変数の表示"><a class="header" href="#lチカと変数の表示">Lチカと変数の表示</a></h1>
-<p>プロジェクトの作成は省略する。FrameworkでMbedOSを選択すれば問題ない。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">#include &lt;mbed.h&gt;
-
-int main(void){
-    while(true){
-        printf("HelloWorld!\r\n");
-        ThisThread::sleep_for(500ms);
-    }
-}
-</code></pre>
-<p>これは<code>500ms</code>ごとに<code>HelloWorld!</code>と出力するプログラム。<code>OS6</code>から<code>Serial</code>クラスがなくなり、<code>PC</code>へはそのまま<code>printf</code>で出力できるようになった。しかし、ボードレートは<code>9600</code>である。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">#include &lt;mbed.h&gt;
-
-DigitalOut led(PA_1);
-
-int main(void){
-    int i = 0;
-    while(true){
-        led.write(i);
-        printf("%d\n",i);
-        i = !i;
-        ThisThread::sleep_for(500ms);
-    }
-}
-</code></pre>
-<p>これは<code>500ms</code>ごとにLEDを点滅させその値を出力するプログラム。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">#include &lt;mbed.h&gt;
-
-DigitalOut led(PA_1);
-DigitalIn sw(PB_0);
-
-int main(void){
-    int i;
-    while(true){
-        i = sw.read();
-        led.write(i);
-        printf("%d\n",i);
-    }
-}
-</code></pre>
-<p>これはスイッチの値をLEDに出力するプログラム。LEDが<code>PA_1</code>でスイッチが<code>PB_0</code>に接続する。</p>
-<h2 id="参考-1"><a class="header" href="#参考-1">参考</a></h2>
-<ul>
-<li><a href="https://jhalfmoon.com/dbc/2022/09/29/%E3%83%A2%E3%83%80%E3%83%B3os%E3%81%AE%E3%81%8A%E7%A0%82%E5%A0%B449-mbed-os6%E3%80%81%E3%80%8Cserial%E3%80%8D%E3%81%9D%E3%81%86%E3%81%84%E3%81%88%E3%81%B0%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%A3/">モダンOSのお砂場(49) Mbed OS6、「Serial」そういえばなくなってたのね</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="pwm出力-2"><a class="header" href="#pwm出力-2">PWM出力</a></h1>
-<p>LEDの明るさを<code>0</code>と<code>1</code>以外にする。<code>DigitalOut</code>ではLEDは最大で点灯か消灯の2パターンしかない。ほんのり光るなどということをするためにPWM波形を出力する。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">#include &lt;mbed.h&gt;
-
-using namespace ThisThread;
-
-PwmOut led(PA_1);
-
-int main(void){
-    led.period_us(83);
-    double i;
-    while(true){
-        for(i = 0;i &lt; 1;i+=0.01){
-            led.write(i);
-            printf("%.2f\n",i);
-            sleep_for(25ms);
-        }
-        for(i = 1;i &gt; 0;i-=0.01){
-            led.write(i);
-            printf("%.2f\n",i);
-            sleep_for(25ms);
-        }
-    }
-}
-</code></pre>
-<p><code>led</code>に周期<code>83us</code>のPWM波形を出力。<code>Mbed</code>では<code>0~1</code>の間で少数でデューティー比を決める。<br />
-このプログラムではだんだん明るくなり、暗くなるを1セットとしそれを繰り返すプログラム。</p>
-<h2 id="参考-2"><a class="header" href="#参考-2">参考</a></h2>
-<ul>
-<li><a href="https://os.mbed.com/users/okini3939/notebook/PwmOut_jp/">PwmOut - PWM出力</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="可変抵抗を読む"><a class="header" href="#可変抵抗を読む">可変抵抗を読む</a></h1>
-<p>可変抵抗の値を読みPWMとして出力する。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
-<pre><code class="language-cpp">#include &lt;mbed.h&gt;
-
-using namespace ThisThread;
-
-PwmOut led(PA_1);
-AnalogIn resi(PA_0);
-
-int main(void){
-    led.period_us(83);
-    float i;
-    while(true){
-        i = resi.read();
-        led.write(i);
-        printf("%.7f\n",i);
-    }
-}
-</code></pre>
-<p>可変抵抗を<code>resi</code>で読み取りそれを<code>led</code>に横流しする。</p>
-<p>以上。</p>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="printfでfを使用できるようにする"><a class="header" href="#printfでfを使用できるようにする">printfで%fを使用できるようにする</a></h1>
-<p>デフォルトでは<code>printf("%f\n"i);</code>みたいなことはできない。少数を出力するためには設定が必要。</p>
-<h2 id="設定ファイルを作成する"><a class="header" href="#設定ファイルを作成する">設定ファイルを作成する</a></h2>
-<p><code>platformIO</code>のプロジェクトのディレクトリ(<code>platformio.ini</code>がある階層)に<code>mbed_app.json</code>を作成する。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
-<pre><code class="language-json">{
-    "target_overrides":{
-        "*":{
-            "target.printf_lib":"std"
-        }
-    }
-}
-</code></pre>
-<p>以上。</p>
-<div style="break-before: page; page-break-before: always;"></div><style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
 <h1 id="コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4"><a class="header" href="#コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4">コントローラーのデータ受信サンプル(Mbed OS6)の使用方法(DUALSHOCK4)</a></h1>
 <p>筆者は作成者ではないので正確な情報ではないがある程度はあっていると思う。<br />
 技術継承資料では<code>Mbed OS2</code>のため<code>OS6</code>では使用できない。サンプルコードは存在するのでそれについて、軽く中身の紹介</p>
@@ -4749,7 +4335,7 @@ int _write(int file,char *ptr,int len){
 </code></pre>
 <h2 id="teratermの設定"><a class="header" href="#teratermの設定">TeraTermの設定</a></h2>
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
-<h3 id="参考-3"><a class="header" href="#参考-3">参考</a></h3>
+<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-printf-uart/">【便利】STM32CubeIDEでprintf【UART編】</a></li>
 </ul>
@@ -4791,7 +4377,7 @@ uint8_t Out[8] = {0};
 <p><code>STprintf</code>関数の引数にUARTのポインタを渡すだけで<code>printf</code>が使えるようになる。</p>
 <h2 id="teratermの設定-1"><a class="header" href="#teratermの設定-1">TeraTermの設定</a></h2>
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
-<h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
+<h3 id="参考-1"><a class="header" href="#参考-1">参考</a></h3>
 <ul>
 <li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">変数などを表示するために</a></li>
 </ul>
@@ -4846,7 +4432,7 @@ span.codeblock_filename_inner {
 <code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。
 <code>binファイル</code>の他にも<code>HEXファイル</code>や<code>SRECファイル</code>などの他のファイル形式のファイルも設定すれば、生成できる。<br />
 <code>binファイル</code>は生成されるとプロジェクトの中の<code>Debugフォルダ</code>に<code>[プロジェクト名].bin</code>という名前で生成される。</p>
-<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
+<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-hex/">STM32CubeIDEでHEXファイルを作成する方法</a></li>
 </ul>
@@ -4902,7 +4488,7 @@ int psw1;
 /* USER CODE END 3 */
 </code></pre>
 <p>使用する回路によって動作は異なるがプルアップ抵抗を用いたプッシュスイッチの回路であれば、スイッチを押すとLEDは消灯し、離すとLEDは点灯するだろう。</p>
-<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
+<h3 id="参考-3"><a class="header" href="#参考-3">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/30e522589db9f7dc8fe4">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(4) スイッチを使ってみよう</a></li>
 </ul>
@@ -4948,7 +4534,7 @@ $$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(
 上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br />
 $$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
 となり、毎秒Lチカするプログラムになっている。</p>
-<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
+<h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e02b798b4bf1b92a4546">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (15) TimerでLチカしよう</a></li>
 </ul>
@@ -4965,7 +4551,7 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="pwm出力-3"><a class="header" href="#pwm出力-3">PWM出力</a></h1>
+<h1 id="pwm出力-2"><a class="header" href="#pwm出力-2">PWM出力</a></h1>
 <h2 id="ledの明るさを変更したりモーターの回転速度を変更したりする"><a class="header" href="#ledの明るさを変更したりモーターの回転速度を変更したりする">LEDの明るさを変更したり、モーターの回転速度を変更したりする</a></h2>
 <p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Channel3</code>を<code>PWM Generation CH3</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<del><code>83</code></del><code>4</code>、<code>Counter Period</code>を<del><code>999</code></del><code>255</code>、<code>PWM Generation Channel3</code>-<code>Output compare preload</code>を<code>Disable</code>に設定。今回は<code>TIM3</code>を使用した。<br />
 保存しコードを作成。<code>main.c</code>に処理を追記。</p>
@@ -4983,7 +4569,7 @@ while (1)
 </code></pre>
 <p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br />
 範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">'ここ'</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
-<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
+<h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
 <ul>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
 </ul>
@@ -5025,7 +4611,7 @@ while (1)
 </code></pre>
 <p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br />
 今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="DevelopmentSTM32CubeIDE/InOut/../BasicContents/printfLibrary.html">'これ'</a>を参考にした。</p>
-<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
+<h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e6b5d0529524a140ebaf">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (12) ADCを使ってみよう</a></li>
 <li><a href="https://yukblog.net/stm32cubeide-printf-float/">STM32CubeIDEのprintfでfloatが使えない件の対処方法</a></li>
@@ -5097,7 +4683,7 @@ while(deg &lt; 0){
 </code></pre>
 <p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。</p>
 <p style="text-align:center"><img src="DevelopmentSTM32CubeIDE/InOut/../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png" alt="deg.png" width="250"></p>  
-<h3 id="参考-10"><a class="header" href="#参考-10">参考</a></h3>
+<h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
 <ul>
 <li><a href="https://www.shujima.work/entry/2019/05/28/221629">【Nucleo入門】Nucleo-F401でエンコーダ読み取り(STM32CubeIDE、macOS版)</a></li>
 </ul>
@@ -5160,7 +4746,7 @@ while (1)
 /* USER CODE END 3 */
 </code></pre>
 <p>受け取ったデータを<code>printf</code>する。たとえば<code>Arduino</code>側でスイッチの値を送るとしたら<code>TeraTerm</code>の画面にはそのスイッチの値が表示されるだろう。</p>
-<h3 id="参考-11"><a class="header" href="#参考-11">参考</a></h3>
+<h3 id="参考-8"><a class="header" href="#参考-8">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/5a2c9e4fd35c261c4f3a">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(6) 　UARTを使ってみよう(2)</a></li>
 </ul>
@@ -5201,7 +4787,7 @@ while (1)
 }
 </code></pre>
 <p><code>HAL_UART_Transmit</code>でUARTを使用して<code>1Byte</code>のデータを送信する。<code>printf</code>で<code>i</code>の値を画面上に出力している。</p>
-<h3 id="参考-12"><a class="header" href="#参考-12">参考</a></h3>
+<h3 id="参考-9"><a class="header" href="#参考-9">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/76c812d35642a3c29aea">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(5) 　UARTを使ってみよう</a></li>
 </ul>
@@ -5699,22 +5285,6 @@ void can_rev_init(struct CAN_DS4_struct *_struct){
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

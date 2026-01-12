@@ -184,29 +184,22 @@ span.codeblock_filename_inner {
 <pre><code class="language-cpp">printf("sw:%d\n", sw.read());
 </code></pre>
 <p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br />
-シリアルモニターなどで確認できます。基本的にボーレートは<code>9600</code>です。</p>
-<h3 id="浮動小数点数の表示"><a class="header" href="#浮動小数点数の表示">浮動小数点数の表示</a></h3>
-<p>初めに<code>%f</code>を<code>printf</code>で使用すると、おそらく<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
-プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
-<pre><code class="language-json">{
-    "target_overrides":{
-        "*":{
-            "target.printf_lib":"std"
-        }
-    }
-}
+シリアルモニターなどで確認できます。ボーレートはデフォルトで<code>9600</code>です。</p>
+<h3 id="ボーレートの変更"><a class="header" href="#ボーレートの変更">ボーレートの変更</a></h3>
+<p><code>UnbufferedSerial</code>のインスタンスを宣言するだけでボーレートを変更することができます。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
+<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
 </code></pre>
+<p><code>38400</code>がボーレートの設定になります。<code>9600</code>や<code>38400</code>、<code>115200</code>などに設定することが多いです。</p>
 <h2 id="自分で実装する"><a class="header" href="#自分で実装する">自分で実装する</a></h2>
 <p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br />
-自分で実装する場合はボーレートも<code>9600</code>以外に設定できます。<br />
 使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
 <h3 id="unbufferedserialの宣言"><a class="header" href="#unbufferedserialの宣言">UnbufferedSerialの宣言</a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Serialの宣言</span></div>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
 <pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
 // TX、RX、baudrate
 </code></pre>
-<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言するとよいでしょう。<br />
+<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言します。<br />
 <code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
 <h3 id="代替関数の実装"><a class="header" href="#代替関数の実装">代替関数の実装</a></h3>
 <p><code>printf</code>の代わりに呼び出す関数を定義します。</p>
@@ -222,7 +215,33 @@ span.codeblock_filename_inner {
 </code></pre>
 <p>詳細な説明は省きますが、無限長引数を解釈し、<code>buf</code>にまとめ、<code>pc.write()</code>で送信しています。<br />
 <code>pc</code>は宣言した<code>UnbufferedSerial</code>のインスタンス名に合わせてください。</p>
-
+<h2 id="浮動小数点数等の表示"><a class="header" href="#浮動小数点数等の表示">浮動小数点数等の表示</a></h2>
+<p>初めに<code>%f</code>を<code>printf</code>で使用すると、<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
+プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
+<pre><code class="language-json">{
+    "target_overrides":{
+        "*":{
+            "target.printf_lib":"std"
+        }
+    }
+}
+</code></pre>
+<p><code>long</code>等も正しく表示できない場合があります。その場合は、上記の<code>mbed_app.json</code>を作成する必要があります。</p>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://forums.mbed.com/t/nucleo-keil-studio/22433">NUCLEOのKeil Studioで浮動小数点数を出力する方法</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -252,22 +271,6 @@ span.codeblock_filename_inner {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

@@ -36,22 +36,9 @@
 
 # 以下未整理部分
 
-<!-- # PlatformIOでの開発 -->
+- [SerialCtrl(OS6 sample)](./DevelopmentPlatformIO/FrameworkMbedOS/howToUseOs6Sample.md)
+- [書き込めなかったときの記録](./DevelopmentPlatformIO/CouldNotWriteMicroComputer.md)
 
-<!-- - [一覧](./DevelopmentPlatformIO/DevelopmentPlatformIOHome.md) -->
-- [一覧(PlatformIO)](./DevelopmentPlatformIO/DevelopmentPlatformIOHome.md)
-  - [PlatformIOの導入](./DevelopmentPlatformIO/InstallPlatformIO.md)
-  - [Framework : MbedOS](./DevelopmentPlatformIO/FrameworkMbedOS/FrameworkMbedOSHome.md)
-    - [Lチカと変数の表示](./DevelopmentPlatformIO/FrameworkMbedOS/LchikaPrint.md)
-    - [PWMの出力](./DevelopmentPlatformIO/FrameworkMbedOS/outPwm.md)
-    - [可変抵抗を読む](./DevelopmentPlatformIO/FrameworkMbedOS/readAnalogResi.md)
-    - [%fを使う](./DevelopmentPlatformIO/FrameworkMbedOS/canUsePrintFloat.md)
-    - [SerialCtrl(OS6 sample)](./DevelopmentPlatformIO/FrameworkMbedOS/howToUseOs6Sample.md)
-  - [書き込めなかったときの記録](./DevelopmentPlatformIO/CouldNotWriteMicroComputer.md)
-
-<!-- # STM32CubeIDEでの開発 -->
-
-<!-- - [一覧](./DevelopmentSTM32CubeIDE/DevelopmentSTM32CubeIDEHome.md) -->
 - [一覧(CubeIDE)](./DevelopmentSTM32CubeIDE/DevelopmentSTM32CubeIDEHome.md)
   - [はじめにやること](./DevelopmentSTM32CubeIDE/BasicContents/BasicContentsHome.md)
     - [変数値などの表示](./DevelopmentSTM32CubeIDE/BasicContents/printf.md)
