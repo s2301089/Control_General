@@ -1,0 +1,36 @@
+.innerLink {
+  margin-top: 0.5em;
+  padding-left: 0.2em;
+  font-size: 0.9em;
+}
+
+.innerLink details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.innerLink details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.innerLink details > summary::before {
+  content: "▾ ";
+  font-size: 0.8em;
+}
+
+.innerLink details:not([open]) > summary::before {
+  content: "▸ ";
+}
+
+.innerLink ul {
+  padding-left: 1em;
+  margin: 0.3em 0;
+}
+
+.innerLink a {
+  text-decoration: none;
+}
+
+.innerLink a:hover {
+  text-decoration: underline;
+}

@@ -17,7 +17,7 @@ git-repository-url = "https://github.com/s2301089/Control_General/tree/pub"
 git-repository-icon = "fa-github"
 # ページ内見出し
 additional-js = ["theme/sidebar.js"]
-additional-css = ["mdbook-admonish.css"]
+additional-css = ["theme/sidebar.css", "mdbook-admonish.css"]
 no-section-label = true
 
 [output.html.fold]
