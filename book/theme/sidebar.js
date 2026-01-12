@@ -2,49 +2,68 @@
   const active = document.querySelector('.sidebar .active');
   if (!active) return;
 
-  const headers = document.querySelectorAll('main a.header');
-  if (headers.length === 0) return;
+  const headers = document.querySelectorAll('main h2, main h3');
+  if (!headers.length) return;
 
-  const rootUl = document.createElement('ul');
-  rootUl.className = 'innerLink';
+  const ul = document.createElement('ul');
+  ul.className = 'innerLink';
 
-  let currentDetails = null;
+  headers.forEach(h => {
+    if (!h.id) return;
 
-  headers.forEach((a, i) => {
-    if (i === 0) return; // skip h1
+    const li = document.createElement('li');
+    li.className = h.tagName.toLowerCase();
 
-    if (a.closest('h2')) {
-      // ## 見出し
-      const li = document.createElement('li');
-      const details = document.createElement('details');
-      details.open = false; // デフォルトで展開（必要なら false）
+    const a = document.createElement('a');
+    a.href = `#${h.id}`;
+    a.textContent = h.textContent;
 
-      const summary = document.createElement('summary');
-      const link = document.createElement('a');
-      link.href = a.getAttribute('href');
-      link.textContent = a.textContent;
-
-      summary.appendChild(link);
-      details.appendChild(summary);
-
-      const ul = document.createElement('ul');
-      details.appendChild(ul);
-
-      li.appendChild(details);
-      rootUl.appendChild(li);
-
-      currentDetails = ul;
-    } else if (a.closest('h3') && currentDetails) {
-      // ### 見出し
-      const li = document.createElement('li');
-      const link = document.createElement('a');
-      link.href = a.getAttribute('href');
-      link.textContent = a.textContent;
-
-      li.appendChild(link);
-      currentDetails.appendChild(li);
-    }
+    li.appendChild(a);
+    ul.appendChild(li);
   });
 
-  active.appendChild(rootUl);
+  active.appendChild(ul);
+})();
+
+(function () {
+  const headers = Array.from(
+    document.querySelectorAll('main h2, main h3')
+  );
+
+  const tocLinks = Array.from(
+    document.querySelectorAll('.sidebar a[href^="#"]')
+  );
+
+  if (!headers.length || !tocLinks.length) return;
+
+  const triggerRatio = 0.5;
+
+  function onScroll() {
+    const triggerY = window.innerHeight * triggerRatio;
+    let current = null;
+
+    for (const h of headers) {
+      const top = h.getBoundingClientRect().top;
+      if (top <= triggerY) {
+        current = h;
+      } else {
+        break;
+      }
+    }
+
+    if (!current) return;
+
+    tocLinks.forEach(a => a.classList.remove('active'));
+
+    const active = tocLinks.find(
+      a => a.getAttribute('href') === `#${current.id}`
+    );
+
+    if (active) {
+      active.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // 初期表示
 })();
