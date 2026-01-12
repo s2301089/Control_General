@@ -77,6 +77,12 @@ Lチカプログラム
 
 ## 通信
 
+### [値の表示](./connectivity/showValuePrintf.md)
+
+```admonish abstract "内容"
+PCから変数値などを確認する方法  
+```
+
 ### [受信側(lib)](./connectivity/use_rxController.md)
 
 ```admonish abstract "内容"

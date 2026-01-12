@@ -6,15 +6,23 @@ multilingual = false
 src = "src"
 title = "Control_General"
 
+[build]
+create-missing = false
+
 [output.html]
 # 数式
 mathjax-support = true
 # 右上のアイコンとURL
-git-repository-url = "https://github.com/s2301089/"
+git-repository-url = "https://github.com/s2301089/Control_General/tree/pub"
 git-repository-icon = "fa-github"
 # ページ内見出し
-additional-js = ["theme/pagetoc.js"]
-additional-css = ["theme/pagetoc.css", "./mdbook-admonish.css"]
+additional-js = ["theme/sidebar.js"]
+additional-css = ["mdbook-admonish.css"]
+no-section-label = true
+
+[output.html.fold]
+enable = true
+level = 0
 
 # 画像サイズ指定
 [preprocessor.image-size]
@@ -24,7 +32,7 @@ command = "mdbook-image-size"
 [preprocessor.codename]
 
 # ページ内見出し
-[preprocessor.pagetoc]
+# [preprocessor.pagetoc]
 
 # 注意・補足
 [preprocessor.admonish]

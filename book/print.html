@@ -30,8 +30,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="theme/pagetoc.css">
-        <link rel="stylesheet" href="./mdbook-admonish.css">
+        <link rel="stylesheet" href="mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -134,7 +133,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/s2301089/" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/s2301089/Control_General/tree/pub" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -3128,13 +3127,25 @@ Lチカプログラム</p>
 </div>
 </div>
 <h2 id="通信"><a class="header" href="#通信">通信</a></h2>
-<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<h3 id="値の表示"><a class="header" href="#値の表示"><a href="mbed/./connectivity/showValuePrintf.html">値の表示</a></a></h3>
 <div id="admonition-内容-6" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-6-title">
 <div class="admonition-title">
 <div id="admonition-内容-6-title">
 <p>内容</p>
 </div>
 <a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-6"></a>
+</div>
+<div>
+<p>PCから変数値などを確認する方法</p>
+</div>
+</div>
+<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<div id="admonition-内容-7" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-7-title">
+<div class="admonition-title">
+<div id="admonition-内容-7-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="mbed/mbedPlatformIO.html#admonition-内容-7"></a>
 </div>
 <div>
 <p>コントローラーのデータを受信、使用するためのライブラリ<br />
@@ -3705,6 +3716,66 @@ chrono::milliseconds ms_interval = 250ms;
 chrono::microseconds us_interval = 10us;
 chrono::nanoseconds ns_interval = 100ns;
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="値の表示-1"><a class="header" href="#値の表示-1">値の表示</a></h1>
+<p>変数の値などを確認できるようにします。<code>printf</code>で文字列をターミナルへ表示することがあります。<br />
+<code>mbed</code>では同じようなことをする方法が2つあります。</p>
+<h2 id="用意されたものを使用する"><a class="header" href="#用意されたものを使用する">用意されたものを使用する</a></h2>
+<p>用意されたものを使用するのは簡単です。コードの中にそのまま<code>printf</code>を記述するだけです。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf.cpp</span></div>
+<pre><code class="language-cpp">printf("sw:%d\n", sw.read());
+</code></pre>
+<p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br />
+シリアルモニターなどで確認できます。基本的にボーレートは<code>9600</code>です。</p>
+<h3 id="浮動小数点数の表示"><a class="header" href="#浮動小数点数の表示">浮動小数点数の表示</a></h3>
+<p>初めに<code>%f</code>を<code>printf</code>で使用すると、おそらく<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
+プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
+<pre><code class="language-json">{
+    "target_overrides":{
+        "*":{
+            "target.printf_lib":"std"
+        }
+    }
+}
+</code></pre>
+<h2 id="自分で実装する"><a class="header" href="#自分で実装する">自分で実装する</a></h2>
+<p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br />
+自分で実装する場合はボーレートも<code>9600</code>以外に設定できます。<br />
+使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
+<h3 id="unbufferedserialの宣言"><a class="header" href="#unbufferedserialの宣言">UnbufferedSerialの宣言</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">Serialの宣言</span></div>
+<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
+// TX、RX、baudrate
+</code></pre>
+<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言するとよいでしょう。<br />
+<code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
+<h3 id="代替関数の実装"><a class="header" href="#代替関数の実装">代替関数の実装</a></h3>
+<p><code>printf</code>の代わりに呼び出す関数を定義します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">関数の定義</span></div>
+<pre><code class="language-cpp">void pc_printf(const char *format, ...){
+    char buf[256];
+    va_list arg;
+    va_start(arg, format);
+    int len = vsnprintf(buf, sizeof(buf), format, arg);
+    va_end(arg);
+    pc.write(buf, len);
+}
+</code></pre>
+<p>詳細な説明は省きますが、無限長引数を解釈し、<code>buf</code>にまとめ、<code>pc.write()</code>で送信しています。<br />
+<code>pc</code>は宣言した<code>UnbufferedSerial</code>のインスタンス名に合わせてください。</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
@@ -5660,7 +5731,7 @@ void can_rev_init(struct CAN_DS4_struct *_struct){
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="theme/pagetoc.js"></script>
+        <script src="theme/sidebar.js"></script>
 
         <script>
         window.addEventListener('load', function() {
