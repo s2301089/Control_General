@@ -2132,6 +2132,232 @@ span.codeblock_filename_inner {
 }
 
 </style>
+<h1 id="c言語-練習課題"><a class="header" href="#c言語-練習課題">C言語 練習課題</a></h1>
+<div id="admonition-c言語の実行方法等" class="admonition admonish-info" role="note" aria-labelledby="admonition-c言語の実行方法等-title">
+<div class="admonition-title">
+<div id="admonition-c言語の実行方法等-title">
+<p>C言語の実行方法等</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_practice.html#admonition-c言語の実行方法等"></a>
+</div>
+<div>
+<p>C言語のソースコード作成後、実行するために<strong>コンパイル</strong>と<strong>リンク</strong>という処理を行い、<strong>実行ファイル</strong>を作成する必要があります。<br />
+コンパイラ・リンカに<code>GCC</code>を使用します。</p>
+<p>ソースコードが置かれているディレクトリに移動します。ここでは例として<code>~/program/</code>というディレクトリの中にある<code>helloworld.c</code>というファイルを実行したいとします。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">helloworld.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void){
+    printf("Hello,World!\n");
+
+    return 0;
+}
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ubuntu22.04 (WSL)</span></div>
+<pre><code class="language-shell">$ cd ~/program/
+
+$ ls
+helloworld.c
+
+$ gcc helloworld.c -o helloworld
+
+$ ls
+helloworld  helloworld.c
+
+$ ./helloworld
+Hello,World!
+
+</code></pre>
+<p><code>gcc ソースコードファイル名 -o 実行ファイル名</code>でコンパイルとリンクを行います。<br />
+実行するときは<code>./実行ファイル名</code>で実行します。</p>
+<p><code>math.h</code>を使用する場合は、コンパイル時に<code>-lm</code>をつける必要があります。<br />
+<code>gcc ソースコードファイル名 -lm -o 実行ファイル名</code>でコンパイルとリンクを行います。</p>
+</div>
+</div>
+<h2 id="c言語基礎編-1"><a class="header" href="#c言語基礎編-1">C言語(基礎編)</a></h2>
+<h3 id="円の面積と円周"><a class="header" href="#円の面積と円周">円の面積と円周</a></h3>
+<p>実数の半径 \(r\) である円の面積と円周を求めるプログラムを作成してください。ただし、 \(r\leqq0\) である場合は、プログラムは<strong>終了せずに</strong>再入力を促してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell">$ gcc ci_ar_r.c -lm -o ci_ar_r
+
+# r = 3.0 の場合
+$ ./ci_ar_r
+Please enter r (r &gt; 0): 0
+Please enter r (r &gt; 0): -1.5
+Please enter r (r &gt; 0): 3
+l : 18.849556
+s : 28.274334
+
+# r = 1.5 の場合
+$ ./ci_ar_r
+Please enter r (r &gt; 0): 1.5
+l : 9.424778
+s : 7.068583
+</code></pre>
+<div id="admonition-定義された円周率を使用する" class="admonition admonish-tip" role="note" aria-labelledby="admonition-定義された円周率を使用する-title">
+<div class="admonition-title">
+<div id="admonition-定義された円周率を使用する-title">
+<p>定義された円周率を使用する</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_practice.html#admonition-定義された円周率を使用する"></a>
+</div>
+<div>
+<p>円周率は各自で<code>3.14</code>を使用しても良いですが、<code>math.h</code>に<code>M_PI</code>という名前で小数点以下20桁ほどまで定義されています。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">半径rの円の面積と円周を表示するプログラム</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void){
+    double r, l, s;
+
+    // 入力部
+    scanf(" %lf", &amp;r);
+
+    // 処理部
+    l = 2 * M_PI * r;
+    s = M_PI * r * r;
+
+    // 出力部
+    printf("l : %f\n", l);
+    printf("s : %f\n", s);
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell">$ gcc ci_ar.c -lm -o ci_ar
+
+# r = 3.0 の場合
+$ ./ci_ar
+3
+l : 18.849556
+s : 28.274334
+
+# r = 1.5 の場合
+$ ./ci_ar
+1.5
+l : 9.424778
+s : 7.068583
+</code></pre>
+</div>
+</div>
+<h3 id="2次方程式の解"><a class="header" href="#2次方程式の解">2次方程式の解</a></h3>
+<p>実数の係数 \(b,c\) を持つ2次方程式 \(x^2+bx+c=0\) の実数解は、判別式 \(D=b^2-4c\) の値によって以下の表のようになります。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">D</th><th style="text-align: center">解の個数</th><th style="text-align: center">解</th></tr></thead><tbody>
+<tr><td style="text-align: center">\(D&gt;0\)</td><td style="text-align: center">\(2\)</td><td style="text-align: center">\(\frac{-b\pm\sqrt{D}}{2}\)</td></tr>
+<tr><td style="text-align: center">\(D=0\)</td><td style="text-align: center">\(1\)</td><td style="text-align: center">\(\frac{-b}{2}\)</td></tr>
+<tr><td style="text-align: center">\(D&lt;0\)</td><td style="text-align: center">\(0\)</td><td style="text-align: center">実数解なし</td></tr>
+</tbody></table>
+</div>
+<p>実数の係数 \(b,c\) を入力すると、2次方程式の解を求め、出力するプログラムを作成してください。実数解が存在しない場合は <code>no real roots</code> と出力してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell"># b = 3.5, c = 1.2 の場合
+$ ./qu_eq
+3.5
+1.2
+x = -0.385266 , -3.114734
+
+# b = -2.0, c = 1.0 の場合
+$ ./qu_eq
+-2
+1
+x = 1.000000
+
+# b = 2.0, c = 4.0 の場合
+$ ./qu_eq
+2
+4
+no real roots
+</code></pre>
+<div id="admonition-平方根の計算" class="admonition admonish-tip" role="note" aria-labelledby="admonition-平方根の計算-title">
+<div class="admonition-title">
+<div id="admonition-平方根の計算-title">
+<p>平方根の計算</p>
+</div>
+<a class="admonition-anchor-link" href="BasicContents/language_c_practice.html#admonition-平方根の計算"></a>
+</div>
+<div>
+<p>平方根をC言語で計算するためには<code>math.h</code>にある<code>sqrt()</code>を使用します。</p>
+<p>以下は \(\sqrt{2}\) を表示するプログラムです。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">sqrt_2.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(void){
+    double sqrt_2 = sqrt(2);
+    printf("%f\n", sqrt_2);
+
+    return 0;
+}
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell">$ gcc sqrt_2.c -lm -o sqrt_2
+
+$ ./sqrt_2
+1.414214
+</code></pre>
+</div>
+</div>
+<h3 id="放物線とx軸との交点"><a class="header" href="#放物線とx軸との交点">放物線とx軸との交点</a></h3>
+<p>整数の係数 \(a,b,c\) を持つ放物線 \(y=ax^2+bx+c\) とx軸との交点を求め、小数点以下1桁で出力するプログラムを作成してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。<br />
+ヒント：「新基礎数学 改訂版 p.82」</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell"># a = 1 b = -2, c = -3 の場合
+$ ./pa_in
+1
+-2
+-3
+(3.0, 0), (-1.0, 0)
+
+# a = 2 b = -8, c = 9 の場合
+$ ./pa_in
+2
+-8
+9
+no intersections
+
+# a = -1 b = 4, c = -4 の場合
+$ ./pa_in
+-1
+4
+-4
+(2.0, 0)
+</code></pre>
+<h2 id="c言語発展編-1"><a class="header" href="#c言語発展編-1">C言語(発展編)</a></h2>
+<h3 id="数字の合計"><a class="header" href="#数字の合計">数字の合計</a></h3>
+<p>要素数<code>9</code>の配列を用意し、8つの整数を0~7番目に入力する。8番目に0~7番目の合計値を代入し、出力するプログラムを作成してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-c">$ gcc ar_su.c -o ar_su
+
+$ ./ar_su
+2
+4
+6
+8
+12
+14
+16
+18
+sum : 80
+</code></pre>
+<h3 id=""><a class="header" href="#"></a></h3>
+<div style="break-before: page; page-break-before: always;"></div><style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
 <h1 id="c-1"><a class="header" href="#c-1">C++</a></h1>
 <div id="admonition-cの前に" class="admonition admonish-danger" role="note" aria-labelledby="admonition-cの前に-title">
 <div class="admonition-title">

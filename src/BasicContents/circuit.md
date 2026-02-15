@@ -140,7 +140,6 @@ V_{2} = \frac{R_{2}}{R}V $$
 $$ V_{1} = \frac{R_{1}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} \\\\
 V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} $$
 
-
 次の回路のそれぞれの抵抗に加わる電圧を求めます。
 
 ![r_5k_series_10k_circuit](../resources/BasicContents/circuit/r_5k_series_10k_circuit.png =x250 center)

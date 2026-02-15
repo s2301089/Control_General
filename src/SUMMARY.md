@@ -11,6 +11,7 @@
 - [基礎知識](./BasicContents/BasicContents.md)
   - [git / GitHub](./BasicContents/git_GitHub.md)
   - [C言語](./BasicContents/language_c.md)
+    - [練習課題](./BasicContents/language_c_practice.md)
   - [C++](./BasicContents/language_cpp.md)
   - [回路の基礎](./BasicContents/circuit.md)
   - [DCモーターの制御](./BasicContents/motor.md)
