@@ -12,24 +12,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -39,12 +37,24 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-58b62ac6.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc.js"></script>
+        <script src="../toc-a00d8d09.js"></script>
     </head>
     <body>
-    <div id="body-container">
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -73,56 +83,59 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -130,95 +143,61 @@
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
-                        <a href="https://github.com/s2301089/Control_General/tree/pub" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
-                        <style>
-div.codeblock_filename_container + pre {
-  margin-top: 0;
-}
-
-span.codeblock_filename_inner {
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  font-family: var(--mono-font) !important;
-  font-size: var(--code-font-size);
-}
-
-</style>
-<h1 id="回路の基礎"><a class="header" href="#回路の基礎">回路の基礎</a></h1>
+                        <h1 id="回路の基礎"><a class="header" href="#回路の基礎">回路の基礎</a></h1>
 <h2 id="基本物理量"><a class="header" href="#基本物理量">基本物理量</a></h2>
-<div id="admonition-電流とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-電流とは-title">
-<div class="admonition-title">
-<div id="admonition-電流とは-title">
-<p>電流とは</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-電流とは"></a>
-</div>
-<div>
-<p><strong>電荷</strong>(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。<br />
-電流は \(I\) で表され、単位は \(\mathrm{[A]}\) (アンペア)です。</p>
-</div>
-</div>
+<pre><code class="language-admonish info &quot;電流とは&quot;">**電荷**(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。  
+電流は \\(I\\) で表され、単位は \\(\mathrm{[A]}\\) (アンペア)です。  
+</code></pre>
 <p>電流が流れる路を<strong>電気回路</strong>と言います。</p>
-<div id="admonition-電圧とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-電圧とは-title">
-<div class="admonition-title">
-<div id="admonition-電圧とは-title">
-<p>電圧とは</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-電圧とは"></a>
-</div>
-<div>
-<p>電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を<strong>電位差</strong>と言い、電気回路では電圧とも言います。<br />
-電圧は \(V\) で表され、単位は \(\mathrm{[V]}\) (ボルト)です。</p>
-</div>
-</div>
+<pre><code class="language-admonish info &quot;電圧とは&quot;">電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を**電位差**と言い、電気回路では電圧とも言います。  
+電圧は \\(V\\) で表され、単位は \\(\mathrm{[V]}\\) (ボルト)です。  
+</code></pre>
 <p>電流は電位の高い方から低い方に向かって流れます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_circuit.png" alt="r_circuit" height="200"></p>
-<div id="admonition-抵抗とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-抵抗とは-title">
-<div class="admonition-title">
-<div id="admonition-抵抗とは-title">
-<p>抵抗とは</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-抵抗とは"></a>
-</div>
-<div>
-<p>電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを<strong>電圧降下</strong>と言います。<br />
-抵抗は \(R\) で表され、単位は \(\mathrm{[\Omega]}\) (オーム)です。</p>
-</div>
-</div>
+<p>![r_circuit](../resources/BasicContents/circuit/r_circuit.png =x200 center)</p>
+<pre><code class="language-admonish info &quot;抵抗とは&quot;">電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを**電圧降下**と言います。  
+抵抗は \\(R\\) で表され、単位は \\(\mathrm{[\Omega]}\\) (オーム)です。
+</code></pre>
 <h2 id="si接頭語"><a class="header" href="#si接頭語">SI接頭語</a></h2>
-<p>大きな数字や小さな数字をわかりやすく表すために、10のべき乗を表し桁数を少なくします。<br />
-電気回路で使用するSI接頭語の一部を紹介します。電気回路では\(10^{3}\)ごとのSI接頭語を使用します。</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">記号</th><th style="text-align: center">接頭語</th><th style="text-align: center">\(10^{n}\)</th></tr></thead><tbody>
+<p>大きな数字や小さな数字をわかりやすく表すために、10のべき乗を表し桁数を少なくします。<br>電気回路で使用するSI接頭語の一部を紹介します。電気回路では\(10^{3}\)ごとのSI接頭語を使用します。</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: center">記号</th><th style="text-align: center">接頭語</th><th style="text-align: center">\(10^{n}\)</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: center">\(T\)</td><td style="text-align: center">テラ</td><td style="text-align: center">\(10^{12}\)</td></tr>
 <tr><td style="text-align: center">\(G\)</td><td style="text-align: center">ギラ</td><td style="text-align: center">\(10^{9}\)</td></tr>
 <tr><td style="text-align: center">\(M\)</td><td style="text-align: center">メガ</td><td style="text-align: center">\(10^{6}\)</td></tr>
@@ -227,182 +206,137 @@ span.codeblock_filename_inner {
 <tr><td style="text-align: center">\(\mu\)</td><td style="text-align: center">マイクロ</td><td style="text-align: center">\(10^{-6}\)</td></tr>
 <tr><td style="text-align: center">\(n\)</td><td style="text-align: center">ナノ</td><td style="text-align: center">\(10^{-9}\)</td></tr>
 <tr><td style="text-align: center">\(p\)</td><td style="text-align: center">ピコ</td><td style="text-align: center">\(10^{-12}\)</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h2 id="オームの法則"><a class="header" href="#オームの法則">オームの法則</a></h2>
-<p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br />
-$$ V = RI $$</p>
-<div id="admonition-例" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-title">
-<div class="admonition-title">
-<div id="admonition-例-title">
-<p>例</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-例"></a>
-</div>
-<div>
-<p>次の回路では何\(\mathrm{[A]}\)の電流が流れるでしょうか。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_circuit.png" alt="r_10k_circuit" height="200"></p>  
-<p>オームの法則で求めます。<br />
-$$ V=RI \\
-I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}} = 0.33 \times 10^{-3}\mathrm{[A]} = 0.33\mathrm{[mA]} $$</p>
-<p>抵抗\(R\)の両端には電源である\(E\)がすべて印加されます。そのため、\(R\)に印加される電圧は\(3.3\mathrm{[V]}\)となります。</p>
-</div>
-</div>
+<p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br>$$ V = RI $$</p>
+<pre><code class="language-admonish example &quot;例&quot;">次の回路では何\\(\mathrm{[A]}\\)の電流が流れるでしょうか。  
+
+![r_10k_circuit](../resources/BasicContents/circuit/r_10k_circuit.png =x200 center)  
+
+オームの法則で求めます。  
+$$ V=RI \\\\
+I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}} = 0.33 \times 10^{-3}\mathrm{[A]} = 0.33\mathrm{[mA]} $$  
+
+抵抗\\(R\\)の両端には電源である\\(E\\)がすべて印加されます。そのため、\\(R\\)に印加される電圧は\\(3.3\mathrm{[V]}\\)となります。  
+</code></pre>
 <h2 id="直列回路と並列回路"><a class="header" href="#直列回路と並列回路">直列回路と並列回路</a></h2>
-<div id="admonition-直列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-直列接続-title">
-<div class="admonition-title">
-<div id="admonition-直列接続-title">
-<p>直列接続</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-直列接続"></a>
-</div>
-<div>
-<p>素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。<br />
-直列接続の場合は電圧と電流は次のようになります。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_series_circuit.png" alt="r_series_circuit" height="250"></p>
-<p>$$ E = V_{1} + V_{2} \\
-I = I_{1} = I_{2} $$</p>
-</div>
-</div>
-<div id="admonition-並列接続" class="admonition admonish-info" role="note" aria-labelledby="admonition-並列接続-title">
-<div class="admonition-title">
-<div id="admonition-並列接続-title">
-<p>並列接続</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-並列接続"></a>
-</div>
-<div>
-<p>素子の端子同士を両端接続する方法です。図として表すと次のようになります。<br />
-並列接続の場合は電圧と電流は次のようになります。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_parallel_circuit.png" alt="r_parallel_circuit" height="250"></p>
-<p>$$ E = V_{1} = V_{2} \\
-I = I_{1} + I_{2} $$</p>
-</div>
-</div>
+<pre><code class="language-admonish info &quot;直列接続&quot;">素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。  
+直列接続の場合は電圧と電流は次のようになります。  
+
+![r_series_circuit](../resources/BasicContents/circuit/r_series_circuit.png =x250 center)
+
+$$ E = V_{1} + V_{2} \\\\
+I = I_{1} = I_{2} $$
+
+</code></pre>
+<pre><code class="language-admonish info &quot;並列接続&quot;">素子の端子同士を両端接続する方法です。図として表すと次のようになります。  
+並列接続の場合は電圧と電流は次のようになります。  
+
+![r_parallel_circuit](../resources/BasicContents/circuit/r_parallel_circuit.png =x250 center)
+
+$$ E = V_{1} = V_{2} \\\\
+I = I_{1} + I_{2} $$
+
+</code></pre>
 <h2 id="合成抵抗"><a class="header" href="#合成抵抗">合成抵抗</a></h2>
-<p>抵抗が複数ある場合は全体の抵抗はどうなるでしょうか。<br />
-全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br />
-直列接続の合成抵抗は次の式で求められます。<br />
-$$ R = R_{1} + R_{2} $$</p>
-<div id="admonition-例-1" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-1-title">
-<div class="admonition-title">
-<div id="admonition-例-1-title">
-<p>例</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-例-1"></a>
-</div>
-<div>
-<p>次の回路の合成抵抗を求めます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_series_10k_circuit.png" alt="r_10k_series_10k_circuit" height="250"></p>
-<p>$$ R = R_{1} + R_{2} = 10 \times 10^{3} + 10 \times 10^{3} = 20 \times 10^{3} = 20\mathrm{[k\Omega]} $$</p>
-<p>次の回路の合成抵抗を求めます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_series_10k_circuit.png" alt="r_5k_series_10k_circuit" height="250"></p>
-<p>$$ R = R_{1} + R_{2} = 5 \times 10^{3} + 10 \times 10^{3} = 15 \times 10^{3} = 15\mathrm{[k\Omega]} $$</p>
-<p>直列接続の場合は合成抵抗は大きくなります。</p>
-</div>
-</div>
+<p>抵抗が複数ある場合は全体の抵抗はどうなるでしょうか。<br>全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br>直列接続の合成抵抗は次の式で求められます。<br>$$ R = R_{1} + R_{2} $$</p>
+<pre><code class="language-admonish example &quot;例&quot;">次の回路の合成抵抗を求めます。
+
+![r_10k_series_10k_circuit](../resources/BasicContents/circuit/r_10k_series_10k_circuit.png =x250 center)
+
+$$ R = R_{1} + R_{2} = 10 \times 10^{3} + 10 \times 10^{3} = 20 \times 10^{3} = 20\mathrm{[k\Omega]} $$
+
+次の回路の合成抵抗を求めます。
+
+![r_5k_series_10k_circuit](../resources/BasicContents/circuit/r_5k_series_10k_circuit.png =x250 center)
+
+$$ R = R_{1} + R_{2} = 5 \times 10^{3} + 10 \times 10^{3} = 15 \times 10^{3} = 15\mathrm{[k\Omega]} $$
+
+直列接続の場合は合成抵抗は大きくなります。
+</code></pre>
 <p>並列接続の合成抵抗は次の式で求められます。
 $$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
 抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
 $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
 この式を「和分の積」と呼ぶ人もいます。</p>
-<div id="admonition-例-2" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-2-title">
-<div class="admonition-title">
-<div id="admonition-例-2-title">
-<p>例</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-例-2"></a>
-</div>
-<div>
-<p>次の回路の合成抵抗を求めます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png" alt="r_10k_parallel_10k_circuit" height="250"></p>
-<p>$$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} = \frac{1}{\frac{1}{10 \times 10^{3}} + \frac{1}{10 \times 10^{3}}} = 5 \times 10^{3} = 5\mathrm{[k\Omega]} $$</p>
-<p>次の回路の合成抵抗を求めます。「和分の積」で求めてみます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png" alt="r_5k_parallel_10k_circuit" height="250"></p>
-<p>$$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} = \frac{5 \times 10^{3} \times 10 \times 10^{3}}{5 \times 10^{3} + 10 \times 10^{3}} = 3.33\ldots \times 10^{3} \fallingdotseq 3.3\mathrm{[k\Omega]} $$</p>
-<p>並列接続の場合は合成抵抗は小さくなります。</p>
-</div>
-</div>
+<pre><code class="language-admonish example &quot;例&quot;">次の回路の合成抵抗を求めます。
+
+![r_10k_parallel_10k_circuit](../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png =x250 center)
+
+$$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} = \frac{1}{\frac{1}{10 \times 10^{3}} + \frac{1}{10 \times 10^{3}}} = 5 \times 10^{3} = 5\mathrm{[k\Omega]} $$
+
+次の回路の合成抵抗を求めます。「和分の積」で求めてみます。
+
+![r_5k_parallel_10k_circuit](../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png =x250 center)
+
+$$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} = \frac{5 \times 10^{3} \times 10 \times 10^{3}}{5 \times 10^{3} + 10 \times 10^{3}} = 3.33\ldots \times 10^{3} \fallingdotseq 3.3\mathrm{[k\Omega]} $$
+
+並列接続の場合は合成抵抗は小さくなります。
+</code></pre>
 <h2 id="分圧"><a class="header" href="#分圧">分圧</a></h2>
-<p>直列接続の場合は全体の電圧が\(V = V_{1} + V_{2}\)で表されます。<br />
-\(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
+<p>直列接続の場合は全体の電圧が\(V = V_{1} + V_{2}\)で表されます。<br>\(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
 $$ V_{1} = \frac{R_{1}}{R}V \\
 V_{2} = \frac{R_{2}}{R}V $$</p>
-<div id="admonition-例-3" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-3-title">
-<div class="admonition-title">
-<div id="admonition-例-3-title">
-<p>例</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-例-3"></a>
-</div>
-<div>
-<p>次の回路のそれぞれの抵抗に加わる電圧を求めます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_series_10k_circuit.png" alt="r_10k_series_10k_circuit" height="250"></p>
-<p>$$ V_{1} = \frac{R_{1}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} \\
-V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} $$</p>
-<p>次の回路のそれぞれの抵抗に加わる電圧を求めます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_series_10k_circuit.png" alt="r_5k_series_10k_circuit" height="250"></p>
-<p>$$ V_{1} = \frac{R_{1}}{R}E = \frac{5 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 1.66\ldots \fallingdotseq 1.7\mathrm{[V]} \\
-V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 3.33\ldots \fallingdotseq 3.3\mathrm{[V]} $$</p>
-<p>抵抗が大きい方に電圧が多く加わります。</p>
-</div>
-</div>
+<pre><code class="language-admonish example &quot;例&quot;">次の回路のそれぞれの抵抗に加わる電圧を求めます。
+
+![r_10k_series_10k_circuit](../resources/BasicContents/circuit/r_10k_series_10k_circuit.png =x250 center)
+
+$$ V_{1} = \frac{R_{1}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} \\\\
+V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{20 \times 10^{3}} \times 5.0 = 2.5\mathrm{[V]} $$
+
+次の回路のそれぞれの抵抗に加わる電圧を求めます。
+
+![r_5k_series_10k_circuit](../resources/BasicContents/circuit/r_5k_series_10k_circuit.png =x250 center)
+
+$$ V_{1} = \frac{R_{1}}{R}E = \frac{5 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 1.66\ldots \fallingdotseq 1.7\mathrm{[V]} \\\\
+V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{15 \times 10^{3}} \times 5.0 = 3.33\ldots \fallingdotseq 3.3\mathrm{[V]} $$
+
+抵抗が大きい方に電圧が多く加わります。
+</code></pre>
 <h2 id="分流"><a class="header" href="#分流">分流</a></h2>
-<p>並列接続の場合は全体の電流が\(I = I_{1} + I_{2}\)で表されます。<br />
-\(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
+<p>並列接続の場合は全体の電流が\(I = I_{1} + I_{2}\)で表されます。<br>\(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
 $$ I_{1} = \frac{R}{R_{1}}I = \frac{R_{2}}{R_{1} + R_{2}}I \\
 I_{2} = \frac{R}{R_{2}}I = \frac{R_{1}}{R_{1} + R_{2}}I $$</p>
-<div id="admonition-例-4" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-4-title">
-<div class="admonition-title">
-<div id="admonition-例-4-title">
-<p>例</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-例-4"></a>
-</div>
-<div>
-<p>次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\(I\)をオームの法則で求めます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png" alt="r_10k_parallel_10k_circuit" height="250"></p>
-<p>$$ I = \frac{E}{R} = \frac{5.0}{5 \times 10^{3}} = 1 \times 10^{-3} = 1\mathrm{[mA]} \\
-I_{1} = \frac{R}{R_{1}}I = \frac{5 \times 10^{3}}{10 \times 10^{3}} \times 1 \times 10^{-3} = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} \\
-I_{2} = \frac{R_{1}}{R_{1} + R_{2}}I = \frac{10 \times 10^{3}}{10 \times 10^{3} + 10 \times 10^{3}} \times 1 \times 10^{-3} \\ = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} $$</p>
-<p>次の回路のそれぞれの抵抗に流れる電流を求めます。それぞれの抵抗値と加わる電圧が分かればオームの法則でも求めることができます。</p>
-<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png" alt="r_5k_parallel_10k_circuit" height="250"></p>
-<p>$$ I_{1} = \frac{V_{R1}}{R_{1}} = \frac{5.0}{5 \times 10^{3}} = 1\mathrm{[mA]} \\
-I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $$</p>
-<p>抵抗が小さい方に電流が多く流れます。</p>
-</div>
-</div>
+<pre><code class="language-admonish example &quot;例&quot;">次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\\(I\\)をオームの法則で求めます。
+
+![r_10k_parallel_10k_circuit](../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png =x250 center)
+
+$$ I = \frac{E}{R} = \frac{5.0}{5 \times 10^{3}} = 1 \times 10^{-3} = 1\mathrm{[mA]} \\\\
+I_{1} = \frac{R}{R_{1}}I = \frac{5 \times 10^{3}}{10 \times 10^{3}} \times 1 \times 10^{-3} = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} \\\\
+I_{2} = \frac{R_{1}}{R_{1} + R_{2}}I = \frac{10 \times 10^{3}}{10 \times 10^{3} + 10 \times 10^{3}} \times 1 \times 10^{-3} \\\\ = 0.5 \times 10^{-3} = 0.5\mathrm{[mA]} $$
+
+次の回路のそれぞれの抵抗に流れる電流を求めます。それぞれの抵抗値と加わる電圧が分かればオームの法則でも求めることができます。
+
+![r_5k_parallel_10k_circuit](../resources/BasicContents/circuit/r_5k_parallel_10k_circuit.png =x250 center)
+
+$$ I_{1} = \frac{V_{R1}}{R_{1}} = \frac{5.0}{5 \times 10^{3}} = 1\mathrm{[mA]} \\\\
+I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $$
+
+抵抗が小さい方に電流が多く流れます。
+</code></pre>
 <h2 id="短絡と開放"><a class="header" href="#短絡と開放">短絡と開放</a></h2>
-<p><strong>短絡</strong>は\(R=0\)であることです。<br />
-抵抗がないため\(V=RI=0\)になります。このとき\(I\neq0\)になります。</p>
-<p><strong>開放</strong>は\(R=\infty\)であることです。<br />
-抵抗が無限大のため\(I=\frac{V}{R}=0\)になります。このとき\(V\neq0\)になります。</p>
-<hr />
-<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
-<div class="admonition-title">
-<div id="admonition-参考-title">
-<p>参考</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-参考"></a>
-</div>
-<div>
-<ul>
-<li>講習資料</li>
-<li><a href="https://www.morikita.co.jp/books/mid/073253">電気回路の基礎</a></li>
-<li><a href="https://www.dainippon-tosho.co.jp/unit/si_prefix.html">SI接頭語</a></li>
-</ul>
-</div>
-</div>
+<p><strong>短絡</strong>は\(R=0\)であることです。<br>抵抗がないため\(V=RI=0\)になります。このとき\(I\neq0\)になります。</p>
+<p><strong>開放</strong>は\(R=\infty\)であることです。<br>抵抗が無限大のため\(I=\frac{V}{R}=0\)になります。このとき\(V\neq0\)になります。</p>
+<hr>
+<pre><code class="language-admonish quote &quot;参考&quot;">
+- 講習資料
+- [電気回路の基礎](https://www.morikita.co.jp/books/mid/073253)
+- [SI接頭語](https://www.dainippon-tosho.co.jp/unit/si_prefix.html)
+
+</code></pre>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="../BasicContents/language_cpp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="../BasicContents/motor.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -412,17 +346,38 @@ I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="../BasicContents/language_cpp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="../BasicContents/motor.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>
@@ -430,15 +385,16 @@ I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $
         </script>
 
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>
