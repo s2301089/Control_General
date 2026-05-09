@@ -2344,7 +2344,133 @@ $ ./ar_su
 18
 sum : 80
 </code></pre>
-<h3 id=""><a class="header" href="#"></a></h3>
+<h3 id="穴埋めポインタ"><a class="header" href="#穴埋めポインタ">穴埋め(ポインタ)</a></h3>
+<p>次のコードがうまく動作するように、プログラムを修正してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">po_va.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void){
+    int i = 0, *p = NULL;
+
+    /*
+        ここにエラーを解決できるコードを書く
+    */
+
+    scanf(" %d", p);
+    printf("%d\n", i);
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">po_ar.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void){
+    int array[5] = {0, 1, 2, 3, 4}, *p = NULL;
+
+    for(int i = 0; i &lt; 5; ++i){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+
+    for(int i = 0; i &lt; 5; ++i){
+        printf("%d ", p[i]);
+        /*
+            pというポインタがarrayを指すように
+        */
+    }
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<h3 id="穴埋め構造体"><a class="header" href="#穴埋め構造体">穴埋め(構造体)</a></h3>
+<p>次のコードがうまく動作するように、プログラムを修正してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">st_pe.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct _person{
+    float height;
+    float weight;
+    int age;
+    int gender; // man:0, woman:1
+} Person;
+
+void showPersonByValue(Person person);
+void showPersonByReference(Person *person);
+
+int main(void){
+    Person man, woman;
+
+    man.height = 171.2;
+    man.weight = 72.8;
+    man.age = 81;
+    man.gender = 0;
+
+    woman.height = 158.5;
+    woman.weight = 59.9;
+    woman.age = 87;
+    woman.gender = 1;
+
+    /*
+        ここでmanとwomanの内容を表示する
+        showPersonByValueとshowPersonByReferenceをそれぞれ呼ぶ
+    */
+
+    return EXIT_SUCCESS;
+}
+
+void showPersonByValue(Person person){
+    /*
+        ここに身長、体重、年齢、性別を表示するコードを記述
+    */
+}
+
+void showPersonByReference(Person *person){
+    /*
+        ここに身長、体重、年齢、性別を表示するコードを記述
+    */
+}
+</code></pre>
+<h3 id="穴埋め関数"><a class="header" href="#穴埋め関数">穴埋め(関数)</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">in_fu.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct _person{
+    float height;
+    float weight;
+    int age;
+    int gender; // man:0, woman:1
+} Person;
+
+/*
+    ここで各関数のプロトタイプ宣言を行う
+*/
+
+int main(void){
+    Person man, woman;
+
+    inputByReference(&amp;man);
+    printf("\n");
+    woman = inputByReturn();
+
+    printf("\n");
+    showPersonByReference(&amp;man);
+    printf("\n");
+    showPersonByValue(woman);
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
+
+/*
+    ここで各関数を実装する
+*/
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><style>
 div.codeblock_filename_container + pre {
   margin-top: 0;
