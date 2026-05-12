@@ -217,6 +217,7 @@ $ ./ar_su
 18
 sum : 80
 ```
+<<<<<<< Updated upstream
 
 ### 穴埋め(ポインタ)
 
@@ -353,3 +354,5 @@ int main(void){
     ここで各関数を実装する
 */
 ```
+=======
+>>>>>>> Stashed changes
