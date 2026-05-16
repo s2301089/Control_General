@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>値の表示 - Control_General</title>
+        <title>CAN通信 - Control_General</title>
 
 
         <!-- Custom HTML head -->
@@ -174,59 +174,157 @@ span.codeblock_filename_inner {
 }
 
 </style>
-<h1 id="値の表示"><a class="header" href="#値の表示">値の表示</a></h1>
-<p>変数の値などを確認できるようにします。<code>printf</code>で文字列をターミナルへ表示することがあります。<br />
-<code>mbed</code>では同じようなことをする方法が2つあります。</p>
-<h2 id="用意されたものを使用する"><a class="header" href="#用意されたものを使用する">用意されたものを使用する</a></h2>
-<p>用意されたものを使用するのは簡単です。コードの中にそのまま<code>printf</code>を記述するだけです。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf.cpp</span></div>
-<pre><code class="language-cpp">printf("sw:%d\n", sw.read());
+<h1 id="can通信"><a class="header" href="#can通信">CAN通信</a></h1>
+<div id="admonition-can通信とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-can通信とは-title">
+<div class="admonition-title">
+<div id="admonition-can通信とは-title">
+<p>CAN通信とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-can通信とは"></a>
+</div>
+<div>
+<p><code>Control Area Network</code>。CAN_TD、CAN_RDなどの信号を差動信号にして、CAN BUSを作ります。シリアル通信の一種です。<br />
+CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデータを読み取ります。<br />
+差動のため、ノイズに強いと言われています。</p>
+</div>
+</div>
+<div id="admonition-canメッセージ" class="admonition admonish-info" role="note" aria-labelledby="admonition-canメッセージ-title">
+<div class="admonition-title">
+<div id="admonition-canメッセージ-title">
+<p>CANメッセージ</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-canメッセージ"></a>
+</div>
+<div>
+<p>CANメッセージとはCAN通信における送信データの1まとまりです。<br />
+基本的にCANメッセージのデータ長は8Byteで、符号なし8bit整数型配列(<code>uint8_t data[8]</code>)が使用されることが多いです。</p>
+</div>
+</div>
+<h2 id="can"><a class="header" href="#can"><code>CAN</code></a></h2>
+<p>CAN通信を行う場合は、<code>CAN</code>クラスを使用します。</p>
+<h3 id="コンストラクタcan"><a class="header" href="#コンストラクタcan">コンストラクタ(<code>CAN</code>)</a></h3>
+<p>コンストラクタは<code>CAN(PinName rd, PinName td)</code>、<code>CAN(PinName rd, PinName td, int hz)</code>で定義されています。<br />
+<code>CAN(const can_pinmap_t &amp;pinmap)</code>、<code>CAN(const can_pinmap_t &amp;pinmap, int hz)</code>というコンストラクタも定義されています。</p>
+<ul>
+<li><code>rd</code>
+<ul>
+<li>使用するCANの<code>CAN_RD</code>ピンを指定します。</li>
+</ul>
+</li>
+<li><code>td</code>
+<ul>
+<li>使用するCANの<code>CAN_TD</code>ピンを指定します。</li>
+</ul>
+</li>
+<li><code>hz</code>
+<ul>
+<li>CANの周波数を指定します。</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">周波数：未定</span></div>
+<pre><code class="language-cpp">CAN can1(PA_11, PA_12);
 </code></pre>
-<p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br />
-シリアルモニターなどで確認できます。ボーレートはデフォルトで<code>9600</code>です。</p>
-<h3 id="ボーレートの変更"><a class="header" href="#ボーレートの変更">ボーレートの変更</a></h3>
-<p><code>UnbufferedSerial</code>のインスタンスを宣言するだけでボーレートを変更することができます。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
-<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">周波数：1MHz</span></div>
+<pre><code class="language-cpp">CAN can1(PA_11, PA_12, 1000000);
+// 1000000 → 1e6
 </code></pre>
-<p><code>38400</code>がボーレートの設定になります。<code>9600</code>や<code>38400</code>、<code>115200</code>などに設定することが多いです。</p>
-<h2 id="自分で実装する"><a class="header" href="#自分で実装する">自分で実装する</a></h2>
-<p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br />
-使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
-<h3 id="unbufferedserialの宣言"><a class="header" href="#unbufferedserialの宣言">UnbufferedSerialの宣言</a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
-<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
-// TX、RX、baudrate
+<h3 id="int-frequencyint-hz"><a class="header" href="#int-frequencyint-hz"><code>int frequency(int hz)</code></a></h3>
+<p>周波数を<code>hz</code>に設定します。<br />
+成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">1MHzに設定</span></div>
+<pre><code class="language-cpp">can1(PA_11, PA_12, 1000000);
+// 1e6
 </code></pre>
-<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言します。<br />
-<code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
-<h3 id="代替関数の実装"><a class="header" href="#代替関数の実装">代替関数の実装</a></h3>
-<p><code>printf</code>の代わりに呼び出す関数を定義します。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">関数の定義</span></div>
-<pre><code class="language-cpp">void pc_printf(const char *format, ...){
-    char buf[256];
-    va_list arg;
-    va_start(arg, format);
-    int len = vsnprintf(buf, sizeof(buf), format, arg);
-    va_end(arg);
-    pc.write(buf, len);
-}
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">500kHzに設定</span></div>
+<pre><code class="language-cpp">can1(PA_11, PA_12, 500000);
+// 500e3
 </code></pre>
-<p>詳細な説明は省きますが、無限長引数を解釈し、<code>buf</code>にまとめ、<code>pc.write()</code>で送信しています。<br />
-<code>pc</code>は宣言した<code>UnbufferedSerial</code>のインスタンス名に合わせてください。</p>
-<h2 id="浮動小数点数等の表示"><a class="header" href="#浮動小数点数等の表示">浮動小数点数等の表示</a></h2>
-<p>初めに<code>%f</code>を<code>printf</code>で使用すると、<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
-プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
-<pre><code class="language-json">{
-    "target_overrides":{
-        "*":{
-            "target.printf_lib":"std"
-        }
+<h3 id="int-writecanmessage-msg"><a class="header" href="#int-writecanmessage-msg"><code>int write(CANMessage msg)</code></a></h3>
+<p><a href="#canmessage"><code>CANMessage</code></a>をCANバスに送信します。<br />
+成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">msgを送信</span></div>
+<pre><code class="language-cpp">can1.write(msg);
+</code></pre>
+<h3 id="int-readcanmessage-msg-int-handle--0"><a class="header" href="#int-readcanmessage-msg-int-handle--0"><code>int read(CANMessage &amp;msg, int handle = 0)</code></a></h3>
+<p><a href="#canmessage"><code>CANMessage</code></a>をCANバスから受信します。<code>handle</code>はフィルターらしいです。<br />
+成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">msgを受信</span></div>
+<pre><code class="language-cpp">can1.read(msg);
+</code></pre>
+<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
+<h3 id="void-reset"><a class="header" href="#void-reset"><code>void reset()</code></a></h3>
+<p>CANをリセットします。エラーの後やオーバーフローした時などに実行します。</p>
+<h3 id="void-monitorbool-silent"><a class="header" href="#void-monitorbool-silent"><code>void monitor(bool silent)</code></a></h3>
+<h3 id="int-modemode-mode"><a class="header" href="#int-modemode-mode"><code>int mode(Mode mode)</code></a></h3>
+<h3 id="int-filterunsigned-int-id-unsigned-int-mask-canformat-format--canany-int-handle--0"><a class="header" href="#int-filterunsigned-int-id-unsigned-int-mask-canformat-format--canany-int-handle--0"><code>int filter(unsigned int id, unsigned int mask, CANFormat format = CANAny, int handle = 0)</code></a></h3>
+<h3 id="unsigned-char-rderror"><a class="header" href="#unsigned-char-rderror"><code>unsigned char rderror()</code></a></h3>
+<h3 id="unsigned-char-tderror"><a class="header" href="#unsigned-char-tderror"><code>unsigned char tderror()</code></a></h3>
+<h3 id="void-attachcallbackvoid-func-irqtype-type--irqtyperxirq"><a class="header" href="#void-attachcallbackvoid-func-irqtype-type--irqtyperxirq"><code>void attach(Callback&lt;void()&gt; func, IrqType type = IrqType::RxIrq)</code></a></h3>
+<p>受信割り込みの設定らしいです。</p>
+<h3 id="static-void-_irq_handleruintptr_t-context-canirqtype-type"><a class="header" href="#static-void-_irq_handleruintptr_t-context-canirqtype-type"><code>static void _irq_handler(uintptr_t context, CanIrqType type)</code></a></h3>
+<h2 id="canmessage"><a class="header" href="#canmessage"><code>CANMessage</code></a></h2>
+<p><code>CAN</code>で送受信するデータは、<code>CANMessage</code>クラスを使用します。</p>
+<h3 id="コンストラクタcanmessage"><a class="header" href="#コンストラクタcanmessage">コンストラクタ(<code>CANMessage</code>)</a></h3>
+<p>コンストラクタは<code>CANMessage()</code>、<code>CANMessage(unsigned int _id, const unsigned char *_data, unsigned char _len = 8, CANType _type = CANData, CANFormat _format = CANStandard)</code>、<code>CANMessage(unsigned int _id, CANFormat _format = CANStandard)</code>で定義されています。</p>
+<ul>
+<li><code>_id</code>
+<ul>
+<li>CANのIDを指定します。</li>
+</ul>
+</li>
+<li><code>*_data</code>
+<ul>
+<li>送受信するデータの配列</li>
+</ul>
+</li>
+<li><code>_len</code>
+<ul>
+<li>データ長</li>
+</ul>
+</li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ID：0x200</span></div>
+<pre><code class="language-cpp">CANMessage msg(0x200);
+</code></pre>
+<h3 id="インスタンス変数として使用"><a class="header" href="#インスタンス変数として使用">インスタンス変数として使用</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">インスタンス変数</span></div>
+<pre><code class="language-cpp">CANMessage msg;
+msg.id = id;
+msg.len = 8;
+msg.data[0] = 0x20;
+</code></pre>
+<h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div id="admonition-データ送信" class="admonition admonish-example" role="note" aria-labelledby="admonition-データ送信-title">
+<div class="admonition-title">
+<div id="admonition-データ送信-title">
+<p>データ送信</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-データ送信"></a>
+</div>
+<div>
+<p>適当なデータ(固定値)を<code>500ms</code>間隔で<code>CANMessage</code>を送信するプログラムです。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
+
+int main(void){
+    CAN can1(PA_11, PA_12, 1000000);
+    CAN msg;
+    msg.id = 0x10;
+    msg.len = 2;
+    msg.data[0] = 0xab;
+    msg.data[1] = 0xcd;
+
+    while(true){
+        can1.write(msg);
+        ThisThread::sleep_for(500ms);
     }
+
+    return 0;
 }
 </code></pre>
-<p><code>long</code>等も正しく表示できない場合があります。その場合は、上記の<code>mbed_app.json</code>を作成する必要があります。</p>
+</div>
+</div>
 <hr />
 <div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
 <div class="admonition-title">
@@ -237,7 +335,9 @@ span.codeblock_filename_inner {
 </div>
 <div>
 <ul>
-<li><a href="https://forums.mbed.com/t/nucleo-keil-studio/22433">NUCLEOのKeil Studioで浮動小数点数を出力する方法</a></li>
+<li><a href="https://qiita.com/sirayuri/items/b905330c8ad5358e7bdd">【高専ロボコン】キャン(CAN)ならずできる！STM32で始めるCAN通信入門</a></li>
+<li><a href="https://hsdev.co.jp/stm32-can/">STM32マイコンでCAN通信</a></li>
+<li><a href="https://os.mbed.com/docs/mbed-os/v6.16/apis/other-driver-apis.html">CAN</a></li>
 </ul>
 </div>
 </div>
@@ -245,11 +345,11 @@ span.codeblock_filename_inner {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../mbed/thread/ThisThread.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../mbed/connectivity/showValuePrintf.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../mbed/connectivity/can.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../mbed/connectivity/use_rxController.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -259,11 +359,11 @@ span.codeblock_filename_inner {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../mbed/thread/ThisThread.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../mbed/connectivity/showValuePrintf.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../mbed/connectivity/can.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../mbed/connectivity/use_rxController.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
