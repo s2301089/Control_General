@@ -56,7 +56,7 @@ Please install the latest Python 3 and restart VSCode
 `Python`をインストールしていない人は通知のボタンから`Install Python`を押してダウンロードサイトからWindows用をダウンロードしましょう。[Python Releases for Windows](https://www.python.org/downloads/windows/)  
 すでに`Python`をインストールしている場合は`I have Python`を押して`python.exe`の`PATH`を教えてあげます。  
 
-> `PlatformIO`は`Python 3.11`以下でのみ動作する場合があります。そのようなエラーメッセージが表示された場合は、ダウンロードサイトの下の方に過去のバージョンリリースがあるのでそこからインストーラーをダウンロードします。  
+> `PlatformIO`は`Python 3.6`以上`Python 3.11`以下でのみ動作します(2026/05/12時点)。ダウンロードサイトの下の方に過去のバージョンリリースがあるのでそこからインストーラーをダウンロードします。  
 > ![install python 3.11](../resources/PlatformIO/setup/install_python3_11.png)  
 
 - ダウンロードしたインストーラーを実行します。

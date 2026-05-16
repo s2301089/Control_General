@@ -217,5 +217,142 @@ $ ./ar_su
 18
 sum : 80
 ```
+<<<<<<< Updated upstream
 
-### 
+### 穴埋め(ポインタ)
+
+次のコードがうまく動作するように、プログラムを修正してください。
+
+```c : po_va.c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    int i = 0, *p = NULL;
+
+    /*
+        ここにエラーを解決できるコードを書く
+    */
+
+    scanf(" %d", p);
+    printf("%d\n", i);
+
+    return EXIT_SUCCESS;
+}
+```
+
+```c : po_ar.c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    int array[5] = {0, 1, 2, 3, 4}, *p = NULL;
+
+    for(int i = 0; i < 5; ++i){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+
+    for(int i = 0; i < 5; ++i){
+        printf("%d ", p[i]);
+        /*
+            pというポインタがarrayを指すように
+        */
+    }
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
+```
+
+### 穴埋め(構造体)
+
+次のコードがうまく動作するように、プログラムを修正してください。
+
+```c : st_pe.c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct _person{
+    float height;
+    float weight;
+    int age;
+    int gender; // man:0, woman:1
+} Person;
+
+void showPersonByValue(Person person);
+void showPersonByReference(Person *person);
+
+int main(void){
+    Person man, woman;
+
+    man.height = 171.2;
+    man.weight = 72.8;
+    man.age = 81;
+    man.gender = 0;
+
+    woman.height = 158.5;
+    woman.weight = 59.9;
+    woman.age = 87;
+    woman.gender = 1;
+
+    /*
+        ここでmanとwomanの内容を表示する
+        showPersonByValueとshowPersonByReferenceをそれぞれ呼ぶ
+    */
+
+    return EXIT_SUCCESS;
+}
+
+void showPersonByValue(Person person){
+    /*
+        ここに身長、体重、年齢、性別を表示するコードを記述
+    */
+}
+
+void showPersonByReference(Person *person){
+    /*
+        ここに身長、体重、年齢、性別を表示するコードを記述
+    */
+}
+```
+
+### 穴埋め(関数)
+
+```c : in_fu.c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct _person{
+    float height;
+    float weight;
+    int age;
+    int gender; // man:0, woman:1
+} Person;
+
+/*
+    ここで各関数のプロトタイプ宣言を行う
+*/
+
+int main(void){
+    Person man, woman;
+
+    inputByReference(&man);
+    printf("\n");
+    woman = inputByReturn();
+
+    printf("\n");
+    showPersonByReference(&man);
+    printf("\n");
+    showPersonByValue(woman);
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
+
+/*
+    ここで各関数を実装する
+*/
+```
+=======
+>>>>>>> Stashed changes
