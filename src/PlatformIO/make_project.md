@@ -33,7 +33,7 @@
     - `Use default location`のチェックを外し、フォルダーを選択します。
     - プロジェクトへのPATHに日本語などの全角文字が含まれないようにしてください。
 
-  ```admonish example "例"
+  ```admonish example title = "例"
   ![](../resources/PlatformIO/make_project/project_wizard_example.png =400x)
   ```
 
@@ -48,7 +48,7 @@
   - 開かない場合は、蜂マークから`Pick a folder`を押してプロジェクトフォルダーを選択して開きます。
 - 作成されたファイルを編集します。
 
-    ````admonish example "platformio.ini"
+    ````admonish example title = "platformio.ini"
 
     ```ini :
     ; PlatformIO Project Configuration File
@@ -76,7 +76,7 @@
 
     ````
 
-    ````admonish example ".gitignore"
+    ````admonish example title = ".gitignore"
 
     ```.gitignore
     .pio
@@ -122,7 +122,7 @@
 
 ---
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - 講習資料
 - [ArduinoをVSCodeで開発する【PlatformIO】](https://tech.nri-net.com/entry/arduino_with_vscode)

@@ -52,7 +52,7 @@ button1.mode(PullDown);
 
 ## サンプルプログラム
 
-````admonish example "LED点灯"
+````admonish example title = "LED点灯"
 `PA5`を`PC13`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が評価ボード上の`B1`(青のプッシュスイッチ)を押していると消灯し、押していないと点灯します。  
 
@@ -93,14 +93,14 @@ int main(void){
 
 ---
 
-```admonish quote "使用部品"
+```admonish quote title = "使用部品"
 
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
 ```
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)

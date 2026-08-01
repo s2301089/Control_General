@@ -9,7 +9,7 @@
 
 ## PWM  
 
-```admonish info "PWMとは"
+```admonish info title = "PWMとは"
 `Pulse Width Modulation`の略で`パルス幅変調`といいます。  
 一定周期の中で出力が`HIGH`の時間と`LOW`の時間の比(デューティー比)で中間の電圧を擬似的に表現します。  
 
@@ -17,7 +17,7 @@ PWMの出力波形は以下の図のようなものです。
 ![pwm_pwm_waveform.png](../resources/BasicContents/motor/pwm_waveform.png)  
 ```
 
-```admonish example "出力の例"
+```admonish example title = "出力の例"
 GPIOピンの出力が`5V`でデューティー比が`25%`であれば、出力は`1.25V`になります。出力電圧は以下の式で求められます。  
 $$ 出力電圧 = {最大電圧} \times {デューティー比} $$  
 デューティー比が小さいと素子によってはデューティー比`0％`とあまり変わらない結果が得られるものもあります。**各素子の動作電圧**などを確認してください。  
@@ -33,7 +33,7 @@ $$ 出力電圧 = {最大電圧} \times {デューティー比} $$
 
 ---
 
-```admonish quote "参考"  
+```admonish quote title = "参考"  
 - [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  
 - [STM32 HALを使ってPWM出力してみる](https://moons.link/post-632/)  
 ```

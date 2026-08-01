@@ -4,7 +4,7 @@
 
 双葉電子の`FEP02`を使用しています。  
 
-```admonish info "製品情報"
+```admonish info title = "製品情報"
 [FEP-02](https://www.futaba.co.jp/product/industry/industry_module/fep02)  
 ```
 
@@ -52,7 +52,7 @@
 
 データ型はすべて`uint8_t`で、合計13Byteのデータになっています。  
 
-```admonish info "追加のデータ"
+```admonish info title = "追加のデータ"
 `header` : `0xaf` 先頭データを意味します。  
 `SUM` : データ確認用のSUMです。 `1~8Byte`の合計値になっています。  
 `footer` : `0xed`  終端データを意味します。

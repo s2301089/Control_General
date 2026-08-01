@@ -223,8 +223,10 @@ span.codeblock_filename_inner {
 <a class="admonition-anchor-link" href="#admonition-gitのバージョン確認"></a>
 </div>
 <div>
-<p>$ git --version<br />
-git version 2.44.0.windows.1</p>
+<pre><code class="language-bash : Git Bash"># Git Bash
+$ git --version  
+git version 2.44.0.windows.1
+</code></pre>
 </div>
 </div>
 </li>
@@ -264,13 +266,7 @@ git version 2.44.0.windows.1</p>
 <code>Create account</code>で作成完了です。</p>
 </li>
 </ul>
-<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
-<div class="admonition-title">
-<div id="admonition-note-title">
-<p>Note</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-note"></a>
-</div>
+<div id="admonition-default" class="admonition admonish-note" role="note">
 <div>
 <p>登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。</p>
 </div>
@@ -287,7 +283,9 @@ git version 2.44.0.windows.1</p>
 <p><code>~/.ssh/</code>に移動します。フォルダがない場合は作成してください。</p>
 <pre><code class="language-bash : Git Bash">$ ls -a ~ | grep .ssh
 .ssh/ # ある
-# ない場合 $ mkdir ~/.ssh
+# ない場合
+$ mkdir ~/.ssh
+
 $ cd ~/.ssh/
 </code></pre>
 </li>
@@ -299,9 +297,9 @@ $ cd ~/.ssh/
 </li>
 <li>
 <p><code>ssh-keygen.exe</code>で<code>SSH</code>鍵を作成します。</p>
-<pre><code class="language-bash : Git Bash">$ ssh-keygen -t rsa -C [email@email.com] -f [id_rsa_username]
+<pre><code class="language-bash : Git Bash">$ ssh-keygen -t rsa -C 《email@email.com》 -f 《id_rsa_username》
 # email@email.com は GitHub に登録したメールアドレス
-# id_rsa_username は 出力ファイル名(自由)
+# id_rsa_username は 出力ファイル名(自由) id_rsa_sなど
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase): # SSH鍵のパスワード Enterでパスワードなし
 Enter same passphrase again: # パスワードの再入力 Enter
@@ -322,15 +320,15 @@ id_rsa_username.pub
 </code></pre>
 </li>
 <li>
-<p><code>id_rsa_username.pub</code>の内容をコピーします。</p>
-<pre><code class="language-bash : Git Bash"># (Git Bashの場合)
+<p><code>id_rsa_username.pub</code>の内容をコピーします。作成したSSH鍵の公開鍵(<code>.pub</code>)をコピーします。</p>
+<pre><code class="language-bash : Git Bash"># Git Bash
 $ cat id_rsa_username.pub | clip
 # id_rsa_username.pub の中身をクリップボードにコピー
 </code></pre>
 </li>
 <li>
 <p><code>GitHub</code>に<code>SSH</code>鍵を登録します
-<a href="https://github.com/">GitHub</a></p>
+<a href="https://github.com/settings/keys">GitHub</a></p>
 <ul>
 <li><code>アイコン</code> - <code>Settings</code> - <code>Access</code> - <code>SSH and GPG keys</code> - <code>SSH Keys</code>で移動します。</li>
 <li><code>New SSH key</code>を選択してください。<br />
@@ -345,12 +343,15 @@ $ cat id_rsa_username.pub | clip
 <code>~/.ssh/config</code>を開いてください。なければ作成してください。</p>
 <pre><code class="language-bash : Git Bash">$ ls
 config # ある
-# ない場合 $ touch config
+# ない場合
+$ touch config
+
 $ code config
 </code></pre>
 </li>
 <li>
-<p>アカウントと<code>SSH</code>鍵を紐づける設定をします。</p>
+<p>アカウントと<code>SSH</code>鍵を紐づける設定をします。<br />
+<code>IdentityFile /C/Users/user_name/.ssh/id_rsa_username</code>の<code>user_name</code>は自分のパソコンのユーザーフォルダ名、<code>id_rsa_username</code>は作成したSSH鍵のファイル名に変更してください。</p>
 <pre><code class="language-config : config">Host github.com
     HostName github.com
     IdentityFile /C/Users/user_name/.ssh/id_rsa_username
@@ -359,13 +360,50 @@ $ code config
     TCPKeepAlive yes
     IdentitiesOnly yes
 </code></pre>
+<details id="admonition-powershellでも使用したい場合" class="admonition admonish-note" role="note" aria-labelledby="admonition-powershellでも使用したい場合-title">
+<summary class="admonition-title">
+<div id="admonition-powershellでも使用したい場合-title">
+<p>PowerShellでも使用したい場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-powershellでも使用したい場合"></a>
+</summary>
+<div>
+<p>PowerShellでもgitやSSHを使用したい場合は<code>IdentityFile</code>のパスを<code>/C/</code>ではなく<code>C:\</code>に変更し、以降の<code>/</code>をすべて<code>\</code>に変更してください。</p>
+<pre><code class="language-config : config">Host github.com
+  HostName github.com
+  IdentityFile C:\Users\user_name\.ssh\id_rsa_username
+  User git
+  Port 22
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+</code></pre>
+</div>
+</details>
 </li>
 <li>
 <p><code>SSH</code>の確認をします。<br />
 通信ができるかどうか確認します。</p>
-<pre><code class="language-bash : Git Bash">$ ssh -T github.com
+<pre><code class="language-bash : Git Bash"># Git Bash
+$ ssh -T github.com
 Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 </code></pre>
+<div id="admonition-初めて通信をする場合" class="admonition admonish-info" role="note" aria-labelledby="admonition-初めて通信をする場合-title">
+<div class="admonition-title">
+<div id="admonition-初めて通信をする場合-title">
+<p>初めて通信をする場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-初めて通信をする場合"></a>
+</div>
+<div>
+<p>接続を続行するか聞かれるので<code>yes</code>と回答してください。</p>
+<pre><code class="language-bash : Git Bash">$ ssh -T github.com
+The authenticity of host 'github.com (20.27.177.113)' can't be established.
+ED25519 key fingerprint is: SHA256:...
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</code></pre>
+</div>
+</div>
 </li>
 </ul>
 <h2 id="gitコマンドの基本"><a class="header" href="#gitコマンドの基本">gitコマンドの基本</a></h2>
@@ -374,33 +412,35 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 <p>config</p>
 <p>ユーザー名などの設定をします。</p>
 <pre><code class="language-bash : Git Bash"># ユーザー名の設定
-$ git config --global user.name "username"
+# usernameはGitHubのユーザー名に置き換える
+$ git config --global user.name "《username》"
 
 # メールアドレスの設定
-$ git config --global user.email "email@email.com"
+# email@email.comはGitHubのメールアドレスに置き換える
+$ git config --global user.email "《email@email.com》"
 </code></pre>
 </li>
 <li>
 <p>clone</p>
 <p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分の作業環境)に複製します。</p>
-<pre><code class="language-bash : Git Bash">$ git clone [remote URL]
+<pre><code class="language-bash : Git Bash">$ git clone 《remote URL》
 # 実行するディレクトリに注意
 </code></pre>
-<p>実行したディレクトリにそのリポジトリが複製されます。<code>[remote URL]</code>は<code>GitHub</code>から確認できます。<br />
+<p>実行したディレクトリにそのリポジトリが複製されます。<code>《remote URL》</code>は<code>GitHub</code>から確認できます。<br />
 <a href="https://github.com/">GitHub</a>からcloneしたいリポジトリのページまで移動してください。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーできます。</p>
 </li>
 <li>
 <p>add</p>
 <p>ローカルで変更したファイルなどをリモート反映させるファイルを選択します。<br />
 「コミットに含めるファイルを選択する」と同じことです。</p>
-<pre><code class="language-bash : Git Bash">$ git add [ファイル名1] [ファイル名2] …
+<pre><code class="language-bash : Git Bash">$ git add ファイル名1 ファイル名2 …
 # ファイル名(フォルダ名)は何個でも書けるはずです。
 </code></pre>
 </li>
 <li>
 <p>commit</p>
 <p>コミットを作成します。<code>add</code>したファイルをひとまとまりにします。</p>
-<pre><code class="language-bash : Git Bash">$ git commit -m "[コミットメッセージ]"
+<pre><code class="language-bash : Git Bash">$ git commit -m "《コミットメッセージ》"
 # コミットメッセージをつけることができます
 </code></pre>
 <div id="admonition-コミットメッセージのおすすめの書き方" class="admonition admonish-tip" role="note" aria-labelledby="admonition-コミットメッセージのおすすめの書き方-title">
@@ -430,9 +470,9 @@ $ git config --global user.email "email@email.com"
 <a class="admonition-anchor-link" href="#admonition-コミットメッセージの例"></a>
 </div>
 <div>
-<p>"fixed #3"<br />
-"update; add to receive controller;"<br />
-"モーターが逆回転する問題を修正"</p>
+<p><code>"fixed #3"</code><br />
+<code>"update; add to receive controller;"</code><br />
+<code>"モーターが逆回転する問題を修正"</code></p>
 </div>
 </div>
 </li>
@@ -460,27 +500,15 @@ Changes not staged for commit:
 <p>pull</p>
 <p>リモートの変更をローカルに反映させます。<br />
 「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのは時間がかかります。</p>
-<div id="admonition-デフォルトブランチからpullする場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-デフォルトブランチからpullする場合-title">
+<div id="admonition-ブランチからpullする" class="admonition admonish-example" role="note" aria-labelledby="admonition-ブランチからpullする-title">
 <div class="admonition-title">
-<div id="admonition-デフォルトブランチからpullする場合-title">
-<p>デフォルトブランチからpullする場合</p>
+<div id="admonition-ブランチからpullする-title">
+<p>ブランチからpullする</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-デフォルトブランチからpullする場合"></a>
+<a class="admonition-anchor-link" href="#admonition-ブランチからpullする"></a>
 </div>
 <div>
-<pre><code class="language-bash : Git Bash">git pull
-</code></pre>
-</div>
-</div>
-<div id="admonition-他のブランチからpullする場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-他のブランチからpullする場合-title">
-<div class="admonition-title">
-<div id="admonition-他のブランチからpullする場合-title">
-<p>他のブランチからpullする場合</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-他のブランチからpullする場合"></a>
-</div>
-<div>
-<pre><code class="language-bash : Git Bash">$ git pull origin [branch名]  
+<pre><code class="language-bash : Git Bash">$ git pull origin 《branch名》  
 $ git pull origin main
 # mainブランチからpull
 </code></pre>
@@ -518,13 +546,13 @@ $ git pull origin main
 <li>
 <p>checkout</p>
 <p>ブランチを作成したらそのブランチに移動します。</p>
-<pre><code class="language-bash : Git Bash">git checkout [ブランチ名]
+<pre><code class="language-bash : Git Bash">git checkout 《ブランチ名》
 </code></pre>
 </li>
 <li>
 <p>push</p>
 <p>あとは変更したファイルを<code>add</code>したり<code>commit</code>したりしても問題はありません。</p>
-<pre><code class="language-bash : Git Bash">$ git push origin [ブランチ名]
+<pre><code class="language-bash : Git Bash">$ git push origin 《ブランチ名》
 # origin で指定しないとpushできないことが多いです
 </code></pre>
 </li>
@@ -533,7 +561,7 @@ $ git pull origin main
 <p><code>main</code>ブランチだけ先に進み、<code>deve</code>ブランチが遅れている場合、<code>deve</code>ブランチに<code>main</code>ブランチの状態にしたいなどということがあると思います。<br />
 そんなときに、いちいち<code>main</code>ブランチから<code>deve</code>ブランチにコピペするのは時間の無駄です。<code>merge</code>を使用します。<br />
 進めたいブランチに<code>checkout</code>し、<code>merge</code>を実行します。</p>
-<pre><code class="language-bash : Git Bash">git merge [進んでいるブランチ名]
+<pre><code class="language-bash : Git Bash">git merge 《進んでいるブランチ名》
 </code></pre>
 <div id="admonition-deveブランチをmainブランチと同じ状態にしたい場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-deveブランチをmainブランチと同じ状態にしたい場合-title">
 <div class="admonition-title">
@@ -554,10 +582,10 @@ git merge main
 <li>
 <p>ブランチの削除</p>
 <p>ブランチが不必要になった場合に削除できます。</p>
-<pre><code class="language-bash : Git Bash">git branch -d [ブランチ名]
+<pre><code class="language-bash : Git Bash">git branch -d 《ブランチ名》
 </code></pre>
 <p>ローカルのブランチが削除されます。</p>
-<pre><code class="language-bash : Git Bash">git push origin --delete [ブランチ名]
+<pre><code class="language-bash : Git Bash">git push origin --delete 《ブランチ名》
 </code></pre>
 <p>リモートのブランチが削除されます。</p>
 </li>
@@ -577,10 +605,10 @@ git merge main
 <li>
 <p>tagの作成とpush</p>
 <p>タグを作成する前に変更などはすべてリモートに反映させておきましょう。</p>
-<pre><code class="language-bash : Git Bash">git tag -a [タグ名] -m "[タグのメッセージ]"
+<pre><code class="language-bash : Git Bash">git tag -a 《タグ名》 -m "《タグのメッセージ》"
 </code></pre>
 <p>これでローカルに<code>tag</code>を作成します。ローカルのcommitに<code>tag</code>がつけられます(たぶん)。</p>
-<pre><code class="language-bash : Git Bash">git push origin [タグ名]
+<pre><code class="language-bash : Git Bash">git push origin 《タグ名》
 </code></pre>
 <p>これにより、タグを作成し、作成したタグをリモートに反映することができます。</p>
 </li>
@@ -593,10 +621,10 @@ git merge main
 <li>
 <p>tagの削除</p>
 <p>ローカルにあるタグを削除します。</p>
-<pre><code class="language-bash : Git Bash">git tag -d [タグ名]
+<pre><code class="language-bash : Git Bash">git tag -d 《タグ名》
 </code></pre>
 <p>リモートにあるタグを削除します。</p>
-<pre><code class="language-bash : Git Bash">git push origin --delete [タグ名]
+<pre><code class="language-bash : Git Bash">git push origin --delete 《タグ名》
 </code></pre>
 </li>
 </ul>
