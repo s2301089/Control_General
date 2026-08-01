@@ -76,7 +76,7 @@ void pc_printf(const char *format, ...){
 
 ---
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - [NUCLEOのKeil Studioで浮動小数点数を出力する方法](https://forums.mbed.com/t/nucleo-keil-studio/22433)
 

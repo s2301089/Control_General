@@ -41,7 +41,7 @@ uint16_t pin_value = var_r1.read_u16();
 
 ## サンプルプログラム
 
-````admonish example "LEDの明るさ制御"
+````admonish example title = "LEDの明るさ制御"
 `PA5`を`PA0`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。  
 
@@ -96,7 +96,7 @@ int main(void){
 
 ---
 
-```admonish quote "使用部品"
+```admonish quote title = "使用部品"
 
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
@@ -106,7 +106,7 @@ int main(void){
 
 ```
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 
 

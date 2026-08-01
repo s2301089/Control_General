@@ -1,12 +1,12 @@
 # CAN通信
 
-```admonish info "CAN通信とは"
+```admonish info title = "CAN通信とは"
 `Control Area Network`。CAN_TD、CAN_RDなどの信号を差動信号にして、CAN BUSを作ります。シリアル通信の一種です。  
 CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデータを読み取ります。  
 差動のため、ノイズに強いと言われています。  
 ```
 
-```admonish info "CANメッセージ"
+```admonish info title = "CANメッセージ"
 CANメッセージとはCAN通信における送信データの1まとまりです。  
 基本的にCANメッセージのデータ長は8Byteで、符号なし8bit整数型配列(`uint8_t data[8]`)が使用されることが多いです。
 ```
@@ -121,7 +121,7 @@ msg.data[0] = 0x20;
 
 ## サンプルプログラム  
 
-````admonish example "データ送信"
+````admonish example title = "データ送信"
 適当なデータ(固定値)を`500ms`間隔で`CANMessage`を送信するプログラムです。  
 
 ```cpp : main.cpp
@@ -148,7 +148,7 @@ int main(void){
 
 ---
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - [【高専ロボコン】キャン(CAN)ならずできる！STM32で始めるCAN通信入門](https://qiita.com/sirayuri/items/b905330c8ad5358e7bdd)
 - [STM32マイコンでCAN通信](https://hsdev.co.jp/stm32-can/)

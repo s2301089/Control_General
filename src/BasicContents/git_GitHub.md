@@ -1,10 +1,10 @@
 # git / GitHub  
 
-```admonish info "gitとは"
+```admonish info title = "gitとは"
 バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。  
 ```
 
-```admonish info "GitHubとは"
+```admonish info title = "GitHubとは"
 `git`のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。  
 `git`と`GitHub`は全くの別物です。  
 ```
@@ -20,10 +20,15 @@
   デスクトップのショートカット、あるいは、スタートから起動してください。  
 - `git`のバージョンを確認し、インストールできていることを確認します。  
 
-  ```admonish example "gitのバージョン確認"
+  ````admonish example title = "gitのバージョン確認"  
+  
+  ```bash : Git Bash
+  # Git Bash
   $ git --version  
   git version 2.44.0.windows.1
   ```
+
+  ````
 
 - `GitHub`への登録をします
   [GitHub](https://github.com/)  
@@ -31,7 +36,7 @@
   アカウントがない人は`Sign up`を選択し、新規作成を行ってください。  
   - `Email` : メールアドレスを入力  
 
-    ```admonish important "メールアドレスの注意点"
+    ```admonish important title = "メールアドレスの注意点"
     学校のメールアドレスでも問題はありません。  
     しかし、卒業時などに学校のメールアドレスは使えなくなるため、別のメールアドレスに変更しなければなりません。  
     ```
@@ -43,7 +48,7 @@
   - `Email preferemces` : お知らせメールを受け取るかどうかの項目です(自由)。  
   `Create account`で作成完了です。  
 
-  ```admonish note
+  ```admonish note title = ""
   登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。  
   ```
 
@@ -57,7 +62,9 @@
   ```bash : Git Bash
   $ ls -a ~ | grep .ssh
   .ssh/ # ある
-  # ない場合 $ mkdir ~/.ssh
+  # ない場合
+  $ mkdir ~/.ssh
+  
   $ cd ~/.ssh/
   ```
 
@@ -71,9 +78,9 @@
 - `ssh-keygen.exe`で`SSH`鍵を作成します。  
 
   ```bash : Git Bash
-  $ ssh-keygen -t rsa -C [email@email.com] -f [id_rsa_username]
+  $ ssh-keygen -t rsa -C 《email@email.com》 -f 《id_rsa_username》
   # email@email.com は GitHub に登録したメールアドレス
-  # id_rsa_username は 出力ファイル名(自由)
+  # id_rsa_username は 出力ファイル名(自由) id_rsa_sなど
   Generating public/private rsa key pair.
   Enter passphrase (empty for no passphrase): # SSH鍵のパスワード Enterでパスワードなし
   Enter same passphrase again: # パスワードの再入力 Enter
@@ -94,16 +101,16 @@
   id_rsa_username.pub 
   ```
 
-- `id_rsa_username.pub`の内容をコピーします。  
+- `id_rsa_username.pub`の内容をコピーします。作成したSSH鍵の公開鍵(`.pub`)をコピーします。  
 
   ```bash : Git Bash
-  # (Git Bashの場合)
+  # Git Bash
   $ cat id_rsa_username.pub | clip
   # id_rsa_username.pub の中身をクリップボードにコピー
   ```
 
 - `GitHub`に`SSH`鍵を登録します
-  [GitHub](https://github.com/)  
+  [GitHub](https://github.com/settings/keys)  
   - `アイコン` - `Settings` - `Access` - `SSH and GPG keys` - `SSH Keys`で移動します。  
   - `New SSH key`を選択してください。  
     `Title`は鍵の名前を設定します。パソコン名や学校名などにしておくとわかりやすいです。  
@@ -116,11 +123,14 @@
   ```bash : Git Bash
   $ ls
   config # ある
-  # ない場合 $ touch config
+  # ない場合
+  $ touch config
+  
   $ code config
   ```
 
 - アカウントと`SSH`鍵を紐づける設定をします。  
+  `IdentityFile /C/Users/user_name/.ssh/id_rsa_username`の`user_name`は自分のパソコンのユーザーフォルダ名、`id_rsa_username`は作成したSSH鍵のファイル名に変更してください。
 
   ```config : config
   Host github.com
@@ -132,13 +142,42 @@
       IdentitiesOnly yes
   ```
 
+  ````admonish tips title = "PowerShellでも使用したい場合", collapsible = true
+  PowerShellでもgitやSSHを使用したい場合は`IdentityFile`のパスを`/C/`ではなく`C:\`に変更し、以降の`/`をすべて`\`に変更してください。
+  
+  ```config : config
+  Host github.com
+    HostName github.com
+    IdentityFile C:\Users\user_name\.ssh\id_rsa_username
+    User git
+    Port 22
+    TCPKeepAlive yes
+    IdentitiesOnly yes
+  ```
+
+  ````
+
 - `SSH`の確認をします。  
   通信ができるかどうか確認します。  
 
   ```bash : Git Bash
+  # Git Bash
   $ ssh -T github.com
   Hi username! You've successfully authenticated, but GitHub does not provide shell access.
   ```
+
+  ````admonish info title = "初めて通信をする場合"
+  接続を続行するか聞かれるので`yes`と回答してください。
+
+  ```bash : Git Bash
+  $ ssh -T github.com
+  The authenticity of host 'github.com (20.27.177.113)' can't be established.
+  ED25519 key fingerprint is: SHA256:...
+  This key is not known by any other names.
+  Are you sure you want to continue connecting (yes/no/[fingerprint])?
+  ```
+
+  ````
 
 ## gitコマンドの基本  
 
@@ -148,10 +187,12 @@
 
   ```bash : Git Bash
   # ユーザー名の設定
-  $ git config --global user.name "username"
+  # usernameはGitHubのユーザー名に置き換える
+  $ git config --global user.name "《username》"
   
   # メールアドレスの設定
-  $ git config --global user.email "email@email.com"
+  # email@email.comはGitHubのメールアドレスに置き換える
+  $ git config --global user.email "《email@email.com》"
   ```
 
 - clone  
@@ -159,11 +200,11 @@
   リモート(`Git`のサーバー)からリポジトリをローカル(自分の作業環境)に複製します。  
 
   ```bash : Git Bash
-  $ git clone [remote URL]
+  $ git clone 《remote URL》
   # 実行するディレクトリに注意
   ```
 
-  実行したディレクトリにそのリポジトリが複製されます。`[remote URL]`は`GitHub`から確認できます。  
+  実行したディレクトリにそのリポジトリが複製されます。`《remote URL》`は`GitHub`から確認できます。  
   [GitHub](https://github.com/)からcloneしたいリポジトリのページまで移動してください。緑色の`<>Code`を押し`Local`の`Clone`の`SSH`からコピーできます。  
 
 - add  
@@ -172,7 +213,7 @@
   「コミットに含めるファイルを選択する」と同じことです。  
 
   ```bash : Git Bash
-  $ git add [ファイル名1] [ファイル名2] …
+  $ git add ファイル名1 ファイル名2 …
   # ファイル名(フォルダ名)は何個でも書けるはずです。
   ```
 
@@ -181,11 +222,11 @@
   コミットを作成します。`add`したファイルをひとまとまりにします。  
 
   ```bash : Git Bash
-  $ git commit -m "[コミットメッセージ]"
+  $ git commit -m "《コミットメッセージ》"
   # コミットメッセージをつけることができます
   ```
 
-  ```admonish tip "コミットメッセージのおすすめの書き方"
+  ```admonish tip title = "コミットメッセージのおすすめの書き方"
   コミットメッセージには何を更新したのかなどの内容を書いておくとわかりやすいです。  
   - `add`：ファイルの新規作成や新規追加など  
   - `update`：ファイルの中身の更新など  
@@ -196,10 +237,10 @@
 
   コミットメッセージは日本語でも問題はありません。  
 
-  ```admonish example "コミットメッセージの例"
-  "fixed #3"  
-  "update; add to receive controller;"  
-  "モーターが逆回転する問題を修正"  
+  ```admonish example title = "コミットメッセージの例"
+  `"fixed #3"`  
+  `"update; add to receive controller;"`  
+  `"モーターが逆回転する問題を修正"`  
   ```
 
 - push  
@@ -232,18 +273,10 @@
   リモートの変更をローカルに反映させます。  
   「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度`clone`するのは時間がかかります。  
 
-  ````admonish example "デフォルトブランチからpullする場合"
+  ````admonish example title = "ブランチからpullする"  
 
   ```bash : Git Bash
-  git pull
-  ```
-
-  ````
-
-  ````admonish example "他のブランチからpullする場合"  
-
-  ```bash : Git Bash
-  $ git pull origin [branch名]  
+  $ git pull origin 《branch名》  
   $ git pull origin main
   # mainブランチからpull
   ```
@@ -257,7 +290,7 @@
 普段はおそらく`main`ブランチ、または、`master`ブランチを使用していると思います。  
 ここでは、開発用のブランチ`main`と更新用(安定版)のブランチ`release`にわけておきたいとします。`main`ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともあります。ブランチはわけずにタグを作成して、そのときのコミットに戻れるという機能もありますが、それは`branch`の次に紹介します。  
 
-```admonish tip "おすすめの方法"
+```admonish tip title = "おすすめの方法"
 開発用は`development`という名前のブランチで確実に動くものは`main`に反映させるなどがおすすめです。  
 ```
 
@@ -282,7 +315,7 @@
   ブランチを作成したらそのブランチに移動します。  
 
   ```bash : Git Bash
-  git checkout [ブランチ名]
+  git checkout 《ブランチ名》
   ```
 
 - push  
@@ -290,7 +323,7 @@
   あとは変更したファイルを`add`したり`commit`したりしても問題はありません。  
 
   ```bash : Git Bash
-  $ git push origin [ブランチ名]
+  $ git push origin 《ブランチ名》
   # origin で指定しないとpushできないことが多いです
   ```
 
@@ -301,10 +334,10 @@
   進めたいブランチに`checkout`し、`merge`を実行します。  
 
   ```bash : Git Bash
-  git merge [進んでいるブランチ名]
+  git merge 《進んでいるブランチ名》
   ```
 
-  ````admonish example "deveブランチをmainブランチと同じ状態にしたい場合"
+  ````admonish example title = "deveブランチをmainブランチと同じ状態にしたい場合"
 
   ```bash : Git Bash
   git checkout deve
@@ -320,13 +353,13 @@
   ブランチが不必要になった場合に削除できます。  
 
   ```bash : Git Bash
-  git branch -d [ブランチ名]
+  git branch -d 《ブランチ名》
   ```
 
   ローカルのブランチが削除されます。  
 
   ```bash : Git Bash
-  git push origin --delete [ブランチ名]
+  git push origin --delete 《ブランチ名》
   ```
 
   リモートのブランチが削除されます。  
@@ -354,13 +387,13 @@
   タグを作成する前に変更などはすべてリモートに反映させておきましょう。  
 
   ```bash : Git Bash
-  git tag -a [タグ名] -m "[タグのメッセージ]"
+  git tag -a 《タグ名》 -m "《タグのメッセージ》"
   ```
 
   これでローカルに`tag`を作成します。ローカルのcommitに`tag`がつけられます(たぶん)。  
 
   ```bash : Git Bash
-  git push origin [タグ名]
+  git push origin 《タグ名》
   ```
 
   これにより、タグを作成し、作成したタグをリモートに反映することができます。  
@@ -378,18 +411,18 @@
   ローカルにあるタグを削除します。  
 
   ```bash : Git Bash
-  git tag -d [タグ名]
+  git tag -d 《タグ名》
   ```
 
   リモートにあるタグを削除します。  
 
   ```bash : Git Bash
-  git push origin --delete [タグ名]
+  git push origin --delete 《タグ名》
   ```
 
 ---
 
-```admonish quote "参考"  
+```admonish quote title = "参考"  
 - 授業  
 - 教育推進プロジェクト(講座)  
 - [git branch コマンド](https://qiita.com/chihiro/items/e178e45a7fd5a2fb4599#git-branch---no-color)  
