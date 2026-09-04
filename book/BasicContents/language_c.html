@@ -12,20 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
-        <link rel="stylesheet" href="../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../css/general-2459343d.css">
-        <link rel="stylesheet" href="../css/chrome-ae938929.css">
-        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -37,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-58b62ac6.js";
+            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-94722b3a.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -54,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -83,12 +84,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -103,39 +104,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -143,53 +144,53 @@
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/s2301089/Control_General/tree/pub" title="Git repository" aria-label="Git repository">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                            <i id="git-repository-button" class="fa fab-github"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="c言語"><a class="header" href="#c言語">C言語</a></h1>
-<pre><code class="language-admonish info &quot;プログラミング言語とは&quot;">機械(コンピューターなど)にさせる処理を記述する言語です。人と人間をつなぐ言語です。  
+<pre><code class="language-admonish info title = &quot;プログラミング言語とは&quot;">機械(コンピューターなど)にさせる処理を記述する言語です。人と人間をつなぐ言語です。  
 プログラミング言語には様々な種類があります。  
 また、プログラミング言語で記述されたものを**プログラム**と言います。  
 &gt; 英語で記述されたものを英文と言うのと同じです。  
 </code></pre>
-<pre><code class="language-admonish info &quot;C言語とは&quot;">数多のプログラミング言語の中でも有名かつ古くから利用されているプログラミング言語の1つです。  
+<pre><code class="language-admonish info title = &quot;C言語とは&quot;">数多のプログラミング言語の中でも有名かつ古くから利用されているプログラミング言語の1つです。  
 システムの記述を目的として開発され、人間にも理解しやすい仕様で、コンピューターを直接操作するような特徴を併せ持ちます。  
 実行するためにはコンパイルとリンク(ソースコードを機械語に変換)が必要になります。  
 </code></pre>
-<pre><code class="language-admonish info &quot;プログラムの作成手順&quot;">ウォーターフォールモデルに則って作成することをおすすめします。  
+<pre><code class="language-admonish info title = &quot;プログラムの作成手順&quot;">ウォーターフォールモデルに則って作成することをおすすめします。  
 
 1. 内容の整理  
 1. プログラムの設計  
@@ -204,11 +205,11 @@
 </code></pre>
 <h2 id="c言語基礎編"><a class="header" href="#c言語基礎編">C言語(基礎編)</a></h2>
 <h3 id="c言語の基本構成"><a class="header" href="#c言語の基本構成">C言語の基本構成</a></h3>
-<pre><code class="language-admonish info &quot;基本構成&quot;">C言語のプログラムは関数が1つ以上集まって構成されます。プログラムを実行するためには**main関数**が必須であり、main関数はプログラムの実行時に一番最初に実行される関数です。  
+<pre><code class="language-admonish info title = &quot;基本構成&quot;">C言語のプログラムは関数が1つ以上集まって構成されます。プログラムを実行するためには**main関数**が必須であり、main関数はプログラムの実行時に一番最初に実行される関数です。  
 それぞれの関数は1つ以上の文から構成され、引数(ひきすう)と戻り値の型を持ちます。  
 文は`;`(セミコロン)で区切られ、改行などでは区切られません。  
 </code></pre>
-<pre><code class="language-admonish example &quot;関数の基本構成&quot;">
+<pre><code class="language-admonish example title = &quot;関数の基本構成&quot;">
 ```c : 
 関数の型 関数名(引数){  
     文1;  
@@ -221,7 +222,7 @@
 &gt; 関数については後で詳しく説明します。  
 
 </code></pre>
-<pre><code class="language-admonish example &quot;有名なサンプルプログラム&quot;">世界でも最も有名と言われているサンプルプログラムHello,World!を例に説明します。  
+<pre><code class="language-admonish example title = &quot;有名なサンプルプログラム&quot;">世界でも最も有名と言われているサンプルプログラムHello,World!を例に説明します。  
 
 ```c : helloworld.c
 #include &lt;stdio.h&gt;
@@ -239,7 +240,7 @@ int main(void){
 - `int main(void){`
     - 実行するために必要なmain関数の宣言・定義です。この場合は、関数の戻り値の型はint(整数型)で、引数はな空(void)であることを示しています。  
     
-    ```admonish faq "型と引数"
+    ```admonish faq title = "型と引数"
     型と引数については、後で説明します。現段階では存在を覚えてください。
     ```
 - `printf("Hello,World!\n");`
@@ -251,7 +252,7 @@ int main(void){
     - 関数の終わりを意味します。main関数宣言部の括弧と中身を挟んでmain関数の範囲を表現しています。
 
 </code></pre>
-<pre><code class="language-admonish warning &quot;順序&quot;">C言語は、関数の中身は上の文から順番に実行されます。`return`文を実行すると、関数が終了するため、関数内のその後の文は実行されません。  
+<pre><code class="language-admonish warning title = &quot;順序&quot;">C言語は、関数の中身は上の文から順番に実行されます。`return`文を実行すると、関数が終了するため、関数内のその後の文は実行されません。  
 
 ```c : 
 int main(void){
@@ -266,7 +267,7 @@ int main(void){
 
 </code></pre>
 <h3 id="コメント"><a class="header" href="#コメント">コメント</a></h3>
-<pre><code class="language-admonish info &quot;コメント&quot;">
+<pre><code class="language-admonish info title = &quot;コメント&quot;">
 ソースコードの中で、動作には影響しない注釈をつけることができます。その注釈のことを指します。  
 C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法があります。  
 `//`はこれ以降のその行をコメントとします。  
@@ -283,11 +284,11 @@ C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法が�
 ```
 
 </code></pre>
-<pre><code class="language-admonish error &quot;全角文字&quot;">コメントには全角文字(日本語や全角スペース)を使用できますが、コード部分には全角文字は文字列以外の部分に使用することができません。  
+<pre><code class="language-admonish error title = &quot;全角文字&quot;">コメントには全角文字(日本語や全角スペース)を使用できますが、コード部分には全角文字は文字列以外の部分に使用することができません。  
 `;`と`；`は半角と全角で異なるため注意してください。
 </code></pre>
 <h3 id="データ型と変数"><a class="header" href="#データ型と変数">データ型と変数</a></h3>
-<pre><code class="language-admonish info &quot;データ型&quot;">変数や関数の戻り値など、データの格納や受け渡しのときのデータの種類を決める型のことです。  
+<pre><code class="language-admonish info title = &quot;データ型&quot;">変数や関数の戻り値など、データの格納や受け渡しのときのデータの種類を決める型のことです。  
 主なデータ型を紹介します。  
 
 - 文字(1文字)型：`char`
@@ -300,9 +301,9 @@ C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法が�
 実数型は、浮動小数点方式(IEEE 754)で格納します。
 
 </code></pre>
-<pre><code class="language-admonish info &quot;変数&quot;">様々な文字、数値を保持(記憶・格納)しておく領域のことを指します。扱いは数学などの変数と同じものとして考えて問題はありません。
+<pre><code class="language-admonish info title = &quot;変数&quot;">様々な文字、数値を保持(記憶・格納)しておく領域のことを指します。扱いは数学などの変数と同じものとして考えて問題はありません。
 </code></pre>
-<pre><code class="language-admonish example &quot;変数の宣言&quot;">変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。  
+<pre><code class="language-admonish example title = &quot;変数の宣言&quot;">変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。  
 また、同じ変数名を**スコープ**内に複数置くことはできません。  
 
 &gt; スコープについては後で話します。  
@@ -320,7 +321,7 @@ char c_1, c_2;
 ```
 
 </code></pre>
-<pre><code class="language-admonish example &quot;変数へのアクセス&quot;">変数に値を代入する場合は、`=`(イコール)を使用します。  
+<pre><code class="language-admonish example title = &quot;変数へのアクセス&quot;">変数に値を代入する場合は、`=`(イコール)を使用します。  
 
 ```c : 
 x = 11;     // int x;
@@ -331,7 +332,7 @@ y = x;      // int y;   変数yに変数xの値を代入する
 左辺の変数に右辺の値を格納します。値を代入する場合は値と変数の型を一致させる必要があります。  
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;文字と文字列と数値&quot;">C言語では、文字と文字列と数値は異なります。  
+<pre><code class="language-admonish tip title = &quot;文字と文字列と数値&quot;">C言語では、文字と文字列と数値は異なります。  
 文字を表現するためには、文字を`''`(シングルクォーテーション)で囲います。  
 文字列を表現するためには、文字を`""`(ダブルクォーテーション)で囲います。  
 数値を表現するためには、数字をそのまま記述します。  
@@ -344,7 +345,7 @@ y = x;      // int y;   変数yに変数xの値を代入する
 
 </code></pre>
 <h3 id="演算子"><a class="header" href="#演算子">演算子</a></h3>
-<pre><code class="language-admonish info &quot;算術演算子&quot;">数値や変数などを使用して、算術計算を行うときに使用します。  
+<pre><code class="language-admonish info title = &quot;算術演算子&quot;">数値や変数などを使用して、算術計算を行うときに使用します。  
 
 - `+`：加算
 - `-`：減算
@@ -364,10 +365,10 @@ a % b   //  整数型のみ
 ```
 
 </code></pre>
-<pre><code class="language-admonish warning &quot;除算での注意点&quot;">整数型同士で除算を行うと、演算結果は整数型となります。  
+<pre><code class="language-admonish warning title = &quot;除算での注意点&quot;">整数型同士で除算を行うと、演算結果は整数型となります。  
 小数点以下は切り捨てられるため、実数型で結果を得るためには、どちらか一方が実数型である必要があります。
 </code></pre>
-<pre><code class="language-admonish note &quot;括弧の記述&quot;">数学では、先に優先したい演算を様々な括弧(`()`、`{}`、`[]`)で囲います。  
+<pre><code class="language-admonish note title = &quot;括弧の記述&quot;">数学では、先に優先したい演算を様々な括弧(`()`、`{}`、`[]`)で囲います。  
 C言語では演算の括弧はすべて`()`で囲い、次の式のような記述になります。  
 
 ```c :
@@ -375,11 +376,11 @@ s = ((x_1 + x_2) - (y_1 + y_2)) * 2;
 ```
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;数学にはない演算&quot;">プログラミング言語では自分自身に自身の値を演算した結果を代入することができます。  
+<pre><code class="language-admonish tip title = &quot;数学にはない演算&quot;">プログラミング言語では自分自身に自身の値を演算した結果を代入することができます。  
 `a = a + 5;`
 
 </code></pre>
-<pre><code class="language-admonish info &quot;論理演算子&quot;">数値や変数などを使用して、論理計算を行うときに使用します。  
+<pre><code class="language-admonish info title = &quot;論理演算子&quot;">数値や変数などを使用して、論理計算を行うときに使用します。  
 論理演算には種類があり、ビット単位での演算と変数や数値単位での演算の2つがあります。  
 
 ビット単位の演算  
@@ -410,7 +411,7 @@ a || b
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;比較演算子&quot;">変数や数値の大小関係を調べるときに使用します。演算結果は式が成り立つ場合は`1`(`true`)、成り立たない場合は`0`(`false`)を得ることができます。  
+<pre><code class="language-admonish info title = &quot;比較演算子&quot;">変数や数値の大小関係を調べるときに使用します。演算結果は式が成り立つ場合は`1`(`true`)、成り立たない場合は`0`(`false`)を得ることができます。  
 
 | 数学表現 | ｃ言語表現 |  
 | :-----: | :-------: |  
@@ -424,7 +425,7 @@ a || b
 特に、数学表現の`=`(イコール)はC言語では代入を意味するため間違えないよう注意してください。  
 
 </code></pre>
-<pre><code class="language-admonish info &quot;増減演算子&quot;">変数の値を`1`増減する演算子です。
+<pre><code class="language-admonish info title = &quot;増減演算子&quot;">変数の値を`1`増減する演算子です。
 
 - `++`：増分(インクリメント)  
 - `--`：減分(デクリメント)  
@@ -432,12 +433,12 @@ a || b
 前置増減(`++a`、`--b`)と後置増減(`a++`、`b--`)の2種類があります。  
 前置増減は変数の値を増減した後に、変数の値を使用します。反対に、後置増減が変数の値を使用した後に、変数の値を増減します。  
 </code></pre>
-<pre><code class="language-admonish info &quot;シフト演算子&quot;">変数や数値を2進数表記で左右にビットシフトします。シフトして空いたビットは`0`で埋められます(シフトする値が負の場合は`0`ではなく`1`で埋められる場合があります)。  
+<pre><code class="language-admonish info title = &quot;シフト演算子&quot;">変数や数値を2進数表記で左右にビットシフトします。シフトして空いたビットは`0`で埋められます(シフトする値が負の場合は`0`ではなく`1`で埋められる場合があります)。  
 
 - `&gt;&gt;`：右シフト  
 - `&lt;&lt;`：左シフト
 </code></pre>
-<pre><code class="language-admonish info &quot;代入演算子&quot;">変数に値を代入するときに、他の演算を同時に行うことができます。
+<pre><code class="language-admonish info title = &quot;代入演算子&quot;">変数に値を代入するときに、他の演算を同時に行うことができます。
 
 - `=`：単純代入：`a = b`
 - `+=`：加算代入：`a += b`は`a = a + b`と同じ
@@ -451,10 +452,10 @@ a || b
 - `|=`：ビット論理和代入：`a |= b`は`a = a | b`と同じ
 - `^=`：ビット排他的論理和代入：`a ^= b`は`a = a^+ b`と同じ
 </code></pre>
-<pre><code class="language-admonish important &quot;優先順位&quot;">演算子には優先順位があります。ここでは紹介しませんが、もしいろいろな演算子を式中に使用していて、思ったとおりに動作しない場合は調べてみてください。  
+<pre><code class="language-admonish important title = &quot;優先順位&quot;">演算子には優先順位があります。ここでは紹介しませんが、もしいろいろな演算子を式中に使用していて、思ったとおりに動作しない場合は調べてみてください。  
 `()`をつけるとそこが優先して演算されます。
 </code></pre>
-<pre><code class="language-admonish tip &quot;数値表現&quot;">整数を文中にそのままの数値を記述すると、それは10進数と解釈されます。C言語では2進数、16進数といった他の基数表現でも数値を記述することができます。  
+<pre><code class="language-admonish tip title = &quot;数値表現&quot;">整数を文中にそのままの数値を記述すると、それは10進数と解釈されます。C言語では2進数、16進数といった他の基数表現でも数値を記述することができます。  
 2進数は、数値の先頭に`0b`を、16進数は、数値の先頭に`0x`をつけます。  
 
 ```c : 
@@ -465,7 +466,7 @@ int x_16 = 0x20;    //  16進数の20。10進数では32
 
 </code></pre>
 <h3 id="標準入出力関数"><a class="header" href="#標準入出力関数">標準入出力関数</a></h3>
-<pre><code class="language-admonish info &quot;標準出力&quot;">ターミナルの画面に文字や数値を出力するときは`printf()`を使用します。  
+<pre><code class="language-admonish info title = &quot;標準出力&quot;">ターミナルの画面に文字や数値を出力するときは`printf()`を使用します。  
 `printf("書式文字列", 引数1, 引数2, ...);`  
 書式文字列は出力する書式を指定します。
 
@@ -489,13 +490,13 @@ printf("%d\n", x);
 他にもたくさんあります。必要に応じて調べてみてください。  
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;桁数の指定&quot;">数値を出力する場合は、桁数を指定することができます。
+<pre><code class="language-admonish tip title = &quot;桁数の指定&quot;">数値を出力する場合は、桁数を指定することができます。
 
 - `%3d`：整数3桁
 - `%5.2f`：実数全体を5桁(小数点含む)、小数点以下を2桁
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;文字列との組み合わせ&quot;">フォーマット指定子と文字列を組み合わせることで数値と文字列を同時に出力することができます。
+<pre><code class="language-admonish tip title = &quot;文字列との組み合わせ&quot;">フォーマット指定子と文字列を組み合わせることで数値と文字列を同時に出力することができます。
 
 ```c : 
 int score = 59;
@@ -507,7 +508,7 @@ printf("合格する確率は%.1f%%です。\n", rate);
 `%`という文字を出力したい場合は`%%`で出力できます。
 
 </code></pre>
-<pre><code class="language-admonish info &quot;標準入力&quot;">ターミナルの画面から文字や数値を入力するときは`scanf()`を使用します。  
+<pre><code class="language-admonish info title = &quot;標準入力&quot;">ターミナルの画面から文字や数値を入力するときは`scanf()`を使用します。  
 `scanf("書式文字列", 引数1, 引数2, ...);`  
 入力変換指定子は入力する書式を指定します。書式指定子は出力の場合と基本同じですが、`double`型の場合は`%f`ではなく`%lf`になることに注意してください。  
 
@@ -528,14 +529,14 @@ scanf("%f %lf", &amp;f, &amp;d);
 ```
 
 </code></pre>
-<pre><code class="language-admonish warning &quot;入力時の注意点&quot;">出力するときは、書式文字列に`\n`(改行文字)を含めていましたが、入力のときには含めないようにしてください。  
+<pre><code class="language-admonish warning title = &quot;入力時の注意点&quot;">出力するときは、書式文字列に`\n`(改行文字)を含めていましたが、入力のときには含めないようにしてください。  
 変数に値を代入するときは変数の実体を引数に渡すのではなく、変数の**ポインタ**を渡すようにしましょう。  
 </code></pre>
-<pre><code class="language-admonish info &quot;ポインタとは&quot;">変数の領域を指し示すもののことです。詳しくは後で説明します。  
+<pre><code class="language-admonish info title = &quot;ポインタとは&quot;">変数の領域を指し示すもののことです。詳しくは後で説明します。  
 現時点では入力するときは変数に`&amp;`(アンパサンド)をつけるとポインタになると思っていてください。  
 </code></pre>
 <h3 id="条件分岐"><a class="header" href="#条件分岐">条件分岐</a></h3>
-<pre><code class="language-admonish info &quot;if文&quot;">「もし 〇〇 ならば これを実行する。」を表現する文です。指定した条件をが真か偽かを判定し、処理を2つに分岐されることができます。「〇〇」の部分が条件式になります。    
+<pre><code class="language-admonish info title = &quot;if文&quot;">「もし 〇〇 ならば これを実行する。」を表現する文です。指定した条件をが真か偽かを判定し、処理を2つに分岐されることができます。「〇〇」の部分が条件式になります。    
 
 ```c : 
 if(条件式){
@@ -566,7 +567,7 @@ if(条件式1){
 ```
 
 </code></pre>
-<pre><code class="language-admonish example &quot;if-else文&quot;">変数の値によって処理を変更する例を示します。
+<pre><code class="language-admonish example title = &quot;if-else文&quot;">変数の値によって処理を変更する例を示します。
 
 ```c : if.c
 if(x &gt; 0){
@@ -579,7 +580,7 @@ if(x &gt; 0){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;switch文&quot;">制御式の値によって処理を分岐させるときに使用します。  
+<pre><code class="language-admonish info title = &quot;switch文&quot;">制御式の値によって処理を分岐させるときに使用します。  
 
 「もし 制御式 が 0 なら 処理1、もし 制御式 が 1 なら 処理2、...」といった処理をする場合に使用することが多いです。
 
@@ -601,7 +602,7 @@ switch(制御式){
 制御式は整数として解釈され、`break`文で`switch`文から抜けることができます。`break`文がない場合は次の事項式の判定などに処理が続きます。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;switch文&quot;">変数の値によって処理を変更する例を示します。
+<pre><code class="language-admonish example title = &quot;switch文&quot;">変数の値によって処理を変更する例を示します。
 
 ```c : switch.c
 switch(z){
@@ -621,7 +622,7 @@ switch(z){
 
 </code></pre>
 <h3 id="繰り返し"><a class="header" href="#繰り返し">繰り返し</a></h3>
-<pre><code class="language-admonish info &quot;for文&quot;">回数が決まっている繰り返し処理を行いたいときによく利用される文です。  
+<pre><code class="language-admonish info title = &quot;for文&quot;">回数が決まっている繰り返し処理を行いたいときによく利用される文です。  
 for文は次の構成になっています。  
 
 ```c : 
@@ -640,7 +641,7 @@ for(初期設定式; 継続条件式; 再設定式){
     - 主に制御変数の値を変更するために使用します。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;for文&quot;">繰り返しの回数を表示する例を示します。
+<pre><code class="language-admonish example title = &quot;for文&quot;">繰り返しの回数を表示する例を示します。
 
 ```c : for1.c
 for(int i = 0; i &lt; 10; i++){    //  0~9までの10回繰り返される
@@ -660,7 +661,7 @@ for(int i = 1; i &lt;= 9; i++){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;while文&quot;">
+<pre><code class="language-admonish info title = &quot;while文&quot;">
 回数が決まっていない繰り返し処理を行いたいときによく利用される文です。  
 while文は次の構成になっています。  
 
@@ -673,7 +674,7 @@ while(継続条件式){
 継続条件式が真の間、処理を繰り返します。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;while文&quot;">xの値が負になるまで(0以上の間)、数字を入力する例を示します。
+<pre><code class="language-admonish example title = &quot;while文&quot;">xの値が負になるまで(0以上の間)、数字を入力する例を示します。
 
 ```c : while.c
 scanf("%d", &amp;x);
@@ -683,7 +684,7 @@ while(x &gt;= 0){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;do-while文&quot;">処理を行う前に条件の判断を行う`while`文に対して、処理を行った後に条件の判断を行う`do-while`文があります。  
+<pre><code class="language-admonish info title = &quot;do-while文&quot;">処理を行う前に条件の判断を行う`while`文に対して、処理を行った後に条件の判断を行う`do-while`文があります。  
 `do-while`文は次の構成になっています。
 
 ```c : 
@@ -703,7 +704,7 @@ do{
 </code></pre>
 <h2 id="c言語発展編"><a class="header" href="#c言語発展編">C言語(発展編)</a></h2>
 <h3 id="配列"><a class="header" href="#配列">配列</a></h3>
-<pre><code class="language-admonish info &quot;配列とは&quot;">同じ型の変数を複数個まとめて扱えるもののことです。C言語では以下のように表します。  
+<pre><code class="language-admonish info title = &quot;配列とは&quot;">同じ型の変数を複数個まとめて扱えるもののことです。C言語では以下のように表します。  
 
 ```c : 
 配列名[定数式]
@@ -712,7 +713,7 @@ do{
 定数式は`0`から始まる正の整数です。  
 配列を使用すると、文字列を扱うこともできます。  
 </code></pre>
-<pre><code class="language-admonish example &quot;配列の宣言&quot;">配列の宣言は、変数と同じように行います。宣言時に配列の大きさを指定する必要があります。  
+<pre><code class="language-admonish example title = &quot;配列の宣言&quot;">配列の宣言は、変数と同じように行います。宣言時に配列の大きさを指定する必要があります。  
 
 ```c :
 int d[10];
@@ -721,7 +722,7 @@ float f[4];
 
 配列dは`d[0]~d[9]`まで、配列fは`f[0]~[3]`の変数が宣言されます。配列番号(定数式)は`0`から始まるため、`0~n-1`までの`n`個になります。  
 </code></pre>
-<pre><code class="language-admonish example &quot;配列へのアクセス&quot;">配列へのアクセスは変数と同じです。しかし、要素番号を指定する必要があります。要素番号は整数であれば変数や式も使用できます。  
+<pre><code class="language-admonish example title = &quot;配列へのアクセス&quot;">配列へのアクセスは変数と同じです。しかし、要素番号を指定する必要があります。要素番号は整数であれば変数や式も使用できます。  
 
 ```c : 
 x = 11;     // int x;
@@ -733,7 +734,7 @@ for(int i = 0; i &lt; 8; i++){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;多次元配列とは&quot;">平面や立体、それ以上の次元をイメージして配列を扱いたいときに利用します。  
+<pre><code class="language-admonish info title = &quot;多次元配列とは&quot;">平面や立体、それ以上の次元をイメージして配列を扱いたいときに利用します。  
 
 ```c : 
 int data[2][3];
@@ -750,11 +751,11 @@ int data[2][3];
 定数式を増やすことで多次元配列を宣言することができます。
 </code></pre>
 <h3 id="ポインタ"><a class="header" href="#ポインタ">ポインタ</a></h3>
-<pre><code class="language-admonish info &quot;ポインタとは&quot;">オブジェクト(変数など)や関数のアドレス(メモリの番号・住所)を保持するデータ型のことです。ポインタを使用することによって、それが指し示すアドレスのデータを参照することができます。  
+<pre><code class="language-admonish info title = &quot;ポインタとは&quot;">オブジェクト(変数など)や関数のアドレス(メモリの番号・住所)を保持するデータ型のことです。ポインタを使用することによって、それが指し示すアドレスのデータを参照することができます。  
 変数名の前に`&amp;`(アンパサンド)をつけることで変数のアドレスを取得できます。  
 &gt; 標準入力のときに、関数の引数に変数に`&amp;`をつけて渡していたのは、変数のポインタを渡していたのです。  
 </code></pre>
-<pre><code class="language-admonish info &quot;ポインタ変数とは&quot;">ポインタを格納する変数のことです。データ型は既存のものを使用します。変数名の先頭に`*`(アスタリスク)をつけることで宣言することができます。  
+<pre><code class="language-admonish info title = &quot;ポインタ変数とは&quot;">ポインタを格納する変数のことです。データ型は既存のものを使用します。変数名の先頭に`*`(アスタリスク)をつけることで宣言することができます。  
 ```c : 
 int *d_p;   //  int型のポインタ
 float *f_p; //  float型のポインタ
@@ -762,7 +763,7 @@ float *f_p; //  float型のポインタ
 ポインタ変数を宣言しただけでは、変数の領域は確保されないので注意が必要です。  
 
 </code></pre>
-<pre><code class="language-admonish info &quot;ポインタの演算子&quot;">ポインタ変数に使用できる演算子が2つあります。  
+<pre><code class="language-admonish info title = &quot;ポインタの演算子&quot;">ポインタ変数に使用できる演算子が2つあります。  
 
 - アドレス演算子`&amp;`(アンパサンド)
     - 変数のポインタを取得するための演算子です。
@@ -782,7 +783,7 @@ printf("%d\n, d);       //  dの値(10)を表示
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;特殊ポインタ&quot;">- NULLポインタ(`NULL`)
+<pre><code class="language-admonish info title = &quot;特殊ポインタ&quot;">- NULLポインタ(`NULL`)
     - どこも指し示さないポインタを意味します。
     - ポインタを返す関数のエラー戻り値としても使用されます。
 - 汎用ポインタ(`void *`)
@@ -793,7 +794,7 @@ printf("%d\n, d);       //  dの値(10)を表示
     - `**`をつけて宣言します。
 </code></pre>
 <h3 id="構造体"><a class="header" href="#構造体">構造体</a></h3>
-<pre><code class="language-admonish info &quot;構造体とは&quot;">違う型の変数を複数個まとめて扱えるもののことです。  
+<pre><code class="language-admonish info title = &quot;構造体とは&quot;">違う型の変数を複数個まとめて扱えるもののことです。  
 | 学年 | クラス | 番号 | 氏名 | 国語 | 数学 | 英語 |
 | :--: | :---: | :--: | :-: | :--: | :--: | :-: |
 | 1 | 3 | 33 | タカシ | 68 | 58 | 90 |
@@ -803,7 +804,7 @@ printf("%d\n, d);       //  dの値(10)を表示
 異なるデータ型のデータを1つのまとまりとして扱いたいときに使用します。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;構造体の宣言&quot;">構造体の宣言には`struct`を使用します。
+<pre><code class="language-admonish example title = &quot;構造体の宣言&quot;">構造体の宣言には`struct`を使用します。
 
 ```c : 
 struct 構造体名{
@@ -838,7 +839,7 @@ struct student data[40];
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;構造体の演算子&quot;">構造体変数に使用できる演算子が2つあります。  
+<pre><code class="language-admonish info title = &quot;構造体の演算子&quot;">構造体変数に使用できる演算子が2つあります。  
 
 - メンバ参照演算子`.`(ピリオド)
     - 構造体のメンバを参照するための演算子です。
@@ -864,7 +865,7 @@ printf("%d %d %d %d\n"
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;構造体の代入&quot;">構造体そのものの一括代入や関数の戻り値や引数に構造体を使用することができます。  
+<pre><code class="language-admonish info title = &quot;構造体の代入&quot;">構造体そのものの一括代入や関数の戻り値や引数に構造体を使用することができます。  
 &gt; 関数での使用方法は後で説明します。  
 
 ```c : 
@@ -878,8 +879,9 @@ a.group = b.group;  //  略...
 
 </code></pre>
 <h3 id="変数の有効範囲"><a class="header" href="#変数の有効範囲">変数の有効範囲</a></h3>
-<p>プログラムで使用するメモリ領域はプログラム領域とデータ領域に分けられ、データ領域は、静的領域、スタック領域、ヒープ領域に分けられます。<br>変数や関数は、宣言方法によって使用するメモリ領域を選択することができます。</p>
-<pre><code class="language-admonish example &quot;領域の選択(宣言時)&quot;">静的領域に割り当てる場合、宣言時に`static`を指定します。そのオブジェクト(変数や関数など)は静的記憶域期間をもち、生存期間はプログラムの開始から終了までです。  
+<p>プログラムで使用するメモリ領域はプログラム領域とデータ領域に分けられ、データ領域は、静的領域、スタック領域、ヒープ領域に分けられます。<br />
+変数や関数は、宣言方法によって使用するメモリ領域を選択することができます。</p>
+<pre><code class="language-admonish example title = &quot;領域の選択(宣言時)&quot;">静的領域に割り当てる場合、宣言時に`static`を指定します。そのオブジェクト(変数や関数など)は静的記憶域期間をもち、生存期間はプログラムの開始から終了までです。  
 `static`を指定しないと自動で`auto`となります。`auto`では自動記憶域期間をもち、生存期間は宣言時からプログラムの実行が**スコープ**を出るまでです。スタック領域に割り当てられます。  
 
 ```c : 
@@ -891,7 +893,7 @@ uint8_t z;          //  スタック領域
 他の変数型などでも同様に割り当てられます。
 
 </code></pre>
-<pre><code class="language-admonish info &quot;変数の種類&quot;">宣言された場所や使用できる範囲で変数の呼び方が変わります。  
+<pre><code class="language-admonish info title = &quot;変数の種類&quot;">宣言された場所や使用できる範囲で変数の呼び方が変わります。  
 
 関数の外で宣言された変数を外部変数、関数の中で宣言された変数を内部変数と呼びます。  
 外部変数は静的領域に置かれ、生存期間はプログラムの開始から終了までです。内部変数はスタック領域に置かれ、生存期間は宣言時からプログラムの実行がスコープを出るまでです。  
@@ -907,15 +909,15 @@ int main(void){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;static&quot;">内部変数や外部変数の宣言時に`static`を指定すると挙動が変化します。  
+<pre><code class="language-admonish info title = &quot;static&quot;">内部変数や外部変数の宣言時に`static`を指定すると挙動が変化します。  
 内部変数の場合はプログラム開始時に静的領域に置かれ、生存期間はプログラムの開始から終了までです。ただし、関数外からの参照はできなくなります。  
 外部変数の場合は他のプログラムやファイルからは参照できなくなり、同じファイル内の関数からのみ使用できるようになります。
 </code></pre>
-<pre><code class="language-admonish info &quot;スコープとは&quot;">変数が使用できる範囲のことを指します。変数だけではなく、関数なども同様に扱われます。  
+<pre><code class="language-admonish info title = &quot;スコープとは&quot;">変数が使用できる範囲のことを指します。変数だけではなく、関数なども同様に扱われます。  
 </code></pre>
 <h3 id="関数"><a class="header" href="#関数">関数</a></h3>
 <p>関数は型と戻り値を持ちます。</p>
-<pre><code class="language-admonish info &quot;関数の宣言&quot;">
+<pre><code class="language-admonish info title = &quot;関数の宣言&quot;">
 一番初めに書いた関数の基本構成に少し情報を付け足します。
 
 ```c : 
@@ -958,7 +960,7 @@ int add(int a, int b){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;関数プロトタイプ&quot;">関数を使用、定義する前に関数についての情報を宣言することを指します。プロトタイプ宣言とも呼ばれます。  
+<pre><code class="language-admonish info title = &quot;関数プロトタイプ&quot;">関数を使用、定義する前に関数についての情報を宣言することを指します。プロトタイプ宣言とも呼ばれます。  
 プロトタイプ宣言をせずに他の関数内で使用しようとするとエラーになります。
 </code></pre>
 <p>関数を呼び出すときに関数に引数としてデータを渡すことができます。C言語では引数によるデータの渡し方には2種類あります。</p>
@@ -971,13 +973,13 @@ int add(int a, int b){
 </li>
 <li>参照渡し
 <ul>
-<li>変数の<a href="#ポインタ">ポインタ</a>を渡す方法です。</li>
+<li>変数の<a href="#%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF">ポインタ</a>を渡す方法です。</li>
 <li><code>add_by_reference()</code>の<code>ans</code>の値を変更すると、呼び出し側の<code>z</code>の値が変更されます。</li>
 <li><code>z</code>はポインタを渡すために<code>&amp;</code>をつけて渡しています。</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish example &quot;値渡しと参照渡し&quot;">
+<pre><code class="language-admonish example title = &quot;値渡しと参照渡し&quot;">
 ```c : value and reference
 int add_by_value(int a, int b);
 int add_by_reference(int a, int b, int *ans);
@@ -1006,8 +1008,9 @@ void add_by_reference(int a, int b, int *ans){
 ```
 
 </code></pre>
-<p>他の人が作成した関数などを使用したい場合は、関数などが含まれているヘッダファイルを読み込むことで使用できます。<br>今まで<code>#include &lt;stdio.h&gt;</code>などと記述していましたが、これは<code>stdio.h</code>というヘッダファイルを読み込む処理をしていました。</p>
-<pre><code class="language-admonish example &quot;math.h&quot;">数学の基本的な計算が含まれているライブラリです。  
+<p>他の人が作成した関数などを使用したい場合は、関数などが含まれているヘッダファイルを読み込むことで使用できます。<br />
+今まで<code>#include &lt;stdio.h&gt;</code>などと記述していましたが、これは<code>stdio.h</code>というヘッダファイルを読み込む処理をしていました。</p>
+<pre><code class="language-admonish example title = &quot;math.h&quot;">数学の基本的な計算が含まれているライブラリです。  
 平方根(sqrt)、三角関数(sin、cos、tan)、逆三角関数(asin、acos、atan、atan2)、累乗(pow)などがあります。また、円周率は`M_PI`と定義されています。
 
 ```c : sqrt(2)
@@ -1017,8 +1020,8 @@ r_sin = r * sin(theta);
 ```
 
 </code></pre>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">- プログラミング授業資料
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">- プログラミング授業資料
 - [苦しんで覚えるＣ言語](https://9cguide.appspot.com/index.html)
 </code></pre>
 
@@ -1027,11 +1030,11 @@ r_sin = r * sin(theta);
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="../BasicContents/git_GitHub.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="../BasicContents/language_c_practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1041,38 +1044,17 @@ r_sin = r * sin(theta);
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="../BasicContents/git_GitHub.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="../BasicContents/language_c_practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>
@@ -1080,13 +1062,13 @@ r_sin = r * sin(theta);
         </script>
 
 
-        <script src="../elasticlunr-ef4e11c1.min.js"></script>
-        <script src="../mark-09e88c2c.min.js"></script>
-        <script src="../searcher-c2a407aa.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard-1626706a.min.js"></script>
-        <script src="../highlight-abc7f01d.js"></script>
-        <script src="../book-a0b12cfe.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -1,6 +1,6 @@
 # 環境構築
 
-```admonish info "PlatformIO IDEとは"
+```admonish info title = "PlatformIO IDEとは"
 `vscode`(`Visual Studio Code`)の拡張機能の一つです。マイコンへのプログラム作成やプログラムのビルド、マイコンへの書き込みなど、基本的なことが一つでできるようになる拡張機能です。  
 さまざまなフレームワーク(環境)に対応した拡張機能で、いろいろなマイコンへのプログラムをこの拡張機能だけで対応できます。  
 OSにあまり依存しないため、誰でも気軽に作成することができます。
@@ -21,7 +21,7 @@ OSにあまり依存しないため、誰でも気軽に作成することがで
 - 初回起動時はテーマなどの選択画面が表示されると思います。
   個人的にはライト(Visual Studio Light)がおすすめです。
 
-```admonish important "学内LANでダウンロードなどをする場合"
+```admonish important title = "学内LANでダウンロードなどをする場合"
 パソコンのプロキシ設定に加えて`vscode`のプロキシ設定も必要です。  
 - 左下の歯車マークから設定を開きます。(`Ctrl`+`,`)  
   ![settings](../resources/PlatformIO/setup/settings.png =x200)  
@@ -45,7 +45,7 @@ OSにあまり依存しないため、誰でも気軽に作成することがで
   ![platformio ide](../resources/PlatformIO/setup/platformio_ide.png)
 - `インストール`を押し、インストールを行います。  
 
-````admonish warning "Pythonの導入"
+````admonish warning title = "Pythonの導入"
 `PlatformIO`のインストール中に次のようなメッセージが通知される場合があります。  
 ```log
 PlatformIO: Can not find working Python 3.6+ Interpreter. 
@@ -56,7 +56,7 @@ Please install the latest Python 3 and restart VSCode
 `Python`をインストールしていない人は通知のボタンから`Install Python`を押してダウンロードサイトからWindows用をダウンロードしましょう。[Python Releases for Windows](https://www.python.org/downloads/windows/)  
 すでに`Python`をインストールしている場合は`I have Python`を押して`python.exe`の`PATH`を教えてあげます。  
 
-> `PlatformIO`は`Python 3.11`以下でのみ動作する場合があります。そのようなエラーメッセージが表示された場合は、ダウンロードサイトの下の方に過去のバージョンリリースがあるのでそこからインストーラーをダウンロードします。  
+> `PlatformIO`は`Python 3.6`以上`Python 3.11`以下でのみ動作します(2026/05/12時点)。ダウンロードサイトの下の方に過去のバージョンリリースがあるのでそこからインストーラーをダウンロードします。  
 > ![install python 3.11](../resources/PlatformIO/setup/install_python3_11.png)  
 
 - ダウンロードしたインストーラーを実行します。
@@ -70,7 +70,7 @@ Please install the latest Python 3 and restart VSCode
 
 ---
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - [ArduinoをVSCodeで開発する【PlatformIO】](https://tech.nri-net.com/entry/arduino_with_vscode)  
 - [Visual Studio Code に Proxy を設定する方法](https://qiita.com/cointoss1973/items/b3c84daeed90fd183501)  

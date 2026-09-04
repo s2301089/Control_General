@@ -13,20 +13,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-2459343d.css">
-        <link rel="stylesheet" href="css/chrome-ae938929.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -38,10 +39,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-58b62ac6.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-94722b3a.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -55,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -84,12 +85,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -104,39 +105,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -144,50 +145,55 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/s2301089/Control_General/tree/pub" title="Git repository" aria-label="Git repository">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                            <i id="git-repository-button" class="fa fab-github"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
-<p>制御(回路・プログラム)に関するお勉強・開発のHomeです。<br>使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>です。一部、他の言語の知識が混ざる可能性があります。<br>環境構築等はすでに済んでいるものとして扱い、コードの内容のみになる場合があります。筆者と異なるOS・バージョンを使用する場合はそれぞれの環境に合わせて対応する必要があります。<br>各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br>一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br>結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
+<p>制御(回路・プログラム)に関するお勉強・開発のHomeです。<br />
+使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>です。一部、他の言語の知識が混ざる可能性があります。<br />
+環境構築等はすでに済んでいるものとして扱い、コードの内容のみになる場合があります。筆者と異なるOS・バージョンを使用する場合はそれぞれの環境に合わせて対応する必要があります。<br />
+各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br />
+一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br />
+結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
 <pre><code class="language-admonish tip &quot;調べ方のコツ？&quot;">知りたいことがあれば、調べてみよう。  
 例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。`Qiita`や`Zenn`などがその例です。中には個人のサイトで解説をしている方もいます。  
 データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。  
 `ChatGPT`などの生成AIを調べもせずに頼ることはおすすめしません。最初から頼ると意味などの理解が困難になります。  
 </code></pre>
-<hr>
+<hr />
 <h2 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h2>
 <ul>
 <li>Windows 11 Home <strong>← 推奨</strong></li>
@@ -209,74 +215,83 @@
 <li><a href="https://akizukidenshi.com/catalog/g/g117215/">(ATOM Matrix)(私物)</a></li>
 <li><a href="https://akizukidenshi.com/catalog/g/g115674/">(ESP32-WROVER-E)(私物)</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="基礎知識"><a class="header" href="#基礎知識">基礎知識</a></h1>
-<h2 id="git--github"><a class="header" href="#git--github"><a href="#git--github-1">git / GitHub</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">`git`とは、`GitHub`とはなにか  
+<div style="break-before: page; page-break-before: always;"></div><h1 id="基礎知識"><a class="header" href="#基礎知識">基礎知識</a></h1>
+<h2 id="git--github"><a class="header" href="#git--github"><a href="BasicContents/./git_GitHub.html">git / GitHub</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">`git`とは、`GitHub`とはなにか  
 導入方法、設定、使用方法など  
 </code></pre>
-<h2 id="c言語"><a class="header" href="#c言語"><a href="#c言語-1">C言語</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">プログラミング言語とは  
+<h2 id="c言語"><a class="header" href="#c言語"><a href="BasicContents/./language_c.html">C言語</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">プログラミング言語とは  
 C言語の基本的な内容  
 C言語の発展的な内容  
 </code></pre>
-<h2 id="c"><a class="header" href="#c"><a href="#c-1">C++</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">オブジェクト指向とは  
+<h2 id="c"><a class="header" href="#c"><a href="BasicContents/./language_cpp.html">C++</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">オブジェクト指向とは  
 クラスとは  
 簡単な使用方法など  
 </code></pre>
-<h2 id="回路の基礎"><a class="header" href="#回路の基礎"><a href="#回路の基礎-1">回路の基礎</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">電気回路の基本物理量  
+<h2 id="回路の基礎"><a class="header" href="#回路の基礎"><a href="BasicContents/./circuit.html">回路の基礎</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">電気回路の基本物理量  
 オームの法則  
 合成抵抗、分圧、分流
 </code></pre>
-<h2 id="dcモーターの制御"><a class="header" href="#dcモーターの制御"><a href="#dcモーターの制御-1">DCモーターの制御</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">DCモーターを制御するための回路  
+<h2 id="dcモーターの制御"><a class="header" href="#dcモーターの制御"><a href="BasicContents/./motor.html">DCモーターの制御</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">DCモーターを制御するための回路  
 `PWM`とはなにか  
 モーターへの出力の決定方法など
 </code></pre>
-<h2 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ"><a href="#コントローラーのデータ-1">コントローラーのデータ</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">データの取得方法、送信方法・受信方法  
+<h2 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ"><a href="BasicContents/./controller_data.html">コントローラーのデータ</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">データの取得方法、送信方法・受信方法  
 使用する機器  
 送受信しているデータの構成など  
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="git--github-1"><a class="header" href="#git--github-1">git / GitHub</a></h1>
-<pre><code class="language-admonish info &quot;gitとは&quot;">バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。  
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git--github-1"><a class="header" href="#git--github-1">git / GitHub</a></h1>
+<pre><code class="language-admonish info title = &quot;gitとは&quot;">バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。  
 </code></pre>
-<pre><code class="language-admonish info &quot;GitHubとは&quot;">`git`のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。  
+<pre><code class="language-admonish info title = &quot;GitHubとは&quot;">`git`のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。  
 `git`と`GitHub`は全くの別物です。  
 </code></pre>
 <h2 id="導入"><a class="header" href="#導入">導入</a></h2>
 <ul>
 <li>
 <p><code>git</code>のダウンロードをします。
-<a href="https://git-scm.com/downloads/win">Download for Windows</a><br>基本的に<code>Click here to download</code>をクリックし、インストーラーをダウンロードしてください。</p>
+<a href="https://git-scm.com/downloads/win">Download for Windows</a><br />
+基本的に<code>Click here to download</code>をクリックし、インストーラーをダウンロードしてください。</p>
 </li>
 <li>
-<p>ダウンロードしたインストーラー<code>Git-x.xx.x-64-bit.exe</code>をクリックし、インストーラーを起動します。<br>基本的に<code>Next</code>を選択してください。</p>
+<p>ダウンロードしたインストーラー<code>Git-x.xx.x-64-bit.exe</code>をクリックし、インストーラーを起動します。<br />
+基本的に<code>Next</code>を選択してください。</p>
 </li>
 <li>
-<p>インストールが完了したら<code>Git Bash</code>を起動します。<br>デスクトップのショートカット、あるいは、スタートから起動してください。</p>
+<p>インストールが完了したら<code>Git Bash</code>を起動します。<br />
+デスクトップのショートカット、あるいは、スタートから起動してください。</p>
 </li>
 <li>
 <p><code>git</code>のバージョンを確認し、インストールできていることを確認します。</p>
-<pre><code class="language-admonish example &quot;gitのバージョン確認&quot;">$ git --version  
+<pre><code class="language-admonish example title = &quot;gitのバージョン確認&quot;">
+```bash : Git Bash
+# Git Bash
+$ git --version  
 git version 2.44.0.windows.1
+```
+
 </code></pre>
 </li>
 <li>
 <p><code>GitHub</code>への登録をします
-<a href="https://github.com/">GitHub</a><br>すでに<code>GitHub</code>アカウントがある人は右上の<code>Sign in</code>を選択しログインしてください。<br>アカウントがない人は<code>Sign up</code>を選択し、新規作成を行ってください。</p>
+<a href="https://github.com/">GitHub</a><br />
+すでに<code>GitHub</code>アカウントがある人は右上の<code>Sign in</code>を選択しログインしてください。<br />
+アカウントがない人は<code>Sign up</code>を選択し、新規作成を行ってください。</p>
 <ul>
 <li>
 <p><code>Email</code> : メールアドレスを入力</p>
-<pre><code class="language-admonish important &quot;メールアドレスの注意点&quot;">学校のメールアドレスでも問題はありません。  
+<pre><code class="language-admonish important title = &quot;メールアドレスの注意点&quot;">学校のメールアドレスでも問題はありません。  
 しかし、卒業時などに学校のメールアドレスは使えなくなるため、別のメールアドレスに変更しなければなりません。  
 </code></pre>
 </li>
 <li>
-<p><code>Password</code> : 15文字以上、または、数字と小文字を含む8文字以上。<br>16文字以上、英字(大文字A~Z)、英字(小文字a~z)、数字(0~9)をそれぞれ1文字以上ずつ含めるパスワードにする。</p>
+<p><code>Password</code> : 15文字以上、または、数字と小文字を含む8文字以上。<br />
+16文字以上、英字(大文字A~Z)、英字(小文字a~z)、数字(0~9)をそれぞれ1文字以上ずつ含めるパスワードにする。</p>
 </li>
 <li>
 <p><code>Username</code> : ユーザー名を半角英数字で構成します。</p>
@@ -285,10 +300,11 @@ git version 2.44.0.windows.1
 <p><code>Your Country/Region</code> : 国と地域は<code>Japan</code>だと思います。</p>
 </li>
 <li>
-<p><code>Email preferemces</code> : お知らせメールを受け取るかどうかの項目です(自由)。<br><code>Create account</code>で作成完了です。</p>
+<p><code>Email preferemces</code> : お知らせメールを受け取るかどうかの項目です(自由)。<br />
+<code>Create account</code>で作成完了です。</p>
 </li>
 </ul>
-<pre><code class="language-admonish note">登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。  
+<pre><code class="language-admonish note title = &quot;&quot;">登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。  
 </code></pre>
 </li>
 </ul>
@@ -302,7 +318,9 @@ git version 2.44.0.windows.1
 <p><code>~/.ssh/</code>に移動します。フォルダがない場合は作成してください。</p>
 <pre><code class="language-bash : Git Bash">$ ls -a ~ | grep .ssh
 .ssh/ # ある
-# ない場合 $ mkdir ~/.ssh
+# ない場合
+$ mkdir ~/.ssh
+
 $ cd ~/.ssh/
 </code></pre>
 </li>
@@ -314,9 +332,9 @@ $ cd ~/.ssh/
 </li>
 <li>
 <p><code>ssh-keygen.exe</code>で<code>SSH</code>鍵を作成します。</p>
-<pre><code class="language-bash : Git Bash">$ ssh-keygen -t rsa -C [email@email.com] -f [id_rsa_username]
+<pre><code class="language-bash : Git Bash">$ ssh-keygen -t rsa -C 《email@email.com》 -f 《id_rsa_username》
 # email@email.com は GitHub に登録したメールアドレス
-# id_rsa_username は 出力ファイル名(自由)
+# id_rsa_username は 出力ファイル名(自由) id_rsa_sなど
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase): # SSH鍵のパスワード Enterでパスワードなし
 Enter same passphrase again: # パスワードの再入力 Enter
@@ -337,31 +355,38 @@ id_rsa_username.pub
 </code></pre>
 </li>
 <li>
-<p><code>id_rsa_username.pub</code>の内容をコピーします。</p>
-<pre><code class="language-bash : Git Bash"># (Git Bashの場合)
+<p><code>id_rsa_username.pub</code>の内容をコピーします。作成したSSH鍵の公開鍵(<code>.pub</code>)をコピーします。</p>
+<pre><code class="language-bash : Git Bash"># Git Bash
 $ cat id_rsa_username.pub | clip
 # id_rsa_username.pub の中身をクリップボードにコピー
 </code></pre>
 </li>
 <li>
 <p><code>GitHub</code>に<code>SSH</code>鍵を登録します
-<a href="https://github.com/">GitHub</a></p>
+<a href="https://github.com/settings/keys">GitHub</a></p>
 <ul>
 <li><code>アイコン</code> - <code>Settings</code> - <code>Access</code> - <code>SSH and GPG keys</code> - <code>SSH Keys</code>で移動します。</li>
-<li><code>New SSH key</code>を選択してください。<br><code>Title</code>は鍵の名前を設定します。パソコン名や学校名などにしておくとわかりやすいです。<br><code>Key type</code>は<code>Authentication Key</code>に設定します。<br><code>Key</code>に先ほどコピーした鍵をペーストしてください。</li>
+<li><code>New SSH key</code>を選択してください。<br />
+<code>Title</code>は鍵の名前を設定します。パソコン名や学校名などにしておくとわかりやすいです。<br />
+<code>Key type</code>は<code>Authentication Key</code>に設定します。<br />
+<code>Key</code>に先ほどコピーした鍵をペーストしてください。</li>
 <li><code>Add SSH key</code>で<code>SSH</code>鍵を登録します。</li>
 </ul>
 </li>
 <li>
-<p><code>SSH</code>の設定をします。<br><code>~/.ssh/config</code>を開いてください。なければ作成してください。</p>
+<p><code>SSH</code>の設定をします。<br />
+<code>~/.ssh/config</code>を開いてください。なければ作成してください。</p>
 <pre><code class="language-bash : Git Bash">$ ls
 config # ある
-# ない場合 $ touch config
+# ない場合
+$ touch config
+
 $ code config
 </code></pre>
 </li>
 <li>
-<p>アカウントと<code>SSH</code>鍵を紐づける設定をします。</p>
+<p>アカウントと<code>SSH</code>鍵を紐づける設定をします。<br />
+<code>IdentityFile /C/Users/user_name/.ssh/id_rsa_username</code>の<code>user_name</code>は自分のパソコンのユーザーフォルダ名、<code>id_rsa_username</code>は作成したSSH鍵のファイル名に変更してください。</p>
 <pre><code class="language-config : config">Host github.com
     HostName github.com
     IdentityFile /C/Users/user_name/.ssh/id_rsa_username
@@ -370,11 +395,37 @@ $ code config
     TCPKeepAlive yes
     IdentitiesOnly yes
 </code></pre>
+<pre><code class="language-admonish tips title = &quot;PowerShellでも使用したい場合&quot;  collapsible = true">PowerShellでもgitやSSHを使用したい場合は`IdentityFile`のパスを`/C/`ではなく`C:\`に変更し、以降の`/`をすべて`\`に変更してください。
+
+```config : config
+Host github.com
+  HostName github.com
+  IdentityFile C:\Users\user_name\.ssh\id_rsa_username
+  User git
+  Port 22
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+```
+
+</code></pre>
 </li>
 <li>
-<p><code>SSH</code>の確認をします。<br>通信ができるかどうか確認します。</p>
-<pre><code class="language-bash : Git Bash">$ ssh -T github.com
+<p><code>SSH</code>の確認をします。<br />
+通信ができるかどうか確認します。</p>
+<pre><code class="language-bash : Git Bash"># Git Bash
+$ ssh -T github.com
 Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+<pre><code class="language-admonish info title = &quot;初めて通信をする場合&quot;">接続を続行するか聞かれるので`yes`と回答してください。
+
+```bash : Git Bash
+$ ssh -T github.com
+The authenticity of host 'github.com (20.27.177.113)' can't be established.
+ED25519 key fingerprint is: SHA256:...
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
 </code></pre>
 </li>
 </ul>
@@ -384,34 +435,38 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 <p>config</p>
 <p>ユーザー名などの設定をします。</p>
 <pre><code class="language-bash : Git Bash"># ユーザー名の設定
-$ git config --global user.name "username"
+# usernameはGitHubのユーザー名に置き換える
+$ git config --global user.name "《username》"
 
 # メールアドレスの設定
-$ git config --global user.email "email@email.com"
+# email@email.comはGitHubのメールアドレスに置き換える
+$ git config --global user.email "《email@email.com》"
 </code></pre>
 </li>
 <li>
 <p>clone</p>
 <p>リモート(<code>Git</code>のサーバー)からリポジトリをローカル(自分の作業環境)に複製します。</p>
-<pre><code class="language-bash : Git Bash">$ git clone [remote URL]
+<pre><code class="language-bash : Git Bash">$ git clone 《remote URL》
 # 実行するディレクトリに注意
 </code></pre>
-<p>実行したディレクトリにそのリポジトリが複製されます。<code>[remote URL]</code>は<code>GitHub</code>から確認できます。<br><a href="https://github.com/">GitHub</a>からcloneしたいリポジトリのページまで移動してください。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーできます。</p>
+<p>実行したディレクトリにそのリポジトリが複製されます。<code>《remote URL》</code>は<code>GitHub</code>から確認できます。<br />
+<a href="https://github.com/">GitHub</a>からcloneしたいリポジトリのページまで移動してください。緑色の<code>&lt;&gt;Code</code>を押し<code>Local</code>の<code>Clone</code>の<code>SSH</code>からコピーできます。</p>
 </li>
 <li>
 <p>add</p>
-<p>ローカルで変更したファイルなどをリモート反映させるファイルを選択します。<br>「コミットに含めるファイルを選択する」と同じことです。</p>
-<pre><code class="language-bash : Git Bash">$ git add [ファイル名1] [ファイル名2] …
+<p>ローカルで変更したファイルなどをリモート反映させるファイルを選択します。<br />
+「コミットに含めるファイルを選択する」と同じことです。</p>
+<pre><code class="language-bash : Git Bash">$ git add ファイル名1 ファイル名2 …
 # ファイル名(フォルダ名)は何個でも書けるはずです。
 </code></pre>
 </li>
 <li>
 <p>commit</p>
 <p>コミットを作成します。<code>add</code>したファイルをひとまとまりにします。</p>
-<pre><code class="language-bash : Git Bash">$ git commit -m "[コミットメッセージ]"
+<pre><code class="language-bash : Git Bash">$ git commit -m "《コミットメッセージ》"
 # コミットメッセージをつけることができます
 </code></pre>
-<pre><code class="language-admonish tip &quot;コミットメッセージのおすすめの書き方&quot;">コミットメッセージには何を更新したのかなどの内容を書いておくとわかりやすいです。  
+<pre><code class="language-admonish tip title = &quot;コミットメッセージのおすすめの書き方&quot;">コミットメッセージには何を更新したのかなどの内容を書いておくとわかりやすいです。  
 - `add`：ファイルの新規作成や新規追加など  
 - `update`：ファイルの中身の更新など  
 - `fixed`、`fix`：バグの修正など  
@@ -419,9 +474,9 @@ $ git config --global user.email "email@email.com"
 - `docs` : ドキュメントの編集など  
 </code></pre>
 <p>コミットメッセージは日本語でも問題はありません。</p>
-<pre><code class="language-admonish example &quot;コミットメッセージの例&quot;">"fixed #3"  
-"update; add to receive controller;"  
-"モーターが逆回転する問題を修正"  
+<pre><code class="language-admonish example title = &quot;コミットメッセージの例&quot;">`"fixed #3"`  
+`"update; add to receive controller;"`  
+`"モーターが逆回転する問題を修正"`  
 </code></pre>
 </li>
 <li>
@@ -446,16 +501,11 @@ Changes not staged for commit:
 </li>
 <li>
 <p>pull</p>
-<p>リモートの変更をローカルに反映させます。<br>「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのは時間がかかります。</p>
-<pre><code class="language-admonish example &quot;デフォルトブランチからpullする場合&quot;">
+<p>リモートの変更をローカルに反映させます。<br />
+「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのは時間がかかります。</p>
+<pre><code class="language-admonish example title = &quot;ブランチからpullする&quot;">
 ```bash : Git Bash
-git pull
-```
-
-</code></pre>
-<pre><code class="language-admonish example &quot;他のブランチからpullする場合&quot;">
-```bash : Git Bash
-$ git pull origin [branch名]  
+$ git pull origin 《branch名》  
 $ git pull origin main
 # mainブランチからpull
 ```
@@ -465,8 +515,9 @@ $ git pull origin main
 </li>
 </ul>
 <h2 id="branch"><a class="header" href="#branch">branch</a></h2>
-<p>普段はおそらく<code>main</code>ブランチ、または、<code>master</code>ブランチを使用していると思います。<br>ここでは、開発用のブランチ<code>main</code>と更新用(安定版)のブランチ<code>release</code>にわけておきたいとします。<code>main</code>ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともあります。ブランチはわけずにタグを作成して、そのときのコミットに戻れるという機能もありますが、それは<code>branch</code>の次に紹介します。</p>
-<pre><code class="language-admonish tip &quot;おすすめの方法&quot;">開発用は`development`という名前のブランチで確実に動くものは`main`に反映させるなどがおすすめです。  
+<p>普段はおそらく<code>main</code>ブランチ、または、<code>master</code>ブランチを使用していると思います。<br />
+ここでは、開発用のブランチ<code>main</code>と更新用(安定版)のブランチ<code>release</code>にわけておきたいとします。<code>main</code>ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともあります。ブランチはわけずにタグを作成して、そのときのコミットに戻れるという機能もありますが、それは<code>branch</code>の次に紹介します。</p>
+<pre><code class="language-admonish tip title = &quot;おすすめの方法&quot;">開発用は`development`という名前のブランチで確実に動くものは`main`に反映させるなどがおすすめです。  
 </code></pre>
 <ul>
 <li>
@@ -483,22 +534,24 @@ $ git pull origin main
 <li>
 <p>checkout</p>
 <p>ブランチを作成したらそのブランチに移動します。</p>
-<pre><code class="language-bash : Git Bash">git checkout [ブランチ名]
+<pre><code class="language-bash : Git Bash">git checkout 《ブランチ名》
 </code></pre>
 </li>
 <li>
 <p>push</p>
 <p>あとは変更したファイルを<code>add</code>したり<code>commit</code>したりしても問題はありません。</p>
-<pre><code class="language-bash : Git Bash">$ git push origin [ブランチ名]
+<pre><code class="language-bash : Git Bash">$ git push origin 《ブランチ名》
 # origin で指定しないとpushできないことが多いです
 </code></pre>
 </li>
 <li>
 <p>merge</p>
-<p><code>main</code>ブランチだけ先に進み、<code>deve</code>ブランチが遅れている場合、<code>deve</code>ブランチに<code>main</code>ブランチの状態にしたいなどということがあると思います。<br>そんなときに、いちいち<code>main</code>ブランチから<code>deve</code>ブランチにコピペするのは時間の無駄です。<code>merge</code>を使用します。<br>進めたいブランチに<code>checkout</code>し、<code>merge</code>を実行します。</p>
-<pre><code class="language-bash : Git Bash">git merge [進んでいるブランチ名]
+<p><code>main</code>ブランチだけ先に進み、<code>deve</code>ブランチが遅れている場合、<code>deve</code>ブランチに<code>main</code>ブランチの状態にしたいなどということがあると思います。<br />
+そんなときに、いちいち<code>main</code>ブランチから<code>deve</code>ブランチにコピペするのは時間の無駄です。<code>merge</code>を使用します。<br />
+進めたいブランチに<code>checkout</code>し、<code>merge</code>を実行します。</p>
+<pre><code class="language-bash : Git Bash">git merge 《進んでいるブランチ名》
 </code></pre>
-<pre><code class="language-admonish example &quot;deveブランチをmainブランチと同じ状態にしたい場合&quot;">
+<pre><code class="language-admonish example title = &quot;deveブランチをmainブランチと同じ状態にしたい場合&quot;">
 ```bash : Git Bash
 git checkout deve
 git merge main
@@ -511,10 +564,10 @@ git merge main
 <li>
 <p>ブランチの削除</p>
 <p>ブランチが不必要になった場合に削除できます。</p>
-<pre><code class="language-bash : Git Bash">git branch -d [ブランチ名]
+<pre><code class="language-bash : Git Bash">git branch -d 《ブランチ名》
 </code></pre>
 <p>ローカルのブランチが削除されます。</p>
-<pre><code class="language-bash : Git Bash">git push origin --delete [ブランチ名]
+<pre><code class="language-bash : Git Bash">git push origin --delete 《ブランチ名》
 </code></pre>
 <p>リモートのブランチが削除されます。</p>
 </li>
@@ -534,10 +587,10 @@ git merge main
 <li>
 <p>tagの作成とpush</p>
 <p>タグを作成する前に変更などはすべてリモートに反映させておきましょう。</p>
-<pre><code class="language-bash : Git Bash">git tag -a [タグ名] -m "[タグのメッセージ]"
+<pre><code class="language-bash : Git Bash">git tag -a 《タグ名》 -m "《タグのメッセージ》"
 </code></pre>
 <p>これでローカルに<code>tag</code>を作成します。ローカルのcommitに<code>tag</code>がつけられます(たぶん)。</p>
-<pre><code class="language-bash : Git Bash">git push origin [タグ名]
+<pre><code class="language-bash : Git Bash">git push origin 《タグ名》
 </code></pre>
 <p>これにより、タグを作成し、作成したタグをリモートに反映することができます。</p>
 </li>
@@ -550,33 +603,32 @@ git merge main
 <li>
 <p>tagの削除</p>
 <p>ローカルにあるタグを削除します。</p>
-<pre><code class="language-bash : Git Bash">git tag -d [タグ名]
+<pre><code class="language-bash : Git Bash">git tag -d 《タグ名》
 </code></pre>
 <p>リモートにあるタグを削除します。</p>
-<pre><code class="language-bash : Git Bash">git push origin --delete [タグ名]
+<pre><code class="language-bash : Git Bash">git push origin --delete 《タグ名》
 </code></pre>
 </li>
 </ul>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">- 授業  
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">- 授業  
 - 教育推進プロジェクト(講座)  
 - [git branch コマンド](https://qiita.com/chihiro/items/e178e45a7fd5a2fb4599#git-branch---no-color)  
 - [サル先生のGit入門](https://backlog.com/ja/git-tutorial/)  
 - [【Git入門】Git + Github使い方入門講座🐒Gitの仕組みや使い方を完全解説！パーフェクトGit入門！](https://youtu.be/LDOR5HfI_sQ?si=grgKMmUMKT4dgnn-)  
 - [GitHubの使い方を解説！ファイルの作成方法、ブランチの使い方が分かる！](https://youtu.be/2mehreEA7yc?si=5BQeVtQgHnAOc_l_)  
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="c言語-1"><a class="header" href="#c言語-1">C言語</a></h1>
-<pre><code class="language-admonish info &quot;プログラミング言語とは&quot;">機械(コンピューターなど)にさせる処理を記述する言語です。人と人間をつなぐ言語です。  
+<div style="break-before: page; page-break-before: always;"></div><h1 id="c言語-1"><a class="header" href="#c言語-1">C言語</a></h1>
+<pre><code class="language-admonish info title = &quot;プログラミング言語とは&quot;">機械(コンピューターなど)にさせる処理を記述する言語です。人と人間をつなぐ言語です。  
 プログラミング言語には様々な種類があります。  
 また、プログラミング言語で記述されたものを**プログラム**と言います。  
 &gt; 英語で記述されたものを英文と言うのと同じです。  
 </code></pre>
-<pre><code class="language-admonish info &quot;C言語とは&quot;">数多のプログラミング言語の中でも有名かつ古くから利用されているプログラミング言語の1つです。  
+<pre><code class="language-admonish info title = &quot;C言語とは&quot;">数多のプログラミング言語の中でも有名かつ古くから利用されているプログラミング言語の1つです。  
 システムの記述を目的として開発され、人間にも理解しやすい仕様で、コンピューターを直接操作するような特徴を併せ持ちます。  
 実行するためにはコンパイルとリンク(ソースコードを機械語に変換)が必要になります。  
 </code></pre>
-<pre><code class="language-admonish info &quot;プログラムの作成手順&quot;">ウォーターフォールモデルに則って作成することをおすすめします。  
+<pre><code class="language-admonish info title = &quot;プログラムの作成手順&quot;">ウォーターフォールモデルに則って作成することをおすすめします。  
 
 1. 内容の整理  
 1. プログラムの設計  
@@ -591,11 +643,11 @@ git merge main
 </code></pre>
 <h2 id="c言語基礎編"><a class="header" href="#c言語基礎編">C言語(基礎編)</a></h2>
 <h3 id="c言語の基本構成"><a class="header" href="#c言語の基本構成">C言語の基本構成</a></h3>
-<pre><code class="language-admonish info &quot;基本構成&quot;">C言語のプログラムは関数が1つ以上集まって構成されます。プログラムを実行するためには**main関数**が必須であり、main関数はプログラムの実行時に一番最初に実行される関数です。  
+<pre><code class="language-admonish info title = &quot;基本構成&quot;">C言語のプログラムは関数が1つ以上集まって構成されます。プログラムを実行するためには**main関数**が必須であり、main関数はプログラムの実行時に一番最初に実行される関数です。  
 それぞれの関数は1つ以上の文から構成され、引数(ひきすう)と戻り値の型を持ちます。  
 文は`;`(セミコロン)で区切られ、改行などでは区切られません。  
 </code></pre>
-<pre><code class="language-admonish example &quot;関数の基本構成&quot;">
+<pre><code class="language-admonish example title = &quot;関数の基本構成&quot;">
 ```c : 
 関数の型 関数名(引数){  
     文1;  
@@ -608,7 +660,7 @@ git merge main
 &gt; 関数については後で詳しく説明します。  
 
 </code></pre>
-<pre><code class="language-admonish example &quot;有名なサンプルプログラム&quot;">世界でも最も有名と言われているサンプルプログラムHello,World!を例に説明します。  
+<pre><code class="language-admonish example title = &quot;有名なサンプルプログラム&quot;">世界でも最も有名と言われているサンプルプログラムHello,World!を例に説明します。  
 
 ```c : helloworld.c
 #include &lt;stdio.h&gt;
@@ -626,7 +678,7 @@ int main(void){
 - `int main(void){`
     - 実行するために必要なmain関数の宣言・定義です。この場合は、関数の戻り値の型はint(整数型)で、引数はな空(void)であることを示しています。  
     
-    ```admonish faq "型と引数"
+    ```admonish faq title = "型と引数"
     型と引数については、後で説明します。現段階では存在を覚えてください。
     ```
 - `printf("Hello,World!\n");`
@@ -638,7 +690,7 @@ int main(void){
     - 関数の終わりを意味します。main関数宣言部の括弧と中身を挟んでmain関数の範囲を表現しています。
 
 </code></pre>
-<pre><code class="language-admonish warning &quot;順序&quot;">C言語は、関数の中身は上の文から順番に実行されます。`return`文を実行すると、関数が終了するため、関数内のその後の文は実行されません。  
+<pre><code class="language-admonish warning title = &quot;順序&quot;">C言語は、関数の中身は上の文から順番に実行されます。`return`文を実行すると、関数が終了するため、関数内のその後の文は実行されません。  
 
 ```c : 
 int main(void){
@@ -653,7 +705,7 @@ int main(void){
 
 </code></pre>
 <h3 id="コメント"><a class="header" href="#コメント">コメント</a></h3>
-<pre><code class="language-admonish info &quot;コメント&quot;">
+<pre><code class="language-admonish info title = &quot;コメント&quot;">
 ソースコードの中で、動作には影響しない注釈をつけることができます。その注釈のことを指します。  
 C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法があります。  
 `//`はこれ以降のその行をコメントとします。  
@@ -670,11 +722,11 @@ C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法が�
 ```
 
 </code></pre>
-<pre><code class="language-admonish error &quot;全角文字&quot;">コメントには全角文字(日本語や全角スペース)を使用できますが、コード部分には全角文字は文字列以外の部分に使用することができません。  
+<pre><code class="language-admonish error title = &quot;全角文字&quot;">コメントには全角文字(日本語や全角スペース)を使用できますが、コード部分には全角文字は文字列以外の部分に使用することができません。  
 `;`と`；`は半角と全角で異なるため注意してください。
 </code></pre>
 <h3 id="データ型と変数"><a class="header" href="#データ型と変数">データ型と変数</a></h3>
-<pre><code class="language-admonish info &quot;データ型&quot;">変数や関数の戻り値など、データの格納や受け渡しのときのデータの種類を決める型のことです。  
+<pre><code class="language-admonish info title = &quot;データ型&quot;">変数や関数の戻り値など、データの格納や受け渡しのときのデータの種類を決める型のことです。  
 主なデータ型を紹介します。  
 
 - 文字(1文字)型：`char`
@@ -687,9 +739,9 @@ C言語では`//`(スラッシュ2つ)と`/* */`による2つの記述方法が�
 実数型は、浮動小数点方式(IEEE 754)で格納します。
 
 </code></pre>
-<pre><code class="language-admonish info &quot;変数&quot;">様々な文字、数値を保持(記憶・格納)しておく領域のことを指します。扱いは数学などの変数と同じものとして考えて問題はありません。
+<pre><code class="language-admonish info title = &quot;変数&quot;">様々な文字、数値を保持(記憶・格納)しておく領域のことを指します。扱いは数学などの変数と同じものとして考えて問題はありません。
 </code></pre>
-<pre><code class="language-admonish example &quot;変数の宣言&quot;">変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。  
+<pre><code class="language-admonish example title = &quot;変数の宣言&quot;">変数はデータ型と変数名を持ちます。変数名にはアルファベットとアンダースコア(アンダーバー)、数字を使用できます。しかし、変数名の先頭に数字を使用することはできません。  
 また、同じ変数名を**スコープ**内に複数置くことはできません。  
 
 &gt; スコープについては後で話します。  
@@ -707,7 +759,7 @@ char c_1, c_2;
 ```
 
 </code></pre>
-<pre><code class="language-admonish example &quot;変数へのアクセス&quot;">変数に値を代入する場合は、`=`(イコール)を使用します。  
+<pre><code class="language-admonish example title = &quot;変数へのアクセス&quot;">変数に値を代入する場合は、`=`(イコール)を使用します。  
 
 ```c : 
 x = 11;     // int x;
@@ -718,7 +770,7 @@ y = x;      // int y;   変数yに変数xの値を代入する
 左辺の変数に右辺の値を格納します。値を代入する場合は値と変数の型を一致させる必要があります。  
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;文字と文字列と数値&quot;">C言語では、文字と文字列と数値は異なります。  
+<pre><code class="language-admonish tip title = &quot;文字と文字列と数値&quot;">C言語では、文字と文字列と数値は異なります。  
 文字を表現するためには、文字を`''`(シングルクォーテーション)で囲います。  
 文字列を表現するためには、文字を`""`(ダブルクォーテーション)で囲います。  
 数値を表現するためには、数字をそのまま記述します。  
@@ -731,7 +783,7 @@ y = x;      // int y;   変数yに変数xの値を代入する
 
 </code></pre>
 <h3 id="演算子"><a class="header" href="#演算子">演算子</a></h3>
-<pre><code class="language-admonish info &quot;算術演算子&quot;">数値や変数などを使用して、算術計算を行うときに使用します。  
+<pre><code class="language-admonish info title = &quot;算術演算子&quot;">数値や変数などを使用して、算術計算を行うときに使用します。  
 
 - `+`：加算
 - `-`：減算
@@ -751,10 +803,10 @@ a % b   //  整数型のみ
 ```
 
 </code></pre>
-<pre><code class="language-admonish warning &quot;除算での注意点&quot;">整数型同士で除算を行うと、演算結果は整数型となります。  
+<pre><code class="language-admonish warning title = &quot;除算での注意点&quot;">整数型同士で除算を行うと、演算結果は整数型となります。  
 小数点以下は切り捨てられるため、実数型で結果を得るためには、どちらか一方が実数型である必要があります。
 </code></pre>
-<pre><code class="language-admonish note &quot;括弧の記述&quot;">数学では、先に優先したい演算を様々な括弧(`()`、`{}`、`[]`)で囲います。  
+<pre><code class="language-admonish note title = &quot;括弧の記述&quot;">数学では、先に優先したい演算を様々な括弧(`()`、`{}`、`[]`)で囲います。  
 C言語では演算の括弧はすべて`()`で囲い、次の式のような記述になります。  
 
 ```c :
@@ -762,11 +814,11 @@ s = ((x_1 + x_2) - (y_1 + y_2)) * 2;
 ```
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;数学にはない演算&quot;">プログラミング言語では自分自身に自身の値を演算した結果を代入することができます。  
+<pre><code class="language-admonish tip title = &quot;数学にはない演算&quot;">プログラミング言語では自分自身に自身の値を演算した結果を代入することができます。  
 `a = a + 5;`
 
 </code></pre>
-<pre><code class="language-admonish info &quot;論理演算子&quot;">数値や変数などを使用して、論理計算を行うときに使用します。  
+<pre><code class="language-admonish info title = &quot;論理演算子&quot;">数値や変数などを使用して、論理計算を行うときに使用します。  
 論理演算には種類があり、ビット単位での演算と変数や数値単位での演算の2つがあります。  
 
 ビット単位の演算  
@@ -797,7 +849,7 @@ a || b
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;比較演算子&quot;">変数や数値の大小関係を調べるときに使用します。演算結果は式が成り立つ場合は`1`(`true`)、成り立たない場合は`0`(`false`)を得ることができます。  
+<pre><code class="language-admonish info title = &quot;比較演算子&quot;">変数や数値の大小関係を調べるときに使用します。演算結果は式が成り立つ場合は`1`(`true`)、成り立たない場合は`0`(`false`)を得ることができます。  
 
 | 数学表現 | ｃ言語表現 |  
 | :-----: | :-------: |  
@@ -811,7 +863,7 @@ a || b
 特に、数学表現の`=`(イコール)はC言語では代入を意味するため間違えないよう注意してください。  
 
 </code></pre>
-<pre><code class="language-admonish info &quot;増減演算子&quot;">変数の値を`1`増減する演算子です。
+<pre><code class="language-admonish info title = &quot;増減演算子&quot;">変数の値を`1`増減する演算子です。
 
 - `++`：増分(インクリメント)  
 - `--`：減分(デクリメント)  
@@ -819,12 +871,12 @@ a || b
 前置増減(`++a`、`--b`)と後置増減(`a++`、`b--`)の2種類があります。  
 前置増減は変数の値を増減した後に、変数の値を使用します。反対に、後置増減が変数の値を使用した後に、変数の値を増減します。  
 </code></pre>
-<pre><code class="language-admonish info &quot;シフト演算子&quot;">変数や数値を2進数表記で左右にビットシフトします。シフトして空いたビットは`0`で埋められます(シフトする値が負の場合は`0`ではなく`1`で埋められる場合があります)。  
+<pre><code class="language-admonish info title = &quot;シフト演算子&quot;">変数や数値を2進数表記で左右にビットシフトします。シフトして空いたビットは`0`で埋められます(シフトする値が負の場合は`0`ではなく`1`で埋められる場合があります)。  
 
 - `&gt;&gt;`：右シフト  
 - `&lt;&lt;`：左シフト
 </code></pre>
-<pre><code class="language-admonish info &quot;代入演算子&quot;">変数に値を代入するときに、他の演算を同時に行うことができます。
+<pre><code class="language-admonish info title = &quot;代入演算子&quot;">変数に値を代入するときに、他の演算を同時に行うことができます。
 
 - `=`：単純代入：`a = b`
 - `+=`：加算代入：`a += b`は`a = a + b`と同じ
@@ -838,10 +890,10 @@ a || b
 - `|=`：ビット論理和代入：`a |= b`は`a = a | b`と同じ
 - `^=`：ビット排他的論理和代入：`a ^= b`は`a = a^+ b`と同じ
 </code></pre>
-<pre><code class="language-admonish important &quot;優先順位&quot;">演算子には優先順位があります。ここでは紹介しませんが、もしいろいろな演算子を式中に使用していて、思ったとおりに動作しない場合は調べてみてください。  
+<pre><code class="language-admonish important title = &quot;優先順位&quot;">演算子には優先順位があります。ここでは紹介しませんが、もしいろいろな演算子を式中に使用していて、思ったとおりに動作しない場合は調べてみてください。  
 `()`をつけるとそこが優先して演算されます。
 </code></pre>
-<pre><code class="language-admonish tip &quot;数値表現&quot;">整数を文中にそのままの数値を記述すると、それは10進数と解釈されます。C言語では2進数、16進数といった他の基数表現でも数値を記述することができます。  
+<pre><code class="language-admonish tip title = &quot;数値表現&quot;">整数を文中にそのままの数値を記述すると、それは10進数と解釈されます。C言語では2進数、16進数といった他の基数表現でも数値を記述することができます。  
 2進数は、数値の先頭に`0b`を、16進数は、数値の先頭に`0x`をつけます。  
 
 ```c : 
@@ -852,7 +904,7 @@ int x_16 = 0x20;    //  16進数の20。10進数では32
 
 </code></pre>
 <h3 id="標準入出力関数"><a class="header" href="#標準入出力関数">標準入出力関数</a></h3>
-<pre><code class="language-admonish info &quot;標準出力&quot;">ターミナルの画面に文字や数値を出力するときは`printf()`を使用します。  
+<pre><code class="language-admonish info title = &quot;標準出力&quot;">ターミナルの画面に文字や数値を出力するときは`printf()`を使用します。  
 `printf("書式文字列", 引数1, 引数2, ...);`  
 書式文字列は出力する書式を指定します。
 
@@ -876,13 +928,13 @@ printf("%d\n", x);
 他にもたくさんあります。必要に応じて調べてみてください。  
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;桁数の指定&quot;">数値を出力する場合は、桁数を指定することができます。
+<pre><code class="language-admonish tip title = &quot;桁数の指定&quot;">数値を出力する場合は、桁数を指定することができます。
 
 - `%3d`：整数3桁
 - `%5.2f`：実数全体を5桁(小数点含む)、小数点以下を2桁
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;文字列との組み合わせ&quot;">フォーマット指定子と文字列を組み合わせることで数値と文字列を同時に出力することができます。
+<pre><code class="language-admonish tip title = &quot;文字列との組み合わせ&quot;">フォーマット指定子と文字列を組み合わせることで数値と文字列を同時に出力することができます。
 
 ```c : 
 int score = 59;
@@ -894,7 +946,7 @@ printf("合格する確率は%.1f%%です。\n", rate);
 `%`という文字を出力したい場合は`%%`で出力できます。
 
 </code></pre>
-<pre><code class="language-admonish info &quot;標準入力&quot;">ターミナルの画面から文字や数値を入力するときは`scanf()`を使用します。  
+<pre><code class="language-admonish info title = &quot;標準入力&quot;">ターミナルの画面から文字や数値を入力するときは`scanf()`を使用します。  
 `scanf("書式文字列", 引数1, 引数2, ...);`  
 入力変換指定子は入力する書式を指定します。書式指定子は出力の場合と基本同じですが、`double`型の場合は`%f`ではなく`%lf`になることに注意してください。  
 
@@ -915,14 +967,14 @@ scanf("%f %lf", &amp;f, &amp;d);
 ```
 
 </code></pre>
-<pre><code class="language-admonish warning &quot;入力時の注意点&quot;">出力するときは、書式文字列に`\n`(改行文字)を含めていましたが、入力のときには含めないようにしてください。  
+<pre><code class="language-admonish warning title = &quot;入力時の注意点&quot;">出力するときは、書式文字列に`\n`(改行文字)を含めていましたが、入力のときには含めないようにしてください。  
 変数に値を代入するときは変数の実体を引数に渡すのではなく、変数の**ポインタ**を渡すようにしましょう。  
 </code></pre>
-<pre><code class="language-admonish info &quot;ポインタとは&quot;">変数の領域を指し示すもののことです。詳しくは後で説明します。  
+<pre><code class="language-admonish info title = &quot;ポインタとは&quot;">変数の領域を指し示すもののことです。詳しくは後で説明します。  
 現時点では入力するときは変数に`&amp;`(アンパサンド)をつけるとポインタになると思っていてください。  
 </code></pre>
 <h3 id="条件分岐"><a class="header" href="#条件分岐">条件分岐</a></h3>
-<pre><code class="language-admonish info &quot;if文&quot;">「もし 〇〇 ならば これを実行する。」を表現する文です。指定した条件をが真か偽かを判定し、処理を2つに分岐されることができます。「〇〇」の部分が条件式になります。    
+<pre><code class="language-admonish info title = &quot;if文&quot;">「もし 〇〇 ならば これを実行する。」を表現する文です。指定した条件をが真か偽かを判定し、処理を2つに分岐されることができます。「〇〇」の部分が条件式になります。    
 
 ```c : 
 if(条件式){
@@ -953,7 +1005,7 @@ if(条件式1){
 ```
 
 </code></pre>
-<pre><code class="language-admonish example &quot;if-else文&quot;">変数の値によって処理を変更する例を示します。
+<pre><code class="language-admonish example title = &quot;if-else文&quot;">変数の値によって処理を変更する例を示します。
 
 ```c : if.c
 if(x &gt; 0){
@@ -966,7 +1018,7 @@ if(x &gt; 0){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;switch文&quot;">制御式の値によって処理を分岐させるときに使用します。  
+<pre><code class="language-admonish info title = &quot;switch文&quot;">制御式の値によって処理を分岐させるときに使用します。  
 
 「もし 制御式 が 0 なら 処理1、もし 制御式 が 1 なら 処理2、...」といった処理をする場合に使用することが多いです。
 
@@ -988,7 +1040,7 @@ switch(制御式){
 制御式は整数として解釈され、`break`文で`switch`文から抜けることができます。`break`文がない場合は次の事項式の判定などに処理が続きます。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;switch文&quot;">変数の値によって処理を変更する例を示します。
+<pre><code class="language-admonish example title = &quot;switch文&quot;">変数の値によって処理を変更する例を示します。
 
 ```c : switch.c
 switch(z){
@@ -1008,7 +1060,7 @@ switch(z){
 
 </code></pre>
 <h3 id="繰り返し"><a class="header" href="#繰り返し">繰り返し</a></h3>
-<pre><code class="language-admonish info &quot;for文&quot;">回数が決まっている繰り返し処理を行いたいときによく利用される文です。  
+<pre><code class="language-admonish info title = &quot;for文&quot;">回数が決まっている繰り返し処理を行いたいときによく利用される文です。  
 for文は次の構成になっています。  
 
 ```c : 
@@ -1027,7 +1079,7 @@ for(初期設定式; 継続条件式; 再設定式){
     - 主に制御変数の値を変更するために使用します。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;for文&quot;">繰り返しの回数を表示する例を示します。
+<pre><code class="language-admonish example title = &quot;for文&quot;">繰り返しの回数を表示する例を示します。
 
 ```c : for1.c
 for(int i = 0; i &lt; 10; i++){    //  0~9までの10回繰り返される
@@ -1047,7 +1099,7 @@ for(int i = 1; i &lt;= 9; i++){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;while文&quot;">
+<pre><code class="language-admonish info title = &quot;while文&quot;">
 回数が決まっていない繰り返し処理を行いたいときによく利用される文です。  
 while文は次の構成になっています。  
 
@@ -1060,7 +1112,7 @@ while(継続条件式){
 継続条件式が真の間、処理を繰り返します。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;while文&quot;">xの値が負になるまで(0以上の間)、数字を入力する例を示します。
+<pre><code class="language-admonish example title = &quot;while文&quot;">xの値が負になるまで(0以上の間)、数字を入力する例を示します。
 
 ```c : while.c
 scanf("%d", &amp;x);
@@ -1070,7 +1122,7 @@ while(x &gt;= 0){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;do-while文&quot;">処理を行う前に条件の判断を行う`while`文に対して、処理を行った後に条件の判断を行う`do-while`文があります。  
+<pre><code class="language-admonish info title = &quot;do-while文&quot;">処理を行う前に条件の判断を行う`while`文に対して、処理を行った後に条件の判断を行う`do-while`文があります。  
 `do-while`文は次の構成になっています。
 
 ```c : 
@@ -1090,7 +1142,7 @@ do{
 </code></pre>
 <h2 id="c言語発展編"><a class="header" href="#c言語発展編">C言語(発展編)</a></h2>
 <h3 id="配列"><a class="header" href="#配列">配列</a></h3>
-<pre><code class="language-admonish info &quot;配列とは&quot;">同じ型の変数を複数個まとめて扱えるもののことです。C言語では以下のように表します。  
+<pre><code class="language-admonish info title = &quot;配列とは&quot;">同じ型の変数を複数個まとめて扱えるもののことです。C言語では以下のように表します。  
 
 ```c : 
 配列名[定数式]
@@ -1099,7 +1151,7 @@ do{
 定数式は`0`から始まる正の整数です。  
 配列を使用すると、文字列を扱うこともできます。  
 </code></pre>
-<pre><code class="language-admonish example &quot;配列の宣言&quot;">配列の宣言は、変数と同じように行います。宣言時に配列の大きさを指定する必要があります。  
+<pre><code class="language-admonish example title = &quot;配列の宣言&quot;">配列の宣言は、変数と同じように行います。宣言時に配列の大きさを指定する必要があります。  
 
 ```c :
 int d[10];
@@ -1108,7 +1160,7 @@ float f[4];
 
 配列dは`d[0]~d[9]`まで、配列fは`f[0]~[3]`の変数が宣言されます。配列番号(定数式)は`0`から始まるため、`0~n-1`までの`n`個になります。  
 </code></pre>
-<pre><code class="language-admonish example &quot;配列へのアクセス&quot;">配列へのアクセスは変数と同じです。しかし、要素番号を指定する必要があります。要素番号は整数であれば変数や式も使用できます。  
+<pre><code class="language-admonish example title = &quot;配列へのアクセス&quot;">配列へのアクセスは変数と同じです。しかし、要素番号を指定する必要があります。要素番号は整数であれば変数や式も使用できます。  
 
 ```c : 
 x = 11;     // int x;
@@ -1120,7 +1172,7 @@ for(int i = 0; i &lt; 8; i++){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;多次元配列とは&quot;">平面や立体、それ以上の次元をイメージして配列を扱いたいときに利用します。  
+<pre><code class="language-admonish info title = &quot;多次元配列とは&quot;">平面や立体、それ以上の次元をイメージして配列を扱いたいときに利用します。  
 
 ```c : 
 int data[2][3];
@@ -1137,11 +1189,11 @@ int data[2][3];
 定数式を増やすことで多次元配列を宣言することができます。
 </code></pre>
 <h3 id="ポインタ"><a class="header" href="#ポインタ">ポインタ</a></h3>
-<pre><code class="language-admonish info &quot;ポインタとは&quot;">オブジェクト(変数など)や関数のアドレス(メモリの番号・住所)を保持するデータ型のことです。ポインタを使用することによって、それが指し示すアドレスのデータを参照することができます。  
+<pre><code class="language-admonish info title = &quot;ポインタとは&quot;">オブジェクト(変数など)や関数のアドレス(メモリの番号・住所)を保持するデータ型のことです。ポインタを使用することによって、それが指し示すアドレスのデータを参照することができます。  
 変数名の前に`&amp;`(アンパサンド)をつけることで変数のアドレスを取得できます。  
 &gt; 標準入力のときに、関数の引数に変数に`&amp;`をつけて渡していたのは、変数のポインタを渡していたのです。  
 </code></pre>
-<pre><code class="language-admonish info &quot;ポインタ変数とは&quot;">ポインタを格納する変数のことです。データ型は既存のものを使用します。変数名の先頭に`*`(アスタリスク)をつけることで宣言することができます。  
+<pre><code class="language-admonish info title = &quot;ポインタ変数とは&quot;">ポインタを格納する変数のことです。データ型は既存のものを使用します。変数名の先頭に`*`(アスタリスク)をつけることで宣言することができます。  
 ```c : 
 int *d_p;   //  int型のポインタ
 float *f_p; //  float型のポインタ
@@ -1149,7 +1201,7 @@ float *f_p; //  float型のポインタ
 ポインタ変数を宣言しただけでは、変数の領域は確保されないので注意が必要です。  
 
 </code></pre>
-<pre><code class="language-admonish info &quot;ポインタの演算子&quot;">ポインタ変数に使用できる演算子が2つあります。  
+<pre><code class="language-admonish info title = &quot;ポインタの演算子&quot;">ポインタ変数に使用できる演算子が2つあります。  
 
 - アドレス演算子`&amp;`(アンパサンド)
     - 変数のポインタを取得するための演算子です。
@@ -1169,7 +1221,7 @@ printf("%d\n, d);       //  dの値(10)を表示
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;特殊ポインタ&quot;">- NULLポインタ(`NULL`)
+<pre><code class="language-admonish info title = &quot;特殊ポインタ&quot;">- NULLポインタ(`NULL`)
     - どこも指し示さないポインタを意味します。
     - ポインタを返す関数のエラー戻り値としても使用されます。
 - 汎用ポインタ(`void *`)
@@ -1180,7 +1232,7 @@ printf("%d\n, d);       //  dの値(10)を表示
     - `**`をつけて宣言します。
 </code></pre>
 <h3 id="構造体"><a class="header" href="#構造体">構造体</a></h3>
-<pre><code class="language-admonish info &quot;構造体とは&quot;">違う型の変数を複数個まとめて扱えるもののことです。  
+<pre><code class="language-admonish info title = &quot;構造体とは&quot;">違う型の変数を複数個まとめて扱えるもののことです。  
 | 学年 | クラス | 番号 | 氏名 | 国語 | 数学 | 英語 |
 | :--: | :---: | :--: | :-: | :--: | :--: | :-: |
 | 1 | 3 | 33 | タカシ | 68 | 58 | 90 |
@@ -1190,7 +1242,7 @@ printf("%d\n, d);       //  dの値(10)を表示
 異なるデータ型のデータを1つのまとまりとして扱いたいときに使用します。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;構造体の宣言&quot;">構造体の宣言には`struct`を使用します。
+<pre><code class="language-admonish example title = &quot;構造体の宣言&quot;">構造体の宣言には`struct`を使用します。
 
 ```c : 
 struct 構造体名{
@@ -1225,7 +1277,7 @@ struct student data[40];
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;構造体の演算子&quot;">構造体変数に使用できる演算子が2つあります。  
+<pre><code class="language-admonish info title = &quot;構造体の演算子&quot;">構造体変数に使用できる演算子が2つあります。  
 
 - メンバ参照演算子`.`(ピリオド)
     - 構造体のメンバを参照するための演算子です。
@@ -1251,7 +1303,7 @@ printf("%d %d %d %d\n"
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;構造体の代入&quot;">構造体そのものの一括代入や関数の戻り値や引数に構造体を使用することができます。  
+<pre><code class="language-admonish info title = &quot;構造体の代入&quot;">構造体そのものの一括代入や関数の戻り値や引数に構造体を使用することができます。  
 &gt; 関数での使用方法は後で説明します。  
 
 ```c : 
@@ -1265,8 +1317,9 @@ a.group = b.group;  //  略...
 
 </code></pre>
 <h3 id="変数の有効範囲"><a class="header" href="#変数の有効範囲">変数の有効範囲</a></h3>
-<p>プログラムで使用するメモリ領域はプログラム領域とデータ領域に分けられ、データ領域は、静的領域、スタック領域、ヒープ領域に分けられます。<br>変数や関数は、宣言方法によって使用するメモリ領域を選択することができます。</p>
-<pre><code class="language-admonish example &quot;領域の選択(宣言時)&quot;">静的領域に割り当てる場合、宣言時に`static`を指定します。そのオブジェクト(変数や関数など)は静的記憶域期間をもち、生存期間はプログラムの開始から終了までです。  
+<p>プログラムで使用するメモリ領域はプログラム領域とデータ領域に分けられ、データ領域は、静的領域、スタック領域、ヒープ領域に分けられます。<br />
+変数や関数は、宣言方法によって使用するメモリ領域を選択することができます。</p>
+<pre><code class="language-admonish example title = &quot;領域の選択(宣言時)&quot;">静的領域に割り当てる場合、宣言時に`static`を指定します。そのオブジェクト(変数や関数など)は静的記憶域期間をもち、生存期間はプログラムの開始から終了までです。  
 `static`を指定しないと自動で`auto`となります。`auto`では自動記憶域期間をもち、生存期間は宣言時からプログラムの実行が**スコープ**を出るまでです。スタック領域に割り当てられます。  
 
 ```c : 
@@ -1278,7 +1331,7 @@ uint8_t z;          //  スタック領域
 他の変数型などでも同様に割り当てられます。
 
 </code></pre>
-<pre><code class="language-admonish info &quot;変数の種類&quot;">宣言された場所や使用できる範囲で変数の呼び方が変わります。  
+<pre><code class="language-admonish info title = &quot;変数の種類&quot;">宣言された場所や使用できる範囲で変数の呼び方が変わります。  
 
 関数の外で宣言された変数を外部変数、関数の中で宣言された変数を内部変数と呼びます。  
 外部変数は静的領域に置かれ、生存期間はプログラムの開始から終了までです。内部変数はスタック領域に置かれ、生存期間は宣言時からプログラムの実行がスコープを出るまでです。  
@@ -1294,15 +1347,15 @@ int main(void){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;static&quot;">内部変数や外部変数の宣言時に`static`を指定すると挙動が変化します。  
+<pre><code class="language-admonish info title = &quot;static&quot;">内部変数や外部変数の宣言時に`static`を指定すると挙動が変化します。  
 内部変数の場合はプログラム開始時に静的領域に置かれ、生存期間はプログラムの開始から終了までです。ただし、関数外からの参照はできなくなります。  
 外部変数の場合は他のプログラムやファイルからは参照できなくなり、同じファイル内の関数からのみ使用できるようになります。
 </code></pre>
-<pre><code class="language-admonish info &quot;スコープとは&quot;">変数が使用できる範囲のことを指します。変数だけではなく、関数なども同様に扱われます。  
+<pre><code class="language-admonish info title = &quot;スコープとは&quot;">変数が使用できる範囲のことを指します。変数だけではなく、関数なども同様に扱われます。  
 </code></pre>
 <h3 id="関数"><a class="header" href="#関数">関数</a></h3>
 <p>関数は型と戻り値を持ちます。</p>
-<pre><code class="language-admonish info &quot;関数の宣言&quot;">
+<pre><code class="language-admonish info title = &quot;関数の宣言&quot;">
 一番初めに書いた関数の基本構成に少し情報を付け足します。
 
 ```c : 
@@ -1345,7 +1398,7 @@ int add(int a, int b){
 ```
 
 </code></pre>
-<pre><code class="language-admonish info &quot;関数プロトタイプ&quot;">関数を使用、定義する前に関数についての情報を宣言することを指します。プロトタイプ宣言とも呼ばれます。  
+<pre><code class="language-admonish info title = &quot;関数プロトタイプ&quot;">関数を使用、定義する前に関数についての情報を宣言することを指します。プロトタイプ宣言とも呼ばれます。  
 プロトタイプ宣言をせずに他の関数内で使用しようとするとエラーになります。
 </code></pre>
 <p>関数を呼び出すときに関数に引数としてデータを渡すことができます。C言語では引数によるデータの渡し方には2種類あります。</p>
@@ -1358,13 +1411,13 @@ int add(int a, int b){
 </li>
 <li>参照渡し
 <ul>
-<li>変数の<a href="#ポインタ">ポインタ</a>を渡す方法です。</li>
+<li>変数の<a href="BasicContents/language_c.html#%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF">ポインタ</a>を渡す方法です。</li>
 <li><code>add_by_reference()</code>の<code>ans</code>の値を変更すると、呼び出し側の<code>z</code>の値が変更されます。</li>
 <li><code>z</code>はポインタを渡すために<code>&amp;</code>をつけて渡しています。</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish example &quot;値渡しと参照渡し&quot;">
+<pre><code class="language-admonish example title = &quot;値渡しと参照渡し&quot;">
 ```c : value and reference
 int add_by_value(int a, int b);
 int add_by_reference(int a, int b, int *ans);
@@ -1393,8 +1446,9 @@ void add_by_reference(int a, int b, int *ans){
 ```
 
 </code></pre>
-<p>他の人が作成した関数などを使用したい場合は、関数などが含まれているヘッダファイルを読み込むことで使用できます。<br>今まで<code>#include &lt;stdio.h&gt;</code>などと記述していましたが、これは<code>stdio.h</code>というヘッダファイルを読み込む処理をしていました。</p>
-<pre><code class="language-admonish example &quot;math.h&quot;">数学の基本的な計算が含まれているライブラリです。  
+<p>他の人が作成した関数などを使用したい場合は、関数などが含まれているヘッダファイルを読み込むことで使用できます。<br />
+今まで<code>#include &lt;stdio.h&gt;</code>などと記述していましたが、これは<code>stdio.h</code>というヘッダファイルを読み込む処理をしていました。</p>
+<pre><code class="language-admonish example title = &quot;math.h&quot;">数学の基本的な計算が含まれているライブラリです。  
 平方根(sqrt)、三角関数(sin、cos、tan)、逆三角関数(asin、acos、atan、atan2)、累乗(pow)などがあります。また、円周率は`M_PI`と定義されています。
 
 ```c : sqrt(2)
@@ -1404,13 +1458,12 @@ r_sin = r * sin(theta);
 ```
 
 </code></pre>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">- プログラミング授業資料
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">- プログラミング授業資料
 - [苦しんで覚えるＣ言語](https://9cguide.appspot.com/index.html)
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="c言語-練習課題"><a class="header" href="#c言語-練習課題">C言語 練習課題</a></h1>
-<pre><code class="language-admonish info &quot;C言語の実行方法等&quot;">C言語のソースコード作成後、実行するために**コンパイル**と**リンク**という処理を行い、**実行ファイル**を作成する必要があります。  
+<div style="break-before: page; page-break-before: always;"></div><h1 id="c言語-練習課題"><a class="header" href="#c言語-練習課題">C言語 練習課題</a></h1>
+<pre><code class="language-admonish info title = &quot;C言語の実行方法等&quot;">C言語のソースコード作成後、実行するために**コンパイル**と**リンク**という処理を行い、**実行ファイル**を作成する必要があります。  
 コンパイラ・リンカに`GCC`を使用します。  
 
 ソースコードが置かれているディレクトリに移動します。ここでは例として`~/program/`というディレクトリの中にある`helloworld.c`というファイルを実行したいとします。
@@ -1450,7 +1503,8 @@ Hello,World!
 </code></pre>
 <h2 id="c言語基礎編-1"><a class="header" href="#c言語基礎編-1">C言語(基礎編)</a></h2>
 <h3 id="円の面積と円周"><a class="header" href="#円の面積と円周">円の面積と円周</a></h3>
-<p>実数の半径 \(r\) である円の面積と円周を求めるプログラムを作成してください。ただし、 \(r\leqq0\) である場合は、プログラムは<strong>終了せずに</strong>再入力を促してください。<br>また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
+<p>実数の半径 \(r\) である円の面積と円周を求めるプログラムを作成してください。ただし、 \(r\leqq0\) である場合は、プログラムは<strong>終了せずに</strong>再入力を促してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
 <pre><code class="language-shell : 実行例">$ gcc ci_ar_r.c -lm -o ci_ar_r
 
 # r = 3.0 の場合
@@ -1467,7 +1521,7 @@ Please enter r (r &gt; 0): 1.5
 l : 9.424778
 s : 7.068583
 </code></pre>
-<pre><code class="language-admonish tip &quot;定義された円周率を使用する&quot;">円周率は各自で`3.14`を使用しても良いですが、`math.h`に`M_PI`という名前で小数点以下20桁ほどまで定義されています。  
+<pre><code class="language-admonish tip title = &quot;定義された円周率を使用する&quot;  collapsible = true">円周率は各自で`3.14`を使用しても良いですが、`math.h`に`M_PI`という名前で小数点以下20桁ほどまで定義されています。  
 
 ```c : 半径rの円の面積と円周を表示するプログラム
 #include &lt;stdio.h&gt;
@@ -1511,19 +1565,14 @@ s : 7.068583
 </code></pre>
 <h3 id="2次方程式の解"><a class="header" href="#2次方程式の解">2次方程式の解</a></h3>
 <p>実数の係数 \(b,c\) を持つ2次方程式 \(x^2+bx+c=0\) の実数解は、判別式 \(D=b^2-4c\) の値によって以下の表のようになります。</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: center">D</th><th style="text-align: center">解の個数</th><th style="text-align: center">解</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">D</th><th style="text-align: center">解の個数</th><th style="text-align: center">解</th></tr></thead><tbody>
 <tr><td style="text-align: center">\(D&gt;0\)</td><td style="text-align: center">\(2\)</td><td style="text-align: center">\(\frac{-b\pm\sqrt{D}}{2}\)</td></tr>
 <tr><td style="text-align: center">\(D=0\)</td><td style="text-align: center">\(1\)</td><td style="text-align: center">\(\frac{-b}{2}\)</td></tr>
 <tr><td style="text-align: center">\(D&lt;0\)</td><td style="text-align: center">\(0\)</td><td style="text-align: center">実数解なし</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
-<p>実数の係数 \(b,c\) を入力すると、2次方程式の解を求め、出力するプログラムを作成してください。実数解が存在しない場合は <code>no real roots</code> と出力してください。<br>また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
+<p>実数の係数 \(b,c\) を入力すると、2次方程式の解を求め、出力するプログラムを作成してください。実数解が存在しない場合は <code>no real roots</code> と出力してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
 <pre><code class="language-shell : 実行例"># b = 3.5, c = 1.2 の場合
 $ ./qu_eq
 3.5
@@ -1542,7 +1591,7 @@ $ ./qu_eq
 4
 no real roots
 </code></pre>
-<pre><code class="language-admonish tip &quot;平方根の計算&quot;">平方根をC言語で計算するためには`math.h`にある`sqrt()`を使用します。  
+<pre><code class="language-admonish tip title = &quot;平方根の計算&quot;  collapsible = true">平方根をC言語で計算するためには`math.h`にある`sqrt()`を使用します。  
 
 以下は \\(\sqrt{2}\\) を表示するプログラムです。
 
@@ -1567,7 +1616,9 @@ $ ./sqrt_2
 
 </code></pre>
 <h3 id="放物線とx軸との交点"><a class="header" href="#放物線とx軸との交点">放物線とx軸との交点</a></h3>
-<p>整数の係数 \(a,b,c\) を持つ放物線 \(y=ax^2+bx+c\) とx軸との交点を求め、小数点以下1桁で出力するプログラムを作成してください。<br>また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。<br>ヒント：「新基礎数学 改訂版 p.82」</p>
+<p>整数の係数 \(a,b,c\) を持つ放物線 \(y=ax^2+bx+c\) とx軸との交点を求め、小数点以下1桁で出力するプログラムを作成してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。<br />
+ヒント：「新基礎数学 改訂版 p.82」</p>
 <pre><code class="language-shell : 実行例"># a = 1 b = -2, c = -3 の場合
 $ ./pa_in
 1
@@ -1605,21 +1656,142 @@ $ ./ar_su
 18
 sum : 80
 </code></pre>
-<h3 id=""><a class="header" href="#"></a></h3>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="c-1"><a class="header" href="#c-1">C++</a></h1>
-<pre><code class="language-admonish error &quot;C++の前に&quot;">C++の前にC言語を理解しましょう。  
+<h3 id="穴埋めポインタ"><a class="header" href="#穴埋めポインタ">穴埋め(ポインタ)</a></h3>
+<p>次のコードがうまく動作するように、プログラムを修正してください。</p>
+<pre><code class="language-c : po_va.c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void){
+    int i = 0, *p = NULL;
+
+    /*
+        ここにエラーを解決できるコードを書く
+    */
+
+    scanf(" %d", p);
+    printf("%d\n", i);
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<pre><code class="language-c : po_ar.c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void){
+    int array[5] = {0, 1, 2, 3, 4}, *p = NULL;
+
+    for(int i = 0; i &lt; 5; ++i){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+
+    for(int i = 0; i &lt; 5; ++i){
+        printf("%d ", p[i]);
+        /*
+            pというポインタがarrayを指すように
+        */
+    }
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<h3 id="穴埋め構造体"><a class="header" href="#穴埋め構造体">穴埋め(構造体)</a></h3>
+<p>次のコードがうまく動作するように、プログラムを修正してください。</p>
+<pre><code class="language-c : st_pe.c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct _person{
+    float height;
+    float weight;
+    int age;
+    int gender; // man:0, woman:1
+} Person;
+
+void showPersonByValue(Person person);
+void showPersonByReference(Person *person);
+
+int main(void){
+    Person man, woman;
+
+    man.height = 171.2;
+    man.weight = 72.8;
+    man.age = 81;
+    man.gender = 0;
+
+    woman.height = 158.5;
+    woman.weight = 59.9;
+    woman.age = 87;
+    woman.gender = 1;
+
+    /*
+        ここでmanとwomanの内容を表示する
+        showPersonByValueとshowPersonByReferenceをそれぞれ呼ぶ
+    */
+
+    return EXIT_SUCCESS;
+}
+
+void showPersonByValue(Person person){
+    /*
+        ここに身長、体重、年齢、性別を表示するコードを記述
+    */
+}
+
+void showPersonByReference(Person *person){
+    /*
+        ここに身長、体重、年齢、性別を表示するコードを記述
+    */
+}
+</code></pre>
+<h3 id="穴埋め関数"><a class="header" href="#穴埋め関数">穴埋め(関数)</a></h3>
+<pre><code class="language-c : in_fu.c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct _person{
+    float height;
+    float weight;
+    int age;
+    int gender; // man:0, woman:1
+} Person;
+
+/*
+    ここで各関数のプロトタイプ宣言を行う
+*/
+
+int main(void){
+    Person man, woman;
+
+    inputByReference(&amp;man);
+    printf("\n");
+    woman = inputByReturn();
+
+    printf("\n");
+    showPersonByReference(&amp;man);
+    printf("\n");
+    showPersonByValue(woman);
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
+
+/*
+    ここで各関数を実装する
+*/
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="c-1"><a class="header" href="#c-1">C++</a></h1>
+<pre><code class="language-admonish error title = &quot;C++の前に&quot;">C++の前にC言語を理解しましょう。  
 C言語がわからないとC++の説明がわからないことがあります。
 </code></pre>
-<hr>
-<pre><code class="language-admonish info &quot;C++とは&quot;">プログラミング言語の一つで、C言語に**オブジェクト指向**要素を加えた言語です。  
+<hr />
+<pre><code class="language-admonish info title = &quot;C++とは&quot;">プログラミング言語の一つで、C言語に**オブジェクト指向**要素を加えた言語です。  
 基本的な文法はC言語とほぼ一致します。C言語を更に拡張し、オブジェクト指向できるように作成された言語です。
 </code></pre>
-<pre><code class="language-admonish info &quot;オブジェクト指向とは&quot;">「もの」を考えるプログラミング言語の考え方です。  
+<pre><code class="language-admonish info title = &quot;オブジェクト指向とは&quot;">「もの」を考えるプログラミング言語の考え方です。  
 例えば、「車」というオブジェクトには、「燃料」、「タイヤの回転数」、「乗車人数」などの変数や「走る」、「止まる」、「窓を開ける」などの動作を表す機能があります。  
 また、「走る」、「止まる」などの操作をするために内部でどんなことが行われているか知る必要はありません。「走る」、「止まる」ためにはどんな操作を行えばいいのかがわかっていれば内部の仕組みに関係なく、使用することができます。
 </code></pre>
-<pre><code class="language-admonish info &quot;クラスとは&quot;">複数の車がある場合、持つべき変数、動作は同じですがそれぞれで変数の値などは異なります。変数の値などが異なるだけなら、構造体を作成し、一つ一つの車をそれぞれの構造体に対応させれば問題はありません。しかし、動きなどはすべて同じなため、それぞれの車に対して定義するのは無駄です。  
+<pre><code class="language-admonish info title = &quot;クラスとは&quot;">複数の車がある場合、持つべき変数、動作は同じですがそれぞれで変数の値などは異なります。変数の値などが異なるだけなら、構造体を作成し、一つ一つの車をそれぞれの構造体に対応させれば問題はありません。しかし、動きなどはすべて同じなため、それぞれの車に対して定義するのは無駄です。  
 そこで、一つの変数、動きをまとめ大量生産できるようにした型のことをクラスと呼びます。  
 
 C言語の構造体に変数だけでなく、関数も追加したようなものがクラスです。  
@@ -1628,19 +1800,19 @@ C言語の構造体に変数だけでなく、関数も追加したようなも�
 
 この例では、`car`というクラスの中に`move_forward()`というメソッドや、`fuel`というメンバ変数が存在します。
 </code></pre>
-<pre><code class="language-admonish info &quot;インスタンスとは&quot;">オブジェクトはそれぞれの車を表すときに用いられる考え方で「インスタンス」とも呼びます。  
+<pre><code class="language-admonish info title = &quot;インスタンスとは&quot;">オブジェクトはそれぞれの車を表すときに用いられる考え方で「インスタンス」とも呼びます。  
 車の設計書がクラスで、実際につくる車が「インスタンス」という考え方で、問題はないと思います。  
 
 C言語の構造体で言えば、構造体変数に当たるものと同じです。
 </code></pre>
-<pre><code class="language-admonish info &quot;名前空間とは&quot;">変数や関数、クラスの名前が重複しにくいように作成された空間のことです。違う名前空間なら同じ名前の変数などが複数存在しても問題ありません。しかし、同じ名前空間内ではもちろん同じ名前は使用できません。  
+<pre><code class="language-admonish info title = &quot;名前空間とは&quot;">変数や関数、クラスの名前が重複しにくいように作成された空間のことです。違う名前空間なら同じ名前の変数などが複数存在しても問題ありません。しかし、同じ名前空間内ではもちろん同じ名前は使用できません。  
 
 ![namespace](../resources/BasicContents/language_cpp/namespace.png =300x)  
 
 この例では`a`、`b`、`c`の3つの名前空間があります。  
 名前空間が異なるため`read`や`write`などがそれぞれの名前空間で存在しています。しかし、名前空間`c`では、同じ名前空間内なので`read`という名前は複数宣言できません。
 </code></pre>
-<pre><code class="language-admonish example &quot;利用例&quot;">クラスを使用する例を紹介します。クラスの作成や名前空間の定義は一旦飛ばします。  
+<pre><code class="language-admonish example title = &quot;利用例&quot;">クラスを使用する例を紹介します。クラスの作成や名前空間の定義は一旦飛ばします。  
 
 ```cpp : 
 #include "car.hpp"
@@ -1686,7 +1858,7 @@ int main(void){
 また、名前空間の使用を宣言せずに`std::cout`のように名前空間にあるものを使用する際に一つ一つに`名前空間名::`をつけることでその名前空間に定義されているものを使用することができます。  
 
 </code></pre>
-<pre><code class="language-admonish tip &quot;引数付きのインスタンス&quot;">インスタンスを宣言するときに引数を渡すことができます。引数を渡すときに呼び出すメソッドを**コンストラクタ**と言います。  
+<pre><code class="language-admonish tip title = &quot;引数付きのインスタンス&quot;">インスタンスを宣言するときに引数を渡すことができます。引数を渡すときに呼び出すメソッドを**コンストラクタ**と言います。  
 コンストラクタは主に、宣言時に初期化したいものの値などを渡してあげます。  
 
 ```cpp : car2.cpp
@@ -1700,34 +1872,29 @@ int main(void){
 このように引数を渡すことができます。この例では、燃料の初期値として`100`を渡しています。渡す引数はそれぞれのクラスで異なるため、クラスを使用する場合には宣言方法をしっかりと確認する必要があります。  
 
 </code></pre>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [一週間で身につくC++言語の基本](https://cpp-lang.sevendays-study.com/index.html)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="回路の基礎-1"><a class="header" href="#回路の基礎-1">回路の基礎</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="回路の基礎-1"><a class="header" href="#回路の基礎-1">回路の基礎</a></h1>
 <h2 id="基本物理量"><a class="header" href="#基本物理量">基本物理量</a></h2>
-<pre><code class="language-admonish info &quot;電流とは&quot;">**電荷**(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。  
+<pre><code class="language-admonish info title = &quot;電流とは&quot;">**電荷**(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。  
 電流は \\(I\\) で表され、単位は \\(\mathrm{[A]}\\) (アンペア)です。  
 </code></pre>
 <p>電流が流れる路を<strong>電気回路</strong>と言います。</p>
-<pre><code class="language-admonish info &quot;電圧とは&quot;">電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を**電位差**と言い、電気回路では電圧とも言います。  
+<pre><code class="language-admonish info title = &quot;電圧とは&quot;">電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を**電位差**と言い、電気回路では電圧とも言います。  
 電圧は \\(V\\) で表され、単位は \\(\mathrm{[V]}\\) (ボルト)です。  
 </code></pre>
 <p>電流は電位の高い方から低い方に向かって流れます。</p>
 <p>![r_circuit](../resources/BasicContents/circuit/r_circuit.png =x200 center)</p>
-<pre><code class="language-admonish info &quot;抵抗とは&quot;">電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを**電圧降下**と言います。  
+<pre><code class="language-admonish info title = &quot;抵抗とは&quot;">電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを**電圧降下**と言います。  
 抵抗は \\(R\\) で表され、単位は \\(\mathrm{[\Omega]}\\) (オーム)です。
 </code></pre>
 <h2 id="si接頭語"><a class="header" href="#si接頭語">SI接頭語</a></h2>
-<p>大きな数字や小さな数字をわかりやすく表すために、10のべき乗を表し桁数を少なくします。<br>電気回路で使用するSI接頭語の一部を紹介します。電気回路では\(10^{3}\)ごとのSI接頭語を使用します。</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: center">記号</th><th style="text-align: center">接頭語</th><th style="text-align: center">\(10^{n}\)</th></tr>
-</thead>
-<tbody>
+<p>大きな数字や小さな数字をわかりやすく表すために、10のべき乗を表し桁数を少なくします。<br />
+電気回路で使用するSI接頭語の一部を紹介します。電気回路では\(10^{3}\)ごとのSI接頭語を使用します。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">記号</th><th style="text-align: center">接頭語</th><th style="text-align: center">\(10^{n}\)</th></tr></thead><tbody>
 <tr><td style="text-align: center">\(T\)</td><td style="text-align: center">テラ</td><td style="text-align: center">\(10^{12}\)</td></tr>
 <tr><td style="text-align: center">\(G\)</td><td style="text-align: center">ギラ</td><td style="text-align: center">\(10^{9}\)</td></tr>
 <tr><td style="text-align: center">\(M\)</td><td style="text-align: center">メガ</td><td style="text-align: center">\(10^{6}\)</td></tr>
@@ -1736,12 +1903,12 @@ int main(void){
 <tr><td style="text-align: center">\(\mu\)</td><td style="text-align: center">マイクロ</td><td style="text-align: center">\(10^{-6}\)</td></tr>
 <tr><td style="text-align: center">\(n\)</td><td style="text-align: center">ナノ</td><td style="text-align: center">\(10^{-9}\)</td></tr>
 <tr><td style="text-align: center">\(p\)</td><td style="text-align: center">ピコ</td><td style="text-align: center">\(10^{-12}\)</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <h2 id="オームの法則"><a class="header" href="#オームの法則">オームの法則</a></h2>
-<p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br>$$ V = RI $$</p>
-<pre><code class="language-admonish example &quot;例&quot;">次の回路では何\\(\mathrm{[A]}\\)の電流が流れるでしょうか。  
+<p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br />
+$$ V = RI $$</p>
+<pre><code class="language-admonish example title = &quot;例&quot;">次の回路では何\\(\mathrm{[A]}\\)の電流が流れるでしょうか。  
 
 ![r_10k_circuit](../resources/BasicContents/circuit/r_10k_circuit.png =x200 center)  
 
@@ -1752,7 +1919,7 @@ I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}} = 
 抵抗\\(R\\)の両端には電源である\\(E\\)がすべて印加されます。そのため、\\(R\\)に印加される電圧は\\(3.3\mathrm{[V]}\\)となります。  
 </code></pre>
 <h2 id="直列回路と並列回路"><a class="header" href="#直列回路と並列回路">直列回路と並列回路</a></h2>
-<pre><code class="language-admonish info &quot;直列接続&quot;">素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。  
+<pre><code class="language-admonish info title = &quot;直列接続&quot;">素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。  
 直列接続の場合は電圧と電流は次のようになります。  
 
 ![r_series_circuit](../resources/BasicContents/circuit/r_series_circuit.png =x250 center)
@@ -1761,7 +1928,7 @@ $$ E = V_{1} + V_{2} \\\\
 I = I_{1} = I_{2} $$
 
 </code></pre>
-<pre><code class="language-admonish info &quot;並列接続&quot;">素子の端子同士を両端接続する方法です。図として表すと次のようになります。  
+<pre><code class="language-admonish info title = &quot;並列接続&quot;">素子の端子同士を両端接続する方法です。図として表すと次のようになります。  
 並列接続の場合は電圧と電流は次のようになります。  
 
 ![r_parallel_circuit](../resources/BasicContents/circuit/r_parallel_circuit.png =x250 center)
@@ -1771,8 +1938,11 @@ I = I_{1} + I_{2} $$
 
 </code></pre>
 <h2 id="合成抵抗"><a class="header" href="#合成抵抗">合成抵抗</a></h2>
-<p>抵抗が複数ある場合は全体の抵抗はどうなるでしょうか。<br>全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br>直列接続の合成抵抗は次の式で求められます。<br>$$ R = R_{1} + R_{2} $$</p>
-<pre><code class="language-admonish example &quot;例&quot;">次の回路の合成抵抗を求めます。
+<p>抵抗が複数ある場合は全体の抵抗はどうなるでしょうか。<br />
+全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br />
+直列接続の合成抵抗は次の式で求められます。<br />
+$$ R = R_{1} + R_{2} $$</p>
+<pre><code class="language-admonish example title = &quot;例&quot;">次の回路の合成抵抗を求めます。
 
 ![r_10k_series_10k_circuit](../resources/BasicContents/circuit/r_10k_series_10k_circuit.png =x250 center)
 
@@ -1791,7 +1961,7 @@ $$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
 抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
 $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
 この式を「和分の積」と呼ぶ人もいます。</p>
-<pre><code class="language-admonish example &quot;例&quot;">次の回路の合成抵抗を求めます。
+<pre><code class="language-admonish example title = &quot;例&quot;">次の回路の合成抵抗を求めます。
 
 ![r_10k_parallel_10k_circuit](../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png =x250 center)
 
@@ -1806,10 +1976,11 @@ $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} = \frac{5 \times 10^{3} \times 10 \times
 並列接続の場合は合成抵抗は小さくなります。
 </code></pre>
 <h2 id="分圧"><a class="header" href="#分圧">分圧</a></h2>
-<p>直列接続の場合は全体の電圧が\(V = V_{1} + V_{2}\)で表されます。<br>\(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
+<p>直列接続の場合は全体の電圧が\(V = V_{1} + V_{2}\)で表されます。<br />
+\(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
 $$ V_{1} = \frac{R_{1}}{R}V \\
 V_{2} = \frac{R_{2}}{R}V $$</p>
-<pre><code class="language-admonish example &quot;例&quot;">次の回路のそれぞれの抵抗に加わる電圧を求めます。
+<pre><code class="language-admonish example title = &quot;例&quot;">次の回路のそれぞれの抵抗に加わる電圧を求めます。
 
 ![r_10k_series_10k_circuit](../resources/BasicContents/circuit/r_10k_series_10k_circuit.png =x250 center)
 
@@ -1826,10 +1997,11 @@ V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{15 \times 10^{3}} \times 5.0 
 抵抗が大きい方に電圧が多く加わります。
 </code></pre>
 <h2 id="分流"><a class="header" href="#分流">分流</a></h2>
-<p>並列接続の場合は全体の電流が\(I = I_{1} + I_{2}\)で表されます。<br>\(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
+<p>並列接続の場合は全体の電流が\(I = I_{1} + I_{2}\)で表されます。<br />
+\(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
 $$ I_{1} = \frac{R}{R_{1}}I = \frac{R_{2}}{R_{1} + R_{2}}I \\
 I_{2} = \frac{R}{R_{2}}I = \frac{R_{1}}{R_{1} + R_{2}}I $$</p>
-<pre><code class="language-admonish example &quot;例&quot;">次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\\(I\\)をオームの法則で求めます。
+<pre><code class="language-admonish example title = &quot;例&quot;">次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\\(I\\)をオームの法則で求めます。
 
 ![r_10k_parallel_10k_circuit](../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png =x250 center)
 
@@ -1847,43 +2019,46 @@ I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $
 抵抗が小さい方に電流が多く流れます。
 </code></pre>
 <h2 id="短絡と開放"><a class="header" href="#短絡と開放">短絡と開放</a></h2>
-<p><strong>短絡</strong>は\(R=0\)であることです。<br>抵抗がないため\(V=RI=0\)になります。このとき\(I\neq0\)になります。</p>
-<p><strong>開放</strong>は\(R=\infty\)であることです。<br>抵抗が無限大のため\(I=\frac{V}{R}=0\)になります。このとき\(V\neq0\)になります。</p>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<p><strong>短絡</strong>は\(R=0\)であることです。<br />
+抵抗がないため\(V=RI=0\)になります。このとき\(I\neq0\)になります。</p>
+<p><strong>開放</strong>は\(R=\infty\)であることです。<br />
+抵抗が無限大のため\(I=\frac{V}{R}=0\)になります。このとき\(V\neq0\)になります。</p>
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - 講習資料
 - [電気回路の基礎](https://www.morikita.co.jp/books/mid/073253)
 - [SI接頭語](https://www.dainippon-tosho.co.jp/unit/si_prefix.html)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dcモーターの制御-1"><a class="header" href="#dcモーターの制御-1">DCモーターの制御</a></h1>
 <h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
-<p>回路的には以下のようになっています。<br><img src="resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png"><br>モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br>また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
+<p>回路的には以下のようになっています。<br />
+<img src="BasicContents/../resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png" /><br />
+モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br />
+また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
 <h2 id="pwm"><a class="header" href="#pwm">PWM</a></h2>
-<pre><code class="language-admonish info &quot;PWMとは&quot;">`Pulse Width Modulation`の略で`パルス幅変調`といいます。  
+<pre><code class="language-admonish info title = &quot;PWMとは&quot;">`Pulse Width Modulation`の略で`パルス幅変調`といいます。  
 一定周期の中で出力が`HIGH`の時間と`LOW`の時間の比(デューティー比)で中間の電圧を擬似的に表現します。  
 
 PWMの出力波形は以下の図のようなものです。  
 ![pwm_pwm_waveform.png](../resources/BasicContents/motor/pwm_waveform.png)  
 </code></pre>
-<pre><code class="language-admonish example &quot;出力の例&quot;">GPIOピンの出力が`5V`でデューティー比が`25%`であれば、出力は`1.25V`になります。出力電圧は以下の式で求められます。  
+<pre><code class="language-admonish example title = &quot;出力の例&quot;">GPIOピンの出力が`5V`でデューティー比が`25%`であれば、出力は`1.25V`になります。出力電圧は以下の式で求められます。  
 $$ 出力電圧 = {最大電圧} \times {デューティー比} $$  
 デューティー比が小さいと素子によってはデューティー比`0％`とあまり変わらない結果が得られるものもあります。**各素子の動作電圧**などを確認してください。  
 </code></pre>
 <h2 id="出力の決定"><a class="header" href="#出力の決定">出力の決定</a></h2>
 <p>モーターへの出力は<code>Digital</code>と<code>PWM</code>の2つで決まり、<code>Digital</code>と<code>PWM</code>の差が出力になります。図示すると以下のようになります。</p>
-<p><img src="resources/BasicContents/motor/motor_output.png" alt="motor_output.png"></p>
+<p><img src="BasicContents/../resources/BasicContents/motor/motor_output.png" alt="motor_output.png" /></p>
 <p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応します。</p>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">- [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">- [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  
 - [STM32 HALを使ってPWM出力してみる](https://moons.link/post-632/)  
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="コントローラーのデータ-1"><a class="header" href="#コントローラーのデータ-1">コントローラーのデータ</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="コントローラーのデータ-1"><a class="header" href="#コントローラーのデータ-1">コントローラーのデータ</a></h1>
 <h2 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h2>
 <p>双葉電子の<code>FEP02</code>を使用しています。</p>
-<pre><code class="language-admonish info &quot;製品情報&quot;">[FEP-02](https://www.futaba.co.jp/product/industry/industry_module/fep02)  
+<pre><code class="language-admonish info title = &quot;製品情報&quot;">[FEP-02](https://www.futaba.co.jp/product/industry/industry_module/fep02)  
 </code></pre>
 <p><code>920MHz</code>帯の無線モジュールです。<code>UART</code>(シリアル通信)でデータの送受信を行っています。<code>Baudrate</code>は<code>38400bps</code>の設定になっているものが多いです。</p>
 <h2 id="送信側"><a class="header" href="#送信側">送信側</a></h2>
@@ -1892,10 +2067,11 @@ $$ 出力電圧 = {最大電圧} \times {デューティー比} $$
 <li><code>Arduino Uno R3</code></li>
 <li><code>USB Host Shield 2.0</code></li>
 <li><code>FEP</code></li>
-<li>コントローラー<br><code>DUALSHOCK4</code>など</li>
+<li>コントローラー<br />
+<code>DUALSHOCK4</code>など</li>
 </ul>
 <p>以下の図のように接続します。</p>
-<p><img src="resources/BasicContents/Controller/tx_connect.png" alt="tx_connect.png"></p>
+<p><img src="BasicContents/../resources/BasicContents/Controller/tx_connect.png" alt="tx_connect.png" /></p>
 <h2 id="受信側"><a class="header" href="#受信側">受信側</a></h2>
 <p>使用機器</p>
 <ul>
@@ -1904,40 +2080,39 @@ $$ 出力電圧 = {最大電圧} \times {デューティー比} $$
 <li><code>FEP</code></li>
 </ul>
 <p>以下の図のように接続します。</p>
-<p><img src="resources/BasicContents/Controller/rx_connect.png" alt="rx_connect.png"></p>
+<p><img src="BasicContents/../resources/BasicContents/Controller/rx_connect.png" alt="rx_connect.png" /></p>
 <h2 id="送受信するデータ"><a class="header" href="#送受信するデータ">送受信するデータ</a></h2>
 <p><code>DUALSHOCK4</code>の場合</p>
-<p><img src="resources/BasicContents/Controller/data_assign_DUALSHOCK4.png" alt="data_assign_DUALSHOCK4.png"></p>
+<p><img src="BasicContents/../resources/BasicContents/Controller/data_assign_DUALSHOCK4.png" alt="data_assign_DUALSHOCK4.png" /></p>
 <p><code>DUALSHOCK3</code>の場合</p>
-<p><img src="resources/BasicContents/Controller/data_assign_DUALSHOCK3.png" alt="data_assign_DUALSHOCK4.png"></p>
+<p><img src="BasicContents/../resources/BasicContents/Controller/data_assign_DUALSHOCK3.png" alt="data_assign_DUALSHOCK4.png" /></p>
 <p><code>DUALSENSE</code>の場合</p>
-<p><img src="resources/BasicContents/Controller/data_assign_DUALSENSE.png" alt="data_assign_DUALSHOCK4.png"></p>
+<p><img src="BasicContents/../resources/BasicContents/Controller/data_assign_DUALSENSE.png" alt="data_assign_DUALSHOCK4.png" /></p>
 <p>データ型はすべて<code>uint8_t</code>で、合計13Byteのデータになっています。</p>
-<pre><code class="language-admonish info &quot;追加のデータ&quot;">`header` : `0xaf` 先頭データを意味します。  
+<pre><code class="language-admonish info title = &quot;追加のデータ&quot;">`header` : `0xaf` 先頭データを意味します。  
 `SUM` : データ確認用のSUMです。 `1~8Byte`の合計値になっています。  
 `footer` : `0xed`  終端データを意味します。
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
-<h2 id="環境構築"><a class="header" href="#環境構築"><a href="#環境構築-1">環境構築</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">`PlatformIO`とはなにか  
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platformio"><a class="header" href="#platformio">PlatformIO</a></h1>
+<h2 id="環境構築"><a class="header" href="#環境構築"><a href="PlatformIO/./setup.html">環境構築</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">`PlatformIO`とはなにか  
 `Visual Studio Code`、`PlatformIO IDE`、`Python`のインストール
 </code></pre>
-<h2 id="プロジェクトの基本操作"><a class="header" href="#プロジェクトの基本操作"><a href="#プロジェクトの基本操作-1">プロジェクトの基本操作</a></a></h2>
-<pre><code class="language-admonish abstract &quot;内容&quot;">プロジェクトの作成方法  
+<h2 id="プロジェクトの基本操作"><a class="header" href="#プロジェクトの基本操作"><a href="PlatformIO/./make_project.html">プロジェクトの基本操作</a></a></h2>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">プロジェクトの作成方法  
 初期設定など  
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="環境構築-1"><a class="header" href="#環境構築-1">環境構築</a></h1>
-<pre><code class="language-admonish info &quot;PlatformIO IDEとは&quot;">`vscode`(`Visual Studio Code`)の拡張機能の一つです。マイコンへのプログラム作成やプログラムのビルド、マイコンへの書き込みなど、基本的なことが一つでできるようになる拡張機能です。  
+<div style="break-before: page; page-break-before: always;"></div><h1 id="環境構築-1"><a class="header" href="#環境構築-1">環境構築</a></h1>
+<pre><code class="language-admonish info title = &quot;PlatformIO IDEとは&quot;">`vscode`(`Visual Studio Code`)の拡張機能の一つです。マイコンへのプログラム作成やプログラムのビルド、マイコンへの書き込みなど、基本的なことが一つでできるようになる拡張機能です。  
 さまざまなフレームワーク(環境)に対応した拡張機能で、いろいろなマイコンへのプログラムをこの拡張機能だけで対応できます。  
 OSにあまり依存しないため、誰でも気軽に作成することができます。
 </code></pre>
 <h2 id="visual-studio-codeの導入"><a class="header" href="#visual-studio-codeの導入">Visual Studio Codeの導入</a></h2>
-<p>導入済みの人は<a href="#platformio-ideの導入">PlatformIO IDEの導入</a></p>
+<p>導入済みの人は<a href="PlatformIO/setup.html#platformio-ide%E3%81%AE%E5%B0%8E%E5%85%A5">PlatformIO IDEの導入</a></p>
 <ul>
 <li><code>vscode</code>をダウンロードします。
-<a href="https://code.visualstudio.com/">Visual Studio Code</a><br><code>Download for Windows</code>から<code>Windows</code>版のインストーラーをダウンロードしてください。</li>
+<a href="https://code.visualstudio.com/">Visual Studio Code</a><br />
+<code>Download for Windows</code>から<code>Windows</code>版のインストーラーをダウンロードしてください。</li>
 <li>ダウンロードしたインストーラー<code>VSCodeUserSetup-x64-x.x.x.exe</code>をクリックし、インストーラーを起動します。
 同意し、基本的に<code>次へ</code>の選択で大丈夫です。
 デスクトップのショートカット、あるいは、スタートから起動してください。</li>
@@ -1946,7 +2121,7 @@ OSにあまり依存しないため、誰でも気軽に作成することがで
 <li>初回起動時はテーマなどの選択画面が表示されると思います。
 個人的にはライト(Visual Studio Light)がおすすめです。</li>
 </ul>
-<pre><code class="language-admonish important &quot;学内LANでダウンロードなどをする場合&quot;">パソコンのプロキシ設定に加えて`vscode`のプロキシ設定も必要です。  
+<pre><code class="language-admonish important title = &quot;学内LANでダウンロードなどをする場合&quot;">パソコンのプロキシ設定に加えて`vscode`のプロキシ設定も必要です。  
 - 左下の歯車マークから設定を開きます。(`Ctrl`+`,`)  
   ![settings](../resources/PlatformIO/setup/settings.png =x200)  
 - 検索欄に`proxy`と入力し、次の項目を探します。  
@@ -1955,17 +2130,21 @@ OSにあまり依存しないため、誰でも気軽に作成することがで
 </code></pre>
 <ul>
 <li>まずは言語を日本語に変更します。</li>
-<li>左のバーのブロックのマークから拡張機能を開きます。(<code>Ctrl</code>+<code>Shift</code>+<code>x</code>)<br>![market](../resources/PlatformIO/setup/market.png =x50)</li>
-<li>マーケットプレイスの検索欄に<code>japanese</code>と入力し、<code>Japanese Language Pack for Visual Studio Code</code>を探します。<br><img src="resources/PlatformIO/setup/japanese_language_pack.png" alt="japanese language pack"></li>
-<li><code>install</code>を押し、インストールを行い、通知から<code>vscode</code>を再起動します。<br><img src="resources/PlatformIO/setup/restart_by_language.png" alt="restart by language"></li>
+<li>左のバーのブロックのマークから拡張機能を開きます。(<code>Ctrl</code>+<code>Shift</code>+<code>x</code>)<br />
+![market](../resources/PlatformIO/setup/market.png =x50)</li>
+<li>マーケットプレイスの検索欄に<code>japanese</code>と入力し、<code>Japanese Language Pack for Visual Studio Code</code>を探します。<br />
+<img src="PlatformIO/../resources/PlatformIO/setup/japanese_language_pack.png" alt="japanese language pack" /></li>
+<li><code>install</code>を押し、インストールを行い、通知から<code>vscode</code>を再起動します。<br />
+<img src="PlatformIO/../resources/PlatformIO/setup/restart_by_language.png" alt="restart by language" /></li>
 </ul>
 <h2 id="platformio-ideの導入"><a class="header" href="#platformio-ideの導入">PlatformIO IDEの導入</a></h2>
 <ul>
 <li><code>PlatformIO IDE</code>をインストールします。</li>
-<li>拡張機能のタブから検索欄に<code>platformio</code>と入力し、<code>PlatformIO IDE</code>を探します。<br><img src="resources/PlatformIO/setup/platformio_ide.png" alt="platformio ide"></li>
+<li>拡張機能のタブから検索欄に<code>platformio</code>と入力し、<code>PlatformIO IDE</code>を探します。<br />
+<img src="PlatformIO/../resources/PlatformIO/setup/platformio_ide.png" alt="platformio ide" /></li>
 <li><code>インストール</code>を押し、インストールを行います。</li>
 </ul>
-<pre><code class="language-admonish warning &quot;Pythonの導入&quot;">`PlatformIO`のインストール中に次のようなメッセージが通知される場合があります。  
+<pre><code class="language-admonish warning title = &quot;Pythonの導入&quot;">`PlatformIO`のインストール中に次のようなメッセージが通知される場合があります。  
 ```log
 PlatformIO: Can not find working Python 3.6+ Interpreter. 
 Please install the latest Python 3 and restart VSCode
@@ -1975,7 +2154,7 @@ Please install the latest Python 3 and restart VSCode
 `Python`をインストールしていない人は通知のボタンから`Install Python`を押してダウンロードサイトからWindows用をダウンロードしましょう。[Python Releases for Windows](https://www.python.org/downloads/windows/)  
 すでに`Python`をインストールしている場合は`I have Python`を押して`python.exe`の`PATH`を教えてあげます。  
 
-&gt; `PlatformIO`は`Python 3.11`以下でのみ動作する場合があります。そのようなエラーメッセージが表示された場合は、ダウンロードサイトの下の方に過去のバージョンリリースがあるのでそこからインストーラーをダウンロードします。  
+&gt; `PlatformIO`は`Python 3.6`以上`Python 3.11`以下でのみ動作します(2026/05/12時点)。ダウンロードサイトの下の方に過去のバージョンリリースがあるのでそこからインストーラーをダウンロードします。  
 &gt; ![install python 3.11](../resources/PlatformIO/setup/install_python3_11.png)  
 
 - ダウンロードしたインストーラーを実行します。
@@ -1986,15 +2165,14 @@ Please install the latest Python 3 and restart VSCode
 `Disable path length limit`という項目が表示される場合があります。これは、パスの長さの上限についての項目です。選択する、しないはそれぞれで決めてください。行わなくても問題はないと思います(自分は選択しました)。  
 インストーラーを終了したら、`vscode`を一度再起動し、他のインストールが終了するのを待ちます。
 </code></pre>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [ArduinoをVSCodeで開発する【PlatformIO】](https://tech.nri-net.com/entry/arduino_with_vscode)  
 - [Visual Studio Code に Proxy を設定する方法](https://qiita.com/cointoss1973/items/b3c84daeed90fd183501)  
 - [Windows版Pythonのインストール](https://www.python.jp/install/windows/install.html)  
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="プロジェクトの基本操作-1"><a class="header" href="#プロジェクトの基本操作-1">プロジェクトの基本操作</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="プロジェクトの基本操作-1"><a class="header" href="#プロジェクトの基本操作-1">プロジェクトの基本操作</a></h1>
 <h2 id="プロジェクトの作成"><a class="header" href="#プロジェクトの作成">プロジェクトの作成</a></h2>
 <ul>
 <li>
@@ -2040,7 +2218,7 @@ Please install the latest Python 3 and restart VSCode
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish example &quot;例&quot;">![](../resources/PlatformIO/make_project/project_wizard_example.png =400x)
+<pre><code class="language-admonish example title = &quot;例&quot;">![](../resources/PlatformIO/make_project/project_wizard_example.png =400x)
 </code></pre>
 </li>
 <li>
@@ -2059,7 +2237,7 @@ Please install the latest Python 3 and restart VSCode
 </li>
 <li>
 <p>作成されたファイルを編集します。</p>
-<pre><code class="language-admonish example &quot;platformio.ini&quot;">
+<pre><code class="language-admonish example title = &quot;platformio.ini&quot;">
 ```ini :
 ; PlatformIO Project Configuration File
 ;
@@ -2085,7 +2263,7 @@ build_cache_dir = ./.cache
 このプロジェクトの更新の表示が終わるまで待ちましょう。
 
 </code></pre>
-<pre><code class="language-admonish example &quot;.gitignore&quot;">
+<pre><code class="language-admonish example title = &quot;.gitignore&quot;">
 ```.gitignore
 .pio
 .vscode/.browse.c_cpp.db*
@@ -2123,29 +2301,33 @@ build_cache_dir = ./.cache
 </li>
 </ul>
 <h2 id="ビルドとアップロード"><a class="header" href="#ビルドとアップロード">ビルドとアップロード</a></h2>
-<p>コードを作成したら書き込むコードを作成します。<br>コードだけを作成する場合は<code>Build</code>、書き込みまで行う場合は<code>Upload</code>をします。<br>右上の三角から<code>Build</code>または<code>Upload</code>を選択します。</p>
+<p>コードを作成したら書き込むコードを作成します。<br />
+コードだけを作成する場合は<code>Build</code>、書き込みまで行う場合は<code>Upload</code>をします。<br />
+右上の三角から<code>Build</code>または<code>Upload</code>を選択します。</p>
 <p>![build_upload](../resources/PlatformIO/make_project/build_upload.png =200x)</p>
 <p>成功した場合は<code>[SUCCESS]</code>と表示されます。</p>
-<p><img src="resources/PlatformIO/make_project/upload_success.png" alt="upload_success"></p>
-<p>失敗した場合は<code>[FAILED]</code>と表示されます。<br>失敗した場合はエラーメッセージも出力されます。</p>
-<p><img src="resources/PlatformIO/make_project/build_failed.png" alt="build_failed"></p>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/upload_success.png" alt="upload_success" /></p>
+<p>失敗した場合は<code>[FAILED]</code>と表示されます。<br />
+失敗した場合はエラーメッセージも出力されます。</p>
+<p><img src="PlatformIO/../resources/PlatformIO/make_project/build_failed.png" alt="build_failed" /></p>
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - 講習資料
 - [ArduinoをVSCodeで開発する【PlatformIO】](https://tech.nri-net.com/entry/arduino_with_vscode)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="mbed"><a class="header" href="#mbed">mbed</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mbed"><a class="header" href="#mbed">mbed</a></h1>
 <p>主に<code>PlatformIO</code>で<code>Framework</code>として使用する場合の説明をします。</p>
-<pre><code class="language-admonish warning &quot;注意点&quot;">C言語とC++がある程度わかっている前提で話を進めます。  
+<pre><code class="language-admonish warning title = &quot;注意点&quot;">C言語とC++がある程度わかっている前提で話を進めます。  
 C言語の簡単な勉強は[このページ](../BasicContents/language_c.md)、C++の簡単な勉強は[このページ](../BasicContents/language_cpp.md)で勉強してください。  
 </code></pre>
-<pre><code class="language-admonish abstract &quot;内容&quot;">プロジェクトの作成方法  
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">プロジェクトの作成方法  
 `mbed`で使用できる関数やクラス  
 `mbed`用ライブラリの使い方など
 </code></pre>
-<p>使用する場合は<code>mbed.h</code>をインクルードする必要があります。<br>ソースコードは<code>.cpp</code>である必要があります。<br><code>main.cpp</code>の雛形を示します。</p>
+<p>使用する場合は<code>mbed.h</code>をインクルードする必要があります。<br />
+ソースコードは<code>.cpp</code>である必要があります。<br />
+<code>main.cpp</code>の雛形を示します。</p>
 <pre><code class="language-cpp : main.cpp">#include "mbed.h"
 
 using namespace std;
@@ -2161,38 +2343,37 @@ int main(void){
 }
 </code></pre>
 <h2 id="gpio"><a class="header" href="#gpio">GPIO</a></h2>
-<h3 id="ディジタル出力"><a class="header" href="#ディジタル出力"><a href="#ディジタル出力-1">ディジタル出力</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">ディジタル出力  
+<h3 id="ディジタル出力"><a class="header" href="#ディジタル出力"><a href="mbed/./gpio/DigitalOut.html">ディジタル出力</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">ディジタル出力  
 Lチカプログラム
 </code></pre>
-<h3 id="ディジタル入力"><a class="header" href="#ディジタル入力"><a href="#ディジタル入力-1">ディジタル入力</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">ディジタル入力  
+<h3 id="ディジタル入力"><a class="header" href="#ディジタル入力"><a href="mbed/./gpio/DigitalIn.html">ディジタル入力</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">ディジタル入力  
 プッシュスイッチによる`LED`制御プログラム
 </code></pre>
 <h2 id="timer"><a class="header" href="#timer">Timer</a></h2>
-<h3 id="pwm出力"><a class="header" href="#pwm出力"><a href="#pwm出力-1">PWM出力</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">`PWM`出力  
+<h3 id="pwm出力"><a class="header" href="#pwm出力"><a href="mbed/./timer/PwmOut.html">PWM出力</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">`PWM`出力  
 やわらかいLチカプログラム
 </code></pre>
 <h2 id="analog"><a class="header" href="#analog">Analog</a></h2>
-<h3 id="アナログ入力"><a class="header" href="#アナログ入力"><a href="#アナログ入力-1">アナログ入力</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">アナログ入力  
+<h3 id="アナログ入力"><a class="header" href="#アナログ入力"><a href="mbed/./analog/AnalogIn.html">アナログ入力</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">アナログ入力  
 半固定抵抗による`LED`制御プログラム
 </code></pre>
 <h2 id="thread"><a class="header" href="#thread">Thread</a></h2>
-<h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="#thisthread">待ち時間</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">待ち時間の作成  
+<h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="mbed/./thread/ThisThread.html">待ち時間</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">待ち時間の作成  
 </code></pre>
 <h2 id="通信"><a class="header" href="#通信">通信</a></h2>
-<h3 id="値の表示"><a class="header" href="#値の表示"><a href="#値の表示-1">値の表示</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">PCから変数値などを確認する方法  
+<h3 id="値の表示"><a class="header" href="#値の表示"><a href="mbed/./connectivity/showValuePrintf.html">値の表示</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">PCから変数値などを確認する方法  
 </code></pre>
-<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="#受信側ライブラリの使い方">受信側(lib)</a></a></h3>
-<pre><code class="language-admonish abstract &quot;内容&quot;">コントローラーのデータを受信、使用するためのライブラリ  
+<h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="mbed/./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<pre><code class="language-admonish abstract title = &quot;内容&quot;">コントローラーのデータを受信、使用するためのライブラリ  
 使用方法、サンプルプログラムなど  
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="ディジタル出力-1"><a class="header" href="#ディジタル出力-1">ディジタル出力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ディジタル出力-1"><a class="header" href="#ディジタル出力-1">ディジタル出力</a></h1>
 <h2 id="digitalout"><a class="header" href="#digitalout"><code>DigitalOut</code></a></h2>
 <p>ディジタル出力をする場合は、<code>DigitalOut</code>クラスを使用します。</p>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
@@ -2216,7 +2397,8 @@ Lチカプログラム
 <pre><code class="language-cpp : 初期値：1">DigitalOut led2(PA_5, 1);
 </code></pre>
 <h3 id="void-writeint-value"><a class="header" href="#void-writeint-value"><code>void write(int value)</code></a></h3>
-<p>ピンの出力を<code>0</code>、または、<code>1</code>に指定します。出力は論理値になります。<br><code>0</code>は<code>LOW</code>に、<code>1</code>は<code>HIGH</code>に指定します。</p>
+<p>ピンの出力を<code>0</code>、または、<code>1</code>に指定します。出力は論理値になります。<br />
+<code>0</code>は<code>LOW</code>に、<code>1</code>は<code>HIGH</code>に指定します。</p>
 <pre><code class="language-cpp : 1に設定">led2.write(1);
 </code></pre>
 <h3 id="int-readvoid"><a class="header" href="#int-readvoid"><code>int read(void)</code></a></h3>
@@ -2224,7 +2406,7 @@ Lチカプログラム
 <pre><code class="language-cpp : 設定値の取得">int pin_state = led2.read();
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
-<pre><code class="language-admonish example &quot;Lチカ&quot;">`PA5`を`250ms`間隔で出力を反転させるプログラムです。  
+<pre><code class="language-admonish example title = &quot;Lチカ&quot;">`PA5`を`250ms`間隔で出力を反転させるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が`250ms`間隔で点滅します。  
 
 ```cpp : main.cpp
@@ -2259,19 +2441,18 @@ int main(void){
 </code></pre>
 <h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
 <h3 id="int-is_connectedvoid"><a class="header" href="#int-is_connectedvoid"><code>int is_connected(void)</code></a></h3>
-<hr>
-<pre><code class="language-admonish quote &quot;使用部品&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
 </code></pre>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="ディジタル入力-1"><a class="header" href="#ディジタル入力-1">ディジタル入力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ディジタル入力-1"><a class="header" href="#ディジタル入力-1">ディジタル入力</a></h1>
 <h2 id="digitalin"><a class="header" href="#digitalin"><code>DigitalIn</code></a></h2>
 <p>ディジタル入力をする場合は、<code>DigitalIn</code>クラスを使用します。</p>
 <h3 id="コンストラクタ-1"><a class="header" href="#コンストラクタ-1">コンストラクタ</a></h3>
@@ -2326,7 +2507,7 @@ int main(void){
 <pre><code class="language-cpp : ピンモード：プルダウン">button1.mode(PullDown);
 </code></pre>
 <h2 id="サンプルプログラム-1"><a class="header" href="#サンプルプログラム-1">サンプルプログラム</a></h2>
-<pre><code class="language-admonish example &quot;LED点灯&quot;">`PA5`を`PC13`の入力値を出力に設定するプログラムです。  
+<pre><code class="language-admonish example title = &quot;LED点灯&quot;">`PA5`を`PC13`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が評価ボード上の`B1`(青のプッシュスイッチ)を押していると消灯し、押していないと点灯します。  
 
 ```cpp : main.cpp
@@ -2361,23 +2542,22 @@ int main(void){
 </code></pre>
 <h2 id="他のメソッド使用したことがない-1"><a class="header" href="#他のメソッド使用したことがない-1">他のメソッド(使用したことがない)</a></h2>
 <h3 id="int-is_connectedvoid-1"><a class="header" href="#int-is_connectedvoid-1"><code>int is_connected(void)</code></a></h3>
-<hr>
-<pre><code class="language-admonish quote &quot;使用部品&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
 </code></pre>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
 - [About pullnone setting of unused pin for artix-7.](https://adaptivesupport.amd.com/s/question/0D52E00006hpZk5SAE/about-pullnone-setting-of-unused-pin-for-artix7?language=en_US)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="pwm出力-1"><a class="header" href="#pwm出力-1">PWM出力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pwm出力-1"><a class="header" href="#pwm出力-1">PWM出力</a></h1>
 <h2 id="pwmout"><a class="header" href="#pwmout"><code>PwmOut</code></a></h2>
 <p><code>PWM</code>出力をする場合は、<code>PwmOut</code>クラスを使用します。</p>
-<pre><code class="language-admonish note &quot;PWM&quot;">`PWM`はどういうものか[このページ](../../BasicContents/motor.md#pwm)で簡単に説明しています。  
+<pre><code class="language-admonish note title = &quot;PWM&quot;">`PWM`はどういうものか[このページ](../../BasicContents/motor.md#pwm)で簡単に説明しています。  
 </code></pre>
 <h3 id="コンストラクタ-2"><a class="header" href="#コンストラクタ-2">コンストラクタ</a></h3>
 <p>コンストラクタは<code>PwmOut(PinName pin)</code>で定義されています。</p>
@@ -2416,7 +2596,7 @@ int main(void){
 <h3 id="void-period_usint-us"><a class="header" href="#void-period_usint-us"><code>void period_us(int us)</code></a></h3>
 <p><code>PWM</code>の周期をマイクロ秒単位で指定します。</p>
 <h2 id="サンプルプログラム-2"><a class="header" href="#サンプルプログラム-2">サンプルプログラム</a></h2>
-<pre><code class="language-admonish example &quot;やわらかい点滅&quot;">`PWM`のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。  
+<pre><code class="language-admonish example title = &quot;やわらかい点滅&quot;">`PWM`のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`がやさしく点滅します。  
 
 ```cpp : main.cpp
@@ -2466,19 +2646,18 @@ int main(void){
 <p><code>PWM</code>の動作を一時停止します。停止中は他の呼び出しは動作しません。</p>
 <h3 id="void-resume"><a class="header" href="#void-resume"><code>void resume()</code></a></h3>
 <p><code>PWM</code>の動作を再開します。<code>suspend()</code>で停止する前の状態に復元します。</p>
-<hr>
-<pre><code class="language-admonish quote &quot;使用部品&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
 </code></pre>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="アナログ入力-1"><a class="header" href="#アナログ入力-1">アナログ入力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="アナログ入力-1"><a class="header" href="#アナログ入力-1">アナログ入力</a></h1>
 <h2 id="analogin"><a class="header" href="#analogin"><code>AnalogIn</code></a></h2>
 <p>アナログ入力をする場合は、<code>AnalogIn</code>クラスを使用します。</p>
 <h3 id="コンストラクタ-3"><a class="header" href="#コンストラクタ-3">コンストラクタ</a></h3>
@@ -2506,11 +2685,12 @@ int main(void){
 <pre><code class="language-cpp : 設定値の取得">float pin_value = var_r1.read();
 </code></pre>
 <h3 id="unsigned-short-read_u16void"><a class="header" href="#unsigned-short-read_u16void"><code>unsigned short read_u16(void)</code></a></h3>
-<p>ピンの入力電圧を読み取り、<code>0x0000(0%)</code>~<code>0xffff(100%)</code>の値を返します。<br>入力電圧を<code>16bit</code>に正規化して返します。</p>
+<p>ピンの入力電圧を読み取り、<code>0x0000(0%)</code>~<code>0xffff(100%)</code>の値を返します。<br />
+入力電圧を<code>16bit</code>に正規化して返します。</p>
 <pre><code class="language-cpp : 設定値の取得">uint16_t pin_value = var_r1.read_u16();
 </code></pre>
 <h2 id="サンプルプログラム-3"><a class="header" href="#サンプルプログラム-3">サンプルプログラム</a></h2>
-<pre><code class="language-admonish example &quot;LEDの明るさ制御&quot;">`PA5`を`PA0`の入力値を出力に設定するプログラムです。  
+<pre><code class="language-admonish example title = &quot;LEDの明るさ制御&quot;">`PA5`を`PA0`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。  
 
 ![variable_resistor_10k_breadboard](../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png =500x center)  
@@ -2557,8 +2737,8 @@ int main(void){
 <h3 id="float-read_voltagevoid"><a class="header" href="#float-read_voltagevoid"><code>float read_voltage(void)</code></a></h3>
 <h3 id="void-set_reference_voltagefloat-vref"><a class="header" href="#void-set_reference_voltagefloat-vref"><code>void set_reference_voltage(float vref)</code></a></h3>
 <h3 id="float-get_reference_voltage"><a class="header" href="#float-get_reference_voltage"><code>float get_reference_voltage()</code></a></h3>
-<hr>
-<pre><code class="language-admonish quote &quot;使用部品&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 - [ブレッドボード](https://akizukidenshi.com/catalog/g/g100315/)
@@ -2566,30 +2746,24 @@ int main(void){
 - ジャンパ線
 
 </code></pre>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="thisthread"><a class="header" href="#thisthread">ThisThread</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="thisthread"><a class="header" href="#thisthread">ThisThread</a></h1>
 <h2 id="待ち時間の作成"><a class="header" href="#待ち時間の作成">待ち時間の作成</a></h2>
 <p>待ち時間(遅延)を作成する場合は、名前空間<code>ThisThread</code>にある関数を使用します。</p>
 <h3 id="void-sleep_forkernelclockduration_u32-rel_time"><a class="header" href="#void-sleep_forkernelclockduration_u32-rel_time"><code>void sleep_for(Kernel::Clock::duration_u32 rel_time)</code></a></h3>
-<p>引数に待ち時間を渡します。<code>Kernel::Clock::duration_u32</code>は<code>chrono</code>時間と同じみたいです。<br>数値をそのまま渡す場合は、整数値に単位をつけて渡します。</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: center">名前</th><th style="text-align: center">単位</th><th style="text-align: center">例</th></tr>
-</thead>
-<tbody>
+<p>引数に待ち時間を渡します。<code>Kernel::Clock::duration_u32</code>は<code>chrono</code>時間と同じみたいです。<br />
+数値をそのまま渡す場合は、整数値に単位をつけて渡します。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">名前</th><th style="text-align: center">単位</th><th style="text-align: center">例</th></tr></thead><tbody>
 <tr><td style="text-align: center">時間</td><td style="text-align: center"><code>h</code></td><td style="text-align: center"><code>1h</code></td></tr>
 <tr><td style="text-align: center">分</td><td style="text-align: center"><code>min</code></td><td style="text-align: center"><code>1min</code></td></tr>
 <tr><td style="text-align: center">秒</td><td style="text-align: center"><code>s</code></td><td style="text-align: center"><code>1s</code></td></tr>
 <tr><td style="text-align: center">ミリ秒</td><td style="text-align: center"><code>ms</code></td><td style="text-align: center"><code>1ms</code></td></tr>
 <tr><td style="text-align: center">マイクロ秒</td><td style="text-align: center"><code>us</code></td><td style="text-align: center"><code>1us</code></td></tr>
 <tr><td style="text-align: center">ナノ秒</td><td style="text-align: center"><code>ns</code></td><td style="text-align: center"><code>1ns</code></td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <p>変数として渡す場合は、変数はそれぞれの型で宣言します。</p>
 <pre><code class="language-cpp : chrono変数">chrono::hours h_interval = 1h;
@@ -2599,26 +2773,29 @@ chrono::milliseconds ms_interval = 250ms;
 chrono::microseconds us_interval = 10us;
 chrono::nanoseconds ns_interval = 100ns;
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="値の表示-1"><a class="header" href="#値の表示-1">値の表示</a></h1>
-<p>変数の値などを確認できるようにします。<code>printf</code>で文字列をターミナルへ表示することがあります。<br><code>mbed</code>では同じようなことをする方法が2つあります。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="値の表示-1"><a class="header" href="#値の表示-1">値の表示</a></h1>
+<p>変数の値などを確認できるようにします。<code>printf</code>で文字列をターミナルへ表示することがあります。<br />
+<code>mbed</code>では同じようなことをする方法が2つあります。</p>
 <h2 id="用意されたものを使用する"><a class="header" href="#用意されたものを使用する">用意されたものを使用する</a></h2>
 <p>用意されたものを使用するのは簡単です。コードの中にそのまま<code>printf</code>を記述するだけです。</p>
 <pre><code class="language-cpp : printf.cpp">printf("sw:%d\n", sw.read());
 </code></pre>
-<p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br>シリアルモニターなどで確認できます。ボーレートはデフォルトで<code>9600</code>です。</p>
+<p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br />
+シリアルモニターなどで確認できます。ボーレートはデフォルトで<code>9600</code>です。</p>
 <h3 id="ボーレートの変更"><a class="header" href="#ボーレートの変更">ボーレートの変更</a></h3>
 <p><code>UnbufferedSerial</code>のインスタンスを宣言するだけでボーレートを変更することができます。</p>
 <pre><code class="language-cpp : UnbufferedSerialの宣言">UnbufferedSerial pc(USBTX, USBRX, 38400);
 </code></pre>
 <p><code>38400</code>がボーレートの設定になります。<code>9600</code>や<code>38400</code>、<code>115200</code>などに設定することが多いです。</p>
 <h2 id="自分で実装する"><a class="header" href="#自分で実装する">自分で実装する</a></h2>
-<p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br>使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
+<p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br />
+使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
 <h3 id="unbufferedserialの宣言"><a class="header" href="#unbufferedserialの宣言">UnbufferedSerialの宣言</a></h3>
 <pre><code class="language-cpp : UnbufferedSerialの宣言">UnbufferedSerial pc(USBTX, USBRX, 38400);
 // TX、RX、baudrate
 </code></pre>
-<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言します。<br><code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
+<p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言します。<br />
+<code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
 <h3 id="代替関数の実装"><a class="header" href="#代替関数の実装">代替関数の実装</a></h3>
 <p><code>printf</code>の代わりに呼び出す関数を定義します。</p>
 <pre><code class="language-cpp : 関数の定義">void pc_printf(const char *format, ...){
@@ -2630,9 +2807,11 @@ chrono::nanoseconds ns_interval = 100ns;
     pc.write(buf, len);
 }
 </code></pre>
-<p>詳細な説明は省きますが、無限長引数を解釈し、<code>buf</code>にまとめ、<code>pc.write()</code>で送信しています。<br><code>pc</code>は宣言した<code>UnbufferedSerial</code>のインスタンス名に合わせてください。</p>
+<p>詳細な説明は省きますが、無限長引数を解釈し、<code>buf</code>にまとめ、<code>pc.write()</code>で送信しています。<br />
+<code>pc</code>は宣言した<code>UnbufferedSerial</code>のインスタンス名に合わせてください。</p>
 <h2 id="浮動小数点数等の表示"><a class="header" href="#浮動小数点数等の表示">浮動小数点数等の表示</a></h2>
-<p>初めに<code>%f</code>を<code>printf</code>で使用すると、<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br>プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
+<p>初めに<code>%f</code>を<code>printf</code>で使用すると、<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
+プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
 <pre><code class="language-json : mbed_app.json">{
     "target_overrides":{
         "*":{
@@ -2642,22 +2821,146 @@ chrono::nanoseconds ns_interval = 100ns;
 }
 </code></pre>
 <p><code>long</code>等も正しく表示できない場合があります。その場合は、上記の<code>mbed_app.json</code>を作成する必要があります。</p>
-<hr>
-<pre><code class="language-admonish quote &quot;参考&quot;">
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [NUCLEOのKeil Studioで浮動小数点数を出力する方法](https://forums.mbed.com/t/nucleo-keil-studio/22433)
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="受信側ライブラリの使い方"><a class="header" href="#受信側ライブラリの使い方">受信側ライブラリの使い方</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="can通信"><a class="header" href="#can通信">CAN通信</a></h1>
+<pre><code class="language-admonish info title = &quot;CAN通信とは&quot;">`Control Area Network`。CAN_TD、CAN_RDなどの信号を差動信号にして、CAN BUSを作ります。シリアル通信の一種です。  
+CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデータを読み取ります。  
+差動のため、ノイズに強いと言われています。  
+</code></pre>
+<pre><code class="language-admonish info title = &quot;CANメッセージ&quot;">CANメッセージとはCAN通信における送信データの1まとまりです。  
+基本的にCANメッセージのデータ長は8Byteで、符号なし8bit整数型配列(`uint8_t data[8]`)が使用されることが多いです。
+</code></pre>
+<h2 id="can"><a class="header" href="#can"><code>CAN</code></a></h2>
+<p>CAN通信を行う場合は、<code>CAN</code>クラスを使用します。</p>
+<h3 id="コンストラクタcan"><a class="header" href="#コンストラクタcan">コンストラクタ(<code>CAN</code>)</a></h3>
+<p>コンストラクタは<code>CAN(PinName rd, PinName td)</code>、<code>CAN(PinName rd, PinName td, int hz)</code>で定義されています。<br />
+<code>CAN(const can_pinmap_t &amp;pinmap)</code>、<code>CAN(const can_pinmap_t &amp;pinmap, int hz)</code>というコンストラクタも定義されています。</p>
+<ul>
+<li><code>rd</code>
+<ul>
+<li>使用するCANの<code>CAN_RD</code>ピンを指定します。</li>
+</ul>
+</li>
+<li><code>td</code>
+<ul>
+<li>使用するCANの<code>CAN_TD</code>ピンを指定します。</li>
+</ul>
+</li>
+<li><code>hz</code>
+<ul>
+<li>CANの周波数を指定します。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp : 周波数：未定">CAN can1(PA_11, PA_12);
+</code></pre>
+<pre><code class="language-cpp : 周波数：1MHz">CAN can1(PA_11, PA_12, 1000000);
+// 1000000 → 1e6
+</code></pre>
+<h3 id="int-frequencyint-hz"><a class="header" href="#int-frequencyint-hz"><code>int frequency(int hz)</code></a></h3>
+<p>周波数を<code>hz</code>に設定します。<br />
+成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
+<pre><code class="language-cpp : 1MHzに設定">can1(PA_11, PA_12, 1000000);
+// 1e6
+</code></pre>
+<pre><code class="language-cpp : 500kHzに設定">can1(PA_11, PA_12, 500000);
+// 500e3
+</code></pre>
+<h3 id="int-writecanmessage-msg"><a class="header" href="#int-writecanmessage-msg"><code>int write(CANMessage msg)</code></a></h3>
+<p><a href="mbed/connectivity/can.html#canmessage"><code>CANMessage</code></a>をCANバスに送信します。<br />
+成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
+<pre><code class="language-cpp : msgを送信">can1.write(msg);
+</code></pre>
+<h3 id="int-readcanmessage-msg-int-handle--0"><a class="header" href="#int-readcanmessage-msg-int-handle--0"><code>int read(CANMessage &amp;msg, int handle = 0)</code></a></h3>
+<p><a href="mbed/connectivity/can.html#canmessage"><code>CANMessage</code></a>をCANバスから受信します。<code>handle</code>はフィルターらしいです。<br />
+成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
+<pre><code class="language-cpp : msgを受信">can1.read(msg);
+</code></pre>
+<h2 id="他のメソッド使用したことがない-4"><a class="header" href="#他のメソッド使用したことがない-4">他のメソッド(使用したことがない)</a></h2>
+<h3 id="void-reset"><a class="header" href="#void-reset"><code>void reset()</code></a></h3>
+<p>CANをリセットします。エラーの後やオーバーフローした時などに実行します。</p>
+<h3 id="void-monitorbool-silent"><a class="header" href="#void-monitorbool-silent"><code>void monitor(bool silent)</code></a></h3>
+<h3 id="int-modemode-mode"><a class="header" href="#int-modemode-mode"><code>int mode(Mode mode)</code></a></h3>
+<h3 id="int-filterunsigned-int-id-unsigned-int-mask-canformat-format--canany-int-handle--0"><a class="header" href="#int-filterunsigned-int-id-unsigned-int-mask-canformat-format--canany-int-handle--0"><code>int filter(unsigned int id, unsigned int mask, CANFormat format = CANAny, int handle = 0)</code></a></h3>
+<h3 id="unsigned-char-rderror"><a class="header" href="#unsigned-char-rderror"><code>unsigned char rderror()</code></a></h3>
+<h3 id="unsigned-char-tderror"><a class="header" href="#unsigned-char-tderror"><code>unsigned char tderror()</code></a></h3>
+<h3 id="void-attachcallbackvoid-func-irqtype-type--irqtyperxirq"><a class="header" href="#void-attachcallbackvoid-func-irqtype-type--irqtyperxirq"><code>void attach(Callback&lt;void()&gt; func, IrqType type = IrqType::RxIrq)</code></a></h3>
+<p>受信割り込みの設定らしいです。</p>
+<h3 id="static-void-_irq_handleruintptr_t-context-canirqtype-type"><a class="header" href="#static-void-_irq_handleruintptr_t-context-canirqtype-type"><code>static void _irq_handler(uintptr_t context, CanIrqType type)</code></a></h3>
+<h2 id="canmessage"><a class="header" href="#canmessage"><code>CANMessage</code></a></h2>
+<p><code>CAN</code>で送受信するデータは、<code>CANMessage</code>クラスを使用します。</p>
+<h3 id="コンストラクタcanmessage"><a class="header" href="#コンストラクタcanmessage">コンストラクタ(<code>CANMessage</code>)</a></h3>
+<p>コンストラクタは<code>CANMessage()</code>、<code>CANMessage(unsigned int _id, const unsigned char *_data, unsigned char _len = 8, CANType _type = CANData, CANFormat _format = CANStandard)</code>、<code>CANMessage(unsigned int _id, CANFormat _format = CANStandard)</code>で定義されています。</p>
+<ul>
+<li><code>_id</code>
+<ul>
+<li>CANのIDを指定します。</li>
+</ul>
+</li>
+<li><code>*_data</code>
+<ul>
+<li>送受信するデータの配列</li>
+</ul>
+</li>
+<li><code>_len</code>
+<ul>
+<li>データ長</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp : ID：0x200">CANMessage msg(0x200);
+</code></pre>
+<h3 id="インスタンス変数として使用"><a class="header" href="#インスタンス変数として使用">インスタンス変数として使用</a></h3>
+<pre><code class="language-cpp : インスタンス変数">CANMessage msg;
+msg.id = id;
+msg.len = 8;
+msg.data[0] = 0x20;
+</code></pre>
+<h2 id="サンプルプログラム-4"><a class="header" href="#サンプルプログラム-4">サンプルプログラム</a></h2>
+<pre><code class="language-admonish example title = &quot;データ送信&quot;">適当なデータ(固定値)を`500ms`間隔で`CANMessage`を送信するプログラムです。  
+
+```cpp : main.cpp
+#include "mbed.h"
+
+int main(void){
+    CAN can1(PA_11, PA_12, 1000000);
+    CAN msg;
+    msg.id = 0x10;
+    msg.len = 2;
+    msg.data[0] = 0xab;
+    msg.data[1] = 0xcd;
+
+    while(true){
+        can1.write(msg);
+        ThisThread::sleep_for(500ms);
+    }
+
+    return 0;
+}
+```
+
+</code></pre>
+<hr />
+<pre><code class="language-admonish quote title = &quot;参考&quot;">
+- [【高専ロボコン】キャン(CAN)ならずできる！STM32で始めるCAN通信入門](https://qiita.com/sirayuri/items/b905330c8ad5358e7bdd)
+- [STM32マイコンでCAN通信](https://hsdev.co.jp/stm32-can/)
+- [CAN](https://os.mbed.com/docs/mbed-os/v6.16/apis/other-driver-apis.html)
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="受信側ライブラリの使い方"><a class="header" href="#受信側ライブラリの使い方">受信側ライブラリの使い方</a></h1>
 <h2 id="ライブラリの場所"><a class="header" href="#ライブラリの場所">ライブラリの場所</a></h2>
-<pre><code class="language-admonish info &quot;GitHub&quot;">[receiveController](https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src)  
+<pre><code class="language-admonish info title = &quot;GitHub&quot;">[receiveController](https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src)  
 </code></pre>
 <p><code>GitHub/2025-B/receiveController</code>の<code>main</code>ブランチ、<code>receiveF446RE/lib/rxfep</code>にあります。使用する場合は<code>rxfep</code>フォルダごとダウンロードして使用してください。</p>
-<pre><code class="language-admonish important &quot;注意点&quot;">ライブラリは置き場、公開/非公開が変更される場合があります。  
+<pre><code class="language-admonish important title = &quot;注意点&quot;">ライブラリは置き場、公開/非公開が変更される場合があります。  
 2025/11/02時点では一部の人のみに公開しています。
 </code></pre>
 <h2 id="使用方法dualshock4の場合"><a class="header" href="#使用方法dualshock4の場合">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
-<p>ページの下に<a href="#サンプルプログラム-4">サンプルプログラム</a>を紹介しています。</p>
+<p>ページの下に<a href="mbed/connectivity/use_rxController.html#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
 <h3 id="include--using"><a class="header" href="#include--using">include &amp; using</a></h3>
 <ul>
 <li>
@@ -2725,7 +3028,7 @@ if(ps4.getDS4_IT()){
 <ul>
 <li><code>data.《ほしいデータ名》</code>でアクセスします。</li>
 </ul>
-<pre><code class="language-admonish info &quot;データ名とデータ型&quot;">`uint8_t`：`LX`、`LY`、`RX`、`RY`、`L2`、`R2`  
+<pre><code class="language-admonish info title = &quot;データ名とデータ型&quot;">`uint8_t`：`LX`、`LY`、`RX`、`RY`、`L2`、`R2`  
 `bool`：`TRIANGLE`、`CIRCLE`、`CROSS`、`SQUARE`、`UP`、`RIGHT`、`DOWN`、`LEFT`、`L1`、`L3`、`R1`、`R3`、`SHARE`、`OPTIONS`、`PS`、`TOUCHPAD`
 </code></pre>
 <h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
@@ -2828,8 +3131,8 @@ if(ps4.getDS4_IT()){
 </ul>
 </li>
 </ul>
-<h2 id="サンプルプログラム-4"><a class="header" href="#サンプルプログラム-4">サンプルプログラム</a></h2>
-<pre><code class="language-admonish example &quot;DUALSHOCK4の場合&quot;">使用しているものです。`DUALSHOCK4`用のファイルとコントローラー共通のファイルが必要になります。  
+<h2 id="サンプルプログラム-5"><a class="header" href="#サンプルプログラム-5">サンプルプログラム</a></h2>
+<pre><code class="language-admonish example title = &quot;DUALSHOCK4の場合&quot;">使用しているものです。`DUALSHOCK4`用のファイルとコントローラー共通のファイルが必要になります。  
 
 - `lib/rxfep`
   - `rxController.cpp`
@@ -2929,9 +3232,9 @@ int main(void){
 ```
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4"><a class="header" href="#コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4">コントローラーのデータ受信サンプル(Mbed OS6)の使用方法(DUALSHOCK4)</a></h1>
-<p>筆者は作成者ではないので正確な情報ではないがある程度はあっていると思う。<br>技術継承資料では<code>Mbed OS2</code>のため<code>OS6</code>では使用できない。サンプルコードは存在するのでそれについて、軽く中身の紹介</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4"><a class="header" href="#コントローラーのデータ受信サンプルmbed-os6の使用方法dualshock4">コントローラーのデータ受信サンプル(Mbed OS6)の使用方法(DUALSHOCK4)</a></h1>
+<p>筆者は作成者ではないので正確な情報ではないがある程度はあっていると思う。<br />
+技術継承資料では<code>Mbed OS2</code>のため<code>OS6</code>では使用できない。サンプルコードは存在するのでそれについて、軽く中身の紹介</p>
 <h2 id="使い方"><a class="header" href="#使い方">使い方</a></h2>
 <ul>
 <li>使用したいプロジェクト内の<code>lib</code>フォルダなどのヘッダファイルなどを入れる場所に<code>SerialCtrl.h</code>,<code>SerialCtrl.cpp</code>,<code>DualShock4.h</code>をコピーする</li>
@@ -2973,53 +3276,54 @@ int main(void){
 <ul>
 <li>受信したデータを</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="platformioで書き込めませんでした記録"><a class="header" href="#platformioで書き込めませんでした記録">PlatformIOで書き込めませんでした記録</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platformioで書き込めませんでした記録"><a class="header" href="#platformioで書き込めませんでした記録">PlatformIOで書き込めませんでした記録</a></h1>
 <pre><code class="language-shell : ターミナル">/.pio/build/nucleo_f446re/stm32f446xe.ld.link_script.ld: Invalid argument
 collect2.exe: error: ld returned 1 exit status
 *** [.pio\build\nucleo_f446re\firmware.elf] Error 1
 </code></pre>
 <p>このようなエラーが書き込み時、ビルド時にでてきて書き込み等ができませんでした。解決した方法をメモとして記録しておきます。</p>
 <h2 id="言われたこと"><a class="header" href="#言われたこと">言われたこと</a></h2>
-<p><strong>もしかしたら<code>main.cpp</code>(メインとなるソースファイル)がプロジェクト内に複数あるかも</strong><br>プロジェクトの最上位層(<code>.pio</code>が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。</p>
+<p><strong>もしかしたら<code>main.cpp</code>(メインとなるソースファイル)がプロジェクト内に複数あるかも</strong><br />
+プロジェクトの最上位層(<code>.pio</code>が入っているフォルダ)で次のコマンドを実行。それにより1つしかプロジェクト内にないことが判明。</p>
 <pre><code class="language-bash : terminal">ls -laR . | grep main
 </code></pre>
 <pre><code class="language-bash : 実行結果">-rw-r--r-- 1 [User] 197609 912 Jun  7 09:23 main.cpp
 </code></pre>
 <p>を得た。これによりこの階層以下に<code>main</code>を含むファイルが1つしかないことが分かる。</p>
-<p><strong>参照しているライブラリ等と同じ名前のファイルが存在してるかも</strong><br><code>#include &lt;mbed.h&gt;</code>を<code>#include "mbed.h"</code>に変更してみてやってみたけど何も変わらなかった。</p>
+<p><strong>参照しているライブラリ等と同じ名前のファイルが存在してるかも</strong><br />
+<code>#include &lt;mbed.h&gt;</code>を<code>#include "mbed.h"</code>に変更してみてやってみたけど何も変わらなかった。</p>
 <h2 id="解決した方法"><a class="header" href="#解決した方法">解決した方法</a></h2>
-<p>単純にプロジェクトを置いてる場所が悪かった。今で置いていたところは<code>PC/d/学校のOneDrive/gitリポジトリ/</code>に置いていて多分学校のOneDriveがとても長いし空白を含んでいるからだめだったのかと思う。<br>OneDriveの中にローカルリポジトリを置くなんて頭悪いことしないように！</p>
+<p>単純にプロジェクトを置いてる場所が悪かった。今で置いていたところは<code>PC/d/学校のOneDrive/gitリポジトリ/</code>に置いていて多分学校のOneDriveがとても長いし空白を含んでいるからだめだったのかと思う。<br />
+OneDriveの中にローカルリポジトリを置くなんて頭悪いことしないように！</p>
 <h2 id="変更後"><a class="header" href="#変更後">変更後</a></h2>
 <p>ローカルリポジトリをユーザー直下に置いてみた。これで解決したけどwindowsの場合はユーザーフォルダが<code>PC/Windows/ユーザー/[User Name]/</code>みたいに日本語になっていると思われるのでこれでもだめだったらWindowsとか別のUSBとかにいれるのをおすすめする。基本的にファイル名やフォルダ名を半角英数字のみで構成することをとてもおすすめするいい経験となった。</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="stm32cubeideでの開発"><a class="header" href="#stm32cubeideでの開発">STM32CubeIDEでの開発</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stm32cubeideでの開発"><a class="header" href="#stm32cubeideでの開発">STM32CubeIDEでの開発</a></h1>
 <p>基本的に<code>NUCLEO-F446RE</code>を用いた。2024年度春休みに<code>Keil Studio</code>でない開発環境を使用するために使用してみた。その時の記録。</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
-<li><a href="#基本的なこと">はじめにやっておくと便利になること</a>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/BasicContentsHome.html">はじめにやっておくと便利になること</a>
 <ul>
-<li><a href="#変数などを表示するために"><del>変数などを表示するために</del></a></li>
-<li><a href="#変数などを簡単に表示するために">変数などを簡単に表示するために</a></li>
-<li><a href="#名前を楽するlib">ピンの名前などを簡単に入力するために</a></li>
-<li><a href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/printf.html"><del>変数などを表示するために</del></a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/printfLibrary.html">変数などを簡単に表示するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/manydef.html">ピンの名前などを簡単に入力するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./BasicContents/generateBinaryFile.html">バイナリファイル(.bin)の生成</a></li>
 </ul>
 </li>
-<li><a href="#入出力">入出力の基本について</a>
+<li><a href="DevelopmentSTM32CubeIDE/./InOut/InOutHome.html">入出力の基本について</a>
 <ul>
-<li><a href="#ディジタル入出力">ディジタル入出力をする</a></li>
-<li><a href="#タイマー割り込みによるlチカ">タイマー割り込みでLチカ</a></li>
-<li><a href="#pwm出力-2">PWM出力する</a></li>
-<li><a href="#アナログ入力-2">可変抵抗の値を読む</a></li>
-<li><a href="#ロータリーエンコーダを読む">ロータリーエンコーダーを読む</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./InOut/digitalInOut.html">ディジタル入出力をする</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./InOut/OutTimerLED.html">タイマー割り込みでLチカ</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./InOut/OutPWM.html">PWM出力する</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./InOut/InVariableResistance.html">可変抵抗の値を読む</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./InOut/InRotaryEncoder.html">ロータリーエンコーダーを読む</a></li>
 </ul>
 </li>
-<li><a href="#通信-1">通信について</a>
+<li><a href="DevelopmentSTM32CubeIDE/./Connectability/ConnectabilityHome.html">通信について</a>
 <ul>
-<li><a href="#uart通信受信">UART通信(受信)</a></li>
-<li><a href="#uart通信送信">UART通信(送信)</a></li>
-<li><a href="#arduinoとの通信lib">Arduinoとの通信</a></li>
-<li><a href="#can通信受信">CAN通信(受信)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./Connectability/uartReceive.html">UART通信(受信)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./Connectability/uartTransmit.html">UART通信(送信)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./Connectability/ConnectArduino.html">Arduinoとの通信</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/./Connectability/canReceive.html">CAN通信(受信)</a></li>
 </ul>
 </li>
 </ul>
@@ -3027,22 +3331,21 @@ collect2.exe: error: ld returned 1 exit status
 <ul>
 <li><a href="https://qiita.com/usashirou/items/65be086c28f7a6feac7d"><code>STM32CubeIDE</code>の導入</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="基本的なこと"><a class="header" href="#基本的なこと">基本的なこと</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="基本的なこと"><a class="header" href="#基本的なこと">基本的なこと</a></h1>
 <p>ここではプロジェクトを作成した後にやっておくと便利なことを軽く解説。</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
-<li><a href="#変数などを表示するために"><del>変数などを表示するために</del></a></li>
-<li><a href="#変数などを簡単に表示するために">変数などを簡単に表示するために</a></li>
-<li><a href="#名前を楽するlib">ピンの名前などを簡単に入力するために</a></li>
-<li><a href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html"><del>変数などを表示するために</del></a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printfLibrary.html">変数などを簡単に表示するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./manydef.html">ピンの名前などを簡単に入力するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./generateBinaryFile.html">バイナリファイル(.bin)の生成</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="変数などを表示するために"><a class="header" href="#変数などを表示するために">変数などを表示するために</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="変数などを表示するために"><a class="header" href="#変数などを表示するために">変数などを表示するために</a></h1>
 <h2 id="printfを使って変数の値などを見れるようにする"><a class="header" href="#printfを使って変数の値などを見れるようにする">printfを使って変数の値などを見れるようにする</a></h2>
 <p>マイコンとパソコンとの間で<code>UART</code>を用いて通信を行う。パソコン側では<code>TeraTerm</code>を用いてシリアルポートを監視する。</p>
 <h2 id="cubeideの設定"><a class="header" href="#cubeideの設定">CubeIDEの設定</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN Includes */
 #include &lt;stdio.h&gt;
 /* USER CODE END Includes */
@@ -3070,10 +3373,10 @@ int _write(int file,char *ptr,int len){
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-printf-uart/">【便利】STM32CubeIDEでprintf【UART編】</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="変数などを簡単に表示するために"><a class="header" href="#変数などを簡単に表示するために">変数などを簡単に表示するために</a></h1>
-<p><a href="#変数などを表示するために">‘変数などを表示するために’</a>で<code>printf</code>する方法を紹介したが、いちいち<code>int _write</code>とか書くのがめんどくさくなったので処理をまとめた。</p>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="変数などを簡単に表示するために"><a class="header" href="#変数などを簡単に表示するために">変数などを簡単に表示するために</a></h1>
+<p><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">'変数などを表示するために'</a>で<code>printf</code>する方法を紹介したが、いちいち<code>int _write</code>とか書くのがめんどくさくなったので処理をまとめた。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART2</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART2</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN Includes */
 #include &lt;stdio.h&gt;
 #include "STprintf.h"
@@ -3096,17 +3399,11 @@ uint8_t Out[8] = {0};
 <p><code>TeraTerm</code>を開いて<code>ファイル</code>-<code>新しい接続</code>-<code>シリアル</code>-<code>COM◯: STMicroelectronics STLink Virtual COM Port (COM◯)</code>-<code>OK</code>でマイコンと接続する。<code>設定</code>-<code>シリアルポート</code>-<code>スピード</code>を<code>CubeIDE</code>側で設定した<code>Baud Rate</code>を入力。ここでは<code>38400</code>と設定。<code>現在の接続を再設定</code>で設定を完了させる。</p>
 <h3 id="参考-1"><a class="header" href="#参考-1">参考</a></h3>
 <ul>
-<li><a href="#変数などを表示するために">変数などを表示するために</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/BasicContents/./printf.html">変数などを表示するために</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="名前を楽するlib"><a class="header" href="#名前を楽するlib">名前を楽する(lib)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="名前を楽するlib"><a class="header" href="#名前を楽するlib">名前を楽する(lib)</a></h1>
 <p><code>GPIOA</code>とか<code>GPIO_PIN_1</code>とか<code>TIM_Channel_3</code>とか書くのがめんどくなったので楽にした。</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: center">もともと</th><th style="text-align: center">いま</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">もともと</th><th style="text-align: center">いま</th></tr></thead><tbody>
 <tr><td style="text-align: center">GPIO_PIN_0</td><td style="text-align: center">P0</td></tr>
 <tr><td style="text-align: center">中略</td><td style="text-align: center">中略</td></tr>
 <tr><td style="text-align: center">GPIO_PIN_15</td><td style="text-align: center">P15</td></tr>
@@ -3122,33 +3419,31 @@ uint8_t Out[8] = {0};
 <tr><td style="text-align: center">中略</td><td style="text-align: center">中略</td></tr>
 <tr><td style="text-align: center">TIM_CHANNEL_4</td><td style="text-align: center">TIMCH_4</td></tr>
 <tr><td style="text-align: center">TIM_CHANNWL_ALL</td><td style="text-align: center">TIMCH_ALL</td></tr>
-</tbody>
-</table>
-</div>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="バイナリファイルbinの生成"><a class="header" href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></h1>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="バイナリファイルbinの生成"><a class="header" href="#バイナリファイルbinの生成">バイナリファイル(.bin)の生成</a></h1>
 <h2 id="エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する"><a class="header" href="#エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する">エクスプローラーなどからマイコンに直接書き込めるようにbinファイルを生成する</a></h2>
-<p><code>CubeIDE</code>では<code>binファイル</code>は実行時やデバッグ時に自動で生成され、実行時、デバッグ時毎に上書き保存される。設定を変更するだけで生成されるようになる。<br><code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。
-<code>binファイル</code>の他にも<code>HEXファイル</code>や<code>SRECファイル</code>などの他のファイル形式のファイルも設定すれば、生成できる。<br><code>binファイル</code>は生成されるとプロジェクトの中の<code>Debugフォルダ</code>に<code>[プロジェクト名].bin</code>という名前で生成される。</p>
+<p><code>CubeIDE</code>では<code>binファイル</code>は実行時やデバッグ時に自動で生成され、実行時、デバッグ時毎に上書き保存される。設定を変更するだけで生成されるようになる。<br />
+<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Post build outputs</code>の<code>Convert to binary file</code>の項目にチェックを入れ、適用して閉じる。
+<code>binファイル</code>の他にも<code>HEXファイル</code>や<code>SRECファイル</code>などの他のファイル形式のファイルも設定すれば、生成できる。<br />
+<code>binファイル</code>は生成されるとプロジェクトの中の<code>Debugフォルダ</code>に<code>[プロジェクト名].bin</code>という名前で生成される。</p>
 <h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
 <ul>
 <li><a href="https://yukblog.net/stm32cubeide-hex/">STM32CubeIDEでHEXファイルを作成する方法</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="入出力"><a class="header" href="#入出力">入出力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="入出力"><a class="header" href="#入出力">入出力</a></h1>
 <p>ディジタルやアナログの入出力に関して軽く解説。</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
-<li><a href="#ディジタル入出力">ディジタル入出力をする</a></li>
-<li><a href="#タイマー割り込みによるlチカ">タイマー割り込みを使用したLチカ</a></li>
-<li><a href="#pwm出力-2">PWM出力をする(タイマー)</a></li>
-<li><a href="#アナログ入力-2">可変抵抗の値を読む(アナログ入力・タイマー)</a></li>
-<li><a href="#ロータリーエンコーダを読む">ロータリーエンコーダーを読む(タイマー)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./digitalInOut.html">ディジタル入出力をする</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">タイマー割り込みを使用したLチカ</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./OutPWM.html">PWM出力をする(タイマー)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./InVariableResistance.html">可変抵抗の値を読む(アナログ入力・タイマー)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/InOut/./InRotaryEncoder.html">ロータリーエンコーダーを読む(タイマー)</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="ディジタル入出力"><a class="header" href="#ディジタル入出力">ディジタル入出力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ディジタル入出力"><a class="header" href="#ディジタル入出力">ディジタル入出力</a></h1>
 <h2 id="ledを点灯させたりプッシュスイッチの値を読み込んだりする"><a class="header" href="#ledを点灯させたりプッシュスイッチの値を読み込んだりする">LEDを点灯させたり、プッシュスイッチの値を読み込んだりする</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_1</code>を<code>GPIO_Input</code>、<code>PA_0</code>を<code>GPIO_Output</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">‘NUCLEO-F446RE’</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_1</code>を<code>GPIO_Input</code>、<code>PA_0</code>を<code>GPIO_Output</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">'NUCLEO-F446RE'</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN 2 */
 int psw1;
 /* USER CODE END 2 */
@@ -3164,14 +3459,14 @@ int psw1;
 <ul>
 <li><a href="https://qiita.com/usashirou/items/30e522589db9f7dc8fe4">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(4) スイッチを使ってみよう</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="タイマー割り込みによるlチカ"><a class="header" href="#タイマー割り込みによるlチカ">タイマー割り込みによるLチカ</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="タイマー割り込みによるlチカ"><a class="header" href="#タイマー割り込みによるlチカ">タイマー割り込みによるLチカ</a></h1>
 <h2 id="hal_delayを使わないでlチカをする"><a class="header" href="#hal_delayを使わないでlチカをする">HAL_Delay()を使わないでLチカをする</a></h2>
 <p>今までLチカは以下のようなコードでしていた。</p>
 <pre><code class="language-c : main.c">HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_0);
 HAL_Delay(1000);
 </code></pre>
-<p>これは毎秒Lチカするプログラムである。このコードでは次にLEDの状態を変えるまで処理をすべて止めている。そのため、他の処理をしようとしてもできなかった。そんなときにタイマー割り込みを使用すれば他の処理を止めることなく、一定の周期である処理を実行することができる。<br><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM2</code>-<code>Mode</code>-<code>Clock Source</code>を<code>Internal Clock</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<code>15</code>、<code>Counter Period</code>を<code>999999</code>に、<code>Configuration</code>-<code>NVIC Setting</code>-<code>TIM2 global interrupt</code>を<code>Enable</code>に設定。今回は<code>TIM2</code>を使用した。</p>
+<p>これは毎秒Lチカするプログラムである。このコードでは次にLEDの状態を変えるまで処理をすべて止めている。そのため、他の処理をしようとしてもできなかった。そんなときにタイマー割り込みを使用すれば他の処理を止めることなく、一定の周期である処理を実行することができる。<br />
+<code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM2</code>-<code>Mode</code>-<code>Clock Source</code>を<code>Internal Clock</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<code>15</code>、<code>Counter Period</code>を<code>999999</code>に、<code>Configuration</code>-<code>NVIC Setting</code>-<code>TIM2 global interrupt</code>を<code>Enable</code>に設定。今回は<code>TIM2</code>を使用した。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN 2 */
 HAL_TIM_Base_Start_IT(&amp;htim2);
 /* USER CODE END 2 */
@@ -3182,15 +3477,23 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
 }
 /* USER CODE END 4 */
 </code></pre>
-<p><code>HAL_TIM_PeriodElapsedCallback</code>関数は割り込みをした時に実行される関数であるため、そこにLチカのコードを書く。<br>割り込み周期は設定した<code>Prescaler</code>と<code>Counter Period</code>、内部クロック周波数で決まる。内部クロック周波数はデフォルトでは<code>16MHz</code>だが変更したいまたは。確認したい場合は<code>ioc</code>ファイルの<code>Clock Configuration</code>-<code>APB1 Timer clocks(MHz)</code>で確認する(たぶん)。割り込み周期は以下の式で求められる。<br>$$f = \frac{(内部クロック周波数)}{(Prescaler + 1) \times (Counter \space Period + 1)}$$<br>また、周期は周波数の逆数なので周期から求めると、<br>$$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(内部クロック周波数)} $$<br>となる。おすすめとしては<code>Prescaler</code>を<code>15</code>として<code>Counter Period</code>の値を変更するとわかりやすいかもしれない。<br>上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br>$$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br>となり、毎秒Lチカするプログラムになっている。</p>
+<p><code>HAL_TIM_PeriodElapsedCallback</code>関数は割り込みをした時に実行される関数であるため、そこにLチカのコードを書く。<br />
+割り込み周期は設定した<code>Prescaler</code>と<code>Counter Period</code>、内部クロック周波数で決まる。内部クロック周波数はデフォルトでは<code>16MHz</code>だが変更したいまたは。確認したい場合は<code>ioc</code>ファイルの<code>Clock Configuration</code>-<code>APB1 Timer clocks(MHz)</code>で確認する(たぶん)。割り込み周期は以下の式で求められる。<br />
+$$f = \frac{(内部クロック周波数)}{(Prescaler + 1) \times (Counter \space Period + 1)}$$<br />
+また、周期は周波数の逆数なので周期から求めると、<br />
+$$ T = \frac{1}{f} = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(内部クロック周波数)} $$<br />
+となる。おすすめとしては<code>Prescaler</code>を<code>15</code>として<code>Counter Period</code>の値を変更するとわかりやすいかもしれない。<br />
+上記の例では<code>Prescaler</code>が<code>15</code>で<code>Counter Period</code>が<code>999999</code>なので周期は、<br />
+$$ \frac{(15 + 1)(999999 + 1)}{16 \times 10^6} = 1[s] $$<br />
+となり、毎秒Lチカするプログラムになっている。</p>
 <h3 id="参考-4"><a class="header" href="#参考-4">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e02b798b4bf1b92a4546">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (15) TimerでLチカしよう</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="pwm出力-2"><a class="header" href="#pwm出力-2">PWM出力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pwm出力-2"><a class="header" href="#pwm出力-2">PWM出力</a></h1>
 <h2 id="ledの明るさを変更したりモーターの回転速度を変更したりする"><a class="header" href="#ledの明るさを変更したりモーターの回転速度を変更したりする">LEDの明るさを変更したり、モーターの回転速度を変更したりする</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Channel3</code>を<code>PWM Generation CH3</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<del><code>83</code></del><code>4</code>、<code>Counter Period</code>を<del><code>999</code></del><code>255</code>、<code>PWM Generation Channel3</code>-<code>Output compare preload</code>を<code>Disable</code>に設定。今回は<code>TIM3</code>を使用した。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Channel3</code>を<code>PWM Generation CH3</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Prescaler</code>を<del><code>83</code></del><code>4</code>、<code>Counter Period</code>を<del><code>999</code></del><code>255</code>、<code>PWM Generation Channel3</code>-<code>Output compare preload</code>を<code>Disable</code>に設定。今回は<code>TIM3</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN WHILE */
 while (1)
 {
@@ -3202,15 +3505,16 @@ while (1)
 }
 /* USER CODE END 3 */
 </code></pre>
-<p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br>範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="#タイマー割り込みによるlチカ">‘ここ’</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
+<p><code>100</code>がパルス幅にあたる部分であり、範囲は<code>0</code>~<code>255</code>にする。<br />
+範囲やPWM周期などは<code>Prescaler</code>や<code>Counter Period</code>などから求められる。式については<a href="DevelopmentSTM32CubeIDE/InOut/./OutTimerLED.html">'ここ'</a>に記載している。<code>Counter Period</code>が<code>範囲の個数-1</code>であるということだけは覚えていて欲しい。</p>
 <h3 id="参考-5"><a class="header" href="#参考-5">参考</a></h3>
 <ul>
 <li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="アナログ入力-2"><a class="header" href="#アナログ入力-2">アナログ入力</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="アナログ入力-2"><a class="header" href="#アナログ入力-2">アナログ入力</a></h1>
 <h2 id="可変抵抗の値を読み取ったりセンサの値を読み取ったりする"><a class="header" href="#可変抵抗の値を読み取ったりセンサの値を読み取ったりする">可変抵抗の値を読み取ったり、センサの値を読み取ったりする</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_4</code>を<code>ADC1_IN4</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">‘NUCLEO-F446RE’</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Pinout view</code>から使いたいピンを選択する。今回は<code>PA_4</code>を<code>ADC1_IN4</code>に設定した。ピンを選ぶときには使用するマイコンボードのMbedのページ(ここでは<a href="https://os.mbed.com/platforms/ST-Nucleo-F446RE/">'NUCLEO-F446RE'</a>)の<code>Morpho headers</code>を見ながら選ぶといいかもしれない。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN 2 */
 float resi1;
 /* USER CODE END 2 */
@@ -3229,16 +3533,19 @@ while (1)
 }
 /* USER CODE END 3 */
 </code></pre>
-<p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br>今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="#変数などを簡単に表示するために">‘これ’</a>を参考にした。</p>
+<p><code>float</code>型を<code>printf</code>するために、設定を変更する。<code>[プロジェクト名]</code>を右クリック、<code>プロパティ</code>-<code>C/C++ ビルド</code>-<code>設定</code>-<code>ツール設定</code>-<code>MCU/MPU Settings</code>の<code>Use float with printf from newlib-nano</code>の項目にチェックを入れ、適用して閉じる。<br />
+今回は可変抵抗を用いてアナログ入力値の変化を出力した。<code>printf</code>を使えるようにするためには、他の設定やコードが必要。<a href="DevelopmentSTM32CubeIDE/InOut/../BasicContents/printfLibrary.html">'これ'</a>を参考にした。</p>
 <h3 id="参考-6"><a class="header" href="#参考-6">参考</a></h3>
 <ul>
 <li><a href="https://qiita.com/usashirou/items/e6b5d0529524a140ebaf">STM32CubeIDEを使ってみよう How To STM32CubeIDE 日本語版 (12) ADCを使ってみよう</a></li>
 <li><a href="https://yukblog.net/stm32cubeide-printf-float/">STM32CubeIDEのprintfでfloatが使えない件の対処方法</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="ロータリーエンコーダを読む"><a class="header" href="#ロータリーエンコーダを読む">ロータリーエンコーダを読む</a></h1>
-<p>エンコーダは<a href="https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&amp;&amp;utm_adgroup=&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&amp;utm_term=&amp;productid=827015&amp;utm_content=&amp;utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gad_source=1&amp;gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gclsrc=aw.ds">‘AMT102-V’</a>を使用した。</p>
-<p>エンコーダを読むことで移動距離などを計算できる。エンコーダにはA相とB相を用いて回転方向と回転量をアナログ値として読み取ることができるらしい。<br><code>Timer</code>のエンコーダモードを使用する。使用するピンは各<code>Timer</code>の<code>Channel1,2</code>である。<br><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Combined Channels</code>を<code>Encoder Mode</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Counter Period</code>を<code>8192</code>、<code>Encoder</code>-<code>Encoder Mode</code>を<code>Encoder Mode TI1 and TIT2</code>に設定。今回は<code>TIM3</code>を使用した。<br><code>printf</code>を使用する。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ロータリーエンコーダを読む"><a class="header" href="#ロータリーエンコーダを読む">ロータリーエンコーダを読む</a></h1>
+<p>エンコーダは<a href="https://www.digikey.jp/ja/products/detail/same-sky-formerly-cui-devices-/AMT102-V/827015?gclsrc=aw.ds&amp;&amp;utm_adgroup=&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Pmax%20Shopping_Product_Medium%20ROAS&amp;utm_term=&amp;productid=827015&amp;utm_content=&amp;utm_id=go_cmp-20190420439_adg-_ad-__dev-c_ext-_prd-827015_sig-Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gad_source=1&amp;gclid=Cj0KCQjwhMq-BhCFARIsAGvo0KepiliL5UMokL4bXzAq1rxj0amR6aMMbkjXr6ANuMr8IIp5-BnlpJoaArLIEALw_wcB&amp;gclsrc=aw.ds">'AMT102-V'</a>を使用した。</p>
+<p>エンコーダを読むことで移動距離などを計算できる。エンコーダにはA相とB相を用いて回転方向と回転量をアナログ値として読み取ることができるらしい。<br />
+<code>Timer</code>のエンコーダモードを使用する。使用するピンは各<code>Timer</code>の<code>Channel1,2</code>である。<br />
+<code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Timers</code>-<code>TIM3</code>-<code>Mode</code>-<code>Combined Channels</code>を<code>Encoder Mode</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Counter Settings</code>-<code>Counter Period</code>を<code>8192</code>、<code>Encoder</code>-<code>Encoder Mode</code>を<code>Encoder Mode TI1 and TIT2</code>に設定。今回は<code>TIM3</code>を使用した。<br />
+<code>printf</code>を使用する。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN 0 */
 int over;
 
@@ -3271,7 +3578,9 @@ while (1)
     HAL_Delay(100);
 /* USER CODE END WHILE */
 </code></pre>
-<p>エンコーダの回転量を<code>TIM3 -&gt; CNT</code>でゲットし表示する。ただ<code>8192</code>を上回るまたは<code>0</code>を下回ると<code>8192</code>から<code>0</code>にまたは<code>0</code>から<code>8192</code>に飛ぶ。<br>それを解決するためにオーバーフローを検知しその回数を記録し<code>count</code>に反映させる。<code>HAL_TIM_PeriodElapsedCallback</code>関数はオーバーフローが起こった時に実行される関数であるため、そこにオーバーフローの回数を記録する。一回転が<code>8192</code>であるから<code>over * 8192</code>で増分を増やす。一回転が<code>8192</code>であるのはエンコーダのデータシートに記載されていて内部のディップスイッチが<code>1</code>~<code>4</code>までが全て<code>0</code>になっている場合、一回転は<code>2048 * 4</code>の<code>8192</code>になると書かれている。<br>![encoder_inside.JPG](../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/encoder_inside.JPG =400x center)</p>
+<p>エンコーダの回転量を<code>TIM3 -&gt; CNT</code>でゲットし表示する。ただ<code>8192</code>を上回るまたは<code>0</code>を下回ると<code>8192</code>から<code>0</code>にまたは<code>0</code>から<code>8192</code>に飛ぶ。<br />
+それを解決するためにオーバーフローを検知しその回数を記録し<code>count</code>に反映させる。<code>HAL_TIM_PeriodElapsedCallback</code>関数はオーバーフローが起こった時に実行される関数であるため、そこにオーバーフローの回数を記録する。一回転が<code>8192</code>であるから<code>over * 8192</code>で増分を増やす。一回転が<code>8192</code>であるのはエンコーダのデータシートに記載されていて内部のディップスイッチが<code>1</code>~<code>4</code>までが全て<code>0</code>になっている場合、一回転は<code>2048 * 4</code>の<code>8192</code>になると書かれている。<br />
+![encoder_inside.JPG](../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/encoder_inside.JPG =400x center)</p>
 <h2 id="角度を求めてみる"><a class="header" href="#角度を求めてみる">角度を求めてみる</a></h2>
 <p>回転量から回転回数や基準からの角度などを求められる。<code>((float)count / 8192) * 360</code>で1周<code>360°</code>になる。ただし<code>count</code>はもともと<code>int</code>型なので計算結果を少数にするために<code>float</code>型にキャスト変換する。また、以下のコードで角度を<code>0°</code>~<code>360°</code>にすることで何周しても同じ角度になるようにすることができる。</p>
 <pre><code class="language-c : main.c">while(deg &gt; 360){
@@ -3281,25 +3590,26 @@ while(deg &lt; 0){
     deg = deg + 360;
 }
 </code></pre>
-<p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。<br>![deg.png](../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png =250x center)</p>
+<p>また、スイッチが押されたらその場所を基準としてそこからの角度を表示できるようにすると良いかもしれない。するとすれば<code>over</code>と<code>TIM3-&gt;CNT</code>をそれぞれ<code>0</code>にする必要がある。<br />
+![deg.png](../../resources/DevelopmentSTM32CubeIDE/InOut/InRotaryEncoder/deg.png =250x center)</p>
 <h3 id="参考-7"><a class="header" href="#参考-7">参考</a></h3>
 <ul>
 <li><a href="https://www.shujima.work/entry/2019/05/28/221629">【Nucleo入門】Nucleo-F401でエンコーダ読み取り(STM32CubeIDE、macOS版)</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="通信-1"><a class="header" href="#通信-1">通信</a></h1>
-<p>他の機器と通信する方法について簡単に解説する。主に<code>UART</code>による通信について解説する。<br>コントローラー側の<code>Arduino</code>との通信に使用するヘッダファイルなどの中身も軽く紹介する。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="通信-1"><a class="header" href="#通信-1">通信</a></h1>
+<p>他の機器と通信する方法について簡単に解説する。主に<code>UART</code>による通信について解説する。<br />
+コントローラー側の<code>Arduino</code>との通信に使用するヘッダファイルなどの中身も軽く紹介する。</p>
 <p><strong>コンテンツ一覧</strong></p>
 <ul>
-<li><a href="#uart通信受信">UART通信(受信)</a></li>
-<li><a href="#uart通信送信">UART通信(送信)</a></li>
-<li><a href="#arduinoとの通信lib">Arduinoとの通信</a></li>
-<li><a href="#can通信受信">CAN通信(受信)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/Connectability/./uartReceive.html">UART通信(受信)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/Connectability/./uartTransmit.html">UART通信(送信)</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/Connectability/./ConnectArduino.html">Arduinoとの通信</a></li>
+<li><a href="DevelopmentSTM32CubeIDE/Connectability/./canReceive.html">CAN通信(受信)</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="uart通信受信"><a class="header" href="#uart通信受信">UART通信(受信)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="uart通信受信"><a class="header" href="#uart通信受信">UART通信(受信)</a></h1>
 <h2 id="arduinoなどからのデータをuartを使用して受け取る"><a class="header" href="#arduinoなどからのデータをuartを使用して受け取る">ArduinoなどからのデータをUARTを使用して受け取る</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">/* USER CODE BEGIN 2 */
 char getdata;
 /* USER CODE END 2 */
@@ -3322,10 +3632,10 @@ while (1)
 <ul>
 <li><a href="https://qiita.com/usashirou/items/5a2c9e4fd35c261c4f3a">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(6) 　UARTを使ってみよう(2)</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="uart通信送信"><a class="header" href="#uart通信送信">UART通信(送信)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="uart通信送信"><a class="header" href="#uart通信送信">UART通信(送信)</a></h1>
 <h2 id="arduinoなどにデータをuartを使用して送る"><a class="header" href="#arduinoなどにデータをuartを使用して送る">ArduinoなどにデータをUARTを使用して送る</a></h2>
-<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br>保存しコードを作成。<code>main.c</code>に処理を追記。</p>
+<p><code>[プロジェクト名].ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>USART1</code>-<code>Mode</code>を<code>Asynchronous</code>、<code>Configuration</code>-<code>Parameter Settings</code>-<code>Basic Parameters</code>-<code>Baud Rate</code>を<code>38400</code>に設定。今回は<code>USART1</code>を使用した。<br />
+保存しコードを作成。<code>main.c</code>に処理を追記。</p>
 <pre><code class="language-c : main.c">STprintf(&amp;huart2);
 uint8_t i = 0;
 
@@ -3349,8 +3659,7 @@ while (1)
 <ul>
 <li><a href="https://qiita.com/usashirou/items/76c812d35642a3c29aea">STM32CubeIDEを使ってみよう　How To STM32CubeIDE 日本語版　(5) 　UARTを使ってみよう</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="arduinoとの通信lib"><a class="header" href="#arduinoとの通信lib">Arduinoとの通信(lib)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="arduinoとの通信lib"><a class="header" href="#arduinoとの通信lib">Arduinoとの通信(lib)</a></h1>
 <h2 id="keil-studioのserialctrlのようなライブラリの使用方法"><a class="header" href="#keil-studioのserialctrlのようなライブラリの使用方法">Keil StudioのSerialCtrlのようなライブラリの使用方法</a></h2>
 <ol>
 <li>
@@ -3373,7 +3682,7 @@ while (1)
 </li>
 </ol>
 <blockquote>
-<p>中には<code>printf</code>を使用する関数も含まれているため、<code>printf</code>を<code>UART通信</code>で使用できるようにしておく。<a href="#変数などを簡単に表示するために">‘参考’</a></p>
+<p>中には<code>printf</code>を使用する関数も含まれているため、<code>printf</code>を<code>UART通信</code>で使用できるようにしておく。<a href="DevelopmentSTM32CubeIDE/Connectability/../BasicContents/printfLibrary.html">'参考'</a></p>
 </blockquote>
 <p><strong>使用例1</strong></p>
 <pre><code class="language-c : main.c">// 略
@@ -3476,7 +3785,7 @@ while (1)
 <li>引数に<code>getdata</code>をもつ。構造体変数<code>getdata</code>を渡す。</li>
 <li><code>AllShow(data);</code></li>
 <li>戻り値はなく、構造体の中身を表示する関数。表示形式はアナログ値をもつスティックなどは整数3桁(空白埋め)で、ディジタル値をもつボタンなどは<code>0/1</code>で表示する。</li>
-<li><code>printf</code>関数を使用するため、<code>printf</code>を使用するためのコードが必要になる。<a href="#変数などを簡単に表示するために">‘参考’</a></li>
+<li><code>printf</code>関数を使用するため、<code>printf</code>を使用するためのコードが必要になる。<a href="DevelopmentSTM32CubeIDE/Connectability/../BasicContents/printfLibrary.html">'参考'</a></li>
 </ul>
 </li>
 <li>AllShowP関数
@@ -3537,9 +3846,9 @@ while (1)
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="can通信受信"><a class="header" href="#can通信受信">CAN通信(受信)</a></h1>
-<p><code>CAN</code>とはなにか。一旦省く。<br><code>STM32 F446RET6</code>  <code>CAN1</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="can通信受信"><a class="header" href="#can通信受信">CAN通信(受信)</a></h1>
+<p><code>CAN</code>とはなにか。一旦省く。<br />
+<code>STM32 F446RET6</code>  <code>CAN1</code></p>
 <h2 id="iocの設定can"><a class="header" href="#iocの設定can"><code>ioc</code>の設定(<code>CAN</code>)</a></h2>
 <ul>
 <li><code>ioc</code>-<code>Pinout &amp; Configuration</code>-<code>Connectivity</code>-<code>CAN1</code></li>
@@ -3552,8 +3861,10 @@ while (1)
 <li><code>Time Quanta in Bit Segment 1</code>:<code>5 Times</code>→<code>Tseg1</code></li>
 <li><code>Time Quanta in Bit Segment 2</code>:<code>2 Times</code>→<code>Tseg2</code></li>
 <li><code>ReSynchronization Jump Width</code>:<code>1 Times</code>→<code>SJW</code></li>
-<li><code>Buad Rate</code>が<code>1000000 bit/s</code>になっていることを確認<br><code>Prescaler</code>を先に<code>2</code>にすると<code>Tseg1</code>、<code>Tseg2</code>の設定で警告が出る可能性あり</li>
-<li><code>Baud Rate</code>は次の式で求められる<br>$$ BaudRate = \frac{(内部クロック周波数)}{(Tseg1 + Tseg2 + SJW) \times Prescaler} $$</li>
+<li><code>Buad Rate</code>が<code>1000000 bit/s</code>になっていることを確認<br />
+<code>Prescaler</code>を先に<code>2</code>にすると<code>Tseg1</code>、<code>Tseg2</code>の設定で警告が出る可能性あり</li>
+<li><code>Baud Rate</code>は次の式で求められる<br />
+$$ BaudRate = \frac{(内部クロック周波数)}{(Tseg1 + Tseg2 + SJW) \times Prescaler} $$</li>
 </ul>
 </li>
 <li><code>Basic Patameters</code>
@@ -3573,7 +3884,8 @@ while (1)
 </ul>
 <p>コードの生成</p>
 <h2 id="iocの設定timer"><a class="header" href="#iocの設定timer"><code>ioc</code>の設定(<code>Timer</code>)</a></h2>
-<p><code>CAN</code>の受信判定を行うため、<code>Timer</code>割り込みを有効化させる<br><code>1ms</code>周期の割り込み</p>
+<p><code>CAN</code>の受信判定を行うため、<code>Timer</code>割り込みを有効化させる<br />
+<code>1ms</code>周期の割り込み</p>
 <ul>
 <li><code>Timers</code>-<code>TIM5</code></li>
 <li><code>Internal Clock</code>にチェック</li>
@@ -3583,7 +3895,8 @@ while (1)
 <ul>
 <li><code>Prescaler</code>:<code>15</code></li>
 <li><code>Counter Period</code>:<code>999</code>
-割り込み周期は以下の式で求められる<br>$$ T = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(内部クロック周波数)} $$</li>
+割り込み周期は以下の式で求められる<br />
+$$ T = \frac{(Prescaler + 1) \times (Counter \space Period + 1)}{(内部クロック周波数)} $$</li>
 </ul>
 </li>
 </ul>
@@ -3810,28 +4123,7 @@ void can_rev_init(struct CAN_DS4_struct *_struct){
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>
@@ -3839,13 +4131,13 @@ void can_rev_init(struct CAN_DS4_struct *_struct){
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-c2a407aa.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-a0b12cfe.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -2,13 +2,13 @@
 
 ## ライブラリの場所  
 
-```admonish info "GitHub"
+```admonish info title = "GitHub"
 [receiveController](https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src)  
 ```
 
 `GitHub/2025-B/receiveController`の`main`ブランチ、`receiveF446RE/lib/rxfep`にあります。使用する場合は`rxfep`フォルダごとダウンロードして使用してください。
 
-```admonish important "注意点"
+```admonish important title = "注意点"
 ライブラリは置き場、公開/非公開が変更される場合があります。  
 2025/11/02時点では一部の人のみに公開しています。
 ```
@@ -78,7 +78,7 @@ led.write(data.CIRCLE);
 
 - `data.《ほしいデータ名》`でアクセスします。  
 
-```admonish info "データ名とデータ型"
+```admonish info title = "データ名とデータ型"
 `uint8_t`：`LX`、`LY`、`RX`、`RY`、`L2`、`R2`  
 `bool`：`TRIANGLE`、`CIRCLE`、`CROSS`、`SQUARE`、`UP`、`RIGHT`、`DOWN`、`LEFT`、`L1`、`L3`、`R1`、`R3`、`SHARE`、`OPTIONS`、`PS`、`TOUCHPAD`
 ```
@@ -149,7 +149,7 @@ led.write(data.CIRCLE);
 
 ## サンプルプログラム
 
-````admonish example "DUALSHOCK4の場合"
+````admonish example title = "DUALSHOCK4の場合"
 使用しているものです。`DUALSHOCK4`用のファイルとコントローラー共通のファイルが必要になります。  
 
 - `lib/rxfep`

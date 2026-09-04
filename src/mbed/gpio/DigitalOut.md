@@ -43,7 +43,7 @@ int pin_state = led2.read();
 
 ## サンプルプログラム
 
-````admonish example "Lチカ"
+````admonish example title = "Lチカ"
 `PA5`を`250ms`間隔で出力を反転させるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が`250ms`間隔で点滅します。  
 
@@ -84,14 +84,14 @@ int main(void){
 
 ---
 
-```admonish quote "使用部品"
+```admonish quote title = "使用部品"
 
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
 ```
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)

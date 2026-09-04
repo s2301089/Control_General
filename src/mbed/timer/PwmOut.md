@@ -4,7 +4,7 @@
 
 `PWM`出力をする場合は、`PwmOut`クラスを使用します。  
 
-```admonish note "PWM"
+```admonish note title = "PWM"
 `PWM`はどういうものか[このページ](../../BasicContents/motor.md#pwm)で簡単に説明しています。  
 ```
 
@@ -60,7 +60,7 @@ float pin_duty = led2.read();
 
 ## サンプルプログラム
 
-````admonish example "やわらかい点滅"
+````admonish example title = "やわらかい点滅"
 `PWM`のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`がやさしく点滅します。  
 
@@ -129,14 +129,14 @@ int main(void){
 
 ---
 
-```admonish quote "使用部品"
+```admonish quote title = "使用部品"
 
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
 ```
 
-```admonish quote "参考"
+```admonish quote title = "参考"
 
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)

@@ -31,6 +31,7 @@
   - [アナログ入力](./mbed/analog/AnalogIn.md)
   - [待ち時間](./mbed/thread/ThisThread.md)
   - [値の表示](./mbed/connectivity/showValuePrintf.md)
+  - [CAN通信](./mbed/connectivity/can.md)
   - [コントローラー受信側(lib)](./mbed/connectivity/use_rxController.md)
 
 ---
