@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,32 +181,51 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="基礎知識"><a class="header" href="#基礎知識">基礎知識</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="基礎知識"><a class="header" href="#基礎知識">基礎知識</a></h1>
 <h2 id="git--github"><a class="header" href="#git--github"><a href="./git_GitHub.html">git / GitHub</a></a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">`git`とは、`GitHub`とはなにか  
 導入方法、設定、使用方法など  
 </code></pre>
 <h2 id="c言語"><a class="header" href="#c言語"><a href="./language_c.html">C言語</a></a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">プログラミング言語とは  
 C言語の基本的な内容  
 C言語の発展的な内容  
 </code></pre>
 <h2 id="c"><a class="header" href="#c"><a href="./language_cpp.html">C++</a></a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">オブジェクト指向とは  
 クラスとは  
 簡単な使用方法など  
 </code></pre>
 <h2 id="回路の基礎"><a class="header" href="#回路の基礎"><a href="./circuit.html">回路の基礎</a></a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">電気回路の基本物理量  
 オームの法則  
 合成抵抗、分圧、分流
 </code></pre>
 <h2 id="dcモーターの制御"><a class="header" href="#dcモーターの制御"><a href="./motor.html">DCモーターの制御</a></a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">DCモーターを制御するための回路  
 `PWM`とはなにか  
 モーターへの出力の決定方法など
 </code></pre>
 <h2 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ"><a href="./controller_data.html">コントローラーのデータ</a></a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">データの取得方法、送信方法・受信方法  
 使用する機器  
 送受信しているデータの構成など  

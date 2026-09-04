@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,11 +181,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="mbed"><a class="header" href="#mbed">mbed</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="mbed"><a class="header" href="#mbed">mbed</a></h1>
 <p>主に<code>PlatformIO</code>で<code>Framework</code>として使用する場合の説明をします。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish warning title = "注意点"</span></div>
 <pre><code class="language-admonish warning title = &quot;注意点&quot;">C言語とC++がある程度わかっている前提で話を進めます。  
 C言語の簡単な勉強は[このページ](../BasicContents/language_c.md)、C++の簡単な勉強は[このページ](../BasicContents/language_cpp.md)で勉強してください。  
 </code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">プロジェクトの作成方法  
 `mbed`で使用できる関数やクラス  
 `mbed`用ライブラリの使い方など
@@ -192,7 +208,8 @@ C言語の簡単な勉強は[このページ](../BasicContents/language_c.md)、
 <p>使用する場合は<code>mbed.h</code>をインクルードする必要があります。<br />
 ソースコードは<code>.cpp</code>である必要があります。<br />
 <code>main.cpp</code>の雛形を示します。</p>
-<pre><code class="language-cpp : main.cpp">#include "mbed.h"
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
 
 using namespace std;
 using namespace mbed;
@@ -208,32 +225,39 @@ int main(void){
 </code></pre>
 <h2 id="gpio"><a class="header" href="#gpio">GPIO</a></h2>
 <h3 id="ディジタル出力"><a class="header" href="#ディジタル出力"><a href="./gpio/DigitalOut.html">ディジタル出力</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">ディジタル出力  
 Lチカプログラム
 </code></pre>
 <h3 id="ディジタル入力"><a class="header" href="#ディジタル入力"><a href="./gpio/DigitalIn.html">ディジタル入力</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">ディジタル入力  
 プッシュスイッチによる`LED`制御プログラム
 </code></pre>
 <h2 id="timer"><a class="header" href="#timer">Timer</a></h2>
 <h3 id="pwm出力"><a class="header" href="#pwm出力"><a href="./timer/PwmOut.html">PWM出力</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">`PWM`出力  
 やわらかいLチカプログラム
 </code></pre>
 <h2 id="analog"><a class="header" href="#analog">Analog</a></h2>
 <h3 id="アナログ入力"><a class="header" href="#アナログ入力"><a href="./analog/AnalogIn.html">アナログ入力</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">アナログ入力  
 半固定抵抗による`LED`制御プログラム
 </code></pre>
 <h2 id="thread"><a class="header" href="#thread">Thread</a></h2>
 <h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="./thread/ThisThread.html">待ち時間</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">待ち時間の作成  
 </code></pre>
 <h2 id="通信"><a class="header" href="#通信">通信</a></h2>
 <h3 id="値の表示"><a class="header" href="#値の表示"><a href="./connectivity/showValuePrintf.html">値の表示</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">PCから変数値などを確認する方法  
 </code></pre>
 <h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
 <pre><code class="language-admonish abstract title = &quot;内容&quot;">コントローラーのデータを受信、使用するためのライブラリ  
 使用方法、サンプルプログラムなど  
 </code></pre>

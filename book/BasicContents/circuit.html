@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,17 +181,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="回路の基礎"><a class="header" href="#回路の基礎">回路の基礎</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="回路の基礎"><a class="header" href="#回路の基礎">回路の基礎</a></h1>
 <h2 id="基本物理量"><a class="header" href="#基本物理量">基本物理量</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "電流とは"</span></div>
 <pre><code class="language-admonish info title = &quot;電流とは&quot;">**電荷**(電気を帯びた粒子)が流れ動くことを電流が流れると言います。電流は流れる向きと大きさを持ちます。  
 電流は \\(I\\) で表され、単位は \\(\mathrm{[A]}\\) (アンペア)です。  
 </code></pre>
 <p>電流が流れる路を<strong>電気回路</strong>と言います。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "電圧とは"</span></div>
 <pre><code class="language-admonish info title = &quot;電圧とは&quot;">電荷を移動させる力のことを電圧と言います。電位(ある点の電気的な高さ(エネルギー))の差を**電位差**と言い、電気回路では電圧とも言います。  
 電圧は \\(V\\) で表され、単位は \\(\mathrm{[V]}\\) (ボルト)です。  
 </code></pre>
 <p>電流は電位の高い方から低い方に向かって流れます。</p>
-<p>![r_circuit](../resources/BasicContents/circuit/r_circuit.png =x200 center)</p>
+<p style="text-align:center"><img src="../resources/BasicContents/circuit/r_circuit.png" alt="r_circuit" height="200"></p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "抵抗とは"</span></div>
 <pre><code class="language-admonish info title = &quot;抵抗とは&quot;">電流の流れにくさを表します。回路内に抵抗があることでエネルギーが消費され、電圧が下がります。これを**電圧降下**と言います。  
 抵抗は \\(R\\) で表され、単位は \\(\mathrm{[\Omega]}\\) (オーム)です。
 </code></pre>
@@ -211,6 +228,7 @@
 <h2 id="オームの法則"><a class="header" href="#オームの法則">オームの法則</a></h2>
 <p>抵抗\(R\)、電圧\(V\)、電流\(I\)の関係は次のように表せます。<br />
 $$ V = RI $$</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "例"</span></div>
 <pre><code class="language-admonish example title = &quot;例&quot;">次の回路では何\\(\mathrm{[A]}\\)の電流が流れるでしょうか。  
 
 ![r_10k_circuit](../resources/BasicContents/circuit/r_10k_circuit.png =x200 center)  
@@ -222,6 +240,7 @@ I = \frac{V}{R} = \frac{3.3 \mathrm{[V]}}{10 \times 10^{3} \mathrm{[\Omega]}} = 
 抵抗\\(R\\)の両端には電源である\\(E\\)がすべて印加されます。そのため、\\(R\\)に印加される電圧は\\(3.3\mathrm{[V]}\\)となります。  
 </code></pre>
 <h2 id="直列回路と並列回路"><a class="header" href="#直列回路と並列回路">直列回路と並列回路</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "直列接続"</span></div>
 <pre><code class="language-admonish info title = &quot;直列接続&quot;">素子(抵抗など)の端子同士を一直線上に並ぶように接続する方法です。図として表すと次のようになります。  
 直列接続の場合は電圧と電流は次のようになります。  
 
@@ -231,6 +250,7 @@ $$ E = V_{1} + V_{2} \\\\
 I = I_{1} = I_{2} $$
 
 </code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "並列接続"</span></div>
 <pre><code class="language-admonish info title = &quot;並列接続&quot;">素子の端子同士を両端接続する方法です。図として表すと次のようになります。  
 並列接続の場合は電圧と電流は次のようになります。  
 
@@ -245,6 +265,7 @@ I = I_{1} + I_{2} $$
 全体の抵抗を1つの抵抗としてまとめて考えた抵抗を合成抵抗と言います。<br />
 直列接続の合成抵抗は次の式で求められます。<br />
 $$ R = R_{1} + R_{2} $$</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "例"</span></div>
 <pre><code class="language-admonish example title = &quot;例&quot;">次の回路の合成抵抗を求めます。
 
 ![r_10k_series_10k_circuit](../resources/BasicContents/circuit/r_10k_series_10k_circuit.png =x250 center)
@@ -264,6 +285,7 @@ $$ R = \frac{1}{\frac{1}{R_{1}} + \frac{1}{R_{2}}} $$
 抵抗が2本の場合は上の式を変形して次の式で表すこともあります。
 $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} $$
 この式を「和分の積」と呼ぶ人もいます。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "例"</span></div>
 <pre><code class="language-admonish example title = &quot;例&quot;">次の回路の合成抵抗を求めます。
 
 ![r_10k_parallel_10k_circuit](../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png =x250 center)
@@ -283,6 +305,7 @@ $$ R = \frac{R_{1}R_{2}}{R_{1} + R_{2}} = \frac{5 \times 10^{3} \times 10 \times
 \(V_{1}\)、\(V_{2}\)を次の式で表します。\(V\)は全体に加わる電圧、\(R\)は合成抵抗です。
 $$ V_{1} = \frac{R_{1}}{R}V \\
 V_{2} = \frac{R_{2}}{R}V $$</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "例"</span></div>
 <pre><code class="language-admonish example title = &quot;例&quot;">次の回路のそれぞれの抵抗に加わる電圧を求めます。
 
 ![r_10k_series_10k_circuit](../resources/BasicContents/circuit/r_10k_series_10k_circuit.png =x250 center)
@@ -304,6 +327,7 @@ V_{2} = \frac{R_{2}}{R}E = \frac{10 \times 10^{3}}{15 \times 10^{3}} \times 5.0 
 \(I_{1}\)、\(I_{2}\)を次の式で表します。\(I\)は全体に流れる電流、\(R\)は合成抵抗です。
 $$ I_{1} = \frac{R}{R_{1}}I = \frac{R_{2}}{R_{1} + R_{2}}I \\
 I_{2} = \frac{R}{R_{2}}I = \frac{R_{1}}{R_{1} + R_{2}}I $$</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "例"</span></div>
 <pre><code class="language-admonish example title = &quot;例&quot;">次の回路のそれぞれの抵抗に流れる電流を求めます。まずは全電流\\(I\\)をオームの法則で求めます。
 
 ![r_10k_parallel_10k_circuit](../resources/BasicContents/circuit/r_10k_parallel_10k_circuit.png =x250 center)
@@ -327,6 +351,7 @@ I_{2} = \frac{V_{R2}}{R_{2}} = \frac{5.0}{10 \times 10^{3}} = 0.5\mathrm{[mA]} $
 <p><strong>開放</strong>は\(R=\infty\)であることです。<br />
 抵抗が無限大のため\(I=\frac{V}{R}=0\)になります。このとき\(V\neq0\)になります。</p>
 <hr />
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"</span></div>
 <pre><code class="language-admonish quote title = &quot;参考&quot;">
 - 講習資料
 - [電気回路の基礎](https://www.morikita.co.jp/books/mid/073253)

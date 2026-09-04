@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,7 +181,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ディジタル出力"><a class="header" href="#ディジタル出力">ディジタル出力</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="ディジタル出力"><a class="header" href="#ディジタル出力">ディジタル出力</a></h1>
 <h2 id="digitalout"><a class="header" href="#digitalout"><code>DigitalOut</code></a></h2>
 <p>ディジタル出力をする場合は、<code>DigitalOut</code>クラスを使用します。</p>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
@@ -198,25 +212,30 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : 初期値：未定">DigitalOut led2(PA_5);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">初期値：未定</span></div>
+<pre><code class="language-cpp">DigitalOut led2(PA_5);
 </code></pre>
 <p><code>led2</code>というインスタンスを宣言しています。ピンは<code>PA5</code>を指定しています。</p>
-<pre><code class="language-cpp : 初期値：1">DigitalOut led2(PA_5, 1);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">初期値：1</span></div>
+<pre><code class="language-cpp">DigitalOut led2(PA_5, 1);
 </code></pre>
 <h3 id="void-writeint-value"><a class="header" href="#void-writeint-value"><code>void write(int value)</code></a></h3>
 <p>ピンの出力を<code>0</code>、または、<code>1</code>に指定します。出力は論理値になります。<br />
 <code>0</code>は<code>LOW</code>に、<code>1</code>は<code>HIGH</code>に指定します。</p>
-<pre><code class="language-cpp : 1に設定">led2.write(1);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">1に設定</span></div>
+<pre><code class="language-cpp">led2.write(1);
 </code></pre>
 <h3 id="int-readvoid"><a class="header" href="#int-readvoid"><code>int read(void)</code></a></h3>
 <p>ピンの出力設定を<code>0</code>、または、<code>1</code>を返します。</p>
-<pre><code class="language-cpp : 設定値の取得">int pin_state = led2.read();
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">int pin_state = led2.read();
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "Lチカ"</span></div>
 <pre><code class="language-admonish example title = &quot;Lチカ&quot;">`PA5`を`250ms`間隔で出力を反転させるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が`250ms`間隔で点滅します。  
 
-```cpp : main.cpp
+```
 #include "mbed.h"
 
 using namespace std;
@@ -245,20 +264,31 @@ int main(void){
 この回路では、抵抗が\\(\mathrm{510[\Omega]}\\)で、`F446RE`の`GPIO`電圧が\\(\mathrm{3.3[V]}\\)なので、電流は\\(\mathrm{約6.47[mA]}\\)となり、`LED`が点灯します。  
 `STM32F446RET6`の`GPIO`ピンの電流は\\(\mathrm{25[mA]}\\)(最大定格)未満にする必要がありますが、\\(\mathrm{約6.47[mA]}\\)なので問題はありません。  
 
-</code></pre>
-<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
-<h3 id="int-is_connectedvoid"><a class="header" href="#int-is_connectedvoid"><code>int is_connected(void)</code></a></h3>
-<hr />
-<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
+```
+
+## 他のメソッド(使用したことがない)
+
+### `int is_connected(void)`
+
+---
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "使用部品"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "使用部品"
+
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
-</code></pre>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">
+```
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "参考"
+
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
 
-</code></pre>
+```</code></pre>
 
                     </main>
 

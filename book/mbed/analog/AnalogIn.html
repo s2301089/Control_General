@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,7 +181,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="アナログ入力"><a class="header" href="#アナログ入力">アナログ入力</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="アナログ入力"><a class="header" href="#アナログ入力">アナログ入力</a></h1>
 <h2 id="analogin"><a class="header" href="#analogin"><code>AnalogIn</code></a></h2>
 <p>アナログ入力をする場合は、<code>AnalogIn</code>クラスを使用します。</p>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
@@ -200,25 +214,29 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : vref初期値">AnalogIn var_r1(PA_0);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">vref初期値</span></div>
+<pre><code class="language-cpp">AnalogIn var_r1(PA_0);
 </code></pre>
 <p><code>var_r1</code>というインスタンスを宣言しています。ピンは<code>PA_0</code>を指定しています。</p>
 <h3 id="float-readvoid"><a class="header" href="#float-readvoid"><code>float read(void)</code></a></h3>
 <p>ピンの入力電圧を読み取り、<code>0.0f(0%)</code>~<code>1.0f(100%)</code>の値を返します。</p>
-<pre><code class="language-cpp : 設定値の取得">float pin_value = var_r1.read();
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">float pin_value = var_r1.read();
 </code></pre>
 <h3 id="unsigned-short-read_u16void"><a class="header" href="#unsigned-short-read_u16void"><code>unsigned short read_u16(void)</code></a></h3>
 <p>ピンの入力電圧を読み取り、<code>0x0000(0%)</code>~<code>0xffff(100%)</code>の値を返します。<br />
 入力電圧を<code>16bit</code>に正規化して返します。</p>
-<pre><code class="language-cpp : 設定値の取得">uint16_t pin_value = var_r1.read_u16();
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">uint16_t pin_value = var_r1.read_u16();
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "LEDの明るさ制御"</span></div>
 <pre><code class="language-admonish example title = &quot;LEDの明るさ制御&quot;">`PA5`を`PA0`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。  
 
 ![variable_resistor_10k_breadboard](../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png =500x center)  
 
-```cpp : main.cpp
+```
 #include "mbed.h"
 
 using namespace std;
@@ -255,24 +273,37 @@ int main(void){
 
 この状態では、入力電圧が\\(\mathrm{3.3[V]}\\)になるので、点灯(`100%`)になります。
 
-</code></pre>
-<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
-<h3 id="float-read_voltagevoid"><a class="header" href="#float-read_voltagevoid"><code>float read_voltage(void)</code></a></h3>
-<h3 id="void-set_reference_voltagefloat-vref"><a class="header" href="#void-set_reference_voltagefloat-vref"><code>void set_reference_voltage(float vref)</code></a></h3>
-<h3 id="float-get_reference_voltage"><a class="header" href="#float-get_reference_voltage"><code>float get_reference_voltage()</code></a></h3>
-<hr />
-<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
+```
+
+## 他のメソッド(使用したことがない)
+
+### `float read_voltage(void)`
+
+### `void set_reference_voltage(float vref)`
+
+### `float get_reference_voltage()`
+
+---
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "使用部品"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "使用部品"
+
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 - [ブレッドボード](https://akizukidenshi.com/catalog/g/g100315/)
 - [半固定抵抗 10[kΩ]](https://akizukidenshi.com/catalog/g/g106110/)
 - ジャンパ線
 
-</code></pre>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">
+```
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "参考"
 
 
-</code></pre>
+
+```</code></pre>
 
                     </main>
 

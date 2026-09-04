@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,32 +181,49 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="値の表示"><a class="header" href="#値の表示">値の表示</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="値の表示"><a class="header" href="#値の表示">値の表示</a></h1>
 <p>変数の値などを確認できるようにします。<code>printf</code>で文字列をターミナルへ表示することがあります。<br />
 <code>mbed</code>では同じようなことをする方法が2つあります。</p>
 <h2 id="用意されたものを使用する"><a class="header" href="#用意されたものを使用する">用意されたものを使用する</a></h2>
 <p>用意されたものを使用するのは簡単です。コードの中にそのまま<code>printf</code>を記述するだけです。</p>
-<pre><code class="language-cpp : printf.cpp">printf("sw:%d\n", sw.read());
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">printf.cpp</span></div>
+<pre><code class="language-cpp">printf("sw:%d\n", sw.read());
 </code></pre>
 <p>基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。<br />
 シリアルモニターなどで確認できます。ボーレートはデフォルトで<code>9600</code>です。</p>
 <h3 id="ボーレートの変更"><a class="header" href="#ボーレートの変更">ボーレートの変更</a></h3>
 <p><code>UnbufferedSerial</code>のインスタンスを宣言するだけでボーレートを変更することができます。</p>
-<pre><code class="language-cpp : UnbufferedSerialの宣言">UnbufferedSerial pc(USBTX, USBRX, 38400);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
+<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
 </code></pre>
 <p><code>38400</code>がボーレートの設定になります。<code>9600</code>や<code>38400</code>、<code>115200</code>などに設定することが多いです。</p>
 <h2 id="自分で実装する"><a class="header" href="#自分で実装する">自分で実装する</a></h2>
 <p><code>mbed</code>では<code>printf</code>を使用すると勝手にPCへ送信されてしまうため、<code>printf</code>のような関数を実装する必要があります。<br />
 使用する場合は、<code>Serial</code>の宣言をし、関数を実装するだけです。定義する関数は、<code>printf</code>と同じように使用できます。</p>
 <h3 id="unbufferedserialの宣言"><a class="header" href="#unbufferedserialの宣言">UnbufferedSerialの宣言</a></h3>
-<pre><code class="language-cpp : UnbufferedSerialの宣言">UnbufferedSerial pc(USBTX, USBRX, 38400);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">UnbufferedSerialの宣言</span></div>
+<pre><code class="language-cpp">UnbufferedSerial pc(USBTX, USBRX, 38400);
 // TX、RX、baudrate
 </code></pre>
 <p><code>UnbufferedSerial</code>のインスタンス<code>pc</code>を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。<code>main.cpp</code>の上の方に宣言します。<br />
 <code>baudrate</code>を指定しない場合は<code>9600</code>になります。</p>
 <h3 id="代替関数の実装"><a class="header" href="#代替関数の実装">代替関数の実装</a></h3>
 <p><code>printf</code>の代わりに呼び出す関数を定義します。</p>
-<pre><code class="language-cpp : 関数の定義">void pc_printf(const char *format, ...){
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">関数の定義</span></div>
+<pre><code class="language-cpp">void pc_printf(const char *format, ...){
     char buf[256];
     va_list arg;
     va_start(arg, format);
@@ -219,7 +237,8 @@
 <h2 id="浮動小数点数等の表示"><a class="header" href="#浮動小数点数等の表示">浮動小数点数等の表示</a></h2>
 <p>初めに<code>%f</code>を<code>printf</code>で使用すると、<code>%f</code>と表示されると思います。浮動小数点数を表示する場合は設定が必要になります。<br />
 プロジェクトフォルダの階層(<code>src/</code>や<code>lib/</code>のある階層)に新しいファイルを作成します。</p>
-<pre><code class="language-json : mbed_app.json">{
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">mbed_app.json</span></div>
+<pre><code class="language-json">{
     "target_overrides":{
         "*":{
             "target.printf_lib":"std"
@@ -229,6 +248,7 @@
 </code></pre>
 <p><code>long</code>等も正しく表示できない場合があります。その場合は、上記の<code>mbed_app.json</code>を作成する必要があります。</p>
 <hr />
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"</span></div>
 <pre><code class="language-admonish quote title = &quot;参考&quot;">
 - [NUCLEOのKeil Studioで浮動小数点数を出力する方法](https://forums.mbed.com/t/nucleo-keil-studio/22433)
 

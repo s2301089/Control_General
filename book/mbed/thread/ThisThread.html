@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,7 +181,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="thisthread"><a class="header" href="#thisthread">ThisThread</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="thisthread"><a class="header" href="#thisthread">ThisThread</a></h1>
 <h2 id="待ち時間の作成"><a class="header" href="#待ち時間の作成">待ち時間の作成</a></h2>
 <p>待ち時間(遅延)を作成する場合は、名前空間<code>ThisThread</code>にある関数を使用します。</p>
 <h3 id="void-sleep_forkernelclockduration_u32-rel_time"><a class="header" href="#void-sleep_forkernelclockduration_u32-rel_time"><code>void sleep_for(Kernel::Clock::duration_u32 rel_time)</code></a></h3>
@@ -196,7 +210,8 @@
 </tbody></table>
 </div>
 <p>変数として渡す場合は、変数はそれぞれの型で宣言します。</p>
-<pre><code class="language-cpp : chrono変数">chrono::hours h_interval = 1h;
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">chrono変数</span></div>
+<pre><code class="language-cpp">chrono::hours h_interval = 1h;
 chrono::minutes m_interval = 2min;
 chrono::seconds s_interval = 10s;
 chrono::milliseconds ms_interval = 250ms;

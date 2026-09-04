@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,9 +181,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="git--github"><a class="header" href="#git--github">git / GitHub</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="git--github"><a class="header" href="#git--github">git / GitHub</a></h1>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "gitとは"</span></div>
 <pre><code class="language-admonish info title = &quot;gitとは&quot;">バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。  
 </code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "GitHubとは"</span></div>
 <pre><code class="language-admonish info title = &quot;GitHubとは&quot;">`git`のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。  
 `git`と`GitHub`は全くの別物です。  
 </code></pre>
@@ -452,6 +468,7 @@ $ git pull origin main
 <h2 id="branch"><a class="header" href="#branch">branch</a></h2>
 <p>普段はおそらく<code>main</code>ブランチ、または、<code>master</code>ブランチを使用していると思います。<br />
 ここでは、開発用のブランチ<code>main</code>と更新用(安定版)のブランチ<code>release</code>にわけておきたいとします。<code>main</code>ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともあります。ブランチはわけずにタグを作成して、そのときのコミットに戻れるという機能もありますが、それは<code>branch</code>の次に紹介します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish tip title = "おすすめの方法"</span></div>
 <pre><code class="language-admonish tip title = &quot;おすすめの方法&quot;">開発用は`development`という名前のブランチで確実に動くものは`main`に反映させるなどがおすすめです。  
 </code></pre>
 <ul>
@@ -546,6 +563,7 @@ git merge main
 </li>
 </ul>
 <hr />
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"  </span></div>
 <pre><code class="language-admonish quote title = &quot;参考&quot;">- 授業  
 - 教育推進プロジェクト(講座)  
 - [git branch コマンド](https://qiita.com/chihiro/items/e178e45a7fd5a2fb4599#git-branch---no-color)  

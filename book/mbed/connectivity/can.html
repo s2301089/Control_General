@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,11 +181,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="can通信"><a class="header" href="#can通信">CAN通信</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="can通信"><a class="header" href="#can通信">CAN通信</a></h1>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "CAN通信とは"</span></div>
 <pre><code class="language-admonish info title = &quot;CAN通信とは&quot;">`Control Area Network`。CAN_TD、CAN_RDなどの信号を差動信号にして、CAN BUSを作ります。シリアル通信の一種です。  
 CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデータを読み取ります。  
 差動のため、ノイズに強いと言われています。  
 </code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "CANメッセージ"</span></div>
 <pre><code class="language-admonish info title = &quot;CANメッセージ&quot;">CANメッセージとはCAN通信における送信データの1まとまりです。  
 基本的にCANメッセージのデータ長は8Byteで、符号なし8bit整数型配列(`uint8_t data[8]`)が使用されることが多いです。
 </code></pre>
@@ -210,29 +226,35 @@ CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデー�
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : 周波数：未定">CAN can1(PA_11, PA_12);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">周波数：未定</span></div>
+<pre><code class="language-cpp">CAN can1(PA_11, PA_12);
 </code></pre>
-<pre><code class="language-cpp : 周波数：1MHz">CAN can1(PA_11, PA_12, 1000000);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">周波数：1MHz</span></div>
+<pre><code class="language-cpp">CAN can1(PA_11, PA_12, 1000000);
 // 1000000 → 1e6
 </code></pre>
 <h3 id="int-frequencyint-hz"><a class="header" href="#int-frequencyint-hz"><code>int frequency(int hz)</code></a></h3>
 <p>周波数を<code>hz</code>に設定します。<br />
 成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
-<pre><code class="language-cpp : 1MHzに設定">can1(PA_11, PA_12, 1000000);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">1MHzに設定</span></div>
+<pre><code class="language-cpp">can1(PA_11, PA_12, 1000000);
 // 1e6
 </code></pre>
-<pre><code class="language-cpp : 500kHzに設定">can1(PA_11, PA_12, 500000);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">500kHzに設定</span></div>
+<pre><code class="language-cpp">can1(PA_11, PA_12, 500000);
 // 500e3
 </code></pre>
 <h3 id="int-writecanmessage-msg"><a class="header" href="#int-writecanmessage-msg"><code>int write(CANMessage msg)</code></a></h3>
 <p><a href="#canmessage"><code>CANMessage</code></a>をCANバスに送信します。<br />
 成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
-<pre><code class="language-cpp : msgを送信">can1.write(msg);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">msgを送信</span></div>
+<pre><code class="language-cpp">can1.write(msg);
 </code></pre>
 <h3 id="int-readcanmessage-msg-int-handle--0"><a class="header" href="#int-readcanmessage-msg-int-handle--0"><code>int read(CANMessage &amp;msg, int handle = 0)</code></a></h3>
 <p><a href="#canmessage"><code>CANMessage</code></a>をCANバスから受信します。<code>handle</code>はフィルターらしいです。<br />
 成功時に<code>1</code>、失敗時に<code>0</code>を返します。</p>
-<pre><code class="language-cpp : msgを受信">can1.read(msg);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">msgを受信</span></div>
+<pre><code class="language-cpp">can1.read(msg);
 </code></pre>
 <h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
 <h3 id="void-reset"><a class="header" href="#void-reset"><code>void reset()</code></a></h3>
@@ -266,18 +288,21 @@ CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデー�
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : ID：0x200">CANMessage msg(0x200);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ID：0x200</span></div>
+<pre><code class="language-cpp">CANMessage msg(0x200);
 </code></pre>
 <h3 id="インスタンス変数として使用"><a class="header" href="#インスタンス変数として使用">インスタンス変数として使用</a></h3>
-<pre><code class="language-cpp : インスタンス変数">CANMessage msg;
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">インスタンス変数</span></div>
+<pre><code class="language-cpp">CANMessage msg;
 msg.id = id;
 msg.len = 8;
 msg.data[0] = 0x20;
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "データ送信"</span></div>
 <pre><code class="language-admonish example title = &quot;データ送信&quot;">適当なデータ(固定値)を`500ms`間隔で`CANMessage`を送信するプログラムです。  
 
-```cpp : main.cpp
+```
 #include "mbed.h"
 
 int main(void){
@@ -297,14 +322,19 @@ int main(void){
 }
 ```
 
-</code></pre>
-<hr />
-<pre><code class="language-admonish quote title = &quot;参考&quot;">
+```
+
+---
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "参考"
+
 - [【高専ロボコン】キャン(CAN)ならずできる！STM32で始めるCAN通信入門](https://qiita.com/sirayuri/items/b905330c8ad5358e7bdd)
 - [STM32マイコンでCAN通信](https://hsdev.co.jp/stm32-can/)
 - [CAN](https://os.mbed.com/docs/mbed-os/v6.16/apis/other-driver-apis.html)
 
-</code></pre>
+```</code></pre>
 
                     </main>
 

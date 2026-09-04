@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,19 +181,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="dcモーターの制御"><a class="header" href="#dcモーターの制御">DCモーターの制御</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="dcモーターの制御"><a class="header" href="#dcモーターの制御">DCモーターの制御</a></h1>
 <h2 id="制御用回路"><a class="header" href="#制御用回路">制御用回路</a></h2>
 <p>回路的には以下のようになっています。<br />
 <img src="../resources/BasicContents/motor/digi_pwm_voltage.png" alt="digi_digi_pwm_voltage.png" /><br />
 モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br />
 また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
 <h2 id="pwm"><a class="header" href="#pwm">PWM</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "PWMとは"</span></div>
 <pre><code class="language-admonish info title = &quot;PWMとは&quot;">`Pulse Width Modulation`の略で`パルス幅変調`といいます。  
 一定周期の中で出力が`HIGH`の時間と`LOW`の時間の比(デューティー比)で中間の電圧を擬似的に表現します。  
 
 PWMの出力波形は以下の図のようなものです。  
 ![pwm_pwm_waveform.png](../resources/BasicContents/motor/pwm_waveform.png)  
 </code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "出力の例"</span></div>
 <pre><code class="language-admonish example title = &quot;出力の例&quot;">GPIOピンの出力が`5V`でデューティー比が`25%`であれば、出力は`1.25V`になります。出力電圧は以下の式で求められます。  
 $$ 出力電圧 = {最大電圧} \times {デューティー比} $$  
 デューティー比が小さいと素子によってはデューティー比`0％`とあまり変わらない結果が得られるものもあります。**各素子の動作電圧**などを確認してください。  
@@ -202,6 +218,7 @@ $$ 出力電圧 = {最大電圧} \times {デューティー比} $$
 <p><img src="../resources/BasicContents/motor/motor_output.png" alt="motor_output.png" /></p>
 <p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応します。</p>
 <hr />
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"  </span></div>
 <pre><code class="language-admonish quote title = &quot;参考&quot;">- [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  
 - [STM32 HALを使ってPWM出力してみる](https://moons.link/post-632/)  
 </code></pre>

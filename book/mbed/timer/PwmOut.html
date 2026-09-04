@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,9 +181,23 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="pwm出力"><a class="header" href="#pwm出力">PWM出力</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="pwm出力"><a class="header" href="#pwm出力">PWM出力</a></h1>
 <h2 id="pwmout"><a class="header" href="#pwmout"><code>PwmOut</code></a></h2>
 <p><code>PWM</code>出力をする場合は、<code>PwmOut</code>クラスを使用します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish note title = "PWM"</span></div>
 <pre><code class="language-admonish note title = &quot;PWM&quot;">`PWM`はどういうものか[このページ](../../BasicContents/motor.md#pwm)で簡単に説明しています。  
 </code></pre>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
@@ -202,18 +217,22 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : 宣言">PwmOut led2(PA_5);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">宣言</span></div>
+<pre><code class="language-cpp">PwmOut led2(PA_5);
 </code></pre>
 <p><code>led2</code>というインスタンスを宣言しています。ピンは<code>PA5</code>を指定しています。<code>PA5</code>は<code>Timer2</code>の<code>Channel1</code>を使用しています。</p>
 <h3 id="void-writefloat-value"><a class="header" href="#void-writefloat-value"><code>void write(float value)</code></a></h3>
 <p>デューティー比を<code>0.0f(0%)</code>~<code>1.0f(100%)</code>に指定します。範囲外の値は<code>0.0f</code>、または、<code>1.0f</code>になります。</p>
-<pre><code class="language-cpp : 100%に設定">led2.write(1.0f);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">100%に設定</span></div>
+<pre><code class="language-cpp">led2.write(1.0f);
 </code></pre>
-<pre><code class="language-cpp : 30%に設定">led2.write(0.3f);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">30%に設定</span></div>
+<pre><code class="language-cpp">led2.write(0.3f);
 </code></pre>
 <h3 id="float-readvoid"><a class="header" href="#float-readvoid"><code>float read(void)</code></a></h3>
 <p>デューティー比の出力設定を<code>0.0f(0%)</code>~<code>1.0f(100%)</code>で返します。<code>write()</code>で指定した値と完全に一致しない場合があります。</p>
-<pre><code class="language-cpp : 設定値の取得">float pin_duty = led2.read();
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">float pin_duty = led2.read();
 </code></pre>
 <h3 id="void-periodfloat-seconds"><a class="header" href="#void-periodfloat-seconds"><code>void period(float seconds)</code></a></h3>
 <p><code>PWM</code>の周期の秒数を指定します。分解能はマイクロ秒単位でこれより小さい周期は<code>0</code>に設定されます。</p>
@@ -222,10 +241,11 @@
 <h3 id="void-period_usint-us"><a class="header" href="#void-period_usint-us"><code>void period_us(int us)</code></a></h3>
 <p><code>PWM</code>の周期をマイクロ秒単位で指定します。</p>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "やわらかい点滅"</span></div>
 <pre><code class="language-admonish example title = &quot;やわらかい点滅&quot;">`PWM`のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`がやさしく点滅します。  
 
-```cpp : main.cpp
+```
 #include "mbed.h"
 
 using namespace std;
@@ -256,33 +276,57 @@ int main(void){
 
 周期が\\(\mathrm{1[ms]}\\)の`PWM`を出力します。
 
-</code></pre>
-<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
-<h3 id="int-read_period_usvoid"><a class="header" href="#int-read_period_usvoid"><code>int read_period_us(void)</code></a></h3>
-<p><code>PWM</code>の周期設定を返します。マイクロ秒単位の周期が返されます。</p>
-<h3 id="void-pulsewidthfloat-seconds"><a class="header" href="#void-pulsewidthfloat-seconds"><code>void pulsewidth(float seconds)</code></a></h3>
-<p><code>PWM</code>のパルス幅を秒数で指定します。</p>
-<h3 id="void-pulsewidth_msint-ms"><a class="header" href="#void-pulsewidth_msint-ms"><code>void pulsewidth_ms(int ms)</code></a></h3>
-<p><code>PWM</code>のパルス幅をミリ秒単位で指定します。</p>
-<h3 id="void-pulsewidth_usint-us"><a class="header" href="#void-pulsewidth_usint-us"><code>void pulsewidth_us(int us)</code></a></h3>
-<p><code>PWM</code>のパルス幅をマイクロ秒単位で指定します。</p>
-<h3 id="int-read_pulsewidth_us"><a class="header" href="#int-read_pulsewidth_us"><code>int read_pulsewidth_us()</code></a></h3>
-<p><code>PWM</code>のパルス幅設定を返します。マイクロ秒単位の秒数が返されます。</p>
-<h3 id="void-suspend"><a class="header" href="#void-suspend"><code>void suspend()</code></a></h3>
-<p><code>PWM</code>の動作を一時停止します。停止中は他の呼び出しは動作しません。</p>
-<h3 id="void-resume"><a class="header" href="#void-resume"><code>void resume()</code></a></h3>
-<p><code>PWM</code>の動作を再開します。<code>suspend()</code>で停止する前の状態に復元します。</p>
-<hr />
-<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
+```
+
+## 他のメソッド(使用したことがない)
+
+### `int read_period_us(void)`
+
+`PWM`の周期設定を返します。マイクロ秒単位の周期が返されます。
+
+### `void pulsewidth(float seconds)`
+
+`PWM`のパルス幅を秒数で指定します。
+
+### `void pulsewidth_ms(int ms)`
+
+`PWM`のパルス幅をミリ秒単位で指定します。
+
+### `void pulsewidth_us(int us)`
+
+`PWM`のパルス幅をマイクロ秒単位で指定します。
+
+### `int read_pulsewidth_us()`
+
+`PWM`のパルス幅設定を返します。マイクロ秒単位の秒数が返されます。
+
+### `void suspend()`
+
+`PWM`の動作を一時停止します。停止中は他の呼び出しは動作しません。
+
+### `void resume()`
+
+`PWM`の動作を再開します。`suspend()`で停止する前の状態に復元します。
+
+---
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "使用部品"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "使用部品"
+
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
-</code></pre>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">
+```
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "参考"
+
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
 
-</code></pre>
+```</code></pre>
 
                     </main>
 

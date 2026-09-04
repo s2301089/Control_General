@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,13 +181,27 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="前提条件等"><a class="header" href="#前提条件等">前提条件等</a></h1>
 <p>制御(回路・プログラム)に関するお勉強・開発のHomeです。<br />
 使用するプログラミング言語は基本的に<code>C言語</code>、<code>C++</code>です。一部、他の言語の知識が混ざる可能性があります。<br />
 環境構築等はすでに済んでいるものとして扱い、コードの内容のみになる場合があります。筆者と異なるOS・バージョンを使用する場合はそれぞれの環境に合わせて対応する必要があります。<br />
 各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br />
 一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br />
 結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish tip "調べ方のコツ？"</span></div>
 <pre><code class="language-admonish tip &quot;調べ方のコツ？&quot;">知りたいことがあれば、調べてみよう。  
 例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。`Qiita`や`Zenn`などがその例です。中には個人のサイトで解説をしている方もいます。  
 データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。  
@@ -198,6 +213,7 @@
 <li>Windows 11 Home <strong>← 推奨</strong></li>
 <li>Ubuntu 22.04 LTS</li>
 </ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish warning "OSについての注意点"</span></div>
 <pre><code class="language-admonish warning &quot;OSについての注意点&quot;">Macは使用しているソフトウェアが対応していない、機能がないなどの問題点があります。  
 そのため**Windows**を**推奨**します。その他のOSは自分で対応できる自信のある人のみ使用することをおすすめします。  
 </code></pre>

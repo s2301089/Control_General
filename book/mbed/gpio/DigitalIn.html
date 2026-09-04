@@ -29,6 +29,7 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../mdbook-admonish.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -180,7 +181,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ディジタル入力"><a class="header" href="#ディジタル入力">ディジタル入力</a></h1>
+                        <style>
+div.codeblock_filename_container + pre {
+  margin-top: 0;
+}
+
+span.codeblock_filename_inner {
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  font-family: var(--mono-font) !important;
+  font-size: var(--code-font-size);
+}
+
+</style>
+<h1 id="ディジタル入力"><a class="header" href="#ディジタル入力">ディジタル入力</a></h1>
 <h2 id="digitalin"><a class="header" href="#digitalin"><code>DigitalIn</code></a></h2>
 <p>ディジタル入力をする場合は、<code>DigitalIn</code>クラスを使用します。</p>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
@@ -198,14 +212,17 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : 初期モード：未定">DigitalIn button1(PC_13);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">初期モード：未定</span></div>
+<pre><code class="language-cpp">DigitalIn button1(PC_13);
 </code></pre>
 <p><code>button1</code>というインスタンスを宣言しています。ピンは<code>PC13</code>を指定しています。</p>
-<pre><code class="language-cpp : 初期モード：プルアップ">DigitalIn button1(PC_13, PullUp);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">初期モード：プルアップ</span></div>
+<pre><code class="language-cpp">DigitalIn button1(PC_13, PullUp);
 </code></pre>
 <h3 id="int-readvoid"><a class="header" href="#int-readvoid"><code>int read(void)</code></a></h3>
 <p>ピンの入力を読み取り、<code>0</code>、または、<code>1</code>を返します。</p>
-<pre><code class="language-cpp : 設定値の取得">int pin_state = button1.read();
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">設定値の取得</span></div>
+<pre><code class="language-cpp">int pin_state = button1.read();
 </code></pre>
 <h3 id="void-modepinmode-pull"><a class="header" href="#void-modepinmode-pull"><code>void mode(PinMode pull)</code></a></h3>
 <p>入力ピンのモードを指定します。</p>
@@ -232,13 +249,15 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-cpp : ピンモード：プルダウン">button1.mode(PullDown);
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ピンモード：プルダウン</span></div>
+<pre><code class="language-cpp">button1.mode(PullDown);
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "LED点灯"</span></div>
 <pre><code class="language-admonish example title = &quot;LED点灯&quot;">`PA5`を`PC13`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が評価ボード上の`B1`(青のプッシュスイッチ)を押していると消灯し、押していないと点灯します。  
 
-```cpp : main.cpp
+```
 #include "mbed.h"
 
 using namespace std;
@@ -267,21 +286,32 @@ int main(void){
 `B1`が押されている間は、`VDD-R30-(0||C15-R29)-GND`の回路になっています。`C15`を開放扱いとすると、`VDD-R30-GND`の回路となり、`PC13`の電位は`GND`の\\(\mathrm{0[V]}\\)になります。そのため、`LOW`になり、`LD2`が消灯します。  
 この回路では、抵抗が\\(\mathrm{4.7k[\Omega]}\\)で、`VDD`が\\(\mathrm{3.3[V]}\\)なので、電流は\\(\mathrm{約0.70[mA]}\\)となります。`PC13`は\\(\mathrm{3[mA]}\\)未満にする必要がありますが、\\(\mathrm{約0.70[mA]}\\)なので問題はありません。  
 
-</code></pre>
-<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
-<h3 id="int-is_connectedvoid"><a class="header" href="#int-is_connectedvoid"><code>int is_connected(void)</code></a></h3>
-<hr />
-<pre><code class="language-admonish quote title = &quot;使用部品&quot;">
+```
+
+## 他のメソッド(使用したことがない)
+
+### `int is_connected(void)`
+
+---
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "使用部品"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "使用部品"
+
 - [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
 - USB A to miniB ケーブル
 
-</code></pre>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">
+```
+
+&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
+
+```admonish quote title = "参考"
+
 - [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
 - [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
 - [About pullnone setting of unused pin for artix-7.](https://adaptivesupport.amd.com/s/question/0D52E00006hpZk5SAE/about-pullnone-setting-of-unused-pin-for-artix7?language=en_US)
 
-</code></pre>
+```</code></pre>
 
                     </main>
 
