@@ -13,7 +13,8 @@ create-missing = false
 mathjax-support = true
 # 右上のアイコンとURL
 git-repository-url = "https://github.com/s2301089/Control_General/tree/pub"
-git-repository-icon = "fab-github"
+git-repository-icon = "fa-github"
+# https://fontawesome.com
 additional-css = ["mdbook-admonish.css"]
 no-section-label = true
 
