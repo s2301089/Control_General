@@ -1,6 +1,8 @@
 # Control_General  
 
-- [https://s2301089.github.io/Control_General/book/](https://s2301089.github.io/Control_General/book/)  
+[![Deploy mdBook](https://github.com/s2301089/Control_General/actions/workflows/deploy.yml/badge.svg)](https://github.com/s2301089/Control_General/actions/workflows/deploy.yml)  
+
+- [https://s2301089.github.io/Control_General](https://s2301089.github.io/Control_General)  
 
 ## version  
 

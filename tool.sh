@@ -14,6 +14,8 @@ MDBOOK_IMAGE_SIZE_VERSION="0.2.1"
 PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
 TOOL_ROOT="$PROJECT_ROOT/.tools/mdbook"
 
+export PATH="$TOOL_ROOT/bin:$PATH"
+
 check_version() {
     if ! command -v "$1" >/dev/null 2>&1; then
         return 1
