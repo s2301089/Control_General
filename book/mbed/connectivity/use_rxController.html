@@ -39,23 +39,11 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -196,14 +176,30 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="受信側ライブラリの使い方"><a class="header" href="#受信側ライブラリの使い方">受信側ライブラリの使い方</a></h1>
 <h2 id="ライブラリの場所"><a class="header" href="#ライブラリの場所">ライブラリの場所</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "GitHub"</span></div>
-<pre><code class="language-admonish info title = &quot;GitHub&quot;">[receiveController](https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src)  
-</code></pre>
+<div id="admonition-github" class="admonition admonish-info" role="note" aria-labelledby="admonition-github-title">
+<div class="admonition-title">
+<div id="admonition-github-title">
+<p>GitHub</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-github"></a>
+</div>
+<div>
+<p><a href="https://github.com/2025-B/receiveController/tree/main/receiveF446RE/lib/rxfep/src">receiveController</a></p>
+</div>
+</div>
 <p><code>GitHub/2025-B/receiveController</code>の<code>main</code>ブランチ、<code>receiveF446RE/lib/rxfep</code>にあります。使用する場合は<code>rxfep</code>フォルダごとダウンロードして使用してください。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish important title = "注意点"</span></div>
-<pre><code class="language-admonish important title = &quot;注意点&quot;">ライブラリは置き場、公開/非公開が変更される場合があります。  
-2025/11/02時点では一部の人のみに公開しています。
-</code></pre>
+<div id="admonition-注意点" class="admonition admonish-tip" role="note" aria-labelledby="admonition-注意点-title">
+<div class="admonition-title">
+<div id="admonition-注意点-title">
+<p>注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-注意点"></a>
+</div>
+<div>
+<p>ライブラリは置き場、公開/非公開が変更される場合があります。<br />
+2025/11/02時点では一部の人のみに公開しています。</p>
+</div>
+</div>
 <h2 id="使用方法dualshock4の場合"><a class="header" href="#使用方法dualshock4の場合">使用方法(<code>DUALSHOCK4</code>の場合)</a></h2>
 <p>ページの下に<a href="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">サンプルプログラム</a>を紹介しています。</p>
 <h3 id="include--using"><a class="header" href="#include--using">include &amp; using</a></h3>
@@ -275,10 +271,18 @@ if(ps4.getDS4_IT()){
 <ul>
 <li><code>data.《ほしいデータ名》</code>でアクセスします。</li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "データ名とデータ型"</span></div>
-<pre><code class="language-admonish info title = &quot;データ名とデータ型&quot;">`uint8_t`：`LX`、`LY`、`RX`、`RY`、`L2`、`R2`  
-`bool`：`TRIANGLE`、`CIRCLE`、`CROSS`、`SQUARE`、`UP`、`RIGHT`、`DOWN`、`LEFT`、`L1`、`L3`、`R1`、`R3`、`SHARE`、`OPTIONS`、`PS`、`TOUCHPAD`
-</code></pre>
+<div id="admonition-データ名とデータ型" class="admonition admonish-info" role="note" aria-labelledby="admonition-データ名とデータ型-title">
+<div class="admonition-title">
+<div id="admonition-データ名とデータ型-title">
+<p>データ名とデータ型</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-データ名とデータ型"></a>
+</div>
+<div>
+<p><code>uint8_t</code>：<code>LX</code>、<code>LY</code>、<code>RX</code>、<code>RY</code>、<code>L2</code>、<code>R2</code><br />
+<code>bool</code>：<code>TRIANGLE</code>、<code>CIRCLE</code>、<code>CROSS</code>、<code>SQUARE</code>、<code>UP</code>、<code>RIGHT</code>、<code>DOWN</code>、<code>LEFT</code>、<code>L1</code>、<code>L3</code>、<code>R1</code>、<code>R3</code>、<code>SHARE</code>、<code>OPTIONS</code>、<code>PS</code>、<code>TOUCHPAD</code></p>
+</div>
+</div>
 <h2 id="使用する関数の引数と戻り値dualshock4の場合"><a class="header" href="#使用する関数の引数と戻り値dualshock4の場合">使用する関数の引数と戻り値(<code>DUALSHOCK4</code>の場合)</a></h2>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
 <ul>
@@ -380,18 +384,28 @@ if(ps4.getDS4_IT()){
 </li>
 </ul>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "DUALSHOCK4の場合"</span></div>
-<pre><code class="language-admonish example title = &quot;DUALSHOCK4の場合&quot;">使用しているものです。`DUALSHOCK4`用のファイルとコントローラー共通のファイルが必要になります。  
-
-- `lib/rxfep`
-  - `rxController.cpp`
-  - `rxController.hpp`
-  - `rxDualshock4.cpp`
-  - `rxDualshock4.hpp`
-- `STM32F446RET6`
-
-```
-#include &lt;mbed.h&gt;
+<div id="admonition-dualshock4の場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-dualshock4の場合-title">
+<div class="admonition-title">
+<div id="admonition-dualshock4の場合-title">
+<p>DUALSHOCK4の場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-dualshock4の場合"></a>
+</div>
+<div>
+<p>使用しているものです。<code>DUALSHOCK4</code>用のファイルとコントローラー共通のファイルが必要になります。</p>
+<ul>
+<li><code>lib/rxfep</code>
+<ul>
+<li><code>rxController.cpp</code></li>
+<li><code>rxController.hpp</code></li>
+<li><code>rxDualshock4.cpp</code></li>
+<li><code>rxDualshock4.hpp</code></li>
+</ul>
+</li>
+<li><code>STM32F446RET6</code></li>
+</ul>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;mbed.h&gt;
 #include "rxDualshock4.hpp" //  ヘッダファイルをインクルードします。
 
 #define DBG_M
@@ -478,10 +492,9 @@ int main(void){
         #endif
     }
 }
-```
-
-```</code></pre>
-
+</code></pre>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -528,7 +541,6 @@ int main(void){
         <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

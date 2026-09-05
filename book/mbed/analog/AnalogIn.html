@@ -39,23 +39,11 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -230,14 +210,19 @@ span.codeblock_filename_inner {
 <pre><code class="language-cpp">uint16_t pin_value = var_r1.read_u16();
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "LEDの明るさ制御"</span></div>
-<pre><code class="language-admonish example title = &quot;LEDの明るさ制御&quot;">`PA5`を`PA0`の入力値を出力に設定するプログラムです。  
-`NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。  
-
-![variable_resistor_10k_breadboard](../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png =500x center)  
-
-```
-#include "mbed.h"
+<div id="admonition-ledの明るさ制御" class="admonition admonish-example" role="note" aria-labelledby="admonition-ledの明るさ制御-title">
+<div class="admonition-title">
+<div id="admonition-ledの明るさ制御-title">
+<p>LEDの明るさ制御</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-ledの明るさ制御"></a>
+</div>
+<div>
+<p><code>PA5</code>を<code>PA0</code>の入力値を出力に設定するプログラムです。<br />
+<code>NUCLEO-F446RE</code>で動作確認しました。評価ボード上の<code>LD2</code>が外部の半固定抵抗の値によって明るさが変化します。次の回路で動作確認を行いました。</p>
+<p style="text-align:center"><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png" alt="variable_resistor_10k_breadboard" width="500"></p>  
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
 
 using namespace std;
 using namespace mbed;
@@ -253,58 +238,51 @@ int main(void){
 
     return 0;
 }
-```
-
-半固定抵抗のつまみを左から右に回すと`LED`が明るくなり、右から左に回すと`LED`が暗くなります。  
-
-半固定抵抗はこのような記号で表されます。
-
-![variable_resistor_default](../../resources/mbed/analog/AnalogIn/variable_resistor_default.png)  
-
-この状態では`3.3[V]-R1-R2-GND`の直列回路になります。分圧されるので中間の電圧が入力電圧となり、中途半端な明るさになります。  
-左に回しきったときは次の状態になります。  
-
-![variable_resistor_default](../../resources/mbed/analog/AnalogIn/variable_resistor_gnd.png)  
-
-この状態では`3.3[V]-R-GND`の回路になり、入力電圧が\\(\mathrm{0[V]}\\)になるので、消灯(`0%`)になります。  
-右に回しきったときは次の状態になります。  
-
-![variable_resistor_default](../../resources/mbed/analog/AnalogIn/variable_resistor_vdd.png)  
-
-この状態では、入力電圧が\\(\mathrm{3.3[V]}\\)になるので、点灯(`100%`)になります。
-
-```
-
-## 他のメソッド(使用したことがない)
-
-### `float read_voltage(void)`
-
-### `void set_reference_voltage(float vref)`
-
-### `float get_reference_voltage()`
-
----
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "使用部品"&lt;/span&gt;&lt;/div&gt;
-
-```admonish quote title = "使用部品"
-
-- [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
-- USB A to miniB ケーブル
-- [ブレッドボード](https://akizukidenshi.com/catalog/g/g100315/)
-- [半固定抵抗 10[kΩ]](https://akizukidenshi.com/catalog/g/g106110/)
-- ジャンパ線
-
-```
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
-
-```admonish quote title = "参考"
-
-
-
-```</code></pre>
-
+</code></pre>
+<p>半固定抵抗のつまみを左から右に回すと<code>LED</code>が明るくなり、右から左に回すと<code>LED</code>が暗くなります。</p>
+<p>半固定抵抗はこのような記号で表されます。</p>
+<p><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_default.png" alt="variable_resistor_default" /></p>
+<p>この状態では<code>3.3[V]-R1-R2-GND</code>の直列回路になります。分圧されるので中間の電圧が入力電圧となり、中途半端な明るさになります。<br />
+左に回しきったときは次の状態になります。</p>
+<p><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_gnd.png" alt="variable_resistor_default" /></p>
+<p>この状態では<code>3.3[V]-R-GND</code>の回路になり、入力電圧が\(\mathrm{0[V]}\)になるので、消灯(<code>0%</code>)になります。<br />
+右に回しきったときは次の状態になります。</p>
+<p><img src="../../resources/mbed/analog/AnalogIn/variable_resistor_vdd.png" alt="variable_resistor_default" /></p>
+<p>この状態では、入力電圧が\(\mathrm{3.3[V]}\)になるので、点灯(<code>100%</code>)になります。</p>
+</div>
+</div>
+<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
+<h3 id="float-read_voltagevoid"><a class="header" href="#float-read_voltagevoid"><code>float read_voltage(void)</code></a></h3>
+<h3 id="void-set_reference_voltagefloat-vref"><a class="header" href="#void-set_reference_voltagefloat-vref"><code>void set_reference_voltage(float vref)</code></a></h3>
+<h3 id="float-get_reference_voltage"><a class="header" href="#float-get_reference_voltage"><code>float get_reference_voltage()</code></a></h3>
+<hr />
+<div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
+<div class="admonition-title">
+<div id="admonition-使用部品-title">
+<p>使用部品</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-使用部品"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/ja/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a></li>
+<li>USB A to miniB ケーブル</li>
+<li><a href="https://akizukidenshi.com/catalog/g/g100315/">ブレッドボード</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/g106110/">半固定抵抗 10[kΩ]</a></li>
+<li>ジャンパ線</li>
+</ul>
+</div>
+</div>
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -351,7 +329,6 @@ int main(void){
         <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

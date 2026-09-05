@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -196,15 +176,31 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="mbed"><a class="header" href="#mbed">mbed</a></h1>
 <p>主に<code>PlatformIO</code>で<code>Framework</code>として使用する場合の説明をします。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish warning title = "注意点"</span></div>
-<pre><code class="language-admonish warning title = &quot;注意点&quot;">C言語とC++がある程度わかっている前提で話を進めます。  
-C言語の簡単な勉強は[このページ](../BasicContents/language_c.md)、C++の簡単な勉強は[このページ](../BasicContents/language_cpp.md)で勉強してください。  
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">プロジェクトの作成方法  
-`mbed`で使用できる関数やクラス  
-`mbed`用ライブラリの使い方など
-</code></pre>
+<div id="admonition-注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-注意点-title">
+<div class="admonition-title">
+<div id="admonition-注意点-title">
+<p>注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-注意点"></a>
+</div>
+<div>
+<p>C言語とC++がある程度わかっている前提で話を進めます。<br />
+C言語の簡単な勉強は<a href="../BasicContents/language_c.html">このページ</a>、C++の簡単な勉強は<a href="../BasicContents/language_cpp.html">このページ</a>で勉強してください。</p>
+</div>
+</div>
+<div id="admonition-内容" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-title">
+<div class="admonition-title">
+<div id="admonition-内容-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容"></a>
+</div>
+<div>
+<p>プロジェクトの作成方法<br />
+<code>mbed</code>で使用できる関数やクラス<br />
+<code>mbed</code>用ライブラリの使い方など</p>
+</div>
+</div>
 <p>使用する場合は<code>mbed.h</code>をインクルードする必要があります。<br />
 ソースコードは<code>.cpp</code>である必要があります。<br />
 <code>main.cpp</code>の雛形を示します。</p>
@@ -225,43 +221,98 @@ int main(void){
 </code></pre>
 <h2 id="gpio"><a class="header" href="#gpio">GPIO</a></h2>
 <h3 id="ディジタル出力"><a class="header" href="#ディジタル出力"><a href="./gpio/DigitalOut.html">ディジタル出力</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">ディジタル出力  
-Lチカプログラム
-</code></pre>
+<div id="admonition-内容-1" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-1-title">
+<div class="admonition-title">
+<div id="admonition-内容-1-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-1"></a>
+</div>
+<div>
+<p>ディジタル出力<br />
+Lチカプログラム</p>
+</div>
+</div>
 <h3 id="ディジタル入力"><a class="header" href="#ディジタル入力"><a href="./gpio/DigitalIn.html">ディジタル入力</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">ディジタル入力  
-プッシュスイッチによる`LED`制御プログラム
-</code></pre>
+<div id="admonition-内容-2" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-2-title">
+<div class="admonition-title">
+<div id="admonition-内容-2-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-2"></a>
+</div>
+<div>
+<p>ディジタル入力<br />
+プッシュスイッチによる<code>LED</code>制御プログラム</p>
+</div>
+</div>
 <h2 id="timer"><a class="header" href="#timer">Timer</a></h2>
 <h3 id="pwm出力"><a class="header" href="#pwm出力"><a href="./timer/PwmOut.html">PWM出力</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">`PWM`出力  
-やわらかいLチカプログラム
-</code></pre>
+<div id="admonition-内容-3" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-3-title">
+<div class="admonition-title">
+<div id="admonition-内容-3-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-3"></a>
+</div>
+<div>
+<p><code>PWM</code>出力<br />
+やわらかいLチカプログラム</p>
+</div>
+</div>
 <h2 id="analog"><a class="header" href="#analog">Analog</a></h2>
 <h3 id="アナログ入力"><a class="header" href="#アナログ入力"><a href="./analog/AnalogIn.html">アナログ入力</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">アナログ入力  
-半固定抵抗による`LED`制御プログラム
-</code></pre>
+<div id="admonition-内容-4" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-4-title">
+<div class="admonition-title">
+<div id="admonition-内容-4-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-4"></a>
+</div>
+<div>
+<p>アナログ入力<br />
+半固定抵抗による<code>LED</code>制御プログラム</p>
+</div>
+</div>
 <h2 id="thread"><a class="header" href="#thread">Thread</a></h2>
 <h3 id="待ち時間"><a class="header" href="#待ち時間"><a href="./thread/ThisThread.html">待ち時間</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">待ち時間の作成  
-</code></pre>
+<div id="admonition-内容-5" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-5-title">
+<div class="admonition-title">
+<div id="admonition-内容-5-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-5"></a>
+</div>
+<div>
+<p>待ち時間の作成</p>
+</div>
+</div>
 <h2 id="通信"><a class="header" href="#通信">通信</a></h2>
 <h3 id="値の表示"><a class="header" href="#値の表示"><a href="./connectivity/showValuePrintf.html">値の表示</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">PCから変数値などを確認する方法  
-</code></pre>
+<div id="admonition-内容-6" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-6-title">
+<div class="admonition-title">
+<div id="admonition-内容-6-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-6"></a>
+</div>
+<div>
+<p>PCから変数値などを確認する方法</p>
+</div>
+</div>
 <h3 id="受信側lib"><a class="header" href="#受信側lib"><a href="./connectivity/use_rxController.html">受信側(lib)</a></a></h3>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">コントローラーのデータを受信、使用するためのライブラリ  
-使用方法、サンプルプログラムなど  
-</code></pre>
-
+<div id="admonition-内容-7" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-7-title">
+<div class="admonition-title">
+<div id="admonition-内容-7-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-7"></a>
+</div>
+<div>
+<p>コントローラーのデータを受信、使用するためのライブラリ<br />
+使用方法、サンプルプログラムなど</p>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -308,7 +359,6 @@ Lチカプログラム
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

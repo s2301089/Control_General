@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -195,49 +175,96 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="c"><a class="header" href="#c">C++</a></h1>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish error title = "C++の前に"</span></div>
-<pre><code class="language-admonish error title = &quot;C++の前に&quot;">C++の前にC言語を理解しましょう。  
-C言語がわからないとC++の説明がわからないことがあります。
-</code></pre>
+<div id="admonition-cの前に" class="admonition admonish-danger" role="note" aria-labelledby="admonition-cの前に-title">
+<div class="admonition-title">
+<div id="admonition-cの前に-title">
+<p>C++の前に</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-cの前に"></a>
+</div>
+<div>
+<p>C++の前にC言語を理解しましょう。<br />
+C言語がわからないとC++の説明がわからないことがあります。</p>
+</div>
+</div>
 <hr />
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "C++とは"</span></div>
-<pre><code class="language-admonish info title = &quot;C++とは&quot;">プログラミング言語の一つで、C言語に**オブジェクト指向**要素を加えた言語です。  
-基本的な文法はC言語とほぼ一致します。C言語を更に拡張し、オブジェクト指向できるように作成された言語です。
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "オブジェクト指向とは"</span></div>
-<pre><code class="language-admonish info title = &quot;オブジェクト指向とは&quot;">「もの」を考えるプログラミング言語の考え方です。  
-例えば、「車」というオブジェクトには、「燃料」、「タイヤの回転数」、「乗車人数」などの変数や「走る」、「止まる」、「窓を開ける」などの動作を表す機能があります。  
-また、「走る」、「止まる」などの操作をするために内部でどんなことが行われているか知る必要はありません。「走る」、「止まる」ためにはどんな操作を行えばいいのかがわかっていれば内部の仕組みに関係なく、使用することができます。
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "クラスとは"</span></div>
-<pre><code class="language-admonish info title = &quot;クラスとは&quot;">複数の車がある場合、持つべき変数、動作は同じですがそれぞれで変数の値などは異なります。変数の値などが異なるだけなら、構造体を作成し、一つ一つの車をそれぞれの構造体に対応させれば問題はありません。しかし、動きなどはすべて同じなため、それぞれの車に対して定義するのは無駄です。  
-そこで、一つの変数、動きをまとめ大量生産できるようにした型のことをクラスと呼びます。  
-
-C言語の構造体に変数だけでなく、関数も追加したようなものがクラスです。  
-
-![car_class](../resources/BasicContents/language_cpp/car_class.png =300x)  
-
-この例では、`car`というクラスの中に`move_forward()`というメソッドや、`fuel`というメンバ変数が存在します。
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "インスタンスとは"</span></div>
-<pre><code class="language-admonish info title = &quot;インスタンスとは&quot;">オブジェクトはそれぞれの車を表すときに用いられる考え方で「インスタンス」とも呼びます。  
-車の設計書がクラスで、実際につくる車が「インスタンス」という考え方で、問題はないと思います。  
-
-C言語の構造体で言えば、構造体変数に当たるものと同じです。
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "名前空間とは"  </span></div>
-<pre><code class="language-admonish info title = &quot;名前空間とは&quot;">変数や関数、クラスの名前が重複しにくいように作成された空間のことです。違う名前空間なら同じ名前の変数などが複数存在しても問題ありません。しかし、同じ名前空間内ではもちろん同じ名前は使用できません。  
-
-![namespace](../resources/BasicContents/language_cpp/namespace.png =300x)  
-
-この例では`a`、`b`、`c`の3つの名前空間があります。  
-名前空間が異なるため`read`や`write`などがそれぞれの名前空間で存在しています。しかし、名前空間`c`では、同じ名前空間内なので`read`という名前は複数宣言できません。
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "利用例"</span></div>
-<pre><code class="language-admonish example title = &quot;利用例&quot;">クラスを使用する例を紹介します。クラスの作成や名前空間の定義は一旦飛ばします。  
-
-```
-#include "car.hpp"
+<div id="admonition-cとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-cとは-title">
+<div class="admonition-title">
+<div id="admonition-cとは-title">
+<p>C++とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-cとは"></a>
+</div>
+<div>
+<p>プログラミング言語の一つで、C言語に<strong>オブジェクト指向</strong>要素を加えた言語です。<br />
+基本的な文法はC言語とほぼ一致します。C言語を更に拡張し、オブジェクト指向できるように作成された言語です。</p>
+</div>
+</div>
+<div id="admonition-オブジェクト指向とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-オブジェクト指向とは-title">
+<div class="admonition-title">
+<div id="admonition-オブジェクト指向とは-title">
+<p>オブジェクト指向とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-オブジェクト指向とは"></a>
+</div>
+<div>
+<p>「もの」を考えるプログラミング言語の考え方です。<br />
+例えば、「車」というオブジェクトには、「燃料」、「タイヤの回転数」、「乗車人数」などの変数や「走る」、「止まる」、「窓を開ける」などの動作を表す機能があります。<br />
+また、「走る」、「止まる」などの操作をするために内部でどんなことが行われているか知る必要はありません。「走る」、「止まる」ためにはどんな操作を行えばいいのかがわかっていれば内部の仕組みに関係なく、使用することができます。</p>
+</div>
+</div>
+<div id="admonition-クラスとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-クラスとは-title">
+<div class="admonition-title">
+<div id="admonition-クラスとは-title">
+<p>クラスとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-クラスとは"></a>
+</div>
+<div>
+<p>複数の車がある場合、持つべき変数、動作は同じですがそれぞれで変数の値などは異なります。変数の値などが異なるだけなら、構造体を作成し、一つ一つの車をそれぞれの構造体に対応させれば問題はありません。しかし、動きなどはすべて同じなため、それぞれの車に対して定義するのは無駄です。<br />
+そこで、一つの変数、動きをまとめ大量生産できるようにした型のことをクラスと呼びます。</p>
+<p>C言語の構造体に変数だけでなく、関数も追加したようなものがクラスです。</p>
+<p><img src="../resources/BasicContents/language_cpp/car_class.png" alt="car_class" width="300"></p>  
+<p>この例では、<code>car</code>というクラスの中に<code>move_forward()</code>というメソッドや、<code>fuel</code>というメンバ変数が存在します。</p>
+</div>
+</div>
+<div id="admonition-インスタンスとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-インスタンスとは-title">
+<div class="admonition-title">
+<div id="admonition-インスタンスとは-title">
+<p>インスタンスとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-インスタンスとは"></a>
+</div>
+<div>
+<p>オブジェクトはそれぞれの車を表すときに用いられる考え方で「インスタンス」とも呼びます。<br />
+車の設計書がクラスで、実際につくる車が「インスタンス」という考え方で、問題はないと思います。</p>
+<p>C言語の構造体で言えば、構造体変数に当たるものと同じです。</p>
+</div>
+</div>
+<div id="admonition-名前空間とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-名前空間とは-title">
+<div class="admonition-title">
+<div id="admonition-名前空間とは-title">
+<p>名前空間とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-名前空間とは"></a>
+</div>
+<div>
+<p>変数や関数、クラスの名前が重複しにくいように作成された空間のことです。違う名前空間なら同じ名前の変数などが複数存在しても問題ありません。しかし、同じ名前空間内ではもちろん同じ名前は使用できません。</p>
+<p><img src="../resources/BasicContents/language_cpp/namespace.png" alt="namespace" width="300"></p>  
+<p>この例では<code>a</code>、<code>b</code>、<code>c</code>の3つの名前空間があります。<br />
+名前空間が異なるため<code>read</code>や<code>write</code>などがそれぞれの名前空間で存在しています。しかし、名前空間<code>c</code>では、同じ名前空間内なので<code>read</code>という名前は複数宣言できません。</p>
+</div>
+</div>
+<div id="admonition-利用例" class="admonition admonish-example" role="note" aria-labelledby="admonition-利用例-title">
+<div class="admonition-title">
+<div id="admonition-利用例-title">
+<p>利用例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-利用例"></a>
+</div>
+<div>
+<p>クラスを使用する例を紹介します。クラスの作成や名前空間の定義は一旦飛ばします。</p>
+<pre><code class="language-cpp">#include "car.hpp"
 
 int main(void){
     car car1;               //  インスタンスを作成
@@ -246,14 +273,12 @@ int main(void){
 
     return 0;
 }
-```
-インスタンスを宣言する場合は変数などと同じように宣言します。`car1`というインスタンスが作成されます。  
-メソッドや変数にアクセスするためには、構造体と同じように`.`(ピリオド)を使用します。  
-
-名前空間を使用する例を紹介します。
-
-```
-#include &lt;iostream&gt;
+</code></pre>
+<p>インスタンスを宣言する場合は変数などと同じように宣言します。<code>car1</code>というインスタンスが作成されます。<br />
+メソッドや変数にアクセスするためには、構造体と同じように<code>.</code>(ピリオド)を使用します。</p>
+<p>名前空間を使用する例を紹介します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HelloWorld_1.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
 
@@ -262,12 +287,10 @@ int main(void){
 
     return 0;
 }
-```
-
-`Hello, World!"`を表示するプログラムの例です。`std`という名前空間にある`cout`と`endl`というものを使用しています。`std`という名前空間を使用する前に`using namespace std;`で`std`を使用するという宣言をしています。  
-
-```
-#include &lt;iostream&gt;
+</code></pre>
+<p><code>Hello, World!"</code>を表示するプログラムの例です。<code>std</code>という名前空間にある<code>cout</code>と<code>endl</code>というものを使用しています。<code>std</code>という名前空間を使用する前に<code>using namespace std;</code>で<code>std</code>を使用するという宣言をしています。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">HelloWorld_2.cpp</span></div>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 
 int main(void){
@@ -275,40 +298,44 @@ int main(void){
 
     return 0;
 }
-```
-
-また、名前空間の使用を宣言せずに`std::cout`のように名前空間にあるものを使用する際に一つ一つに`名前空間名::`をつけることでその名前空間に定義されているものを使用することができます。  
-
-```
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;`admonish tip title = "引数付きのインスタンス"&lt;/span&gt;&lt;/div&gt;
-
-````admonish tip title = "引数付きのインスタンス"
-インスタンスを宣言するときに引数を渡すことができます。引数を渡すときに呼び出すメソッドを**コンストラクタ**と言います。  
-コンストラクタは主に、宣言時に初期化したいものの値などを渡してあげます。  
-
-```
-#include "car.hpp"
+</code></pre>
+<p>また、名前空間の使用を宣言せずに<code>std::cout</code>のように名前空間にあるものを使用する際に一つ一つに<code>名前空間名::</code>をつけることでその名前空間に定義されているものを使用することができます。</p>
+</div>
+</div>
+<div id="admonition-引数付きのインスタンス" class="admonition admonish-tip" role="note" aria-labelledby="admonition-引数付きのインスタンス-title">
+<div class="admonition-title">
+<div id="admonition-引数付きのインスタンス-title">
+<p>引数付きのインスタンス</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-引数付きのインスタンス"></a>
+</div>
+<div>
+<p>インスタンスを宣言するときに引数を渡すことができます。引数を渡すときに呼び出すメソッドを<strong>コンストラクタ</strong>と言います。<br />
+コンストラクタは主に、宣言時に初期化したいものの値などを渡してあげます。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">car2.cpp</span></div>
+<pre><code class="language-cpp">#include "car.hpp"
 
 int main(void){
     car car1(100);
 }
-```
-
-このように引数を渡すことができます。この例では、燃料の初期値として`100`を渡しています。渡す引数はそれぞれのクラスで異なるため、クラスを使用する場合には宣言方法をしっかりと確認する必要があります。  
-
-```
-
----
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
-
-```admonish quote title = "参考"
-
-- [一週間で身につくC++言語の基本](https://cpp-lang.sevendays-study.com/index.html)
-
-```</code></pre>
-
+</code></pre>
+<p>このように引数を渡すことができます。この例では、燃料の初期値として<code>100</code>を渡しています。渡す引数はそれぞれのクラスで異なるため、クラスを使用する場合には宣言方法をしっかりと確認する必要があります。</p>
+</div>
+</div>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://cpp-lang.sevendays-study.com/index.html">一週間で身につくC++言語の基本</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -355,7 +382,6 @@ int main(void){
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

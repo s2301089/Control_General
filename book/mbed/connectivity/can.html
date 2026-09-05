@@ -39,23 +39,11 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -195,15 +175,31 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="can通信"><a class="header" href="#can通信">CAN通信</a></h1>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "CAN通信とは"</span></div>
-<pre><code class="language-admonish info title = &quot;CAN通信とは&quot;">`Control Area Network`。CAN_TD、CAN_RDなどの信号を差動信号にして、CAN BUSを作ります。シリアル通信の一種です。  
-CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデータを読み取ります。  
-差動のため、ノイズに強いと言われています。  
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "CANメッセージ"</span></div>
-<pre><code class="language-admonish info title = &quot;CANメッセージ&quot;">CANメッセージとはCAN通信における送信データの1まとまりです。  
-基本的にCANメッセージのデータ長は8Byteで、符号なし8bit整数型配列(`uint8_t data[8]`)が使用されることが多いです。
-</code></pre>
+<div id="admonition-can通信とは" class="admonition admonish-info" role="note" aria-labelledby="admonition-can通信とは-title">
+<div class="admonition-title">
+<div id="admonition-can通信とは-title">
+<p>CAN通信とは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-can通信とは"></a>
+</div>
+<div>
+<p><code>Control Area Network</code>。CAN_TD、CAN_RDなどの信号を差動信号にして、CAN BUSを作ります。シリアル通信の一種です。<br />
+CAN_HとCAN_Lの2本がバスに属します。CAN_HとCAN_Lの差からデータを読み取ります。<br />
+差動のため、ノイズに強いと言われています。</p>
+</div>
+</div>
+<div id="admonition-canメッセージ" class="admonition admonish-info" role="note" aria-labelledby="admonition-canメッセージ-title">
+<div class="admonition-title">
+<div id="admonition-canメッセージ-title">
+<p>CANメッセージ</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-canメッセージ"></a>
+</div>
+<div>
+<p>CANメッセージとはCAN通信における送信データの1まとまりです。<br />
+基本的にCANメッセージのデータ長は8Byteで、符号なし8bit整数型配列(<code>uint8_t data[8]</code>)が使用されることが多いです。</p>
+</div>
+</div>
 <h2 id="can"><a class="header" href="#can"><code>CAN</code></a></h2>
 <p>CAN通信を行う場合は、<code>CAN</code>クラスを使用します。</p>
 <h3 id="コンストラクタcan"><a class="header" href="#コンストラクタcan">コンストラクタ(<code>CAN</code>)</a></h3>
@@ -299,11 +295,17 @@ msg.len = 8;
 msg.data[0] = 0x20;
 </code></pre>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "データ送信"</span></div>
-<pre><code class="language-admonish example title = &quot;データ送信&quot;">適当なデータ(固定値)を`500ms`間隔で`CANMessage`を送信するプログラムです。  
-
-```
-#include "mbed.h"
+<div id="admonition-データ送信" class="admonition admonish-example" role="note" aria-labelledby="admonition-データ送信-title">
+<div class="admonition-title">
+<div id="admonition-データ送信-title">
+<p>データ送信</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-データ送信"></a>
+</div>
+<div>
+<p>適当なデータ(固定値)を<code>500ms</code>間隔で<code>CANMessage</code>を送信するプログラムです。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
 
 int main(void){
     CAN can1(PA_11, PA_12, 1000000);
@@ -320,22 +322,25 @@ int main(void){
 
     return 0;
 }
-```
-
-```
-
----
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
-
-```admonish quote title = "参考"
-
-- [【高専ロボコン】キャン(CAN)ならずできる！STM32で始めるCAN通信入門](https://qiita.com/sirayuri/items/b905330c8ad5358e7bdd)
-- [STM32マイコンでCAN通信](https://hsdev.co.jp/stm32-can/)
-- [CAN](https://os.mbed.com/docs/mbed-os/v6.16/apis/other-driver-apis.html)
-
-```</code></pre>
-
+</code></pre>
+</div>
+</div>
+<hr />
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://qiita.com/sirayuri/items/b905330c8ad5358e7bdd">【高専ロボコン】キャン(CAN)ならずできる！STM32で始めるCAN通信入門</a></li>
+<li><a href="https://hsdev.co.jp/stm32-can/">STM32マイコンでCAN通信</a></li>
+<li><a href="https://os.mbed.com/docs/mbed-os/v6.16/apis/other-driver-apis.html">CAN</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -382,7 +387,6 @@ int main(void){
         <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

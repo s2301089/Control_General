@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -196,41 +176,88 @@ span.codeblock_filename_inner {
 </style>
 <h1 id="基礎知識"><a class="header" href="#基礎知識">基礎知識</a></h1>
 <h2 id="git--github"><a class="header" href="#git--github"><a href="./git_GitHub.html">git / GitHub</a></a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">`git`とは、`GitHub`とはなにか  
-導入方法、設定、使用方法など  
-</code></pre>
+<div id="admonition-内容" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-title">
+<div class="admonition-title">
+<div id="admonition-内容-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容"></a>
+</div>
+<div>
+<p><code>git</code>とは、<code>GitHub</code>とはなにか<br />
+導入方法、設定、使用方法など</p>
+</div>
+</div>
 <h2 id="c言語"><a class="header" href="#c言語"><a href="./language_c.html">C言語</a></a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">プログラミング言語とは  
-C言語の基本的な内容  
-C言語の発展的な内容  
-</code></pre>
+<div id="admonition-内容-1" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-1-title">
+<div class="admonition-title">
+<div id="admonition-内容-1-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-1"></a>
+</div>
+<div>
+<p>プログラミング言語とは<br />
+C言語の基本的な内容<br />
+C言語の発展的な内容</p>
+</div>
+</div>
 <h2 id="c"><a class="header" href="#c"><a href="./language_cpp.html">C++</a></a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">オブジェクト指向とは  
-クラスとは  
-簡単な使用方法など  
-</code></pre>
+<div id="admonition-内容-2" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-2-title">
+<div class="admonition-title">
+<div id="admonition-内容-2-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-2"></a>
+</div>
+<div>
+<p>オブジェクト指向とは<br />
+クラスとは<br />
+簡単な使用方法など</p>
+</div>
+</div>
 <h2 id="回路の基礎"><a class="header" href="#回路の基礎"><a href="./circuit.html">回路の基礎</a></a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">電気回路の基本物理量  
-オームの法則  
-合成抵抗、分圧、分流
-</code></pre>
+<div id="admonition-内容-3" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-3-title">
+<div class="admonition-title">
+<div id="admonition-内容-3-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-3"></a>
+</div>
+<div>
+<p>電気回路の基本物理量<br />
+オームの法則<br />
+合成抵抗、分圧、分流</p>
+</div>
+</div>
 <h2 id="dcモーターの制御"><a class="header" href="#dcモーターの制御"><a href="./motor.html">DCモーターの制御</a></a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">DCモーターを制御するための回路  
-`PWM`とはなにか  
-モーターへの出力の決定方法など
-</code></pre>
+<div id="admonition-内容-4" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-4-title">
+<div class="admonition-title">
+<div id="admonition-内容-4-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-4"></a>
+</div>
+<div>
+<p>DCモーターを制御するための回路<br />
+<code>PWM</code>とはなにか<br />
+モーターへの出力の決定方法など</p>
+</div>
+</div>
 <h2 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ"><a href="./controller_data.html">コントローラーのデータ</a></a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish abstract title = "内容"</span></div>
-<pre><code class="language-admonish abstract title = &quot;内容&quot;">データの取得方法、送信方法・受信方法  
-使用する機器  
-送受信しているデータの構成など  
-</code></pre>
-
+<div id="admonition-内容-5" class="admonition admonish-abstract" role="note" aria-labelledby="admonition-内容-5-title">
+<div class="admonition-title">
+<div id="admonition-内容-5-title">
+<p>内容</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-内容-5"></a>
+</div>
+<div>
+<p>データの取得方法、送信方法・受信方法<br />
+使用する機器<br />
+送受信しているデータの構成など</p>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -277,7 +304,6 @@ C言語の発展的な内容
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

@@ -39,23 +39,11 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -201,22 +181,38 @@ span.codeblock_filename_inner {
 各開発などのリポジトリは各ページに掲載することもありますが、あくまで参考程度です。<br />
 一部に自作のヘッダファイルなどを使用する場合があります。その場合は、そのファイルの中身などを簡単に説明する記事を作成するように心掛けますが、ない場合は中身を見て理解してください。<br />
 結局は<strong>自分で</strong>調べ、<strong>データシート</strong>などを確認することがとても大切です。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish tip "調べ方のコツ？"</span></div>
-<pre><code class="language-admonish tip &quot;調べ方のコツ？&quot;">知りたいことがあれば、調べてみよう。  
-例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。`Qiita`や`Zenn`などがその例です。中には個人のサイトで解説をしている方もいます。  
-データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。  
-`ChatGPT`などの生成AIを調べもせずに頼ることはおすすめしません。最初から頼ると意味などの理解が困難になります。  
-</code></pre>
+<div id="admonition-調べ方のコツ" class="admonition admonish-tip" role="note" aria-labelledby="admonition-調べ方のコツ-title">
+<div class="admonition-title">
+<div id="admonition-調べ方のコツ-title">
+<p>調べ方のコツ？</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-調べ方のコツ"></a>
+</div>
+<div>
+<p>知りたいことがあれば、調べてみよう。<br />
+例えば、「C言語 繰り返し」や「CubeIDE Lチカ F446RE」などで調べるといい感じの記事が出てきます。<code>Qiita</code>や<code>Zenn</code>などがその例です。中には個人のサイトで解説をしている方もいます。<br />
+データシートはその部品などの名前を検索すると製品ページがあり、そこからデータシートを見れることが多いです。データシートが必要なら、その部品の製品情報を確認するようにしましょう。<br />
+<code>ChatGPT</code>などの生成AIを調べもせずに頼ることはおすすめしません。最初から頼ると意味などの理解が困難になります。</p>
+</div>
+</div>
 <hr />
 <h2 id="使用環境"><a class="header" href="#使用環境">使用環境</a></h2>
 <ul>
 <li>Windows 11 Home <strong>← 推奨</strong></li>
 <li>Ubuntu 22.04 LTS</li>
 </ul>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish warning "OSについての注意点"</span></div>
-<pre><code class="language-admonish warning &quot;OSについての注意点&quot;">Macは使用しているソフトウェアが対応していない、機能がないなどの問題点があります。  
-そのため**Windows**を**推奨**します。その他のOSは自分で対応できる自信のある人のみ使用することをおすすめします。  
-</code></pre>
+<div id="admonition-osについての注意点" class="admonition admonish-warning" role="note" aria-labelledby="admonition-osについての注意点-title">
+<div class="admonition-title">
+<div id="admonition-osについての注意点-title">
+<p>OSについての注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-osについての注意点"></a>
+</div>
+<div>
+<p>Macは使用しているソフトウェアが対応していない、機能がないなどの問題点があります。<br />
+そのため<strong>Windows</strong>を<strong>推奨</strong>します。その他のOSは自分で対応できる自信のある人のみ使用することをおすすめします。</p>
+</div>
+</div>
 <h2 id="使用中使用予定の機器一覧"><a class="header" href="#使用中使用予定の機器一覧">使用中(使用予定)の機器一覧</a></h2>
 <ul>
 <li><a href="https://akizukidenshi.com/catalog/g/g110176/">NUCLEO-F446RE(部・私物)</a></li>
@@ -271,7 +267,6 @@ span.codeblock_filename_inner {
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

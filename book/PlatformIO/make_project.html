@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -240,8 +220,17 @@ span.codeblock_filename_inner {
 </ul>
 </li>
 </ul>
-<pre><code class="language-admonish example title = &quot;例&quot;">![](../resources/PlatformIO/make_project/project_wizard_example.png =400x)
-</code></pre>
+<div id="admonition-例" class="admonition admonish-example" role="note" aria-labelledby="admonition-例-title">
+<div class="admonition-title">
+<div id="admonition-例-title">
+<p>例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-例"></a>
+</div>
+<div>
+<p><img src="../resources/PlatformIO/make_project/project_wizard_example.png" width="400"></p>
+</div>
+</div>
 </li>
 <li>
 <p>入力が終わったら<code>Finish</code>を押します。
@@ -259,9 +248,15 @@ span.codeblock_filename_inner {
 </li>
 <li>
 <p>作成されたファイルを編集します。</p>
-<pre><code class="language-admonish example title = &quot;platformio.ini&quot;">
-```ini :
-; PlatformIO Project Configuration File
+  <div id="admonition-platformioini" class="admonition admonish-example" role="note" aria-labelledby="admonition-platformioini-title">
+  <div class="admonition-title">
+  <div id="admonition-platformioini-title">
+<p>platformio.ini</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-platformioini"></a>
+  </div>
+  <div>
+<pre><code class="language-ini :">; PlatformIO Project Configuration File
 ;
 ;   Build options: build flags, source filter
 ;   Upload options: custom upload port, speed and extra flags
@@ -278,25 +273,29 @@ framework = mbed
 
 [platformio]
 build_cache_dir = ./.cache
-```
-
-![updating_platformio](../resources/PlatformIO/make_project/updating_platformio.png =400x)
-
-このプロジェクトの更新の表示が終わるまで待ちましょう。
-
 </code></pre>
-<pre><code class="language-admonish example title = &quot;.gitignore&quot;">
-```.gitignore
-.pio
+  <p><img src="../resources/PlatformIO/make_project/updating_platformio.png" alt="updating_platformio" width="400"></p>
+<p>このプロジェクトの更新の表示が終わるまで待ちましょう。</p>
+  </div>
+  </div>
+  <div id="admonition-gitignore" class="admonition admonish-example" role="note" aria-labelledby="admonition-gitignore-title">
+  <div class="admonition-title">
+  <div id="admonition-gitignore-title">
+<p>.gitignore</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-gitignore"></a>
+  </div>
+  <div>
+<pre><code class="language-.gitignore">.pio
 .vscode/.browse.c_cpp.db*
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
 .cache
 .vscode
-```
-
 </code></pre>
+  </div>
+  </div>
 </li>
 </ul>
 <h2 id="プロジェクトファイルの構成"><a class="header" href="#プロジェクトファイルの構成">プロジェクトファイルの構成</a></h2>
@@ -333,13 +332,20 @@ build_cache_dir = ./.cache
 失敗した場合はエラーメッセージも出力されます。</p>
 <p><img src="../resources/PlatformIO/make_project/build_failed.png" alt="build_failed" /></p>
 <hr />
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"</span></div>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">
-- 講習資料
-- [ArduinoをVSCodeで開発する【PlatformIO】](https://tech.nri-net.com/entry/arduino_with_vscode)
-
-</code></pre>
-
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li>講習資料</li>
+<li><a href="https://tech.nri-net.com/entry/arduino_with_vscode">ArduinoをVSCodeで開発する【PlatformIO】</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -386,7 +392,6 @@ build_cache_dir = ./.cache
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

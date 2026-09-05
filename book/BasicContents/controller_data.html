@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -197,9 +177,17 @@ span.codeblock_filename_inner {
 <h1 id="コントローラーのデータ"><a class="header" href="#コントローラーのデータ">コントローラーのデータ</a></h1>
 <h2 id="通信モジュール"><a class="header" href="#通信モジュール">通信モジュール</a></h2>
 <p>双葉電子の<code>FEP02</code>を使用しています。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "製品情報"</span></div>
-<pre><code class="language-admonish info title = &quot;製品情報&quot;">[FEP-02](https://www.futaba.co.jp/product/industry/industry_module/fep02)  
-</code></pre>
+<div id="admonition-製品情報" class="admonition admonish-info" role="note" aria-labelledby="admonition-製品情報-title">
+<div class="admonition-title">
+<div id="admonition-製品情報-title">
+<p>製品情報</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-製品情報"></a>
+</div>
+<div>
+<p><a href="https://www.futaba.co.jp/product/industry/industry_module/fep02">FEP-02</a></p>
+</div>
+</div>
 <p><code>920MHz</code>帯の無線モジュールです。<code>UART</code>(シリアル通信)でデータの送受信を行っています。<code>Baudrate</code>は<code>38400bps</code>の設定になっているものが多いです。</p>
 <h2 id="送信側"><a class="header" href="#送信側">送信側</a></h2>
 <p>使用機器</p>
@@ -229,12 +217,19 @@ span.codeblock_filename_inner {
 <p><code>DUALSENSE</code>の場合</p>
 <p><img src="../resources/BasicContents/Controller/data_assign_DUALSENSE.png" alt="data_assign_DUALSHOCK4.png" /></p>
 <p>データ型はすべて<code>uint8_t</code>で、合計13Byteのデータになっています。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "追加のデータ"</span></div>
-<pre><code class="language-admonish info title = &quot;追加のデータ&quot;">`header` : `0xaf` 先頭データを意味します。  
-`SUM` : データ確認用のSUMです。 `1~8Byte`の合計値になっています。  
-`footer` : `0xed`  終端データを意味します。
-</code></pre>
-
+<div id="admonition-追加のデータ" class="admonition admonish-info" role="note" aria-labelledby="admonition-追加のデータ-title">
+<div class="admonition-title">
+<div id="admonition-追加のデータ-title">
+<p>追加のデータ</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-追加のデータ"></a>
+</div>
+<div>
+<p><code>header</code> : <code>0xaf</code> 先頭データを意味します。<br />
+<code>SUM</code> : データ確認用のSUMです。 <code>1~8Byte</code>の合計値になっています。<br />
+<code>footer</code> : <code>0xed</code>  終端データを意味します。</p>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -281,7 +276,6 @@ span.codeblock_filename_inner {
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

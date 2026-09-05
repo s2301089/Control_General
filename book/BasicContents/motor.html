@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -201,28 +181,52 @@ span.codeblock_filename_inner {
 モタドラICの動作電圧が<code>12V</code>でマイコンからの信号の電圧が<code>5V</code>か<code>3.3V</code>なので電圧を上げる必要があります。それをフォトカプラで信号のやり取りを行っています。<br />
 また、<code>PWM</code>の周期を<code>83[μs]</code>に設定します(宗派)。フォトカプラが変換に対応する周波数によって決まっています。</p>
 <h2 id="pwm"><a class="header" href="#pwm">PWM</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "PWMとは"</span></div>
-<pre><code class="language-admonish info title = &quot;PWMとは&quot;">`Pulse Width Modulation`の略で`パルス幅変調`といいます。  
-一定周期の中で出力が`HIGH`の時間と`LOW`の時間の比(デューティー比)で中間の電圧を擬似的に表現します。  
-
-PWMの出力波形は以下の図のようなものです。  
-![pwm_pwm_waveform.png](../resources/BasicContents/motor/pwm_waveform.png)  
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish example title = "出力の例"</span></div>
-<pre><code class="language-admonish example title = &quot;出力の例&quot;">GPIOピンの出力が`5V`でデューティー比が`25%`であれば、出力は`1.25V`になります。出力電圧は以下の式で求められます。  
-$$ 出力電圧 = {最大電圧} \times {デューティー比} $$  
-デューティー比が小さいと素子によってはデューティー比`0％`とあまり変わらない結果が得られるものもあります。**各素子の動作電圧**などを確認してください。  
-</code></pre>
+<div id="admonition-pwmとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-pwmとは-title">
+<div class="admonition-title">
+<div id="admonition-pwmとは-title">
+<p>PWMとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-pwmとは"></a>
+</div>
+<div>
+<p><code>Pulse Width Modulation</code>の略で<code>パルス幅変調</code>といいます。<br />
+一定周期の中で出力が<code>HIGH</code>の時間と<code>LOW</code>の時間の比(デューティー比)で中間の電圧を擬似的に表現します。</p>
+<p>PWMの出力波形は以下の図のようなものです。<br />
+<img src="../resources/BasicContents/motor/pwm_waveform.png" alt="pwm_pwm_waveform.png" /></p>
+</div>
+</div>
+<div id="admonition-出力の例" class="admonition admonish-example" role="note" aria-labelledby="admonition-出力の例-title">
+<div class="admonition-title">
+<div id="admonition-出力の例-title">
+<p>出力の例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-出力の例"></a>
+</div>
+<div>
+<p>GPIOピンの出力が<code>5V</code>でデューティー比が<code>25%</code>であれば、出力は<code>1.25V</code>になります。出力電圧は以下の式で求められます。<br />
+$$ 出力電圧 = {最大電圧} \times {デューティー比} $$<br />
+デューティー比が小さいと素子によってはデューティー比<code>0％</code>とあまり変わらない結果が得られるものもあります。<strong>各素子の動作電圧</strong>などを確認してください。</p>
+</div>
+</div>
 <h2 id="出力の決定"><a class="header" href="#出力の決定">出力の決定</a></h2>
 <p>モーターへの出力は<code>Digital</code>と<code>PWM</code>の2つで決まり、<code>Digital</code>と<code>PWM</code>の差が出力になります。図示すると以下のようになります。</p>
 <p><img src="../resources/BasicContents/motor/motor_output.png" alt="motor_output.png" /></p>
 <p><code>Digital</code>の値がモーターの回転方向に対応し、<code>PWM</code>のデューティー比がモーターの回転速度(印加電圧)と対応します。</p>
 <hr />
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"  </span></div>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">- [Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する](https://deviceplus.jp/arduino/arduino_f04/)  
-- [STM32 HALを使ってPWM出力してみる](https://moons.link/post-632/)  
-</code></pre>
-
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://deviceplus.jp/arduino/arduino_f04/">Arduino（アルディーノ）電子工作の基本④ LEDの明るさを調節する</a></li>
+<li><a href="https://moons.link/post-632/">STM32 HALを使ってPWM出力してみる</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -269,7 +273,6 @@ $$ 出力電圧 = {最大電圧} \times {デューティー比} $$
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

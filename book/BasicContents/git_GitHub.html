@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -195,13 +175,29 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="git--github"><a class="header" href="#git--github">git / GitHub</a></h1>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "gitとは"</span></div>
-<pre><code class="language-admonish info title = &quot;gitとは&quot;">バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。  
-</code></pre>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish info title = "GitHubとは"</span></div>
-<pre><code class="language-admonish info title = &quot;GitHubとは&quot;">`git`のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。  
-`git`と`GitHub`は全くの別物です。  
-</code></pre>
+<div id="admonition-gitとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-gitとは-title">
+<div class="admonition-title">
+<div id="admonition-gitとは-title">
+<p>gitとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-gitとは"></a>
+</div>
+<div>
+<p>バージョン管理ツールです。誰がいつ、どの部分をどんなふうに変更したのかを細かく記録できます。プログラムなどの開発では、うまく動作したとき、そうでないときの違いなどを確認しやすくなります。</p>
+</div>
+</div>
+<div id="admonition-githubとは" class="admonition admonish-info" role="note" aria-labelledby="admonition-githubとは-title">
+<div class="admonition-title">
+<div id="admonition-githubとは-title">
+<p>GitHubとは</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-githubとは"></a>
+</div>
+<div>
+<p><code>git</code>のリポジトリ(管理されているフォルダ)をwebから閲覧・編集可能にしたサービスのことです。<br />
+<code>git</code>と<code>GitHub</code>は全くの別物です。</p>
+</div>
+</div>
 <h2 id="導入"><a class="header" href="#導入">導入</a></h2>
 <ul>
 <li>
@@ -219,14 +215,20 @@ span.codeblock_filename_inner {
 </li>
 <li>
 <p><code>git</code>のバージョンを確認し、インストールできていることを確認します。</p>
-<pre><code class="language-admonish example title = &quot;gitのバージョン確認&quot;">
-```bash : Git Bash
-# Git Bash
+<div id="admonition-gitのバージョン確認" class="admonition admonish-example" role="note" aria-labelledby="admonition-gitのバージョン確認-title">
+<div class="admonition-title">
+<div id="admonition-gitのバージョン確認-title">
+<p>gitのバージョン確認</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-gitのバージョン確認"></a>
+</div>
+<div>
+<pre><code class="language-bash : Git Bash"># Git Bash
 $ git --version  
 git version 2.44.0.windows.1
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p><code>GitHub</code>への登録をします
@@ -236,9 +238,18 @@ git version 2.44.0.windows.1
 <ul>
 <li>
 <p><code>Email</code> : メールアドレスを入力</p>
-<pre><code class="language-admonish important title = &quot;メールアドレスの注意点&quot;">学校のメールアドレスでも問題はありません。  
-しかし、卒業時などに学校のメールアドレスは使えなくなるため、別のメールアドレスに変更しなければなりません。  
-</code></pre>
+<div id="admonition-メールアドレスの注意点" class="admonition admonish-tip" role="note" aria-labelledby="admonition-メールアドレスの注意点-title">
+<div class="admonition-title">
+<div id="admonition-メールアドレスの注意点-title">
+<p>メールアドレスの注意点</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-メールアドレスの注意点"></a>
+</div>
+<div>
+<p>学校のメールアドレスでも問題はありません。<br />
+しかし、卒業時などに学校のメールアドレスは使えなくなるため、別のメールアドレスに変更しなければなりません。</p>
+</div>
+</div>
 </li>
 <li>
 <p><code>Password</code> : 15文字以上、または、数字と小文字を含む8文字以上。<br />
@@ -255,8 +266,11 @@ git version 2.44.0.windows.1
 <code>Create account</code>で作成完了です。</p>
 </li>
 </ul>
-<pre><code class="language-admonish note title = &quot;&quot;">登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。  
-</code></pre>
+<div id="admonition-default" class="admonition admonish-note" role="note">
+<div>
+<p>登録したメールアドレス宛にメールアドレス確認用のメールが届く場合があります。必ず確認しましょう。</p>
+</div>
+</div>
 </li>
 </ul>
 <h2 id="sshの設定"><a class="header" href="#sshの設定">SSHの設定</a></h2>
@@ -346,19 +360,25 @@ $ code config
     TCPKeepAlive yes
     IdentitiesOnly yes
 </code></pre>
-<pre><code class="language-admonish tips title = &quot;PowerShellでも使用したい場合&quot;  collapsible = true">PowerShellでもgitやSSHを使用したい場合は`IdentityFile`のパスを`/C/`ではなく`C:\`に変更し、以降の`/`をすべて`\`に変更してください。
-
-```config : config
-Host github.com
+<details id="admonition-powershellでも使用したい場合" class="admonition admonish-note" role="note" aria-labelledby="admonition-powershellでも使用したい場合-title">
+<summary class="admonition-title">
+<div id="admonition-powershellでも使用したい場合-title">
+<p>PowerShellでも使用したい場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-powershellでも使用したい場合"></a>
+</summary>
+<div>
+<p>PowerShellでもgitやSSHを使用したい場合は<code>IdentityFile</code>のパスを<code>/C/</code>ではなく<code>C:\</code>に変更し、以降の<code>/</code>をすべて<code>\</code>に変更してください。</p>
+<pre><code class="language-config : config">Host github.com
   HostName github.com
   IdentityFile C:\Users\user_name\.ssh\id_rsa_username
   User git
   Port 22
   TCPKeepAlive yes
   IdentitiesOnly yes
-```
-
 </code></pre>
+</div>
+</details>
 </li>
 <li>
 <p><code>SSH</code>の確認をします。<br />
@@ -367,17 +387,23 @@ Host github.com
 $ ssh -T github.com
 Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 </code></pre>
-<pre><code class="language-admonish info title = &quot;初めて通信をする場合&quot;">接続を続行するか聞かれるので`yes`と回答してください。
-
-```bash : Git Bash
-$ ssh -T github.com
+<div id="admonition-初めて通信をする場合" class="admonition admonish-info" role="note" aria-labelledby="admonition-初めて通信をする場合-title">
+<div class="admonition-title">
+<div id="admonition-初めて通信をする場合-title">
+<p>初めて通信をする場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-初めて通信をする場合"></a>
+</div>
+<div>
+<p>接続を続行するか聞かれるので<code>yes</code>と回答してください。</p>
+<pre><code class="language-bash : Git Bash">$ ssh -T github.com
 The authenticity of host 'github.com (20.27.177.113)' can't be established.
 ED25519 key fingerprint is: SHA256:...
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
-```
-
 </code></pre>
+</div>
+</div>
 </li>
 </ul>
 <h2 id="gitコマンドの基本"><a class="header" href="#gitコマンドの基本">gitコマンドの基本</a></h2>
@@ -417,18 +443,38 @@ $ git config --global user.email "《email@email.com》"
 <pre><code class="language-bash : Git Bash">$ git commit -m "《コミットメッセージ》"
 # コミットメッセージをつけることができます
 </code></pre>
-<pre><code class="language-admonish tip title = &quot;コミットメッセージのおすすめの書き方&quot;">コミットメッセージには何を更新したのかなどの内容を書いておくとわかりやすいです。  
-- `add`：ファイルの新規作成や新規追加など  
-- `update`：ファイルの中身の更新など  
-- `fixed`、`fix`：バグの修正など  
-- `style`：動作に問題のない部分の修正、インデントの修正など  
-- `docs` : ドキュメントの編集など  
-</code></pre>
+<div id="admonition-コミットメッセージのおすすめの書き方" class="admonition admonish-tip" role="note" aria-labelledby="admonition-コミットメッセージのおすすめの書き方-title">
+<div class="admonition-title">
+<div id="admonition-コミットメッセージのおすすめの書き方-title">
+<p>コミットメッセージのおすすめの書き方</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-コミットメッセージのおすすめの書き方"></a>
+</div>
+<div>
+<p>コミットメッセージには何を更新したのかなどの内容を書いておくとわかりやすいです。</p>
+<ul>
+<li><code>add</code>：ファイルの新規作成や新規追加など</li>
+<li><code>update</code>：ファイルの中身の更新など</li>
+<li><code>fixed</code>、<code>fix</code>：バグの修正など</li>
+<li><code>style</code>：動作に問題のない部分の修正、インデントの修正など</li>
+<li><code>docs</code> : ドキュメントの編集など</li>
+</ul>
+</div>
+</div>
 <p>コミットメッセージは日本語でも問題はありません。</p>
-<pre><code class="language-admonish example title = &quot;コミットメッセージの例&quot;">`"fixed #3"`  
-`"update; add to receive controller;"`  
-`"モーターが逆回転する問題を修正"`  
-</code></pre>
+<div id="admonition-コミットメッセージの例" class="admonition admonish-example" role="note" aria-labelledby="admonition-コミットメッセージの例-title">
+<div class="admonition-title">
+<div id="admonition-コミットメッセージの例-title">
+<p>コミットメッセージの例</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-コミットメッセージの例"></a>
+</div>
+<div>
+<p><code>"fixed #3"</code><br />
+<code>"update; add to receive controller;"</code><br />
+<code>"モーターが逆回転する問題を修正"</code></p>
+</div>
+</div>
 </li>
 <li>
 <p>push</p>
@@ -454,23 +500,37 @@ Changes not staged for commit:
 <p>pull</p>
 <p>リモートの変更をローカルに反映させます。<br />
 「他の端末などで変更を加え、リモートに反映させた。手元には反映前のコードなどがある。」というときにわざわざディレクトリを削除してもう一度<code>clone</code>するのは時間がかかります。</p>
-<pre><code class="language-admonish example title = &quot;ブランチからpullする&quot;">
-```bash : Git Bash
-$ git pull origin 《branch名》  
+<div id="admonition-ブランチからpullする" class="admonition admonish-example" role="note" aria-labelledby="admonition-ブランチからpullする-title">
+<div class="admonition-title">
+<div id="admonition-ブランチからpullする-title">
+<p>ブランチからpullする</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-ブランチからpullする"></a>
+</div>
+<div>
+<pre><code class="language-bash : Git Bash">$ git pull origin 《branch名》  
 $ git pull origin main
 # mainブランチからpull
-```
-
 </code></pre>
+</div>
+</div>
 <p><code>pull</code>は<code>fetch</code>(変更情報を持ってくる)と<code>merge</code>(変更を反映させる)を同時に行います。<code>merge</code>するときにローカルにリモートにはない変更があった場合は、コンフリクトが発生します。発生した場合は、手動で<code>merge</code>作業を行う必要があります。</p>
 </li>
 </ul>
 <h2 id="branch"><a class="header" href="#branch">branch</a></h2>
 <p>普段はおそらく<code>main</code>ブランチ、または、<code>master</code>ブランチを使用していると思います。<br />
 ここでは、開発用のブランチ<code>main</code>と更新用(安定版)のブランチ<code>release</code>にわけておきたいとします。<code>main</code>ブランチは日々の開発によりたくさんの更新が入りどのコミットでうまくいったのかがわからないこともあります。ブランチはわけずにタグを作成して、そのときのコミットに戻れるという機能もありますが、それは<code>branch</code>の次に紹介します。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish tip title = "おすすめの方法"</span></div>
-<pre><code class="language-admonish tip title = &quot;おすすめの方法&quot;">開発用は`development`という名前のブランチで確実に動くものは`main`に反映させるなどがおすすめです。  
-</code></pre>
+<div id="admonition-おすすめの方法" class="admonition admonish-tip" role="note" aria-labelledby="admonition-おすすめの方法-title">
+<div class="admonition-title">
+<div id="admonition-おすすめの方法-title">
+<p>おすすめの方法</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-おすすめの方法"></a>
+</div>
+<div>
+<p>開発用は<code>development</code>という名前のブランチで確実に動くものは<code>main</code>に反映させるなどがおすすめです。</p>
+</div>
+</div>
 <ul>
 <li>
 <p>ブランチの作成をします。</p>
@@ -503,15 +563,21 @@ $ git pull origin main
 進めたいブランチに<code>checkout</code>し、<code>merge</code>を実行します。</p>
 <pre><code class="language-bash : Git Bash">git merge 《進んでいるブランチ名》
 </code></pre>
-<pre><code class="language-admonish example title = &quot;deveブランチをmainブランチと同じ状態にしたい場合&quot;">
-```bash : Git Bash
-git checkout deve
+<div id="admonition-deveブランチをmainブランチと同じ状態にしたい場合" class="admonition admonish-example" role="note" aria-labelledby="admonition-deveブランチをmainブランチと同じ状態にしたい場合-title">
+<div class="admonition-title">
+<div id="admonition-deveブランチをmainブランチと同じ状態にしたい場合-title">
+<p>deveブランチをmainブランチと同じ状態にしたい場合</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-deveブランチをmainブランチと同じ状態にしたい場合"></a>
+</div>
+<div>
+<pre><code class="language-bash : Git Bash">git checkout deve
 git merge main
-```
-
-これを実行することで`deve`ブランチに`main`ブランチの変更を反映させることができます。  
-このあとに`deve`ブランチに`push`し、リモートにも反映させます。  
 </code></pre>
+<p>これを実行することで<code>deve</code>ブランチに<code>main</code>ブランチの変更を反映させることができます。<br />
+このあとに<code>deve</code>ブランチに<code>push</code>し、リモートにも反映させます。</p>
+</div>
+</div>
 </li>
 <li>
 <p>ブランチの削除</p>
@@ -563,15 +629,24 @@ git merge main
 </li>
 </ul>
 <hr />
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish quote title = "参考"  </span></div>
-<pre><code class="language-admonish quote title = &quot;参考&quot;">- 授業  
-- 教育推進プロジェクト(講座)  
-- [git branch コマンド](https://qiita.com/chihiro/items/e178e45a7fd5a2fb4599#git-branch---no-color)  
-- [サル先生のGit入門](https://backlog.com/ja/git-tutorial/)  
-- [【Git入門】Git + Github使い方入門講座🐒Gitの仕組みや使い方を完全解説！パーフェクトGit入門！](https://youtu.be/LDOR5HfI_sQ?si=grgKMmUMKT4dgnn-)  
-- [GitHubの使い方を解説！ファイルの作成方法、ブランチの使い方が分かる！](https://youtu.be/2mehreEA7yc?si=5BQeVtQgHnAOc_l_)  
-</code></pre>
-
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li>授業</li>
+<li>教育推進プロジェクト(講座)</li>
+<li><a href="https://qiita.com/chihiro/items/e178e45a7fd5a2fb4599#git-branch---no-color">git branch コマンド</a></li>
+<li><a href="https://backlog.com/ja/git-tutorial/">サル先生のGit入門</a></li>
+<li><a href="https://youtu.be/LDOR5HfI_sQ?si=grgKMmUMKT4dgnn-">【Git入門】Git + Github使い方入門講座🐒Gitの仕組みや使い方を完全解説！パーフェクトGit入門！</a></li>
+<li><a href="https://youtu.be/2mehreEA7yc?si=5BQeVtQgHnAOc_l_">GitHubの使い方を解説！ファイルの作成方法、ブランチの使い方が分かる！</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -618,7 +693,6 @@ git merge main
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

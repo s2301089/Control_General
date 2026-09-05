@@ -39,23 +39,11 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -195,24 +175,28 @@ span.codeblock_filename_inner {
 
 </style>
 <h1 id="c言語-練習課題"><a class="header" href="#c言語-練習課題">C言語 練習課題</a></h1>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish info title = "C言語の実行方法等"</span></div>
-<pre><code class="language-admonish info title = &quot;C言語の実行方法等&quot;">C言語のソースコード作成後、実行するために**コンパイル**と**リンク**という処理を行い、**実行ファイル**を作成する必要があります。  
-コンパイラ・リンカに`GCC`を使用します。  
-
-ソースコードが置かれているディレクトリに移動します。ここでは例として`~/program/`というディレクトリの中にある`helloworld.c`というファイルを実行したいとします。
-
-```
-#include &lt;stdio.h&gt;
+<div id="admonition-c言語の実行方法等" class="admonition admonish-info" role="note" aria-labelledby="admonition-c言語の実行方法等-title">
+<div class="admonition-title">
+<div id="admonition-c言語の実行方法等-title">
+<p>C言語の実行方法等</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-c言語の実行方法等"></a>
+</div>
+<div>
+<p>C言語のソースコード作成後、実行するために<strong>コンパイル</strong>と<strong>リンク</strong>という処理を行い、<strong>実行ファイル</strong>を作成する必要があります。<br />
+コンパイラ・リンカに<code>GCC</code>を使用します。</p>
+<p>ソースコードが置かれているディレクトリに移動します。ここでは例として<code>~/program/</code>というディレクトリの中にある<code>helloworld.c</code>というファイルを実行したいとします。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">helloworld.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void){
     printf("Hello,World!\n");
 
     return 0;
 }
-```
-
-```
-$ cd ~/program/
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">ubuntu22.04 (WSL)</span></div>
+<pre><code class="language-shell">$ cd ~/program/
 
 $ ls
 helloworld.c
@@ -225,27 +209,19 @@ helloworld  helloworld.c
 $ ./helloworld
 Hello,World!
 
-```
-
-`gcc ソースコードファイル名 -o 実行ファイル名`でコンパイルとリンクを行います。  
-実行するときは`./実行ファイル名`で実行します。  
-
-`math.h`を使用する場合は、コンパイル時に`-lm`をつける必要があります。  
-`gcc ソースコードファイル名 -lm -o 実行ファイル名`でコンパイルとリンクを行います。  
-
-```
-
-## C言語(基礎編)
-
-### 円の面積と円周
-
-実数の半径 \\(r\\) である円の面積と円周を求めるプログラムを作成してください。ただし、 \\(r\leqq0\\) である場合は、プログラムは**終了せずに**再入力を促してください。  
-また、**入力部・処理部・出力部**の3つで分かれるようにプログラムを作成してください。  
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;実行例&lt;/span&gt;&lt;/div&gt;
-
-```shell
-$ gcc ci_ar_r.c -lm -o ci_ar_r
+</code></pre>
+<p><code>gcc ソースコードファイル名 -o 実行ファイル名</code>でコンパイルとリンクを行います。<br />
+実行するときは<code>./実行ファイル名</code>で実行します。</p>
+<p><code>math.h</code>を使用する場合は、コンパイル時に<code>-lm</code>をつける必要があります。<br />
+<code>gcc ソースコードファイル名 -lm -o 実行ファイル名</code>でコンパイルとリンクを行います。</p>
+</div>
+</div>
+<h2 id="c言語基礎編"><a class="header" href="#c言語基礎編">C言語(基礎編)</a></h2>
+<h3 id="円の面積と円周"><a class="header" href="#円の面積と円周">円の面積と円周</a></h3>
+<p>実数の半径 \(r\) である円の面積と円周を求めるプログラムを作成してください。ただし、 \(r\leqq0\) である場合は、プログラムは<strong>終了せずに</strong>再入力を促してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell">$ gcc ci_ar_r.c -lm -o ci_ar_r
 
 # r = 3.0 の場合
 $ ./ci_ar_r
@@ -260,15 +236,18 @@ $ ./ci_ar_r
 Please enter r (r &gt; 0): 1.5
 l : 9.424778
 s : 7.068583
-```
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;`admonish tip title = "定義された円周率を使用する", collapsible = true&lt;/span&gt;&lt;/div&gt;
-
-````admonish tip title = "定義された円周率を使用する", collapsible = true
-円周率は各自で`3.14`を使用しても良いですが、`math.h`に`M_PI`という名前で小数点以下20桁ほどまで定義されています。  
-
-```
-#include &lt;stdio.h&gt;
+</code></pre>
+<details id="admonition-定義された円周率を使用する" class="admonition admonish-tip" role="note" aria-labelledby="admonition-定義された円周率を使用する-title">
+<summary class="admonition-title">
+<div id="admonition-定義された円周率を使用する-title">
+<p>定義された円周率を使用する</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-定義された円周率を使用する"></a>
+</summary>
+<div>
+<p>円周率は各自で<code>3.14</code>を使用しても良いですが、<code>math.h</code>に<code>M_PI</code>という名前で小数点以下20桁ほどまで定義されています。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">半径rの円の面積と円周を表示するプログラム</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
 #include &lt;stdlib.h&gt;
 
@@ -288,10 +267,9 @@ int main(void){
 
     return EXIT_SUCCESS;
 }
-```
-
-```
-$ gcc ci_ar.c -lm -o ci_ar
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell">$ gcc ci_ar.c -lm -o ci_ar
 
 # r = 3.0 の場合
 $ ./ci_ar
@@ -304,27 +282,21 @@ $ ./ci_ar
 1.5
 l : 9.424778
 s : 7.068583
-```
-
-```
-
-### 2次方程式の解
-
-実数の係数 \\(b,c\\) を持つ2次方程式 \\(x^2+bx+c=0\\) の実数解は、判別式 \\(D=b^2-4c\\) の値によって以下の表のようになります。  
-
-| D | 解の個数 | 解 |
-| :-: | :-: | :-: |
-| \\(D&gt;0\\) | \\(2\\) | \\(\frac{-b\pm\sqrt{D}}{2}\\) |
-| \\(D=0\\) | \\(1\\) | \\(\frac{-b}{2}\\) |
-| \\(D&lt;0\\) | \\(0\\) | 実数解なし |
-
-実数の係数 \\(b,c\\) を入力すると、2次方程式の解を求め、出力するプログラムを作成してください。実数解が存在しない場合は `no real roots` と出力してください。  
-また、**入力部・処理部・出力部**の3つで分かれるようにプログラムを作成してください。
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;実行例&lt;/span&gt;&lt;/div&gt;
-
-```shell
-# b = 3.5, c = 1.2 の場合
+</code></pre>
+</div>
+</details>
+<h3 id="2次方程式の解"><a class="header" href="#2次方程式の解">2次方程式の解</a></h3>
+<p>実数の係数 \(b,c\) を持つ2次方程式 \(x^2+bx+c=0\) の実数解は、判別式 \(D=b^2-4c\) の値によって以下の表のようになります。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">D</th><th style="text-align: center">解の個数</th><th style="text-align: center">解</th></tr></thead><tbody>
+<tr><td style="text-align: center">\(D&gt;0\)</td><td style="text-align: center">\(2\)</td><td style="text-align: center">\(\frac{-b\pm\sqrt{D}}{2}\)</td></tr>
+<tr><td style="text-align: center">\(D=0\)</td><td style="text-align: center">\(1\)</td><td style="text-align: center">\(\frac{-b}{2}\)</td></tr>
+<tr><td style="text-align: center">\(D&lt;0\)</td><td style="text-align: center">\(0\)</td><td style="text-align: center">実数解なし</td></tr>
+</tbody></table>
+</div>
+<p>実数の係数 \(b,c\) を入力すると、2次方程式の解を求め、出力するプログラムを作成してください。実数解が存在しない場合は <code>no real roots</code> と出力してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell"># b = 3.5, c = 1.2 の場合
 $ ./qu_eq
 3.5
 1.2
@@ -341,17 +313,19 @@ $ ./qu_eq
 2
 4
 no real roots
-```
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;`admonish tip title = "平方根の計算", collapsible = true&lt;/span&gt;&lt;/div&gt;
-
-````admonish tip title = "平方根の計算", collapsible = true
-平方根をC言語で計算するためには`math.h`にある`sqrt()`を使用します。  
-
-以下は \\(\sqrt{2}\\) を表示するプログラムです。
-
-```
-#include &lt;stdio.h&gt;
+</code></pre>
+<details id="admonition-平方根の計算" class="admonition admonish-tip" role="note" aria-labelledby="admonition-平方根の計算-title">
+<summary class="admonition-title">
+<div id="admonition-平方根の計算-title">
+<p>平方根の計算</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-平方根の計算"></a>
+</summary>
+<div>
+<p>平方根をC言語で計算するためには<code>math.h</code>にある<code>sqrt()</code>を使用します。</p>
+<p>以下は \(\sqrt{2}\) を表示するプログラムです。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">sqrt_2.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
 
 int main(void){
@@ -360,27 +334,21 @@ int main(void){
 
     return 0;
 }
-```
-
-```
-$ gcc sqrt_2.c -lm -o sqrt_2
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell">$ gcc sqrt_2.c -lm -o sqrt_2
 
 $ ./sqrt_2
 1.414214
-```
-
-```
-
-### 放物線とx軸との交点
-
-整数の係数 \\(a,b,c\\) を持つ放物線 \\(y=ax^2+bx+c\\) とx軸との交点を求め、小数点以下1桁で出力するプログラムを作成してください。  
-また、**入力部・処理部・出力部**の3つで分かれるようにプログラムを作成してください。  
-ヒント：「新基礎数学 改訂版 p.82」
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;実行例&lt;/span&gt;&lt;/div&gt;
-
-```shell
-# a = 1 b = -2, c = -3 の場合
+</code></pre>
+</div>
+</details>
+<h3 id="放物線とx軸との交点"><a class="header" href="#放物線とx軸との交点">放物線とx軸との交点</a></h3>
+<p>整数の係数 \(a,b,c\) を持つ放物線 \(y=ax^2+bx+c\) とx軸との交点を求め、小数点以下1桁で出力するプログラムを作成してください。<br />
+また、<strong>入力部・処理部・出力部</strong>の3つで分かれるようにプログラムを作成してください。<br />
+ヒント：「新基礎数学 改訂版 p.82」</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-shell"># a = 1 b = -2, c = -3 の場合
 $ ./pa_in
 1
 -2
@@ -400,18 +368,12 @@ $ ./pa_in
 4
 -4
 (2.0, 0)
-```
-
-## C言語(発展編)
-
-### 数字の合計
-
-要素数`9`の配列を用意し、8つの整数を0~7番目に入力する。8番目に0~7番目の合計値を代入し、出力するプログラムを作成してください。  
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;実行例&lt;/span&gt;&lt;/div&gt;
-
-```c
-$ gcc ar_su.c -o ar_su
+</code></pre>
+<h2 id="c言語発展編"><a class="header" href="#c言語発展編">C言語(発展編)</a></h2>
+<h3 id="数字の合計"><a class="header" href="#数字の合計">数字の合計</a></h3>
+<p>要素数<code>9</code>の配列を用意し、8つの整数を0~7番目に入力する。8番目に0~7番目の合計値を代入し、出力するプログラムを作成してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">実行例</span></div>
+<pre><code class="language-c">$ gcc ar_su.c -o ar_su
 
 $ ./ar_su
 2
@@ -423,16 +385,11 @@ $ ./ar_su
 16
 18
 sum : 80
-```
-
-### 穴埋め(ポインタ)
-
-次のコードがうまく動作するように、プログラムを修正してください。
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;po_va.c&lt;/span&gt;&lt;/div&gt;
-
-```c
-#include &lt;stdio.h&gt;
+</code></pre>
+<h3 id="穴埋めポインタ"><a class="header" href="#穴埋めポインタ">穴埋め(ポインタ)</a></h3>
+<p>次のコードがうまく動作するように、プログラムを修正してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">po_va.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 int main(void){
@@ -447,12 +404,9 @@ int main(void){
 
     return EXIT_SUCCESS;
 }
-```
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;po_ar.c&lt;/span&gt;&lt;/div&gt;
-
-```c
-#include &lt;stdio.h&gt;
+</code></pre>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">po_ar.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 int main(void){
@@ -473,16 +427,11 @@ int main(void){
 
     return EXIT_SUCCESS;
 }
-```
-
-### 穴埋め(構造体)
-
-次のコードがうまく動作するように、プログラムを修正してください。
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;st_pe.c&lt;/span&gt;&lt;/div&gt;
-
-```c
-#include &lt;stdio.h&gt;
+</code></pre>
+<h3 id="穴埋め構造体"><a class="header" href="#穴埋め構造体">穴埋め(構造体)</a></h3>
+<p>次のコードがうまく動作するように、プログラムを修正してください。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">st_pe.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 typedef struct _person{
@@ -527,14 +476,10 @@ void showPersonByReference(Person *person){
         ここに身長、体重、年齢、性別を表示するコードを記述
     */
 }
-```
-
-### 穴埋め(関数)
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;in_fu.c&lt;/span&gt;&lt;/div&gt;
-
-```c
-#include &lt;stdio.h&gt;
+</code></pre>
+<h3 id="穴埋め関数"><a class="header" href="#穴埋め関数">穴埋め(関数)</a></h3>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">in_fu.c</span></div>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 typedef struct _person{
@@ -567,7 +512,7 @@ int main(void){
 /*
     ここで各関数を実装する
 */
-```</code></pre>
+</code></pre>
 
                     </main>
 
@@ -615,7 +560,6 @@ int main(void){
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

@@ -39,23 +39,11 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
@@ -96,13 +84,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -136,7 +121,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -156,12 +141,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -197,9 +177,17 @@ span.codeblock_filename_inner {
 <h1 id="pwm出力"><a class="header" href="#pwm出力">PWM出力</a></h1>
 <h2 id="pwmout"><a class="header" href="#pwmout"><code>PwmOut</code></a></h2>
 <p><code>PWM</code>出力をする場合は、<code>PwmOut</code>クラスを使用します。</p>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">admonish note title = "PWM"</span></div>
-<pre><code class="language-admonish note title = &quot;PWM&quot;">`PWM`はどういうものか[このページ](../../BasicContents/motor.md#pwm)で簡単に説明しています。  
-</code></pre>
+<div id="admonition-pwm" class="admonition admonish-note" role="note" aria-labelledby="admonition-pwm-title">
+<div class="admonition-title">
+<div id="admonition-pwm-title">
+<p>PWM</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-pwm"></a>
+</div>
+<div>
+<p><code>PWM</code>はどういうものか<a href="../../BasicContents/motor.html#pwm">このページ</a>で簡単に説明しています。</p>
+</div>
+</div>
 <h3 id="コンストラクタ"><a class="header" href="#コンストラクタ">コンストラクタ</a></h3>
 <p>コンストラクタは<code>PwmOut(PinName pin)</code>で定義されています。</p>
 <ul>
@@ -241,12 +229,18 @@ span.codeblock_filename_inner {
 <h3 id="void-period_usint-us"><a class="header" href="#void-period_usint-us"><code>void period_us(int us)</code></a></h3>
 <p><code>PWM</code>の周期をマイクロ秒単位で指定します。</p>
 <h2 id="サンプルプログラム"><a class="header" href="#サンプルプログラム">サンプルプログラム</a></h2>
-<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">`admonish example title = "やわらかい点滅"</span></div>
-<pre><code class="language-admonish example title = &quot;やわらかい点滅&quot;">`PWM`のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。  
-`NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`がやさしく点滅します。  
-
-```
-#include "mbed.h"
+<div id="admonition-やわらかい点滅" class="admonition admonish-example" role="note" aria-labelledby="admonition-やわらかい点滅-title">
+<div class="admonition-title">
+<div id="admonition-やわらかい点滅-title">
+<p>やわらかい点滅</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-やわらかい点滅"></a>
+</div>
+<div>
+<p><code>PWM</code>のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。<br />
+<code>NUCLEO-F446RE</code>で動作確認しました。評価ボード上の<code>LD2</code>がやさしく点滅します。</p>
+<div class="codeblock_filename_container"><span class="codeblock_filename_inner hljs">main.cpp</span></div>
+<pre><code class="language-cpp">#include "mbed.h"
 
 using namespace std;
 using namespace mbed;
@@ -272,62 +266,54 @@ int main(void){
 
     return 0;
 }
-```
-
-周期が\\(\mathrm{1[ms]}\\)の`PWM`を出力します。
-
-```
-
-## 他のメソッド(使用したことがない)
-
-### `int read_period_us(void)`
-
-`PWM`の周期設定を返します。マイクロ秒単位の周期が返されます。
-
-### `void pulsewidth(float seconds)`
-
-`PWM`のパルス幅を秒数で指定します。
-
-### `void pulsewidth_ms(int ms)`
-
-`PWM`のパルス幅をミリ秒単位で指定します。
-
-### `void pulsewidth_us(int us)`
-
-`PWM`のパルス幅をマイクロ秒単位で指定します。
-
-### `int read_pulsewidth_us()`
-
-`PWM`のパルス幅設定を返します。マイクロ秒単位の秒数が返されます。
-
-### `void suspend()`
-
-`PWM`の動作を一時停止します。停止中は他の呼び出しは動作しません。
-
-### `void resume()`
-
-`PWM`の動作を再開します。`suspend()`で停止する前の状態に復元します。
-
----
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "使用部品"&lt;/span&gt;&lt;/div&gt;
-
-```admonish quote title = "使用部品"
-
-- [NUCLEO-F446RE](https://www.st.com/ja/evaluation-tools/nucleo-f446re.html)
-- USB A to miniB ケーブル
-
-```
-
-&lt;div class="codeblock_filename_container"&gt;&lt;span class="codeblock_filename_inner hljs"&gt;admonish quote title = "参考"&lt;/span&gt;&lt;/div&gt;
-
-```admonish quote title = "参考"
-
-- [MB1136-DEFAULT-C05 Board schematic](https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf)
-- [DS10693](https://www.st.com/resource/en/datasheet/stm32f446mc.pdf)
-
-```</code></pre>
-
+</code></pre>
+<p>周期が\(\mathrm{1[ms]}\)の<code>PWM</code>を出力します。</p>
+</div>
+</div>
+<h2 id="他のメソッド使用したことがない"><a class="header" href="#他のメソッド使用したことがない">他のメソッド(使用したことがない)</a></h2>
+<h3 id="int-read_period_usvoid"><a class="header" href="#int-read_period_usvoid"><code>int read_period_us(void)</code></a></h3>
+<p><code>PWM</code>の周期設定を返します。マイクロ秒単位の周期が返されます。</p>
+<h3 id="void-pulsewidthfloat-seconds"><a class="header" href="#void-pulsewidthfloat-seconds"><code>void pulsewidth(float seconds)</code></a></h3>
+<p><code>PWM</code>のパルス幅を秒数で指定します。</p>
+<h3 id="void-pulsewidth_msint-ms"><a class="header" href="#void-pulsewidth_msint-ms"><code>void pulsewidth_ms(int ms)</code></a></h3>
+<p><code>PWM</code>のパルス幅をミリ秒単位で指定します。</p>
+<h3 id="void-pulsewidth_usint-us"><a class="header" href="#void-pulsewidth_usint-us"><code>void pulsewidth_us(int us)</code></a></h3>
+<p><code>PWM</code>のパルス幅をマイクロ秒単位で指定します。</p>
+<h3 id="int-read_pulsewidth_us"><a class="header" href="#int-read_pulsewidth_us"><code>int read_pulsewidth_us()</code></a></h3>
+<p><code>PWM</code>のパルス幅設定を返します。マイクロ秒単位の秒数が返されます。</p>
+<h3 id="void-suspend"><a class="header" href="#void-suspend"><code>void suspend()</code></a></h3>
+<p><code>PWM</code>の動作を一時停止します。停止中は他の呼び出しは動作しません。</p>
+<h3 id="void-resume"><a class="header" href="#void-resume"><code>void resume()</code></a></h3>
+<p><code>PWM</code>の動作を再開します。<code>suspend()</code>で停止する前の状態に復元します。</p>
+<hr />
+<div id="admonition-使用部品" class="admonition admonish-quote" role="note" aria-labelledby="admonition-使用部品-title">
+<div class="admonition-title">
+<div id="admonition-使用部品-title">
+<p>使用部品</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-使用部品"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/ja/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a></li>
+<li>USB A to miniB ケーブル</li>
+</ul>
+</div>
+</div>
+<div id="admonition-参考" class="admonition admonish-quote" role="note" aria-labelledby="admonition-参考-title">
+<div class="admonition-title">
+<div id="admonition-参考-title">
+<p>参考</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-参考"></a>
+</div>
+<div>
+<ul>
+<li><a href="https://www.st.com/resource/en/schematic_pack/mb1136-default-c05_schematic.pdf">MB1136-DEFAULT-C05 Board schematic</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/stm32f446mc.pdf">DS10693</a></li>
+</ul>
+</div>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -374,7 +360,6 @@ int main(void){
         <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>
