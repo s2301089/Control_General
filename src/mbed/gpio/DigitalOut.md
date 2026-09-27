@@ -47,23 +47,8 @@ int pin_state = led2.read();
 `PA5`を`250ms`間隔で出力を反転させるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が`250ms`間隔で点滅します。  
 
-```cpp : main.cpp
-#include "mbed.h"
-
-using namespace std;
-using namespace mbed;
-
-int main(void){
-    DigitalOut led2(PA_5, 0);
-    chrono::milliseconds blinking_interval = 250ms;
-
-    while(1){
-        led2.write(!led2.read());
-        ThisThread::sleep_for(blinking_interval);
-    }
-
-    return 0;
-}
+```cpp : digitalout_led_blink.cpp
+{{#include ../../resources/mbed/nucleo-f446re/src/gpio/digitalout_led_blink.cpp}}
 ```
 
 `LD2`が点滅する理由を説明します。  

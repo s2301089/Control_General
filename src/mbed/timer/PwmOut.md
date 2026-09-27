@@ -64,33 +64,8 @@ float pin_duty = led2.read();
 `PWM`のデューティー比がだんだん大きくなり、だんだん小さくなるプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`がやさしく点滅します。  
 
-```cpp : main.cpp
-#include "mbed.h"
-
-using namespace std;
-using namespace mbed;
-
-int main(void){
-    PwmOut led2(PA_5);
-    led2.period_ms(1);
-    float i = 0.0f, div, div_abs = 0.01f;
-    div = div_abs;
-
-    while(1){
-        led2.write(i);
-        i+=div;
-        if(i > 1.0f){
-            i = 1.0f;
-            div = -div_abs;
-        }else if(i < 0.0f){
-            i = 0.0f;
-            div = div_abs;
-        }
-        ThisThread::sleep_for(10ms);
-    }
-
-    return 0;
-}
+```cpp : pwmout_led_blink.cpp.cpp
+{{#include ../../resources/mbed/nucleo-f446re/src/timer/pwmout_led_blink.cpp}}
 ```
 
 周期が\\(\mathrm{1[ms]}\\)の`PWM`を出力します。

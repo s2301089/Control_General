@@ -7,8 +7,8 @@
 
 用意されたものを使用するのは簡単です。コードの中にそのまま`printf`を記述するだけです。  
 
-```cpp : printf.cpp
-printf("sw:%d\n", sw.read());
+```cpp : printf.cpp.cpp
+{{#include ../../resources/mbed/nucleo-f446re/src/connectivity/printf.cpp}}
 ```
 
 基本的には、評価ボードに接続したUSBケーブルなどを通し、UARTを使用してPCへ送信されます。  
@@ -18,8 +18,8 @@ printf("sw:%d\n", sw.read());
 
 `UnbufferedSerial`のインスタンスを宣言するだけでボーレートを変更することができます。  
 
-```cpp : UnbufferedSerialの宣言
-UnbufferedSerial pc(USBTX, USBRX, 38400);
+```cpp : ボーレートの変更
+{{#include ../../resources/mbed/nucleo-f446re/src/connectivity/serial_printf.cpp:5}}
 ```
 
 `38400`がボーレートの設定になります。`9600`や`38400`、`115200`などに設定することが多いです。  
@@ -29,29 +29,8 @@ UnbufferedSerial pc(USBTX, USBRX, 38400);
 `mbed`では`printf`を使用すると勝手にPCへ送信されてしまうため、`printf`のような関数を実装する必要があります。  
 使用する場合は、`Serial`の宣言をし、関数を実装するだけです。定義する関数は、`printf`と同じように使用できます。  
 
-### UnbufferedSerialの宣言
-
-```cpp : UnbufferedSerialの宣言
-UnbufferedSerial pc(USBTX, USBRX, 38400);
-// TX、RX、baudrate
-```
-
-`UnbufferedSerial`のインスタンス`pc`を宣言します。インスタンスは定義する関数、その他の使用する関数から呼び出しできる範囲である必要があります。`main.cpp`の上の方に宣言します。  
-`baudrate`を指定しない場合は`9600`になります。  
-
-### 代替関数の実装
-
-`printf`の代わりに呼び出す関数を定義します。  
-
-```cpp : 関数の定義
-void pc_printf(const char *format, ...){
-    char buf[256];
-    va_list arg;
-    va_start(arg, format);
-    int len = vsnprintf(buf, sizeof(buf), format, arg);
-    va_end(arg);
-    pc.write(buf, len);
-}
+```cpp : serial_printf.cpp
+{{#include ../../resources/mbed/nucleo-f446re/src/connectivity/serial_printf.cpp}}
 ```
 
 詳細な説明は省きますが、無限長引数を解釈し、`buf`にまとめ、`pc.write()`で送信しています。  
@@ -63,13 +42,7 @@ void pc_printf(const char *format, ...){
 プロジェクトフォルダの階層(`src/`や`lib/`のある階層)に新しいファイルを作成します。  
 
 ```json : mbed_app.json
-{
-    "target_overrides":{
-        "*":{
-            "target.printf_lib":"std"
-        }
-    }
-}
+{{#include ../../resources/mbed/nucleo-f446re/mbed_app.json}}
 ```
 
 `long`等も正しく表示できない場合があります。その場合は、上記の`mbed_app.json`を作成する必要があります。

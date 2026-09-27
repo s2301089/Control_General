@@ -56,22 +56,8 @@ button1.mode(PullDown);
 `PA5`を`PC13`の入力値を出力に設定するプログラムです。  
 `NUCLEO-F446RE`で動作確認しました。評価ボード上の`LD2`が評価ボード上の`B1`(青のプッシュスイッチ)を押していると消灯し、押していないと点灯します。  
 
-```cpp : main.cpp
-#include "mbed.h"
-
-using namespace std;
-using namespace mbed;
-
-int main(void){
-    DigitalOut led2(PA_5, 0);
-    DigitalIn button1(PC_13, PullNone);
-
-    while(1){
-        led2.write(button1.read());
-    }
-
-    return 0;
-}
+```cpp : digitalin_led_blink.cpp
+{{#include ../../resources/mbed/nucleo-f446re/src/gpio/digitalin_led_blink.cpp}}
 ```
 
 `LD2`が`B1`によって点灯・消灯する理由を説明します。  

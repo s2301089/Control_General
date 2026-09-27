@@ -47,23 +47,8 @@ uint16_t pin_value = var_r1.read_u16();
 
 ![variable_resistor_10k_breadboard](../../resources/mbed/analog/AnalogIn/variable_resistor_10k_breadboard.png =500x center)  
 
-```cpp : main.cpp
-#include "mbed.h"
-
-using namespace std;
-using namespace mbed;
-
-int main(void){
-    AnalogIn var_r1(PA_0);
-    PwmOut led2(PA_5);
-    led2.period_ms(1);
-
-    while(1){
-        led2.write(var_r1.read());
-    }
-
-    return 0;
-}
+```cpp : analogin_led_pwm.cpp.cpp
+{{#include ../../resources/mbed/nucleo-f446re/src/analog/analogin_led_pwm.cpp}}
 ```
 
 半固定抵抗のつまみを左から右に回すと`LED`が明るくなり、右から左に回すと`LED`が暗くなります。  
